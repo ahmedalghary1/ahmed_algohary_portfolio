@@ -1,0 +1,30 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://rocks-ev.com/",
+      "verificationBlocked": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://rocks-ev.com/\nCall log:\n\u001b[2m  - navigating to \"https://rocks-ev.com/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://bonyan-nine.vercel.app/",
+      "verificationBlocked": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://bonyan-nine.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://bonyan-nine.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://ahmed-nabil-sooty.vercel.app/",
+      "verificationBlocked": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://ahmed-nabil-sooty.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://ahmed-nabil-sooty.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "url": "https://ahmed-gamal-seven.vercel.app/",
+      "verificationBlocked": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://ahmed-gamal-seven.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://ahmed-gamal-seven.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    }
+  }
+]

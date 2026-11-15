@@ -10,10 +10,11 @@ from pathlib import Path
 from html import escape
 from datetime import date
 from urllib.parse import urlparse
-from render_sections import experience_section, case_study, architecture_section, seo_markup
+from render_sections import seo_markup
+from render_projects import project_card, project_pages
 LOCALE='ar' if '--arabic' in sys.argv else 'en'
 D=json.loads(Path('data/portfolio.json').read_text(encoding='utf-8'));EN=D[LOCALE];P=D['profile']
-styles='\n'.join(Path(f'css/{name}.css').read_text(encoding='utf-8-sig') for name in ['tokens','base','layout','components','responsive','motion','skills','engineering','refactor'])
+styles='\n'.join(Path(f'css/{name}.css').read_text(encoding='utf-8-sig') for name in ['tokens','base','layout','components','responsive','engineering','refactor'])
 styles=re.sub(r'/\*[\s\S]*?\*/','',styles)
 styles=re.sub(r'\s+',' ',styles)
 styles=re.sub(r'\s*([{};])\s*',r'\1',styles).strip()
@@ -32,28 +33,7 @@ nav=''.join(f'<a href="#{k}">{copy("nav."+k)}</a>' for k in ['top','work','servi
 cv=P.get('cv') if P.get('cv') and Path(P['cv']).is_file() else None
 resume=f'<a class="nav-resume" href="{escape(cv,quote=True)}" download>{copy("nav.resume")}</a>' if cv else ''
 hero_resume=f'<a class="text-link" href="{escape(cv,quote=True)}" download>{copy("hero.resume")}<span aria-hidden="true">↓</span></a>' if cv else ''
-projects=''
-for i,p in enumerate(P['projects']):
- k=f'projects.{i}'
- image_src=p.get('images',{}).get('en',f"assets/images/{p['image']}-en.svg")
- responsive=p.get('srcset',{}).get('en','')
- image_attrs=(f' srcset="{escape(responsive,quote=True)}" sizes="(max-width:600px) calc(100vw - 40px), (max-width:1600px) 54vw, 800px"' if responsive else '')
- preview_src=p.get('preview',image_src)
- private=p.get('private',False)
- status='work.private' if private else 'work.sample'
- featured_label=copy('work.featured','p','featured-project-label') if i==0 else ''
- caption='work.privatePreview' if private else 'work.preview'
- window_label=copy('work.private') if private else '<bdi>'+escape(urlparse(p['url']).netloc)+'</bdi>'
- action=(f'<a class="button project-visit" href="{escape(p["url"],quote=True)}" target="_blank" rel="noopener noreferrer" aria-label="{attr(k+".visitLabel")}" data-copy-aria-label="{k}.visitLabel">{copy("work.visit")}{arrow}</a>' if p.get('url') else copy(k+'.privacyNote','p','project-privacy'))
- projects+=f'''<article class="project{' project-featured' if i==0 else ''}" id="project-{p['id']}" aria-labelledby="project-title-{i}">
- <figure class="project-visual"><div class="project-window"><div class="project-browser" aria-hidden="true"><span class="browser-dots"><i></i><i></i><i></i></span>{window_label}<span class="browser-mark">↗</span></div><img src="{escape(image_src,quote=True)}"{image_attrs} data-project-image="{p['image']}" width="1600" height="900" loading="lazy" decoding="async" alt="{attr(k+'.alt')}" data-copy-alt="{k}.alt"></div><figcaption>{copy(caption)}<a href="{escape(preview_src,quote=True)}" target="_blank" rel="noopener noreferrer" data-project-preview aria-label="{attr(k+'.previewLabel')}" data-copy-aria-label="{k}.previewLabel">{copy('work.fullSize')}{arrow}</a></figcaption></figure>
- <div class="project-copy">{featured_label}<div class="project-meta"><span class="index">{i+1:02d}</span>{copy(status,cls='project-status'+(' is-private' if private else ''))}</div>{copy(k+'.category','p','meta')}{copy(k+'.title','h3',attrs=f'id="project-title-{i}"')}{copy(k+'.description','p','project-description')}
- <ul class="technologies" aria-label="{attr('work.stack')}" data-copy-aria-label="work.stack">{''.join('<li>'+copy(k+f'.highlights.{j}')+'</li>' for j in range(len(value(k+'.highlights'))))}</ul>
- <div class="project-actions">{action}</div></div>
- <details class="project-study" id="case-{p['id']}"><summary aria-labelledby="case-action-{p['id']} project-title-{i}">{copy('work.details',attrs=f'id="case-action-{p["id"]}"')}<span class="detail-symbol" aria-hidden="true">+</span></summary><div class="case-study">
- {case_study(D,i,copy,LOCALE)}
- <a class="case-permalink" href="#case-{p['id']}">{copy('work.permalink')}</a>
- </div></details></article>'''
+projects=''.join(project_card(D,i,copy,LOCALE) for i in range(len(P['projects'])))
 S=json.loads(Path('data/skills.json').read_text(encoding='utf-8'))
 skills={s['id']:s for s in S['skills']}
 def skill_icon(skill):
@@ -63,12 +43,16 @@ def skill_icon(skill):
 def skill_tag(sid,featured=False):
  s=skills[sid]
  return f'<li class="{"featured-technology" if featured else "skill-token"}" data-skill-id="{s["id"]}">{skill_icon(s)}<bdi translate="no" dir="ltr">{escape(s["name"])}</bdi></li>'
-featured='<div class="featured-stack"><ul class="featured-technologies">'+''.join(skill_tag(sid,True) for sid in S['featured'])+'</ul></div>'
 groups=''
-for i,c in enumerate(sorted(S['categories'],key=lambda c:c['order'])):
- key=f'expertise.groups.{i}'
- representatives=''.join(f'<li>{skill_icon(skills[sid])}<bdi dir="ltr" translate="no">{escape(skills[sid]["name"])}</bdi></li>' for sid in c['skills'][:3])
- groups+=f'<article class="skill-category" aria-labelledby="skill-category-{i}"><div class="skill-category-heading"><span class="meta" aria-hidden="true">{i+1:02d}</span>{copy(key+".title","h3",attrs=f'id="skill-category-{i}"')}</div>{copy(key+".description","p","skill-category-description")}<ul class="representative-skills">{representatives}</ul><details class="skill-disclosure"><summary aria-labelledby="skill-action-{i} skill-category-{i}">{copy("expertise.explore",attrs=f'id="skill-action-{i}"')}<span class="detail-symbol" aria-hidden="true">+</span></summary><ul class="skill-list">'+''.join(skill_tag(sid) for sid in c['skills'])+'</ul></details></article>'
+for i,group in enumerate(S['homepageGroups']):
+ heading=''.join(f'<span class="locale-{lang}">{escape(group["title"][lang])}</span>' for lang in ['en','ar'])
+ groups+=f'<div class="stack-group"><h3>{heading}</h3><ul>'+''.join(skill_tag(sid) for sid in group['skills'])+'</ul></div>'
+services=''
+for i,service in enumerate(P['services']):
+ project=next((r for r in P['projects'] if r['id']==service['project']),None)
+ href=('/ar/' if LOCALE=='ar' else '/')+'projects/'+project['slug']+'/' if project else '#contact'
+ route_attr=f' data-local-path="projects/{project["slug"]}/"' if project else ''
+ services+=f'<article class="service"><span class="service-number" aria-hidden="true">0{i+1}</span><div>{copy(f"services.items.{i}.title","h3")}{copy(f"services.items.{i}.text","p")}<a class="text-link" href="{href}"{route_attr}>{copy(f"services.items.{i}.project")}{arrow}</a></div></article>'
 steps=''.join(f'<li><span class="process-index" aria-hidden="true">0{i+1}</span>{copy(f"process.steps.{i}.title","h3")}{copy(f"process.steps.{i}.text","p")}</li>' for i in range(len(EN['process']['steps'])))
 links=''
 for key in ['github','linkedin','leetcode','cv']:
@@ -95,6 +79,13 @@ form=f'''<form id="contact-form" class="contact-form" aria-labelledby="contact-f
 <p class="contact-feedback" id="contact-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
 <div id="contact-prepared" hidden><label for="prepared-message">{copy('contact.prepared')}</label><textarea id="prepared-message" rows="6" readonly dir="auto"></textarea></div>
 </form>'''
+def runtime_content(data):
+ # Keep source history available to the owner, but embed only active UI content.
+ keys=['name','wordmark','title','seo','nav','hero','work','projects','services','stack','about','process','contact','footer']
+ result={lang:{key:data[lang][key] for key in keys} for lang in ['en','ar']}
+ result['profile']={key:value for key,value in data['profile'].items() if key not in ['experience','architecture']}
+ return result
+
 html=f'''<!doctype html>
 <html lang="{LOCALE}" dir="{'rtl' if LOCALE=='ar' else 'ltr'}">
 <head>
@@ -108,7 +99,7 @@ html=f'''<!doctype html>
 <noscript><link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin></noscript>
 <link rel="stylesheet" href="css/site.css?v={style_version}">
 <script type="module" src="js/main.js"></script>
-<script type="application/json" id="portfolio-content">{json.dumps(D,ensure_ascii=False).replace('<',chr(92)+'u003c')}</script>
+<script type="application/json" id="portfolio-content">{json.dumps(runtime_content(D),ensure_ascii=False,separators=(',',':')).replace('<',chr(92)+'u003c')}</script>
 </head>
 <body id="top">
 <a class="skip-link" href="#main">{copy('nav.skip')}</a>
@@ -121,29 +112,33 @@ html=f'''<!doctype html>
 <section class="hero wrap" aria-labelledby="hero-title">
 <div class="hero-top"><p class="eyebrow">{copy('title')}</p></div>
 <div class="hero-grid"><div class="hero-content"><h1 id="hero-title">{copy('hero.line1','span','hero-line')}{copy('hero.line2','span','hero-line')}{copy('hero.line3','span','hero-line hero-accent')}</h1>{copy('hero.description','p','hero-description')}<div class="hero-actions"><a class="button" href="#work">{copy('hero.work')}{arrow}</a><a class="text-link" href="#contact">{copy('hero.contact')}{arrow}</a></div></div>
-<figure class="hero-art"><div class="hero-portrait-frame"><img class="hero-portrait" src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) min(100vw - 40px, 320px), (max-width:1100px) 40vw, 420px" data-profile-image width="1122" height="1402" fetchpriority="high" decoding="async" alt="{attr('hero.portraitAlt')}" data-copy-alt="hero.portraitAlt"></div><figcaption><div>{copy('name','span','portrait-name')}{copy('title','p')}</div><span class="portrait-signature" aria-hidden="true">↗</span></figcaption></figure></div>
+<figure class="hero-art"><div class="hero-portrait-frame"><img class="hero-portrait" src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) 140px, (max-width:800px) 230px, 290px" data-profile-image width="1122" height="1402" fetchpriority="high" decoding="async" alt="{attr('hero.portraitAlt')}" data-copy-alt="hero.portraitAlt"></div><figcaption><div>{copy('name','span','portrait-name')}{copy('title','p')}</div><span class="portrait-signature" aria-hidden="true">↗</span></figcaption></figure></div>
 <div class="hero-bottom">{copy('hero.index','p','meta')}<a class="scroll-cue" href="#work">{copy('hero.scroll')}<span aria-hidden="true">↓</span></a></div>
 </section>
-<section id="stack" class="stack wrap" aria-labelledby="stack-title"><div class="stack-heading"><div>{copy('stack.label','p','eyebrow')}{copy('stack.title','h2',attrs='id="stack-title"')}</div>{copy('stack.intro','p')}</div>{featured}{copy('stack.note','p','stack-note')}</section>
-<section id="work" class="work wrap section" aria-labelledby="work-title"><div class="work-stage"><div class="section-heading"><div>{copy('work.label','p','eyebrow')}{copy('work.title','h2','multiline',attrs='id="work-title"')}</div>{copy('work.intro','p','section-intro')}</div><div class="showcase-tools" hidden><span class="showcase-count" data-project-counter>01 / 05</span><div class="showcase-progress" aria-hidden="true"></div><div class="showcase-navigation"><button type="button" data-project-previous aria-label="Previous project"><span>&larr;</span></button><button type="button" data-project-next aria-label="Next project"><span>&rarr;</span></button></div></div><div class="project-viewport"><div class="projects">{projects}</div></div></div></section>
-{architecture_section(D,copy)}
-<section id="about" class="about section" aria-labelledby="about-title"><div class="wrap"><div class="section-heading"> <div>{copy('about.label','p','eyebrow')}{copy('about.title','h2','multiline',attrs='id="about-title"')}</div>{copy('about.placeholder','p','meta')}</div><div class="about-grid"><figure class="portrait"><img src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) calc(100vw - 40px), (max-width:1100px) 36vw, 430px" data-profile-image width="1122" height="1402" loading="lazy" decoding="async" alt="{attr('about.portraitAlt')}" data-copy-alt="about.portraitAlt"><figcaption>{copy('about.caption')}</figcaption></figure><div class="about-copy">{copy('about.intro','p','about-statement')}{copy('about.bio','p')}{copy('about.philosophy','p')}<div class="interests">{copy('about.interests','h3','meta')}{copy('about.interestText','p')}</div></div></div></div></section>
-{experience_section(D,copy,LOCALE)}
-<section id="expertise" class="expertise wrap section" aria-labelledby="expertise-title"><div class="section-heading"><div>{copy('expertise.label','p','eyebrow')}{copy('expertise.title','h2','multiline',attrs='id="expertise-title"')}{copy('expertise.specialization','p','expertise-specialization')}</div>{copy('expertise.intro','p','section-intro')}</div><div class="skills-grid">{groups}</div></section>
-<section id="process" class="process wrap section" aria-labelledby="process-title"><div class="section-heading"><div>{copy('process.label','p','eyebrow')}{copy('process.title','h2',attrs='id="process-title"')}</div>{copy('process.intro','p','section-intro')}</div><ol class="process-list">{steps}</ol></section>
+<section id="work" class="work wrap section" aria-labelledby="work-title"><div class="section-heading"><div>{copy('work.label','p','eyebrow')}{copy('work.title','h2',attrs='id="work-title"')}</div>{copy('work.intro','p','section-intro')}</div><div class="projects">{projects}</div></section>
+<section id="services" class="services section" aria-labelledby="services-title"><div class="wrap"><div class="section-heading"><div>{copy('services.label','p','eyebrow')}{copy('services.title','h2',attrs='id="services-title"')}</div></div><div class="service-list">{services}</div></div></section>
+<section id="stack" class="stack wrap section" aria-labelledby="stack-title"><span id="expertise" class="legacy-anchor"></span><div class="section-heading"><div>{copy('stack.label','p','eyebrow')}{copy('stack.title','h2',attrs='id="stack-title"')}</div></div><div class="stack-groups">{groups}</div>{copy('stack.note','p','stack-note')}</section>
+<section id="about" class="about section" aria-labelledby="about-title"><span id="experience" class="legacy-anchor"></span><span id="architecture" class="legacy-anchor"></span><div class="wrap"><div class="section-heading"><div>{copy('about.label','p','eyebrow')}{copy('about.title','h2',attrs='id="about-title"')}</div></div><div class="about-grid"><figure class="portrait"><img src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) 180px, 260px" data-profile-image width="1122" height="1402" loading="lazy" decoding="async" alt="{attr('about.portraitAlt')}" data-copy-alt="about.portraitAlt"></figure><div class="about-copy">{copy('about.bio','p')}{copy('about.philosophy','p')}{hero_resume}</div></div></div></section>
+<section id="process" class="process wrap section" aria-labelledby="process-title"><div class="section-heading"><div>{copy('process.label','p','eyebrow')}{copy('process.title','h2',attrs='id="process-title"')}</div></div><ol class="process-list">{steps}</ol></section>
 <section id="contact" class="contact section" aria-labelledby="contact-title"><div class="wrap"><div class="contact-grid"><div class="contact-lead">{copy('contact.label','p','eyebrow')}{copy('contact.title','h2','multiline',attrs='id="contact-title"')}{copy('contact.invitation','p','contact-invitation')}<div class="contact-copy">{copy('contact.description','p')}<div id="contact-action" class="contact-channels" role="group" aria-label="{attr('contact.directTitle')}" data-copy-aria-label="contact.directTitle">{channels}</div>{email}<div class="social-links" id="social-links">{links}</div></div></div><div class="contact-compose">{form}</div></div></div></section>
 </main>
 <footer class="site-footer wrap"><p><span>© {date.today().year}</span> {copy('footer.copyright')}</p><nav aria-label="{attr('nav.footer')}" data-copy-aria-label="nav.footer"><a href="#work">{copy('nav.work')}</a><a href="#contact">{copy('nav.contact')}</a><button type="button" class="footer-language" data-language data-copy-aria-label="footer.languageLabel" aria-label="{attr('footer.languageLabel')}" hidden>{copy('footer.language')}</button><a href="#top">{copy('footer.top')}<span aria-hidden="true">↑</span></a></nav></footer>
-<button type="button" class="motion-switch" data-motion-switch aria-pressed="false" hidden>Pause motion</button></body></html>'''
+</body></html>'''
 fallback_language='<noscript><a class="language-switch" href="'+('/' if LOCALE=='ar' else '/ar/')+'" lang="'+('en' if LOCALE=='ar' else 'ar')+'">'+('English' if LOCALE=='ar' else 'العربية')+'</a></noscript>'
 html=html.replace('<div class="header-controls">','<div class="header-controls">'+fallback_language)
 if LOCALE=='ar':html=html.replace('href="#','href="/ar/#')
 target=Path('ar/index.html') if LOCALE=='ar' else Path('index.html')
 target.parent.mkdir(exist_ok=True)
 target.write_text(html,encoding='utf-8')
+project_pages(D,copy,LOCALE,html)
 print(f'Updated {target} with complete localized content.')
 if LOCALE=='en':
  Path('robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: '+P['url']+'sitemap.xml\n',encoding='utf-8')
- alternates=f'<xhtml:link rel="alternate" hreflang="en" href="{P["url"]}"/><xhtml:link rel="alternate" hreflang="ar" href="{P["url"]}ar/"/>'
- Path('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+''.join(f'<url><loc>{P["url"]}{suffix}</loc>{alternates}</url>' for suffix in ['', 'ar/'])+'</urlset>\n',encoding='utf-8')
+ routes=['']+['projects/'+r['slug']+'/' for r in P['projects']]
+ urls=[]
+ for path in routes:
+  alternates=''.join(f'<xhtml:link rel="alternate" hreflang="{lang}" href="{P["url"]}{"ar/" if lang=="ar" else ""}{path}"/>' for lang in ['en','ar'])
+  for prefix in ['', 'ar/']:
+   urls.append(f'<url><loc>{P["url"]}{prefix}{path}</loc>{alternates}</url>')
+ Path('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+''.join(urls)+'</urlset>\n',encoding='utf-8')
  subprocess.run([sys.executable,str(Path(__file__).resolve()),'--arabic'],check=True)

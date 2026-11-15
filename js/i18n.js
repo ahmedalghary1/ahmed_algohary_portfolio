@@ -58,14 +58,24 @@ export function initLocalization(content, signal) {
     const switchName = document.querySelector('[data-language-name]');
     switchName.textContent = next === 'en' ? 'العربية' : 'English';
     switchName.lang = next === 'en' ? 'ar' : 'en';
-    document.title = content[next].seo.title;
-    document.querySelector('meta[name="description"]').content = content[next].seo.description;
-    document.querySelector('meta[property="og:title"]').content = content[next].seo.title;
-    document.querySelector('meta[property="og:description"]').content = content[next].seo.description;
+    const projectIndex = content.profile.projects.findIndex(project => project.id === html.dataset.projectId);
+    const project = projectIndex >= 0 ? content[next].projects[projectIndex] : null;
+    const title = project ? `${project.title} — ${content[next].name}` : content[next].seo.title;
+    const description = project ? project.description : content[next].seo.description;
+    document.title = title;
+    document.querySelector('meta[name="description"]').content = description;
+    document.querySelector('meta[property="og:title"]').content = title;
+    document.querySelector('meta[property="og:description"]').content = description;
+    document.querySelector('meta[name="twitter:title"]').content = title;
+    document.querySelector('meta[name="twitter:description"]').content = description;
     document.querySelector('meta[property="og:locale"]').content = next === 'ar' ? 'ar_EG' : 'en_US';
-    const canonical = content.profile.url + (next === 'ar' ? 'ar/' : '');
+    const suffix = project ? `projects/${content.profile.projects[projectIndex].slug}/` : '';
+    const canonical = content.profile.url + (next === 'ar' ? 'ar/' : '') + suffix;
     document.querySelector('link[rel="canonical"]').href = canonical;
     document.querySelector('meta[property="og:url"]').content = canonical;
+    const prefix = next === 'ar' ? '/ar/' : '/';
+    document.querySelectorAll('[data-local-path]').forEach(link => { link.href = prefix + link.dataset.localPath + `?lang=${next}`; });
+    document.querySelectorAll('[data-home-anchor]').forEach(link => { link.href = prefix + `?lang=${next}#` + link.dataset.homeAnchor; });
     if (persist) {
       try { localStorage.setItem('portfolio-language', next); } catch { /* Private storage is optional. */ }
       const url = new URL(location.href);
@@ -74,8 +84,8 @@ export function initLocalization(content, signal) {
     }
     // The static Arabic document uses a root base for shared assets. Keep native
     // anchors on the current document, including an explicit language query.
-    if (document.querySelector('base')) document.querySelectorAll('a[href*="#"]').forEach(link => {
-      if (link.origin === location.origin && link.hash && document.getElementById(link.hash.slice(1))) {
+    document.querySelectorAll('a[href*="#"]').forEach(link => {
+      if (!link.hasAttribute('data-home-anchor') && link.origin === location.origin && link.hash && document.getElementById(link.hash.slice(1))) {
         link.href = `${location.pathname}${location.search}${link.hash}`;
       }
     });

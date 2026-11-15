@@ -1,0 +1,386 @@
+{
+  "layouts": [
+    {
+      "lang": "en",
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": []
+    },
+    {
+      "lang": "en",
+      "width": 375,
+      "scrollWidth": 375,
+      "overflow": []
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": []
+    },
+    {
+      "lang": "en",
+      "width": 430,
+      "scrollWidth": 430,
+      "overflow": []
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "scrollWidth": 768,
+      "overflow": []
+    },
+    {
+      "lang": "en",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "overflow": []
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": []
+    },
+    {
+      "lang": "en",
+      "width": 1920,
+      "scrollWidth": 1920,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 375,
+      "scrollWidth": 375,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 430,
+      "scrollWidth": 430,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 768,
+      "scrollWidth": 768,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": []
+    },
+    {
+      "lang": "ar",
+      "width": 1920,
+      "scrollWidth": 1920,
+      "overflow": []
+    }
+  ],
+  "pages": [
+    {
+      "path": "/projects/garment-factory/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "Garment factory system — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/garment-factory/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "Garment factory system — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/rocks-ev/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "ROCKS EV — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/rocks-ev/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "ROCKS EV — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/bonyan/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "Bonyan — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/bonyan/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "Bonyan — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/ahmed-nabil/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "Ahmed Nabil — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/ahmed-nabil/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "Ahmed Nabil — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/ahmed-gamal/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "Ahmed Gamal — Ahmed Algohary"
+    },
+    {
+      "path": "/projects/ahmed-gamal/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "Ahmed Gamal — Ahmed Algohary"
+    },
+    {
+      "path": "/ar/projects/garment-factory/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "نظام إدارة مصنع ملابس — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/garment-factory/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "نظام إدارة مصنع ملابس — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/rocks-ev/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "روكس — ROCKS EV — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/rocks-ev/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "روكس — ROCKS EV — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/bonyan/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "بنيان — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/bonyan/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "بنيان — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/ahmed-nabil/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "أحمد نبيل — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/ahmed-nabil/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "أحمد نبيل — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/ahmed-gamal/",
+      "width": 390,
+      "scrollWidth": 390,
+      "images": true,
+      "title": "أحمد جمال — أحمد الجوهري"
+    },
+    {
+      "path": "/ar/projects/ahmed-gamal/",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "images": true,
+      "title": "أحمد جمال — أحمد الجوهري"
+    }
+  ],
+  "axe": [
+    {
+      "page": "/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/projects/garment-factory/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/projects/garment-factory/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/projects/rocks-ev/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/projects/rocks-ev/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/projects/bonyan/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/projects/bonyan/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/projects/ahmed-nabil/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/projects/ahmed-nabil/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/projects/ahmed-gamal/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/projects/ahmed-gamal/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/ar/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/ar/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/garment-factory/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/garment-factory/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/rocks-ev/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/rocks-ev/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/bonyan/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/bonyan/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/ahmed-nabil/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/ahmed-nabil/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/ahmed-gamal/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "/ar/projects/ahmed-gamal/",
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "checks": [
+    "Homepage order, portrait, two CTAs, five projects, 13 technologies, four services and four process steps",
+    "Mobile menu selection and Escape",
+    "All ten case routes, metadata, gallery, next-project and language persistence",
+    "All twelve pages work without JavaScript",
+    "Normal-motion homepage loads no animation vendors/canvas",
+    "39 unique local destinations/resources return 200"
+  ],
+  "content": {
+    "en": {
+      "general": "Full-Stack Software Developer\n\nI build websites,\napplications and\nbusiness systems.\n\nFrom modern websites and e-commerce platforms to custom systems that keep your business running.\n\nExplore my work\n↗\nLet’s talk\n↗\nAhmed Algohary\n↗ 02 / Services\n\nWhat I build\n01\nWeb development\n\nClear, responsive websites for companies and independent professionals.\n\nSee Bonyan\n↗\n02\nE-commerce\n\nOnline stores that connect your products with customers and purchasing information.\n\nSee ROCKS EV\n↗\n03\nBusiness management systems\n\nConnected tools for inventory, sales, purchasing and everyday operations.\n\nSee the factory system\n↗\n04\nBackend & APIs\n\nApplication logic, secure APIs and database integrations that keep your tools connected.\n\nDiscuss your requirements\n↗ 03 / Technology\n\nTools behind the work.\nFrontend\nHTML\nCSS\nJavaScript\nReact.js\nBackend\nPython\nDjango\nDjango REST Framework (DRF)\nRESTful APIs\nData\nPostgreSQL\nRedis\nDelivery & tools\nDocker\nGit\nGitHub\n\nA selection of my toolkit. Each project uses what its requirements call for. 04 / About\n\nAhmed Algohary\n\nI’m a software developer based in Egypt. I focus on turning everyday business workflows into software that is clear to use and straightforward to maintain.\n\nI work across the interface, application logic and data, keeping the people using the system at the centre of each decision.\n\nDownload resume\n↓ 05 / How we work\n\nFrom idea to delivery.\n01\nDiscover\n\nUnderstand your goals and how your business works.\n\n02\nDesign\n\nMap the experience, data and solution.\n\n03\nDevelop\n\nBuild and review working software together.\n\n04\nDeliver\n\nTest, launch and hand over the project.",
+      "height": 5778,
+      "workTop": 599.890625
+    },
+    "ar": {
+      "general": "مطور برمجيات Full-Stack\n\nأطوّر مواقع وتطبيقات\nوأنظمة لإدارة\nالأعمال.\n\nمن المواقع والمتاجر الإلكترونية إلى أنظمة مخصصة لتنظيم أعمال الشركات والمصانع.\n\nتصفح أعمالي\n↗\nتواصل معي\n↗\nأحمد الجوهري\n↗ 02 / الخدمات\n\nالخدمات التي أقدمها\n01\nتطوير المواقع\n\nمواقع واضحة ومتجاوبة للشركات وأصحاب الأعمال والمستقلين.\n\nشاهد مشروع بنيان\n↗\n02\nالمتاجر الإلكترونية\n\nمتاجر تربط منتجاتك بالعملاء وتسهّل الوصول لمعلومات الشراء.\n\nشاهد متجر ROCKS EV\n↗\n03\nأنظمة إدارة الأعمال\n\nأدوات مترابطة لتنظيم المخزون والمبيعات والمشتريات والعمليات اليومية.\n\nشاهد نظام المصنع\n↗\n04\nالأنظمة الخلفية وواجهات API\n\nمنطق أعمال وواجهات آمنة وربط لقواعد البيانات والتطبيقات.\n\nناقش متطلبات مشروعك\n↗ 03 / التقنيات\n\nأدوات العمل.\nالواجهات\nHTML\nCSS\nJavaScript\nReact.js\nالأنظمة الخلفية\nPython\nDjango\nDjango REST Framework (DRF)\nRESTful APIs\nالبيانات\nPostgreSQL\nRedis\nالتسليم والأدوات\nDocker\nGit\nGitHub\n\nمجموعة من الأدوات التي أستخدمها، وأختار منها ما يناسب متطلبات كل مشروع. 04 / نبذة عني\n\nأحمد الجوهري\n\nأنا مطور برمجيات مقيم في مصر. أركز على تحويل إجراءات العمل اليومية إلى برامج واضحة الاستخدام وسهلة الصيانة.\n\nأعمل على الواجهات ومنطق التطبيق والبيانات، وأضع احتياجات مستخدمي النظام في صميم كل قرار.\n\nتحميل السيرة الذاتية\n↓ 05 / خطوات العمل\n\nمن الفكرة إلى التسليم.\n01\nنفهم\n\nنحدد أهدافك ومتطلبات العمل.\n\n02\nنصمم\n\nنرسم تجربة الاستخدام وننظم البيانات والحل.\n\n03\nنطوّر\n\nنبني البرنامج ونراجع التقدم معًا.\n\n04\nنسلّم\n\nنختبر المشروع ونجهزه للإطلاق والتسليم.",
+      "height": 5760,
+      "workTop": 602.1875
+    }
+  }
+}

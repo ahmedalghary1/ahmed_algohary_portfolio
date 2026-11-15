@@ -17,22 +17,22 @@ services lack documented project evidence and will not be advertised.
 ## Phases and acceptance
 
 1. Audit: completed. Inspect sources, capture current homepage and measured baseline.
-2. Design system: pending. Retain paper/ink/vermilion, shared spacing/type tokens;
+2. Design system: completed. Retain paper/ink/vermilion, shared spacing/type tokens;
    simplify obsolete visual rules. Verify syntax and rendered layout.
-3. Navigation/hero: pending. Home/Work/Services/About/Contact, two actions, actual
+3. Navigation/hero: completed. Home/Work/Services/About/Contact, two actions, actual
    portrait and direct bilingual heading. Verify anchors and menu.
-4. Showcase: pending. Factory featured, four static grid cards ordered ROCKS EV,
+4. Showcase: completed. Factory featured, four static grid cards ordered ROCKS EV,
    Bonyan, Ahmed Nabil, Ahmed Gamal. Preserve old anchors, real images/live URLs.
-5. Case studies: pending. Generate ten static localized pages through one template,
+5. Case studies: completed. Generate ten static localized pages through one template,
    central records, unique metadata, galleries, next-project navigation. Check routes.
-6. Content: pending. Four evidenced services, 12–15 representative technologies,
+6. Content: completed. Four evidenced services, 13 representative technologies,
    short About and four process steps. Archive detailed experience/skills data;
    remove conceptual architecture from homepage. Measure copy reduction.
-7. Contact/trust: pending. Preserve working WhatsApp composer and verified contact
+7. Contact/trust: in verification. Preserve working WhatsApp composer and verified contact
    links; concise invitation. Exercise validation, clipboard and handoff locally.
-8. Responsive/localization: pending. All requested widths in both locales, project
+8. Responsive/localization: completed. All requested widths in both locales, project
    routes, no-JS, locale persistence, keyboard and screenshots. Repair findings.
-9. Performance/SEO: pending. Remove unnecessary animation runtime, optimize initial
+9. Performance/SEO: in progress. Remove unnecessary animation runtime, optimize initial
    payload, update sitemap/hreflang/structured data. Measure Lighthouse and axe.
 10. Final QA: pending. Build ZIP, check all internal resources/links, document actual
     results, evidence gaps and external limits in REFACTOR_REPORT.md. No deployment.
@@ -50,3 +50,20 @@ QA scripts/reports and maintenance documentation. No frontend framework migratio
 - Unknown stacks are recorded as missing rather than falsely assigned to projects.
 - Preserve legacy project/case hashes as real anchors linking to new detail pages.
 - Existing archived QA reports describe the earlier design, not this refactor.
+
+## Phase verification log
+
+- 1: fresh baseline Lighthouse EN 87 / AR 89; other three categories 100. Captured
+  screenshots and rendered text in `reports/refactor/before/`. Installed Chrome
+  used because the QA Playwright version's bundled Chromium was unavailable.
+- 2–3: syntax/content checks pass; browser verifies five nav links, two hero
+  actions, actual portrait and mobile menu selection/close.
+- 4–6: generated pages pass syntax/content checks. Browser verifies all five cards
+  in requested order, static grid, 13 technologies, four services/process stages.
+  Repeated homepage text count: EN 758→250 words (67.0%), AR 743→216 (70.9%).
+- 5,8: all 12 routes work without JS; all 10 case routes switch locale and navigate
+  to the next project correctly. 16 homepage + 20 case layouts, 24 axe audits pass.
+  No console/page errors; 39 distinct linked local resources return HTTP 200.
+  Screenshots captured for every case in both locales/mobile/desktop and inspected.
+- 7: contact markup/function preserved; focused validation/clipboard/handoff checks next.
+- 9: native/CSS interaction replaces heavy motion; zero vendor/canvas requests.

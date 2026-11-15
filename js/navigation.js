@@ -24,7 +24,7 @@ export function initNavigation(signal) {
   menu.addEventListener('click', event => {
     const link = event.target.closest('a');
     if (!link || !mobile.matches) return;
-    const destination = document.querySelector(link.hash);
+    const destination = link.hash ? document.querySelector(link.hash) : null;
     setOpen(false);
     // The activated link is now hidden: move focus into its destination.
     if (destination) {
@@ -44,7 +44,7 @@ export function initNavigation(signal) {
     closedLabel = menuLabel();
     if (open) setOpen(false);
   }, { signal });
-  const links = [...menu.querySelectorAll('a[href^="#"]')];
+  const links = [...menu.querySelectorAll('a')].filter(link => link.pathname === location.pathname && link.hash);
   const sections = links.map(link => document.querySelector(link.hash)).filter(Boolean);
   let frame = 0;
   function update() {
