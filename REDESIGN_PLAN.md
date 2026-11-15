@@ -30,8 +30,19 @@ does not collect project type or email. Existing deep links and media work must 
    validation, busy/error feedback, honest draft handoff and clipboard fallback.
 7. [x] Verify both languages at 360/390/480/768/1024/1280/1440/1920px, keyboard,
    mobile menu, filters, media, no-JS content, internal links and accessibility.
-8. [ ] Build the production artifact, measure Lighthouse where available, inspect
+8. [x] Build the production artifact, measure Lighthouse where available, inspect
    screenshots and write REDESIGN_REPORT.md with actual results and limitations.
 
 This is an update to the current local repository. Existing domain/deployment
 configuration stays intact; no new hosting project is required.
+
+## Final verification
+
+Production build: 12 pages, 68 public files, 568 artifact HTTP/link/asset checks;
+ZIP matches dist exactly. Sixteen home layouts and eighty case layouts at all
+eight required widths pass, with 24 axe audits and no console/page errors.
+Contact, media, keyboard, reduced motion, fallback and eight data tests pass.
+Lighthouse three-run performance: EN 94/90/94 (median 94), AR 91/95/91 (median 91);
+accessibility, best practices and SEO 100 each. PDF HTTP bytes match the original,
+but managed Chrome cancels native saving. See REDESIGN_REPORT.md for evidence,
+image provenance, measurement limits and local run/deployment instructions.

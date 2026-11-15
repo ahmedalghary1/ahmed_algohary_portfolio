@@ -1,5 +1,9 @@
 # Project-first portfolio refactor
 
+> Historical plan for the earlier paper/vermilion iteration. The current navy/cyan
+> redesign is tracked in [REDESIGN_PLAN.md](REDESIGN_PLAN.md), with actual results
+> in [REDESIGN_REPORT.md](REDESIGN_REPORT.md).
+
 ## Audit — 15 November 2026
 
 Baseline: clean working tree at `8252258`; existing static HTML, Python generation,
