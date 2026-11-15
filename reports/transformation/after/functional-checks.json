@@ -69,7 +69,11 @@
       "passed": true
     },
     {
-      "name": "Arabic entry preserves in-place English selection, native anchors and CV download",
+      "name": "Arabic entry preserves in-place English selection, native anchors and CV link resolution",
+      "passed": true
+    },
+    {
+      "name": "Normal-motion mobile skips GSAP and Three.js downloads",
       "passed": true
     },
     {

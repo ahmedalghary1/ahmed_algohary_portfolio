@@ -32,7 +32,6 @@ nav=''.join(f'<a href="#{k}">{copy("nav."+k)}</a>' for k in ['work','architectur
 cv=P.get('cv') if P.get('cv') and Path(P['cv']).is_file() else None
 resume=f'<a class="nav-resume" href="{escape(cv,quote=True)}" download>{copy("nav.resume")}</a>' if cv else ''
 hero_resume=f'<a class="text-link" href="{escape(cv,quote=True)}" download>{copy("hero.resume")}<span aria-hidden="true">↓</span></a>' if cv else ''
-scene_fallback='<div class="scene-fallback"><span></span><span></span><span></span></div>'
 projects=''
 for i,p in enumerate(P['projects']):
  k=f'projects.{i}'
@@ -105,7 +104,6 @@ html=f'''<!doctype html>
 <meta property="og:title" content="{attr('seo.title')}"><meta property="og:description" content="{attr('seo.description')}"><meta property="og:type" content="website"><meta property="og:locale" content="{'ar_EG' if LOCALE=='ar' else 'en_US'}">
 {seo_markup(D,LOCALE)}
 <script src="js/preference.js"></script>
-<link rel="preload" href="assets/images/system-sculpture.svg" as="image" fetchpriority="high">
 <meta name="theme-color" content="#EAE8E1"><link rel="icon" href="assets/images/ahmed-algohary.ico" sizes="any"><link rel="icon" href="assets/images/ahmed-algohary-icon.png" type="image/png" sizes="64x64"><link rel="apple-touch-icon" href="assets/images/ahmed-algohary-apple.png" sizes="180x180">
 <noscript><link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin></noscript>
 <link rel="stylesheet" href="css/site.css?v={style_version}">
@@ -123,7 +121,7 @@ html=f'''<!doctype html>
 <section class="hero wrap" aria-labelledby="hero-title">
 <div class="hero-top"><p class="eyebrow">{copy('title')}</p>{copy('hero.intro','p','meta')}</div>
 <div class="hero-grid"><div class="hero-content"><h1 id="hero-title">{copy('hero.line1','span','hero-line')}{copy('hero.line2','span','hero-line')}{copy('hero.line3','span','hero-line expressive')}</h1>{copy('hero.description','p','hero-description')}<div class="hero-actions"><a class="button" href="#work">{copy('hero.work')}{arrow}</a><a class="text-link" href="#contact">{copy('hero.contact')}{arrow}</a>{hero_resume}</div></div>
-<figure class="hero-art"><div class="hero-art-stage"><span class="hero-art-coordinate meta" aria-hidden="true">SYS / 001</span><div class="scene-slot hero-scene" data-scene="hero" aria-hidden="true"><div class="scene-fallback"><img src="assets/images/system-sculpture.svg" width="600" height="600" alt="" fetchpriority="high" decoding="async"></div></div><span class="hero-art-axis meta" aria-hidden="true">X — Y — Z</span></div><figcaption><div>{copy('hero.figure','span','sculpture-caption')}{copy('hero.figureNote','p')}</div><span class="portrait-signature" aria-hidden="true">↗</span></figcaption></figure></div>
+<figure class="hero-art"><div class="hero-portrait-frame"><img class="hero-portrait" src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) min(100vw - 40px, 320px), (max-width:1100px) 40vw, 420px" data-profile-image width="1122" height="1402" fetchpriority="high" decoding="async" alt="{attr('hero.portraitAlt')}" data-copy-alt="hero.portraitAlt"></div><figcaption><div>{copy('name','span','portrait-name')}{copy('title','p')}</div><span class="portrait-signature" aria-hidden="true">↗</span></figcaption></figure></div>
 <div class="hero-bottom">{copy('hero.index','p','meta')}<a class="scroll-cue" href="#work">{copy('hero.scroll')}<span aria-hidden="true">↓</span></a></div>
 </section>
 <section id="stack" class="stack wrap" aria-labelledby="stack-title"><div class="stack-heading"><div>{copy('stack.label','p','eyebrow')}{copy('stack.title','h2',attrs='id="stack-title"')}</div>{copy('stack.intro','p')}</div>{featured}{copy('stack.note','p','stack-note')}</section>
@@ -133,7 +131,7 @@ html=f'''<!doctype html>
 {experience_section(D,copy,LOCALE)}
 <section id="expertise" class="expertise wrap section" aria-labelledby="expertise-title"><div class="section-heading"><div>{copy('expertise.label','p','eyebrow')}{copy('expertise.title','h2','multiline',attrs='id="expertise-title"')}{copy('expertise.specialization','p','expertise-specialization')}</div>{copy('expertise.intro','p','section-intro')}</div><div class="skills-grid">{groups}</div></section>
 <section id="process" class="process wrap section" aria-labelledby="process-title"><div class="section-heading"><div>{copy('process.label','p','eyebrow')}{copy('process.title','h2',attrs='id="process-title"')}</div>{copy('process.intro','p','section-intro')}</div><ol class="process-list">{steps}</ol></section>
-<section id="contact" class="contact section" aria-labelledby="contact-title"><div class="wrap"><div class="contact-grid"><div class="contact-lead"><div class="scene-slot contact-scene" data-scene="contact" aria-hidden="true">{scene_fallback}</div>{copy('contact.label','p','eyebrow')}{copy('contact.title','h2','multiline',attrs='id="contact-title"')}{copy('contact.invitation','p','contact-invitation')}<div class="contact-copy">{copy('contact.description','p')}<div id="contact-action" class="contact-channels" role="group" aria-label="{attr('contact.directTitle')}" data-copy-aria-label="contact.directTitle">{channels}</div>{email}<div class="social-links" id="social-links">{links}</div></div></div><div class="contact-compose">{form}</div></div></div></section>
+<section id="contact" class="contact section" aria-labelledby="contact-title"><div class="wrap"><div class="contact-grid"><div class="contact-lead">{copy('contact.label','p','eyebrow')}{copy('contact.title','h2','multiline',attrs='id="contact-title"')}{copy('contact.invitation','p','contact-invitation')}<div class="contact-copy">{copy('contact.description','p')}<div id="contact-action" class="contact-channels" role="group" aria-label="{attr('contact.directTitle')}" data-copy-aria-label="contact.directTitle">{channels}</div>{email}<div class="social-links" id="social-links">{links}</div></div></div><div class="contact-compose">{form}</div></div></div></section>
 </main>
 <footer class="site-footer wrap"><p><span>© {date.today().year}</span> {copy('footer.copyright')}</p><nav aria-label="{attr('nav.footer')}" data-copy-aria-label="nav.footer"><a href="#work">{copy('nav.work')}</a><a href="#contact">{copy('nav.contact')}</a><button type="button" class="footer-language" data-language data-copy-aria-label="footer.languageLabel" aria-label="{attr('footer.languageLabel')}" hidden>{copy('footer.language')}</button><a href="#top">{copy('footer.top')}<span aria-hidden="true">↑</span></a></nav></footer>
 <button type="button" class="motion-switch" data-motion-switch aria-pressed="false" hidden>Pause motion</button></body></html>'''

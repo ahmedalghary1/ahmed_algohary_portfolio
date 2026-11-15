@@ -1,112 +1,83 @@
-import { MOTION, qualityTier } from './config.js';
+﻿import { MOTION, qualityTier } from './config.js';
 import { frameScheduler, pixelRatio } from './performance-manager.js';
 import { vertexShader, fragmentShader } from './shaders.js';
-import { createSculpture } from './hero-scene.js';
-export async function sceneManager(gsap, ScrollTrigger, parentSignal) {
-  if (qualityTier() === 'light' || parentSignal.aborted) return;
+
+// Optional project image reveals only. The hero and contact have no 3D object.
+export async function sceneManager(parentSignal) {
+  if (qualityTier() !== 'desktop' || parentSignal.aborted) return;
+  const targets = [...document.querySelectorAll('.project-visual img')];
+  if (!targets.length) return;
+  const nearWork = await new Promise(resolve => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) finish(true);
+    }, { rootMargin: '200px' });
+    const abort = () => finish(false);
+    function finish(value) { observer.disconnect(); parentSignal.removeEventListener('abort', abort); resolve(value); }
+    parentSignal.addEventListener('abort', abort, { once: true });
+    targets.forEach(target => observer.observe(target));
+  });
+  if (!nearWork || qualityTier() !== 'desktop' || parentSignal.aborted) return;
   const T = await import('../../assets/vendor/three.module.min.js');
   if (parentSignal.aborted) return;
-  const lifetime = new AbortController();
-  const signal = lifetime.signal;
+  const lifetime = new AbortController(), signal = lifetime.signal;
   const abort = () => lifetime.abort();
-  parentSignal.addEventListener('abort', abort, { once:true });
-  signal.addEventListener('abort', () => parentSignal.removeEventListener('abort', abort), { once:true });
+  parentSignal.addEventListener('abort', abort, { once: true });
+  signal.addEventListener('abort', () => parentSignal.removeEventListener('abort', abort), { once: true });
   const canvas = document.createElement('canvas');
-  const context = canvas.getContext('webgl2', { alpha:true, antialias:true, powerPreference:'low-power' });
+  const context = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
   if (!context) { lifetime.abort(); return; }
   let renderer;
-  try { renderer = new T.WebGLRenderer({canvas,context,alpha:true,antialias:true}); }
-  catch {
-    context.getExtension('WEBGL_lose_context')?.loseContext();
-    lifetime.abort();
-    return;
-  }
-  canvas.className='cinematic-canvas'; canvas.setAttribute('aria-hidden','true');
+  try { renderer = new T.WebGLRenderer({ canvas, context, alpha: true, antialias: true }); }
+  catch { context.getExtension('WEBGL_lose_context')?.loseContext(); lifetime.abort(); return; }
+  canvas.className = 'cinematic-canvas'; canvas.setAttribute('aria-hidden', 'true');
+  canvas.dataset.renderer = 'project-images'; canvas.dataset.frames = '0';
   document.body.append(canvas);
-  const scene=new T.Scene(), camera=new T.PerspectiveCamera(35,1,.1,60);
-  const sculpture=createSculpture(T), group=sculpture.group;
-  scene.add(group,new T.HemisphereLight(0xffffff,0x57574f,2.4));
-  const light=new T.DirectionalLight(0xfff5e6,MOTION.light);light.position.set(3,4,5);scene.add(light);
-  const rim=new T.DirectionalLight(0xe5e8df,1.5);rim.position.set(-3,2,-2);scene.add(rim);
-  const slots=[...document.querySelectorAll('.scene-slot')];
-  const visibleSlots=new Set();
-  let painted=false;
-  const visibility=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{if(entry.isIntersecting)visibleSlots.add(entry.target);else visibleSlots.delete(entry.target);});
-    scheduler.invalidate();
-  });
-  let lost=false, intro=performance.now(), pointer=0;
-  const images=[], imageScene=new T.Scene(), imageCamera=new T.OrthographicCamera(-1,1,1,-1,0,2);
-  imageCamera.position.z=1;
-  const plane=new T.PlaneGeometry(2,2);
-  const loader=new T.TextureLoader();
-  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
-    if(!entry.isIntersecting || qualityTier()!=='desktop')return;
+  const scene = new T.Scene(), camera = new T.OrthographicCamera(-1, 1, 1, -1, 0, 2);
+  camera.position.z = 1;
+  const plane = new T.PlaneGeometry(2, 2), loader = new T.TextureLoader(), images = [];
+  let painted = false, lost = false, frames = 0;
+  const scheduler = frameScheduler(time => {
+    if (lost || (!images.length && !painted)) return false;
+    renderer.info.autoReset = false; renderer.info.reset();
+    renderer.setScissorTest(false); renderer.clear(); renderer.setScissorTest(true);
+    let revealing = false;
+    for (const image of images) {
+      const progress = Math.min(1, (time-image.start)/(MOTION.shaderSeconds*1000));
+      image.mesh.material.uniforms.progress.value = progress;
+      if (progress >= 1) continue;
+      const r = image.element.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight || r.right < 0 || r.left > innerWidth) continue;
+      scene.children.forEach(mesh => { mesh.visible = mesh === image.mesh; });
+      renderer.setViewport(r.left, innerHeight-r.bottom, r.width, r.height);
+      renderer.setScissor(Math.max(0,r.left),Math.max(0,innerHeight-r.bottom),Math.min(r.width,innerWidth-r.left),Math.min(r.height,innerHeight-r.top));
+      renderer.clearDepth(); renderer.render(scene, camera); revealing = true;
+    }
+    painted = revealing;
+    canvas.dataset.frames = String(++frames); canvas.dataset.drawCalls = String(renderer.info.render.calls);
+    for (let i=images.length-1; i>=0; i--) {
+      if (time-images[i].start < MOTION.shaderSeconds*1000) continue;
+      const image=images[i];scene.remove(image.mesh);image.mesh.material.dispose();image.texture.dispose();images.splice(i,1);
+    }
+    return revealing;
+  }, signal, abort);
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting || signal.aborted) return;
     observer.unobserve(entry.target);
     const preview=entry.target.srcset.split(',').map(item=>item.trim().split(/\s+/)).find(item=>item[1]==='800w')?.[0];
-    loader.load(preview||entry.target.currentSrc||entry.target.src,texture=>{
-      if(signal.aborted){texture.dispose();return;}
+    loader.load(preview||entry.target.currentSrc||entry.target.src, texture => {
+      if (signal.aborted) { texture.dispose(); return; }
       texture.colorSpace=T.SRGBColorSpace;
       const material=new T.ShaderMaterial({vertexShader,fragmentShader,transparent:true,depthTest:false,uniforms:{image:{value:texture},progress:{value:0}}});
-      const mesh=new T.Mesh(plane,material);imageScene.add(mesh);
+      const mesh=new T.Mesh(plane,material);scene.add(mesh);
       images.push({element:entry.target,mesh,texture,start:performance.now()});scheduler.invalidate();
     },undefined,()=>{});
-  }),{threshold:.3});
-  const state={rotation:.65,z:5.8,scale:1,x:0,cameraX:.3,closingRotation:1.5};
-  const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:MOTION.scrub}})
-    .to(state,{rotation:1.7,z:7,scale:.86,x:.1,cameraX:1,ease:'none'});
-  const closingTimeline=gsap.to(state,{closingRotation:.6,ease:'none',scrollTrigger:{trigger:'#contact',start:'top bottom',end:'top 25%',scrub:MOTION.scrub}});
-  let frames=0;
-  const scheduler=frameScheduler(time=>{
-    if(lost)return false;
-    const activeImages=images.some(image=>time-image.start<MOTION.shaderSeconds*1000);
-    if(!visibleSlots.size && !activeImages && !painted)return false;
-    renderer.info.autoReset=false;renderer.info.reset();
-    renderer.setScissorTest(false);renderer.clear();renderer.setScissorTest(true);
-    let visible=false;
-    for(const slot of visibleSlots){
-      const r=slot.getBoundingClientRect();
-      if(r.bottom<0||r.top>innerHeight||!r.width)continue;
-      visible=true;
-      renderer.setViewport(r.left,innerHeight-r.bottom,r.width,r.height);
-      renderer.setScissor(Math.max(0,r.left),Math.max(0,innerHeight-r.bottom),Math.min(r.width,innerWidth-r.left),Math.min(r.height,innerHeight-r.top));
-      const closing=slot.dataset.scene==='contact';
-      camera.aspect=r.width/r.height;camera.position.set(closing?.6:state.cameraX,.6,closing?4.5:state.z);camera.lookAt(0,0,0);camera.updateProjectionMatrix();
-      group.scale.setScalar(closing?1:state.scale);group.position.x=closing?0:state.x;
-      const idle=Math.min(1,(time-intro)/(MOTION.idleSeconds*1000));
-      group.rotation.set(.38,closing?state.closingRotation:state.rotation+idle*.12+pointer*.08,closing?-.2:-.16);
-      renderer.render(scene,camera);slot.dataset.webgl='true';
-    }
-    let revealing=false;
-    for(const image of images){
-      const p=Math.min(1,(time-image.start)/(MOTION.shaderSeconds*1000));
-      image.mesh.material.uniforms.progress.value=p;
-      if(p>=1)continue;
-      const r=image.element.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight||r.right<0||r.left>innerWidth)continue;
-      imageScene.children.forEach(mesh=>mesh.visible=mesh===image.mesh);
-      renderer.setViewport(r.left,innerHeight-r.bottom,r.width,r.height);
-      renderer.setScissor(Math.max(0,r.left),Math.max(0,innerHeight-r.bottom),Math.min(r.width,innerWidth-r.left),Math.min(r.height,innerHeight-r.top));
-      renderer.clearDepth();renderer.render(imageScene,imageCamera);revealing=true;
-    }
-    painted=visible || revealing;
-    canvas.dataset.frames=String(++frames);
-    canvas.dataset.drawCalls=String(renderer.info.render.calls);
-    for(let i=images.length-1;i>=0;i--){
-      if(time-images[i].start<MOTION.shaderSeconds*1000)continue;
-      const image=images[i];imageScene.remove(image.mesh);image.mesh.material.dispose();image.texture.dispose();images.splice(i,1);
-    }
-    return revealing || (visible && time-intro<MOTION.idleSeconds*1000);
-  },signal,()=>lifetime.abort());
-  const resize=()=>{renderer.setPixelRatio(pixelRatio(qualityTier()));renderer.setSize(innerWidth,innerHeight,false);scheduler.invalidate();};
-  document.querySelectorAll('.project-visual img').forEach(image=>observer.observe(image));
-  slots.forEach(slot=>visibility.observe(slot));
+  }), { threshold: .3 });
+  const resize = () => { renderer.setPixelRatio(pixelRatio(qualityTier()));renderer.setSize(innerWidth,innerHeight,false);scheduler.invalidate(); };
+  targets.forEach(target => observer.observe(target));
   window.addEventListener('resize',resize,{signal});
   window.addEventListener('scroll',scheduler.invalidate,{passive:true,signal});
-  document.addEventListener('portfolio:motion-frame',scheduler.invalidate,{signal});
-  const finePointer=matchMedia('(pointer:fine)');
-  window.addEventListener('pointermove',e=>{if(visibleSlots.size && finePointer.matches){pointer=e.clientX/innerWidth-.5;scheduler.invalidate();}},{passive:true,signal});
-  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;slots.forEach(s=>delete s.dataset.webgl);},{signal});
+  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;},{signal});
   canvas.addEventListener('webglcontextrestored',()=>{lost=false;resize();},{signal});
-  signal.addEventListener('abort',()=>{visibility.disconnect();observer.disconnect();images.forEach(i=>{i.texture.dispose();i.mesh.material.dispose();});plane.dispose();closingTimeline.scrollTrigger?.kill();closingTimeline.kill();timeline.scrollTrigger?.kill();timeline.kill();sculpture.dispose();renderer.dispose();renderer.forceContextLoss();canvas.remove();slots.forEach(s=>delete s.dataset.webgl);},{once:true});
+  signal.addEventListener('abort',()=>{observer.disconnect();images.forEach(image=>{image.texture.dispose();image.mesh.material.dispose();});plane.dispose();renderer.dispose();renderer.forceContextLoss();canvas.remove();},{once:true});
   resize();
 }

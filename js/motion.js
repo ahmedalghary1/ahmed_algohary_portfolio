@@ -95,13 +95,14 @@ export async function initMotion(content, signal) {
       element.addEventListener('pointerleave', reset, { signal: life });
       life.addEventListener('abort', reset, { once: true });
     });
-    import('./motion/scene-manager.js').then(module => { if (!life.aborted) return module.sceneManager(gsap, ScrollTrigger, life); }).catch(() => {});
+    import('./motion/scene-manager.js').then(module => { if (!life.aborted) return module.sceneManager(life); }).catch(() => {});
     ScrollTrigger.refresh();
   }
   const refresh = () => document.fonts.ready.then(() => { if (!signal.aborted) window.ScrollTrigger?.refresh(); });
   button.addEventListener('click', () => { paused = !paused; start(); }, { signal });
   reduced.addEventListener('change', start, { signal });
   matchMedia('(max-width:600px)').addEventListener('change', start, { signal });
+  matchMedia('(min-width:1100px)').addEventListener('change', start, { signal });
   document.addEventListener('portfolio:language', start, { signal });
   document.querySelectorAll('details').forEach(details => details.addEventListener('toggle', refresh, { signal }));
   signal.addEventListener('abort', () => { ++generation; stop(); }, { once: true });
