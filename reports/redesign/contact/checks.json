@@ -1,0 +1,64 @@
+{
+  "layouts": [
+    {
+      "lang": "ar",
+      "width": 320,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "ar",
+      "width": 768,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "overflow": false,
+      "axeViolations": 0
+    }
+  ],
+  "checks": [
+    "ar: required name/email/type/message, invalid email, first-error focus and real clipboard copy passed",
+    "ar: locale switch preserves visitor draft",
+    "ar: denied clipboard exposes selected manual-copy fallback",
+    "ar: the single contact receives the correctly encoded draft in a local navigation fixture",
+    "en: required name/email/type/message, invalid email, first-error focus and real clipboard copy passed",
+    "en: locale switch preserves visitor draft",
+    "en: denied clipboard exposes selected manual-copy fallback",
+    "en: the single contact receives the correctly encoded draft in a local navigation fixture",
+    "The direct WhatsApp link remains visible without JavaScript"
+  ],
+  "errors": []
+}

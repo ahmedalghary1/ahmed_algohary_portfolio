@@ -6,6 +6,7 @@ import subprocess
 import sys
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
+from project_data import prepare_public_data, public_asset
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / 'dist'
@@ -21,31 +22,41 @@ def main():
     ARCHIVE.unlink(missing_ok=True)
     subprocess.run([sys.executable, str(ROOT / 'scripts/render.py')], cwd=ROOT, check=True)
 
-    data = json.loads((ROOT / 'data/portfolio.json').read_text(encoding='utf-8'))
+    data = prepare_public_data(json.loads((ROOT / 'data/portfolio.json').read_text(encoding='utf-8')))
     slugs = [project['slug'] for project in data['profile']['projects']]
     if len(slugs) != len(set(slugs)) or any(
         not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) for slug in slugs
     ):
         raise ValueError('Project slugs must be unique, safe route segments')
 
-    files = {Path(name) for name in ('index.html', 'ar/index.html', 'robots.txt', 'sitemap.xml')}
+    files = {Path(name) for name in ('index.html', 'ar/index.html', 'robots.txt', 'sitemap.xml', 'css/site.css')}
     for prefix in ('projects', 'ar/projects'):
         files.update(Path(prefix) / slug / 'index.html' for slug in slugs)
     # Select current routes explicitly: old pages and raw screenshots may
     # remain in the source ar/ and projects/ trees after content maintenance.
     for directory, extensions in {
-        'css': {'.css'},
         'js': {'.js'},
-        'assets/images': {'.svg', '.png', '.jpg', '.jpeg', '.webp', '.avif', '.ico', '.gif'},
-        'assets/icons': {'.svg'},
-        'assets/fonts': {'.woff', '.woff2', '.ttf', '.otf', '.txt'},
-        'assets/documents': {'.pdf'},
     }.items():
         files.update(
             path.relative_to(ROOT) for path in (ROOT / directory).rglob('*')
             if path.is_file() and path.suffix.lower() in extensions
             and not any(part.startswith('.') for part in path.relative_to(ROOT).parts)
         )
+    # Only referenced public assets are deployed. This prevents unused/draft
+    # project media or review-only CVs from leaking through a recursive copy.
+    public_text = '\n'.join((ROOT / relative).read_text(encoding='utf-8') for relative in sorted(files))
+    asset_names = set(re.findall(r'assets/[A-Za-z0-9_./-]+', public_text))
+    asset_extensions = {'.svg', '.png', '.jpg', '.jpeg', '.webp', '.avif', '.ico', '.gif',
+                        '.woff', '.woff2', '.ttf', '.otf', '.pdf', '.mp4', '.webm', '.vtt'}
+    for name in asset_names:
+        if name.endswith('/'):
+            continue  # JS template prefixes; concrete files are in CSS/data/HTML.
+        public_asset(name)
+        relative = Path(name)
+        if relative.suffix.lower() not in asset_extensions:
+            raise ValueError(f'Unsupported public asset: {name}')
+        files.add(relative)
+    files.update(path.relative_to(ROOT) for path in (ROOT / 'assets/fonts').glob('*.txt'))
     for relative in sorted(files):
         source = ROOT / relative
         if source.resolve() != source.absolute():

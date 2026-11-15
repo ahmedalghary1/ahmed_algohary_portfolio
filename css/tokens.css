@@ -1,14 +1,7 @@
 @font-face {
-  font-family:Space Grotesk;
-  src:url('../assets/fonts/space-grotesk.woff2') format('woff2');
-  font-weight:300 700;
-  font-display:swap;
-}
-@font-face {
-  font-family:Instrument Serif;
-  src:url('../assets/fonts/instrument-serif-italic.woff2') format('woff2');
-  font-style:italic;
-  font-weight:400;
+  font-family:Inter;
+  src:url('../assets/fonts/inter-variable.woff2') format('woff2');
+  font-weight:100 900;
   font-display:swap;
 }
 @font-face {
@@ -46,24 +39,27 @@
   unicode-range:U+0000-00FF,U+2000-206F;
 }
 :root {
-  --paper:#eae8e1;
-  --ink:#171717;
-  --vermilion:#c43c28;
-  --stone:#9c9d95;
-  --muted:#57574f;
-  --accent:#a62d20;
-  --rule:#b9b9b0;
-  --sans:'Space Grotesk',Arial,sans-serif;
-  --serif:'Instrument Serif',Georgia,serif;
+  color-scheme:dark;
+  --paper:#080F18;
+  --ink:#F5F7FA;
+  --vermilion:#00D9F5;
+  --stone:#9DAFC2;
+  --muted:#9DAFC2;
+  --accent:#00D9F5;
+  --accent-secondary:#168BFF;
+  --success:#22C55E;
+  --rule:#243649;
+  --sans:Inter,Arial,sans-serif;
+  --serif:var(--sans);
   --mono:'IBM Plex Mono',monospace;
-  --gutter:clamp(20px,4.4vw,72px);
-  --space-section:clamp(64px,8vw,128px);
+  --gutter:clamp(20px,4vw,64px);
+  --space-section:clamp(48px,5vw,80px);
   --ease:cubic-bezier(.23,1,.32,1);
-  --max-width:1440px;
-  --surface:#f4f3ee;
-  --surface-muted:#deddd4;
-  --text-secondary:#bdbeb4;
-  --rule-dark:#50514b;
+  --max-width:1360px;
+  --surface:#121E2C;
+  --surface-muted:#0D1724;
+  --text-secondary:#9DAFC2;
+  --rule-dark:#243649;
   --space-1:4px;
   --space-2:8px;
   --space-3:16px;
@@ -71,16 +67,16 @@
   --space-5:32px;
   --space-6:48px;
   --space-7:64px;
-  --radius-small:2px;
-  --radius-image:4px;
-  --shadow-image:0 18px 40px -28px #17171750;
+  --radius-small:12px;
+  --radius-image:16px;
+  --shadow-image:0 16px 40px -24px #000a;
   --motion-fast:180ms;
-  --motion-reveal:700ms;
-  --motion-mobile:450ms;
+  --motion-reveal:300ms;
+  --motion-mobile:250ms;
   --motion-scrub:.55;
   --z-scene:8;
   --z-controls:20;
   --z-header:30;
   --z-skip:50;
-  --header-offset:110px;
+  --header-offset:88px;
 }

@@ -3,6 +3,30 @@ from html import escape
 import json
 
 
+def career_markup(data, copy):
+    """Historical roles from the CV; no claim that an open-ended role is current."""
+    companies = [r['company'] for r in data['profile']['experience'] if r['type'] == 'employment']
+    items = ''.join(
+        f'<li><div>{copy(f"career.items.{i}.period", "p", "career-period")}'
+        f'<h3>{escape(company)}</h3>{copy(f"career.items.{i}.role", "p", "career-role")}</div>'
+        f'{copy(f"career.items.{i}.text", "p", "career-summary")}</li>'
+        for i, company in enumerate(companies)
+    )
+    return f'''<section id="experience" class="career wrap section" aria-labelledby="career-title">
+<div class="section-heading"><div>{copy('career.label','p','eyebrow')}{copy('career.title','h2',attrs='id="career-title"')}</div></div>
+<ol class="career-list">{items}</ol><details class="career-training"><summary>{copy('career.training')}</summary>{copy('career.trainingText','p')}</details></section>'''
+
+
+def testimonials_markup(data, locale, copy):
+    records = data['profile'].get('testimonials', [])
+    if not records:
+        return ''
+    quotes = ''.join('<figure><blockquote><p>'+''.join(
+        f'<span class="locale-{lang}">{escape(item["quote"][lang])}</span>' for lang in ['en','ar']
+    )+'</p></blockquote><figcaption>'+escape(item['name'])+'</figcaption></figure>' for item in records)
+    return f'<section class="testimonials wrap section" aria-labelledby="testimonials-title">{copy("projectUI.testimonials","h2",attrs="id=\"testimonials-title\"")}{quotes}</section>'
+
+
 def seo_markup(data,locale='en'):
     profile = data['profile']
     base = profile['url']

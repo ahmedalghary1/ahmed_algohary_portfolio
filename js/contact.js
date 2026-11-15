@@ -22,7 +22,7 @@ export function initContact(content, signal) {
     return valid;
   }
   function message() {
-    return fields.map(field => `${copy()[`${field.name}Label`]}: ${field.value.trim()}`).join('\n\n');
+    return fields.map(field => `${copy()[`${field.name}Label`]}: ${field.tagName === 'SELECT' ? field.selectedOptions[0].textContent : field.value.trim()}`).join('\n\n');
   }
   function announce(key) {
     statusKey = key;
@@ -42,15 +42,27 @@ export function initContact(content, signal) {
     const invalid = fields.filter(field => !validate(field));
     if (invalid.length) { announce(''); invalid[0].focus(); return; }
     const body = message();
+    busy = true;
+    form.setAttribute('aria-busy', 'true');
+    const buttons = [...form.querySelectorAll('button[type=submit]')];
+    buttons.forEach(button => { button.disabled = true; });
+    announce('busy');
+    const ready = () => {
+      busy = false;
+      form.removeAttribute('aria-busy');
+      buttons.forEach(button => { button.disabled = false; });
+    };
     if (event.submitter?.value !== 'copy') {
       const numbers = content.profile.whatsapp || [];
       const recipient = numbers[0];
-      if (!recipient) return;
-      announce('whatsappOpened');
-      location.assign(buildWhatsAppUrl(recipient.number, body));
+      if (!recipient) { announce('unconfigured'); ready(); return; }
+      try {
+        location.assign(buildWhatsAppUrl(recipient.number, body));
+        announce('whatsappOpened');
+      } catch { announce('handoffError'); }
+      ready();
       return;
     }
-    busy = true;
     try {
       await navigator.clipboard.writeText(body);
       if (!signal.aborted) { prepared.hidden = true; announce('copied'); }
@@ -62,7 +74,7 @@ export function initContact(content, signal) {
         draft.focus();
         draft.select();
       }
-    } finally { busy = false; }
+    } finally { ready(); }
   }, { signal });
   document.addEventListener('portfolio:language', () => {
     if (attempted) fields.forEach(validate);

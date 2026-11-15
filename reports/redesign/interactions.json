@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "en/reduce: keyboard skip/menu/gallery, five legacy case hashes and detail navigation",
+    "en/no-preference: keyboard skip/menu/gallery, five legacy case hashes and detail navigation",
+    "ar/reduce: keyboard skip/menu/gallery, five legacy case hashes and detail navigation"
+  ],
+  "errors": [],
+  "limits": []
+}

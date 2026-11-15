@@ -60,8 +60,8 @@ export function initLocalization(content, signal) {
     switchName.lang = next === 'en' ? 'ar' : 'en';
     const projectIndex = content.profile.projects.findIndex(project => project.id === html.dataset.projectId);
     const project = projectIndex >= 0 ? content[next].projects[projectIndex] : null;
-    const title = project ? `${project.title} — ${content[next].name}` : content[next].seo.title;
-    const description = project ? project.description : content[next].seo.description;
+    const title = project ? project.seoMetadata?.title || `${project.title} — ${content[next].name}` : content[next].seo.title;
+    const description = project ? project.seoMetadata?.description || project.description : content[next].seo.description;
     document.title = title;
     document.querySelector('meta[name="description"]').content = description;
     document.querySelector('meta[property="og:title"]').content = title;
@@ -73,6 +73,44 @@ export function initLocalization(content, signal) {
     const canonical = content.profile.url + (next === 'ar' ? 'ar/' : '') + suffix;
     document.querySelector('link[rel="canonical"]').href = canonical;
     document.querySelector('meta[property="og:url"]').content = canonical;
+    if (project) {
+      const record = content.profile.projects[projectIndex];
+      const cover = new URL(record.images[next], content.profile.url).href;
+      document.querySelector('meta[property="og:image"]').content = cover;
+      document.querySelector('meta[name="twitter:image"]').content = cover;
+      document.querySelector('meta[property="og:image:alt"]').content = project.alt;
+      const image = document.querySelector('.case-cover img');
+      image.src = new URL(record.images[next], document.baseURI).href;
+      if (record.srcset[next]) image.srcset = record.srcset[next];
+      else image.removeAttribute('srcset');
+      const structured = document.querySelector('script[type="application/ld+json"]');
+      if (structured) {
+        const graph = JSON.parse(structured.textContent);
+        Object.assign(graph, { '@id': canonical + '#project', url: canonical, name: project.title, description, inLanguage: next, image: cover });
+        structured.textContent = JSON.stringify(graph).replaceAll('<', '\\u003c');
+      }
+    } else {
+      const structured = document.querySelector('script[type="application/ld+json"]');
+      if (structured) {
+        const graph = JSON.parse(structured.textContent);
+        for (const item of graph['@graph'] || []) {
+          if (item['@type'] === 'Person') {
+            item.name = content[next].name;
+            item.jobTitle = content[next].title;
+          } else if (item['@type'] === 'ProfilePage') {
+            Object.assign(item, { '@id': canonical + '#profile', url: canonical, inLanguage: next });
+          } else if (item['@type'] === 'CreativeWork') {
+            const index = content.profile.projects.findIndex(record => item['@id']?.endsWith('#work-' + record.id));
+            if (index >= 0) {
+              const record = content.profile.projects[index], copy = content[next].projects[index];
+              Object.assign(item, { name: copy.title, description: copy.description,
+                url: canonical + 'projects/' + record.slug + '/', image: new URL(record.images[next], content.profile.url).href });
+            }
+          }
+        }
+        structured.textContent = JSON.stringify(graph).replaceAll('<', '\\u003c');
+      }
+    }
     const prefix = next === 'ar' ? '/ar/' : '/';
     document.querySelectorAll('[data-local-path]').forEach(link => { link.href = prefix + link.dataset.localPath + `?lang=${next}`; });
     document.querySelectorAll('[data-home-anchor]').forEach(link => { link.href = prefix + `?lang=${next}#` + link.dataset.homeAnchor; });

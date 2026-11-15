@@ -2,6 +2,8 @@ import { loadContent } from './content.js';
 import { initLocalization } from './i18n.js';
 import { initNavigation } from './navigation.js';
 import { initContact } from './contact.js';
+import { initProjectMedia } from './media.js';
+import { initProjectFilters } from './projects.js';
 const lifetime = new AbortController();
 let started = false;
 async function start() {
@@ -18,6 +20,8 @@ async function start() {
     }, { signal: lifetime.signal });
     initNavigation(lifetime.signal);
     initContact(content, lifetime.signal);
+    initProjectMedia(content, lifetime.signal);
+    initProjectFilters(content, lifetime.signal);
   } catch (error) {
     // Generated content, native navigation and the portrait remain usable.
     document.documentElement.classList.remove('has-js');

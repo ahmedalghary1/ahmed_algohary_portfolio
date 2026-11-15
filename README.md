@@ -1,6 +1,6 @@
 ﻿# Ahmed Algohary — Project-first portfolio
 
-Bilingual static portfolio using the existing HTML, CSS, native JavaScript and Python renderer. No production npm dependencies. The original portrait, paper/ink/vermilion identity, five real projects and contact composer are retained.
+Bilingual static portfolio using the existing HTML, CSS, native JavaScript and Python renderer. No production npm dependencies. Navy/cyan identity inspired by the supplied reference, five real projects, category filters, original portrait and a WhatsApp draft composer.
 
 ## Run and build
 
@@ -22,12 +22,20 @@ Routes: `/`, `/ar/`, `/projects/<slug>/`, `/ar/projects/<slug>/`. Static directo
 
 ## Maintain
 
-- [Plan](REFACTOR_PLAN.md) and [actual results](REFACTOR_REPORT.md)
+- [Current redesign plan](REDESIGN_PLAN.md) and [actual results](REDESIGN_REPORT.md)
 - [Content guide](PORTFOLIO_CONTENT_GUIDE.md)
 - [Design system](DESIGN_SYSTEM.md) and [interaction policy](MOTION_SYSTEM.md)
 - [Before/after preview](reports/refactor/compare.html)
 
 Edit data/portfolio.json and data/skills.json, then regenerate. Do not edit generated HTML or css/site.css. Old architecture/experience/full skill records remain as owner reference; only 13 selected technologies are rendered. Unknown project frameworks are not inferred.
+
+Active CSS is generated from `tokens.css`, `base.css`, `projects.css` (case media),
+and `neon.css` (responsive components). Earlier layout styles remain as source
+history and are not concatenated. English uses Inter and Arabic uses IBM Plex Sans
+Arabic, both self-hosted. The generated workspace photo is decorative; all project
+images and the personal portrait remain real owner assets. The form validates
+name, email, project type and message and opens a WhatsApp draft; it does not claim
+to send messages. Without JavaScript, direct contact links remain available.
 
 Original projects/*.png files are private build inputs. The packager allows only generated project HTML from that folder; it never includes raw PNGs. Public screenshots are the approved redacted WebPs. The supplied root CV is unchanged and its deployed copy is byte-identical.
 

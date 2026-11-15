@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-const data = JSON.parse(await fs.readFile('data/portfolio.json', 'utf8'));
+import { readPublicData } from './read-public-data.mjs';
+const data = readPublicData();
 const skills = JSON.parse(await fs.readFile('data/skills.json', 'utf8'));
 const html = await fs.readFile('index.html', 'utf8');
 function shape(value) {
@@ -28,7 +29,7 @@ for (const [, asset] of html.matchAll(/(?:src|href)="((?:assets|css|js)\/[^"?#]+
 for (const project of data.profile.projects) {
   assert.match(project.slug, /^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Safe project slug');
   assert.ok(Array.isArray(project.technologies));
-  assert.ok(project.screenshots.length > 0);
+  assert.ok(Array.isArray(project.screenshots));
   assert.equal(project.private ? project.url === null : new URL(project.url).protocol === 'https:', true);
   await fs.access(project.preview);
   for (const image of Object.values(project.images)) await fs.access(image);

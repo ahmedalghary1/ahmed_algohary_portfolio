@@ -3,7 +3,8 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 const root=process.env.TEST_URL||'http://127.0.0.1:8017';
-const data=JSON.parse(await fs.readFile('data/portfolio.json','utf8'));
+import { readPublicData } from './read-public-data.mjs';
+const data=readPublicData();
 const browser=await chromium.launch({channel:'chrome'});
 const result={checks:[],errors:[],limits:[]};
 try {
@@ -23,8 +24,11 @@ try {
    await page.waitForFunction(()=>document.documentElement.classList.contains('js'));
    assert.equal(await page.locator('html').getAttribute('data-project-id'),project.id);
    const gallery=page.locator('.gallery-grid a').first();await gallery.focus();
-   const popupPromise=context.waitForEvent('page');await page.keyboard.press('Enter');const popup=await popupPromise;
-   await popup.waitForLoadState('domcontentloaded');assert.ok(popup.url().includes(project.preview));await popup.close();
+   await page.keyboard.press('Enter');
+   assert.equal(await page.locator('#project-lightbox').evaluate(e=>e.open),true);
+   assert.ok((await page.locator('#lightbox-image').getAttribute('src')).includes(project.preview));
+   await page.keyboard.press('Escape');
+   assert.equal(await gallery.evaluate(e=>e===document.activeElement),true);
   }
   result.checks.push(`${lang}/${reducedMotion}: keyboard skip/menu/gallery, five legacy case hashes and detail navigation`);
   await context.close();
@@ -52,5 +56,5 @@ try {
  await staticPage.waitForTimeout(3200);assert.equal(await staticPage.locator('#navigation').isVisible(),true);
  assert.equal(await staticPage.locator('.project').count(),5);assert.equal(await staticPage.locator('a[href^="https://wa.me/"]').isVisible(),true);
  result.checks.push('Failed application module recovers visible native navigation/content/contact');await fallback.close();
-} finally {await browser.close();await fs.mkdir('reports/refactor/after',{recursive:true});await fs.writeFile('reports/refactor/after/interactions.json',JSON.stringify(result,null,2));}
+} finally {await browser.close();const dir=process.env.REPORT_DIR||'reports/refactor/after';await fs.mkdir(dir,{recursive:true});await fs.writeFile(`${dir}/interactions.json`,JSON.stringify(result,null,2));}
 assert.deepEqual(result.errors,[]);console.log(JSON.stringify(result,null,2));

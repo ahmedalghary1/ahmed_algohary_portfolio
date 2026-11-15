@@ -5,17 +5,18 @@ const {chromium}=await import(pathToFileURL(resolve(qaRoot,'node_modules/playwri
 const {default:AxeBuilder}=await import(pathToFileURL(resolve(qaRoot,'node_modules/@axe-core/playwright/dist/index.mjs')).href);
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_PATH});
+const browser=await chromium.launch({headless:true,...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {channel:'chrome'})});
 const results={layouts:[],checks:[],errors:[]};
 const url=process.env.TEST_URL||'http://127.0.0.1:8017';
-await fs.mkdir('reports/contact',{recursive:true});
+const dir=process.env.REPORT_DIR||'reports/redesign/contact';
+await fs.mkdir(dir,{recursive:true});
 for(const lang of ['ar','en']){
  const context=await browser.newContext({permissions:['clipboard-read','clipboard-write'],reducedMotion:'reduce'});
  const page=await context.newPage();page.on('pageerror',e=>results.errors.push(e.message));
  for(const [width,height] of [[320,740],[390,844],[768,1024],[1440,1000]]){
   await page.setViewportSize({width,height});await page.goto(`${url}/?lang=${lang}#contact`);await page.waitForSelector('#contact-form:visible');await page.evaluate(()=>document.fonts.ready);
   await page.locator('#contact').evaluate(e=>e.scrollIntoView({behavior:'instant'}));
-  await page.screenshot({path:`reports/contact/${lang}-${width}.png`,fullPage:false});
+  await page.screenshot({path:`${dir}/${lang}-${width}.png`,fullPage:false});
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
   const axe=await new AxeBuilder({page}).include('#contact').withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();
   assert.equal(overflow,false);assert.deepEqual(axe.violations,[]);
@@ -23,13 +24,18 @@ for(const lang of ['ar','en']){
  }
  await page.locator('#contact-form [value=copy]').click();
  assert.equal(await page.evaluate(()=>document.activeElement.id),'contact-name');
- assert.equal(await page.locator('[aria-invalid=true]').count(),2);
+ assert.equal(await page.locator('[aria-invalid=true]').count(),4);
+ await page.locator('#contact-email').fill('invalid');
+ await page.locator('#contact-form [value=copy]').click();
+ assert.equal(await page.locator('#contact-email').getAttribute('aria-invalid'),'true');
+ await page.locator('#contact-email').fill('test@example.com');
+ await page.locator('#contact-projectType').selectOption('website');
  await page.locator('#contact-name').fill('أحمد Test');await page.locator('#contact-message').fill('مشروع ويب & واجهة <test>');
  await page.locator('#contact-form [value=copy]').click();
  await page.waitForFunction(()=>document.querySelector('#contact-feedback').textContent.length>0);
  assert.match(await page.evaluate(()=>navigator.clipboard.readText()),/مشروع ويب & واجهة <test>/);
  assert.equal(await page.locator('#contact-prepared').isVisible(),false);
- results.checks.push(`${lang}: required name/message, first-error focus and real clipboard copy passed`);
+ results.checks.push(`${lang}: required name/email/type/message, invalid email, first-error focus and real clipboard copy passed`);
  await page.locator('.header-controls [data-language]').click();
  assert.equal(await page.locator('#contact-message').inputValue(),'مشروع ويب & واجهة <test>');
  assert.equal(await page.locator('#contact-name').inputValue(),'أحمد Test');
@@ -44,6 +50,8 @@ for(const lang of ['ar','en']){
  for(const number of ['201156972307']) {
   await page.goto(`${url}/?lang=${lang}#contact`);await page.waitForSelector('#contact-form:visible');
   await page.locator('#contact-name').fill('أحمد Test');
+  await page.locator('#contact-email').fill('test@example.com');
+  await page.locator('#contact-projectType').selectOption('system');
   await page.locator('#contact-message').fill('مشروع ويب & واجهة <test>');
   assert.equal(await page.locator('input[name=recipient]').count(),0);
   await page.locator('#contact-form [value=whatsapp]').click();
@@ -51,9 +59,10 @@ for(const lang of ['ar','en']){
   const destination=new URL(page.url());
   assert.equal(destination.pathname,`/${number}`);
   assert.match(destination.searchParams.get('text'),/مشروع ويب & واجهة <test>/);
+  assert.match(destination.searchParams.get('text'),/test@example.com/);
  }
  results.checks.push(`${lang}: the single contact receives the correctly encoded draft in a local navigation fixture`);
  await context.close();
 }
 const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});const page=await context.newPage();await page.goto(`${url}/#contact`);assert.equal(await page.locator('#contact-form').isVisible(),false);assert.equal(await page.locator('#contact-action').isVisible(),true);assert.equal(await page.locator('.contact-channel:visible').count(),1);results.checks.push('The direct WhatsApp link remains visible without JavaScript');await context.close();
-assert.deepEqual(results.errors,[]);await browser.close();await fs.writeFile('reports/contact/checks.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));
+assert.deepEqual(results.errors,[]);await browser.close();await fs.writeFile(`${dir}/checks.json`,JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));

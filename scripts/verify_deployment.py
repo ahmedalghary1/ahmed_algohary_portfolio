@@ -9,7 +9,9 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 from urllib.request import urlopen
+from urllib.error import HTTPError
 from zipfile import ZipFile
+from project_data import prepare_public_data
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / 'dist'
@@ -50,7 +52,7 @@ def main():
     assert config['outputDirectory'] == 'dist'
     assert config['buildCommand'] == 'npm run build' and config['framework'] is None
     files = {p.relative_to(DIST).as_posix(): p for p in DIST.rglob('*') if p.is_file()}
-    data = json.loads((ROOT / 'data/portfolio.json').read_text(encoding='utf-8'))
+    data = prepare_public_data(json.loads((ROOT / 'data/portfolio.json').read_text(encoding='utf-8')))
     expected_pages = {'index.html', 'ar/index.html'} | {
         f'{prefix}projects/{project["slug"]}/index.html'
         for prefix in ('', 'ar/') for project in data['profile']['projects']
@@ -119,6 +121,15 @@ def main():
                 check(urlsplit(element.text).path, origin + '/')
             if 'href' in element.attrib:
                 check(urlsplit(element.attrib['href']).path, origin + '/')
+        for private in ['/.git/config', '/package.json', '/scripts/package.py',
+                        '/data/projects-drafts.json', '/projects/3.png', '/portfolio-static.zip',
+                        '/output/pdf/ahmed-algohary-cv-review.pdf']:
+            try:
+                urlopen(origin + private, timeout=10)
+            except HTTPError as error:
+                assert error.code == 404, private
+            else:
+                raise AssertionError(f'Private source file is publicly served: {private}')
     finally:
         server.shutdown()
         server.server_close()

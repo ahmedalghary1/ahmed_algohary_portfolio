@@ -8,7 +8,7 @@ const reportDir=process.env.REPORT_DIR || 'reports';
 const runs=Number(process.env.RUNS || 1);
 await fs.mkdir(reportDir,{recursive:true});
 const port=Number(process.env.LIGHTHOUSE_PORT || 9223);
-const chrome=await chromium.launch({headless:true,...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {}),args:[`--remote-debugging-port=${port}`]});
+const chrome=await chromium.launch({headless:true,...(process.env.CHROME_PATH ? {executablePath:process.env.CHROME_PATH} : {channel:'chrome'}),args:[`--remote-debugging-port=${port}`]});
 try{
  for(let run=1;run<=runs;run++){
  for(const lang of ['en','ar']){

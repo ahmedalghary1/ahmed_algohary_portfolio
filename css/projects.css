@@ -1,0 +1,83 @@
+/* V3 additions keep the existing paper, ink and vermilion design tokens. */
+.project-highlights { list-style:none; padding:0; margin-block:20px 0; display:grid; gap:8px; font-size:14px; }
+.project-highlights li { display:flex; align-items:baseline; gap:10px; }
+.project-highlights li::before { content:'—'; color:var(--accent); }
+.career { padding-block:var(--space-section) 0; }
+.career-list { list-style:none; padding:0; margin:0; }
+.career-list li { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:32px; padding-block:24px; border-block-start:1px solid var(--rule); }
+.career-list h3 { font-size:21px; line-height:1.5; }
+.career-period { font-size:13px; color:var(--muted); margin-block-end:10px; }
+.career-role { margin-block-start:5px; font-size:15px; }
+.career-summary { max-inline-size:56ch; color:var(--muted); align-self:center; font-size:16px; }
+.career-training { border-block:1px solid var(--rule); padding-block:18px; }
+.career-training summary { cursor:pointer; font-size:14px; inline-size:fit-content; min-block-size:32px; }
+.career-training p { max-inline-size:70ch; font-size:14px; color:var(--muted); padding-block-start:8px; }
+@media(max-width:600px) { .career-list li { grid-template-columns:minmax(0,1fr); gap:12px; } }
+.case-status { display:inline-block; color:var(--accent); font-size:13px; margin-block-start:18px; }
+.case-header .project-actions { margin-block-start:22px; }
+.case-header .project-privacy { color:var(--muted); font-size:14px; max-inline-size:65ch; }
+.case-information dl { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 28px; }
+.case-information dt { font-size:12px; color:var(--muted); margin-block-end:5px; }
+.case-information dd { margin:0; font-size:15px; }
+.case-technologies { list-style:none; display:flex; flex-wrap:wrap; gap:8px 16px; padding:0!important; }
+.case-content .case-features,.case-content .case-modules,.case-content .video-section { grid-column:1/-1; }
+.case-features>ul,.case-modules>ul { list-style:none; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; }
+.case-features h3,.case-modules h3 { font-size:19px; line-height:1.5; margin-block-end:10px; }
+.case-features p,.case-modules p { font-size:15px; }
+.case-modules { background:var(--surface); padding:28px; }
+.gallery-grid { margin-block-start:24px; }
+.gallery-grid.gallery-single { grid-template-columns:minmax(0,1fr); }
+.feature-preview { min-inline-size:0; }
+.gallery-grid a { position:relative; text-decoration:none; }
+.gallery-grid img { aspect-ratio:auto; object-fit:contain; block-size:auto; border:1px solid var(--rule); }
+.gallery-open-label { display:flex; justify-content:space-between; align-items:center; padding-block:10px; font-size:13px; border-block-end:1px solid var(--rule); }
+.feature-preview figcaption { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:24px; padding-block-start:18px; }
+.feature-preview h3 { font-size:22px; line-height:1.5; }
+.feature-preview figcaption p { max-inline-size:66ch; font-size:15px; }
+.case-navigation { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; border-block-start:1px solid var(--rule); padding-block:32px; }
+.case-navigation>div:last-child { text-align:end; }
+.case-navigation a { display:block; margin-block-start:12px; font-size:clamp(20px,2.6vw,34px); line-height:1.45; text-decoration:underline; text-underline-offset:6px; }
+.case-back { margin-block-end:48px; }
+.case-cta h2 { max-inline-size:23ch; }
+.project-video { margin-block-start:28px; }
+.project-video h3 { font-size:22px; margin-block-end:18px; }
+.project-video video { display:block; inline-size:100%; block-size:auto; background:var(--ink); }
+.project-video figcaption { padding-block-start:14px; }
+.project-video figcaption .text-link { margin-block-start:12px; }
+.module-preview { display:block; font-size:13px; margin-block-end:16px; text-decoration:underline; }
+.module-preview img { inline-size:100%; block-size:auto; object-fit:contain; margin-block-end:10px; }
+.case-subtitle { font-size:20px; margin-block-end:12px; }
+.lightbox { inline-size:min(1440px,calc(100vw - 32px)); max-inline-size:none; max-block-size:calc(100dvh - 32px); padding:0; border:1px solid var(--rule); border-radius:var(--radius-image); background:var(--paper); color:var(--ink); overflow:auto; overscroll-behavior:contain; }
+.lightbox::backdrop { background:#171717e8; }
+.lightbox-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 20px; border-block-end:1px solid var(--rule); }
+.lightbox-toolbar h2 { font-size:17px; line-height:1.5; margin-inline-end:auto; }
+.lightbox button { min-block-size:44px; padding:10px 14px; border:1px solid var(--rule); font:inherit; font-size:13px; cursor:pointer; background:var(--surface); color:var(--ink); border-radius:var(--radius-small); }
+.lightbox button:hover { border-color:var(--ink); }
+.lightbox-figure { margin:0; }
+.lightbox-figure img { display:block; inline-size:100%; block-size:auto; max-block-size:68dvh; object-fit:contain; background:var(--ink); touch-action:pan-y pinch-zoom; }
+.lightbox-figure figcaption { padding:16px 20px; font-size:14px; line-height:1.65; }
+.lightbox-navigation { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:0 20px 16px; }
+.lightbox-navigation p { font-size:13px; }
+.lightbox-error { padding:20px; }
+.lightbox-error a { text-decoration:underline; }
+.gallery-open { overflow:hidden; }
+.lightbox-panel:fullscreen { inline-size:100vw; block-size:100dvh; overflow:auto; background:var(--paper); color:var(--ink); }
+.lightbox-panel:fullscreen .lightbox-figure img { max-block-size:75dvh; }
+.testimonials figure { border-block-start:1px solid var(--rule); padding-block:24px; }
+.testimonials blockquote { margin:0 0 12px; max-inline-size:65ch; }
+@media(max-width:800px) {
+ .case-features>ul,.case-modules>ul { grid-template-columns:minmax(0,1fr); gap:22px; }
+ .feature-preview figcaption { grid-template-columns:minmax(0,1fr); gap:8px; }
+}
+@media(max-width:600px) {
+ .case-information dl { grid-template-columns:minmax(0,1fr); }
+ .case-modules { padding:20px; }
+ .case-navigation { gap:20px; }
+ .case-navigation a { font-size:20px; }
+ .lightbox { inline-size:calc(100vw - 16px); max-block-size:calc(100dvh - 16px); }
+ .lightbox-toolbar { padding:12px; }
+ .lightbox-toolbar h2 { inline-size:100%; }
+ .lightbox-figure figcaption { padding:12px; }
+ .lightbox-navigation { padding:0 12px 12px; }
+}
+html[lang=ar] .next-project>[aria-hidden] { display:inline-block; transform:scaleX(-1); }

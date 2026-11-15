@@ -10,6 +10,8 @@
     "build": "python scripts/package.py",
     "preview": "python -m http.server 8017 --bind 127.0.0.1 --directory dist",
     "test:deployment": "python scripts/verify_deployment.py",
+    "test:data": "python scripts/test_project_data.py",
+    "test:v3": "node scripts/v3-check.mjs",
     "test": "node scripts/refactor-check.mjs",
     "test:layouts": "node scripts/refactor-check.mjs",
     "test:contact": "node scripts/contact-check.mjs",

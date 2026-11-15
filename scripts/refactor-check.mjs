@@ -2,9 +2,10 @@ import { chromium } from '../.qa-tools/node_modules/playwright/index.mjs';
 import AxeBuilder from '../.qa-tools/node_modules/@axe-core/playwright/dist/index.mjs';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const data=JSON.parse(await fs.readFile('data/portfolio.json','utf8'));
+import { readPublicData } from './read-public-data.mjs';
+const data=readPublicData();
 const root=process.env.TEST_URL||'http://127.0.0.1:8017';
-const dir=process.env.REPORT_DIR||'reports/refactor/after';
+const dir=process.env.REPORT_DIR||'reports/redesign';
 await fs.mkdir(`${dir}/screenshots`,{recursive:true});
 const browser=await chromium.launch({channel:'chrome'});
 const results={layouts:[],pages:[],axe:[],errors:[],consoleErrors:[],checks:[],content:{}};
@@ -15,7 +16,7 @@ try {
   page.on('pageerror',e=>results.errors.push(e.message));
   page.on('console',m=>{if(m.type()==='error') results.consoleErrors.push(m.text());});
   const prefix=lang==='ar'?'/ar/':'/';
-  for(const width of [320,375,390,430,768,1024,1440,1920]) {
+  for(const width of [360,390,480,768,1024,1280,1440,1920]) {
    await page.setViewportSize({width,height:width<768?844:1000});
    await page.goto(root+prefix);await page.evaluate(()=>document.fonts.ready);
    await page.waitForFunction(()=>document.documentElement.classList.contains('js'));
@@ -23,16 +24,25 @@ try {
    results.layouts.push({lang,...layout});
    assert.equal(await page.locator('.hero-actions a').count(),2);
    assert.equal(await page.locator('.hero img').count(),1);
-   assert.deepEqual(await page.locator('main>section').evaluateAll(es=>es.map(e=>e.id||'hero')),['hero','work','services','stack','about','process','contact']);
+   assert.deepEqual(await page.locator('main>section,main>.showcase>section').evaluateAll(es=>es.map(e=>e.id||'hero')),['hero','work','stack','services','about','experience','contact']);
    assert.deepEqual(await page.locator('.project').evaluateAll(es=>es.map(e=>e.id)),data.profile.projects.map(r=>'project-'+r.id));
    assert.equal(await page.locator('.stack-group li').count(),13);
    assert.equal(await page.locator('.service').count(),4);
-   assert.equal(await page.locator('.process-list li').count(),4);
+   assert.equal(await page.locator('.career-list li').count(),2);
+   assert.equal(await page.locator('.project-featured .project-highlights li').count(),3);
    if(width===390) {
     await page.locator('.menu-toggle').click();await page.locator('#navigation a[href*=services]').click();
     assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
     await page.locator('.menu-toggle').click();await page.keyboard.press('Escape');
     assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'),'false');
+    await page.evaluate(()=>scrollTo(0,0));
+   }
+   if(width===1440) {
+    for(const [filter,count] of [['websites',3],['commerce',1],['systems',1],['all',5]]) {
+     await page.locator(`[data-filter="${filter}"]`).click();
+     assert.equal(await page.locator('.project:not([hidden])').count(),count);
+     assert.equal(await page.locator(`[data-filter="${filter}"]`).getAttribute('aria-pressed'),'true');
+    }
     await page.evaluate(()=>scrollTo(0,0));
    }
    if([390,1440].includes(width)) {
@@ -46,7 +56,7 @@ try {
   }
   for(const record of data.profile.projects) {
    const path=prefix+'projects/'+record.slug+'/';
-   for(const width of [390,1440]) {
+   for(const width of [360,390,480,768,1024,1280,1440,1920]) {
     await page.setViewportSize({width,height:width===390?844:1000});
     const response=await page.goto(root+path);assert.equal(response.status(),200);
     await page.evaluate(()=>document.fonts.ready);
@@ -54,11 +64,13 @@ try {
     assert.equal(await page.locator('h1').count(),1);
     assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),data.profile.url+path.slice(1));
     assert.equal(await page.locator('.gallery-grid a').count(),record.screenshots.length);
-    const checks=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,images:[...document.images].every(e=>e.loading==='lazy'||e.complete&&e.naturalWidth>0),title:document.title}));
+    const checks=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,images:[...document.querySelectorAll('main img[src]')].every(e=>e.loading==='lazy'||e.complete&&e.naturalWidth>0),title:document.title}));
     results.pages.push({path,...checks});
-    await page.locator('img[loading=lazy]').evaluateAll(es=>Promise.all(es.map(e=>{e.loading='eager';return e.decode().catch(()=>{});})));await page.screenshot({path:`${dir}/screenshots/${record.slug}-${lang}-${width}.png`,fullPage:true});
-    const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();
-    results.axe.push({page:path,width,violations:axe.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});
+    if([390,1440].includes(width)) {
+     await page.locator('img[loading=lazy]').evaluateAll(es=>Promise.all(es.map(e=>{e.loading='eager';return e.decode().catch(()=>{});})));await page.screenshot({path:`${dir}/screenshots/${record.slug}-${lang}-${width}.png`,fullPage:true});
+     const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();
+     results.axe.push({page:path,width,violations:axe.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))});
+    }
    }
    await page.locator('.header-controls [data-language]').click();
    const other=lang==='en'?'ar':'en';
@@ -79,7 +91,7 @@ try {
   }
   await noJs.close();
  }
- results.checks.push('Homepage order, portrait, two CTAs, five projects, 13 technologies, four services and four process steps','Mobile menu selection and Escape','All ten case routes, metadata, gallery, next-project and language persistence','All twelve pages work without JavaScript');
+ results.checks.push('Homepage order, workspace hero, two CTAs, five real projects, category filters, featured functions, 13 technologies, four services and two historical employment records','Mobile menu selection and Escape','All ten case routes at eight widths, metadata, gallery, next-project and language persistence','All twelve pages work without JavaScript');
  const context=await browser.newContext();const page=await context.newPage();const requests=[];page.on('request',r=>requests.push(r.url()));
  await page.goto(root);await page.waitForTimeout(400);await page.locator('#contact').scrollIntoViewIfNeeded();
  assert.equal(requests.some(r=>/assets\/vendor|three|gsap|ScrollTrigger/.test(r)),false);

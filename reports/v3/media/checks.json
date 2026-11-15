@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "en/390: original image, modal focus trap/return, Escape/close, scroll lock, single-image controls, axe",
+    "en/1440: original image, modal focus trap/return, Escape/close, scroll lock, single-image controls, axe",
+    "ar/390: original image, modal focus trap/return, Escape/close, scroll lock, single-image controls, axe",
+    "ar/1440: original image, modal focus trap/return, Escape/close, scroll lock, single-image controls, axe",
+    "en: two-image fixture, previous/next, wrap, RTL keyboard, touch swipe and fullscreen",
+    "ar: two-image fixture, previous/next, wrap, RTL keyboard, touch swipe and fullscreen",
+    "No-JavaScript gallery links still open the actual original image",
+    "Missing full-size image produces a localized fallback link and the modal still closes"
+  ],
+  "errors": [],
+  "violations": []
+}

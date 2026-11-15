@@ -1,0 +1,34 @@
+[
+  {
+    "url": "https://www.ahmedalgohary.com/",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://www.ahmedalgohary.com/\nCall log:\n\u001b[2m  - navigating to \"https://www.ahmedalgohary.com/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "url": "https://rocks-ev.com/",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://rocks-ev.com/\nCall log:\n\u001b[2m  - navigating to \"https://rocks-ev.com/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "url": "https://bonyan-nine.vercel.app/",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://bonyan-nine.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://bonyan-nine.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "url": "https://ahmed-nabil-sooty.vercel.app/",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://ahmed-nabil-sooty.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://ahmed-nabil-sooty.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "url": "https://ahmed-gamal-seven.vercel.app/",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://ahmed-gamal-seven.vercel.app/\nCall log:\n\u001b[2m  - navigating to \"https://ahmed-gamal-seven.vercel.app/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "url": "https://www.linkedin.com/in/ahmed-algohary-124396396/",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://www.linkedin.com/in/ahmed-algohary-124396396/\nCall log:\n\u001b[2m  - navigating to \"https://www.linkedin.com/in/ahmed-algohary-124396396/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "url": "https://leetcode.com/u/ahmedalgohary/",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://leetcode.com/u/ahmedalgohary/\nCall log:\n\u001b[2m  - navigating to \"https://leetcode.com/u/ahmedalgohary/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  {
+    "url": "https://github.com/ahmedalgohary1170/E-commerce-Website",
+    "error": "page.goto: net::ERR_NETWORK_ACCESS_DENIED at https://github.com/ahmedalgohary1170/E-commerce-Website\nCall log:\n\u001b[2m  - navigating to \"https://github.com/ahmedalgohary1170/E-commerce-Website\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  }
+]

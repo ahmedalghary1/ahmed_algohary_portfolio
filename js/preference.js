@@ -14,7 +14,7 @@
   const language = ['en', 'ar'].includes(query) ? query : route || (saved === 'ar' ? 'ar' : 'en');
   document.documentElement.lang = language;
   document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
-  const files = language === 'ar' ? ['arabic-arabic-400', 'arabic-arabic-600'] : ['space-grotesk'];
+  const files = language === 'ar' ? ['arabic-arabic-400', 'arabic-arabic-600'] : ['inter-variable'];
   for (const font of files) {
       const preload = document.createElement('link');
       preload.rel = 'preload'; preload.as = 'font'; preload.type = 'font/woff2'; preload.crossOrigin = '';

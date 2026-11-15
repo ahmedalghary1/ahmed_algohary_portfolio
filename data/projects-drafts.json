@@ -1,0 +1,79 @@
+{
+  "projects": [
+    {
+      "id": "import-export",
+      "slug": "import-export",
+      "published": false,
+      "projectType": "business-management-system",
+      "status": null,
+      "title": {
+        "en": "Import, export & warehouse management",
+        "ar": "نظام إدارة الاستيراد والتصدير والمخازن"
+      },
+      "technologies": [],
+      "screenshots": [],
+      "videos": [],
+      "reviewNotes": "Planned scope only. Confirm actual implementation, status, role, platform, technologies and approved media before publication."
+    },
+    {
+      "id": "factory-warehouses",
+      "slug": "factory-warehouses",
+      "published": false,
+      "projectType": "business-management-system",
+      "status": null,
+      "title": {
+        "en": "Factory warehouse management",
+        "ar": "نظام إدارة مخازن المصانع"
+      },
+      "technologies": [],
+      "screenshots": [],
+      "videos": [],
+      "reviewNotes": "Planned scope only. Confirm actual implementation, status, role, platform, technologies and approved media before publication."
+    },
+    {
+      "id": "factory-maintenance",
+      "slug": "factory-maintenance",
+      "published": false,
+      "projectType": "web-application",
+      "status": null,
+      "title": {
+        "en": "Factory preventive maintenance",
+        "ar": "تطبيق الصيانة الدورية للمصانع"
+      },
+      "technologies": [],
+      "screenshots": [],
+      "videos": [],
+      "reviewNotes": "Planned scope only. Confirm actual implementation, status, role, platform, technologies and approved media before publication."
+    },
+    {
+      "id": "employee-management",
+      "slug": "employee-management",
+      "published": false,
+      "projectType": "desktop-application",
+      "status": null,
+      "title": {
+        "en": "Employee management",
+        "ar": "تطبيق إدارة الموظفين"
+      },
+      "technologies": [],
+      "screenshots": [],
+      "videos": [],
+      "reviewNotes": "Planned scope only. Confirm actual implementation, status, role, platform, technologies and approved media before publication."
+    },
+    {
+      "id": "mobile-inventory",
+      "slug": "mobile-inventory",
+      "published": false,
+      "projectType": "mobile-application",
+      "status": null,
+      "title": {
+        "en": "Mobile inventory & invoicing",
+        "ar": "تطبيق المخزون والفواتير للهاتف"
+      },
+      "technologies": [],
+      "screenshots": [],
+      "videos": [],
+      "reviewNotes": "Planned scope only. Confirm actual implementation, status, role, platform, technologies and approved media before publication."
+    }
+  ]
+}
