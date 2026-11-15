@@ -1,14 +1,25 @@
 import { MOTION, qualityTier } from './config.js';
 import { frameScheduler, pixelRatio } from './performance-manager.js';
 import { vertexShader, fragmentShader } from './shaders.js';
-export async function sceneManager(gsap, ScrollTrigger, signal) {
-  if (qualityTier() === 'light') return;
+export async function sceneManager(gsap, ScrollTrigger, parentSignal) {
+  if (qualityTier() === 'light' || parentSignal.aborted) return;
+  const T = await import('../../assets/vendor/three.module.min.js');
+  if (parentSignal.aborted) return;
+  const lifetime = new AbortController();
+  const signal = lifetime.signal;
+  const abort = () => lifetime.abort();
+  parentSignal.addEventListener('abort', abort, { once:true });
+  signal.addEventListener('abort', () => parentSignal.removeEventListener('abort', abort), { once:true });
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('webgl2', { alpha:true, antialias:true, powerPreference:'low-power' });
-  if (!context) return;
-  const T = await import('../../assets/vendor/three.module.min.js');
-  if (signal.aborted) return;
-  const renderer = new T.WebGLRenderer({canvas,context,alpha:true,antialias:true});
+  if (!context) { lifetime.abort(); return; }
+  let renderer;
+  try { renderer = new T.WebGLRenderer({canvas,context,alpha:true,antialias:true}); }
+  catch {
+    context.getExtension('WEBGL_lose_context')?.loseContext();
+    lifetime.abort();
+    return;
+  }
   canvas.className='cinematic-canvas'; canvas.setAttribute('aria-hidden','true');
   document.body.append(canvas);
   const scene=new T.Scene(), camera=new T.PerspectiveCamera(35,1,.1,60), group=new T.Group();
@@ -33,6 +44,12 @@ export async function sceneManager(gsap, ScrollTrigger, signal) {
   scene.add(group,new T.HemisphereLight(0xffffff,0x57574f,2));
   const light=new T.DirectionalLight(0xfff5e6, MOTION.light);light.position.set(3,4,5);scene.add(light);
   const slots=[...document.querySelectorAll('.scene-slot')];
+  const visibleSlots=new Set();
+  let painted=false;
+  const visibility=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting)visibleSlots.add(entry.target);else visibleSlots.delete(entry.target);});
+    scheduler.invalidate();
+  });
   let lost=false, intro=performance.now(), pointer=0;
   const images=[], imageScene=new T.Scene(), imageCamera=new T.OrthographicCamera(-1,1,1,-1,0,2);
   imageCamera.position.z=1;
@@ -41,7 +58,8 @@ export async function sceneManager(gsap, ScrollTrigger, signal) {
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
     if(!entry.isIntersecting || qualityTier()!=='desktop')return;
     observer.unobserve(entry.target);
-    loader.load(entry.target.currentSrc||entry.target.src,texture=>{
+    const preview=entry.target.srcset.split(',').map(item=>item.trim().split(/\s+/)).find(item=>item[1]==='800w')?.[0];
+    loader.load(preview||entry.target.currentSrc||entry.target.src,texture=>{
       if(signal.aborted){texture.dispose();return;}
       texture.colorSpace=T.SRGBColorSpace;
       const material=new T.ShaderMaterial({vertexShader,fragmentShader,transparent:true,depthTest:false,uniforms:{image:{value:texture},progress:{value:0}}});
@@ -56,10 +74,12 @@ export async function sceneManager(gsap, ScrollTrigger, signal) {
   let frames=0;
   const scheduler=frameScheduler(time=>{
     if(lost)return false;
+    const activeImages=images.some(image=>time-image.start<MOTION.shaderSeconds*1000);
+    if(!visibleSlots.size && !activeImages && !painted)return false;
     renderer.info.autoReset=false;renderer.info.reset();
     renderer.setScissorTest(false);renderer.clear();renderer.setScissorTest(true);
     let visible=false;
-    for(const slot of slots){
+    for(const slot of visibleSlots){
       const r=slot.getBoundingClientRect();
       if(r.bottom<0||r.top>innerHeight||!r.width)continue;
       visible=true;
@@ -83,18 +103,25 @@ export async function sceneManager(gsap, ScrollTrigger, signal) {
       renderer.setScissor(Math.max(0,r.left),Math.max(0,innerHeight-r.bottom),Math.min(r.width,innerWidth-r.left),Math.min(r.height,innerHeight-r.top));
       renderer.clearDepth();renderer.render(imageScene,imageCamera);revealing=true;
     }
+    painted=visible || revealing;
     canvas.dataset.frames=String(++frames);
     canvas.dataset.drawCalls=String(renderer.info.render.calls);
+    for(let i=images.length-1;i>=0;i--){
+      if(time-images[i].start<MOTION.shaderSeconds*1000)continue;
+      const image=images[i];imageScene.remove(image.mesh);image.mesh.material.dispose();image.texture.dispose();images.splice(i,1);
+    }
     return revealing || (visible && time-intro<MOTION.idleSeconds*1000);
-  },signal);
+  },signal,()=>lifetime.abort());
   const resize=()=>{renderer.setPixelRatio(pixelRatio(qualityTier()));renderer.setSize(innerWidth,innerHeight,false);scheduler.invalidate();};
   document.querySelectorAll('.project-visual img').forEach(image=>observer.observe(image));
+  slots.forEach(slot=>visibility.observe(slot));
   window.addEventListener('resize',resize,{signal});
   window.addEventListener('scroll',scheduler.invalidate,{passive:true,signal});
   document.addEventListener('portfolio:motion-frame',scheduler.invalidate,{signal});
-  window.addEventListener('pointermove',e=>{if(matchMedia('(pointer:fine)').matches){pointer=e.clientX/innerWidth-.5;scheduler.invalidate();}},{passive:true,signal});
+  const finePointer=matchMedia('(pointer:fine)');
+  window.addEventListener('pointermove',e=>{if(visibleSlots.size && finePointer.matches){pointer=e.clientX/innerWidth-.5;scheduler.invalidate();}},{passive:true,signal});
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;slots.forEach(s=>delete s.dataset.webgl);},{signal});
   canvas.addEventListener('webglcontextrestored',()=>{lost=false;resize();},{signal});
-  signal.addEventListener('abort',()=>{observer.disconnect();images.forEach(i=>{i.texture.dispose();i.mesh.material.dispose();});plane.dispose();closingTimeline.scrollTrigger?.kill();closingTimeline.kill();timeline.scrollTrigger?.kill();timeline.kill();geometry.dispose();metal.dispose();accent.dispose();renderer.dispose();canvas.remove();slots.forEach(s=>delete s.dataset.webgl);},{once:true});
+  signal.addEventListener('abort',()=>{visibility.disconnect();observer.disconnect();images.forEach(i=>{i.texture.dispose();i.mesh.material.dispose();});plane.dispose();closingTimeline.scrollTrigger?.kill();closingTimeline.kill();timeline.scrollTrigger?.kill();timeline.kill();geometry.dispose();metal.dispose();accent.dispose();renderer.dispose();renderer.forceContextLoss();canvas.remove();slots.forEach(s=>delete s.dataset.webgl);},{once:true});
   resize();
 }

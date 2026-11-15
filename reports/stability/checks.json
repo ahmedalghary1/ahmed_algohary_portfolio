@@ -1,0 +1,15 @@
+{
+  "results": [
+    "Offscreen pointer movement causes zero WebGL frames (before: 15).",
+    {
+      "test": "WhatsApp hover text remains readable",
+      "color": "rgb(234, 232, 225)",
+      "background": "rgb(166, 45, 32)"
+    },
+    "18 stop/start cycles retain one canvas without active-context warnings.",
+    "GPU draw failure tears down the scene without an uncaught error or hidden content.",
+    "Core controls initialize from embedded content with no JSON request, even when that endpoint is blocked."
+  ],
+  "errors": [],
+  "warnings": []
+}

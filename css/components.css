@@ -566,6 +566,7 @@ html[lang=ar] .contact h2 {
   }
   .button:hover {
     background:var(--accent);
+    color:var(--paper);
   }
   .project-visual:hover img {
     transform:scale(1.025);
@@ -576,6 +577,7 @@ html[lang=ar] .contact h2 {
   button:hover {
     color:var(--accent);
   }
+  button.button:hover { color:var(--paper); }
 }
 
 html[dir=rtl] .navigation a::after { transform-origin:100% 50%; }

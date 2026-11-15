@@ -4,12 +4,13 @@ export function pixelRatio(tier) {
     Math.sqrt(MOTION.pixelBudget / (innerWidth * innerHeight)));
 }
 // One demand-driven RAF for all WebGL views; no perpetual loop outside the finite intro/reveals.
-export function frameScheduler(draw, signal) {
+export function frameScheduler(draw, signal, onError = () => {}) {
   let frame = 0, stopped = false;
   function tick(time) {
     frame = 0;
     if (stopped || document.hidden || signal.aborted) return;
-    if (draw(time)) invalidate();
+    try { if (draw(time)) invalidate(); }
+    catch (error) { stopped = true; onError(error); }
   }
   function invalidate() {
     if (!frame && !stopped && !signal.aborted && !document.hidden) frame = requestAnimationFrame(tick);

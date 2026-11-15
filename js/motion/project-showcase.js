@@ -48,7 +48,13 @@ export function projectShowcase(gsap, ScrollTrigger, signal) {
     trigger = tween.scrollTrigger;
     update(trigger.progress);
   }
-  function refreshMode() { disable(); enable(); ScrollTrigger.refresh(); }
+  let refreshVersion = 0;
+  async function refreshMode() {
+    const version = ++refreshVersion;
+    await document.fonts.ready;
+    if(signal.aborted || version !== refreshVersion)return;
+    disable(); enable(); ScrollTrigger.refresh();
+  }
   function go(index) {
     if (!active || !trigger) return;
     index = Math.max(0, Math.min(cards.length - 1, index));

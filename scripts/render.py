@@ -88,6 +88,7 @@ html=f'''<!doctype html>
 <noscript><link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin></noscript>
 {''.join(f'<link rel="stylesheet" href="css/{x}.css">' for x in ['tokens','base','layout','components','responsive','motion','skills'])}
 <script type="module" src="js/main.js"></script>
+<script type="application/json" id="portfolio-content">{json.dumps(D,ensure_ascii=False).replace('<',chr(92)+'u003c')}</script>
 </head>
 <body id="top">
 <a class="skip-link" href="#main">{copy('nav.skip')}</a>
