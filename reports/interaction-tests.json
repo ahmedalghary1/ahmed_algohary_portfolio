@@ -13,7 +13,7 @@
       "passed": true
     },
     {
-      "name": "All four case studies expand from keyboard and expose full content",
+      "name": "All five project studies expand from keyboard and expose full content",
       "passed": true
     },
     {
@@ -25,11 +25,11 @@
       "passed": true
     },
     {
-      "name": "Reduced motion keeps the fallback and has no WebGL canvas",
+      "name": "Reduced motion keeps the real portrait visible without a WebGL canvas",
       "passed": true
     },
     {
-      "name": "No dead anchor links or unconfigured contact actions",
+      "name": "No dead anchors; the supplied WhatsApp contact is visible",
       "passed": true
     },
     {
@@ -41,7 +41,11 @@
       "passed": true
     },
     {
-      "name": "en: full-size preview links match the localized artwork and have 44px targets",
+      "name": "en: full-size preview links use the original-resolution public assets and have 44px targets",
+      "passed": true
+    },
+    {
+      "name": "en: four live links and one private project are presented correctly",
       "passed": true
     },
     {
@@ -49,7 +53,11 @@
       "passed": true
     },
     {
-      "name": "ar: full-size preview links match the localized artwork and have 44px targets",
+      "name": "ar: full-size preview links use the original-resolution public assets and have 44px targets",
+      "passed": true
+    },
+    {
+      "name": "ar: four live links and one private project are presented correctly",
       "passed": true
     },
     {
@@ -69,23 +77,19 @@
       "passed": true
     },
     {
-      "name": "Unavailable WebGL preserves the static sculpture",
+      "name": "The real portrait remains alongside a single decorative scene",
       "passed": true
     },
     {
-      "name": "WebGL renders once, respects pause, and recovers after context loss",
+      "name": "Repeated language switches preserve the portrait and ScrollTrigger count",
       "passed": true
     },
     {
-      "name": "Repeated language switches keep a stable ScrollTrigger count and one canvas",
+      "name": "Live reduced-motion preference preserves the portrait",
       "passed": true
     },
     {
-      "name": "Live reduced-motion preference hides the canvas and restores its SVG",
-      "passed": true
-    },
-    {
-      "name": "Page lifecycle disposal clears the canvas and ScrollTriggers",
+      "name": "Page lifecycle disposal clears ScrollTriggers and retains the portrait",
       "passed": true
     },
     {

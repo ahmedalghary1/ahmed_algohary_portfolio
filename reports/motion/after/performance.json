@@ -1,0 +1,14 @@
+{
+  "viewport": [
+    1440,
+    1000
+  ],
+  "buffer": [
+    1440,
+    1000
+  ],
+  "frames": 95,
+  "p95FrameMs": 16.799999999999955,
+  "medianFrameMs": 16.699999999999818,
+  "drawCallsLastFrame": "1"
+}

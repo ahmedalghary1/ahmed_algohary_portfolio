@@ -50,13 +50,15 @@
     }
   ],
   "checks": [
-    "ar: empty fields, invalid email, first-error focus and real clipboard copy passed",
+    "ar: required name/message, first-error focus and real clipboard copy passed",
     "ar: locale switch preserves visitor draft",
     "ar: denied clipboard exposes selected manual-copy fallback",
-    "en: empty fields, invalid email, first-error focus and real clipboard copy passed",
+    "ar: the single contact receives the correctly encoded draft in a local navigation fixture",
+    "en: required name/message, first-error focus and real clipboard copy passed",
     "en: locale switch preserves visitor draft",
     "en: denied clipboard exposes selected manual-copy fallback",
-    "No-JavaScript contact state remains honest and visible"
+    "en: the single contact receives the correctly encoded draft in a local navigation fixture",
+    "The direct WhatsApp link remains visible without JavaScript"
   ],
   "errors": []
 }

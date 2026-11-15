@@ -1,0 +1,50 @@
+[
+  {
+    "lang": "en",
+    "width": 390,
+    "overflow": false,
+    "canvas": 0,
+    "horizontal": "work wrap section",
+    "errors": []
+  },
+  {
+    "lang": "en",
+    "width": 768,
+    "overflow": false,
+    "canvas": 1,
+    "horizontal": "work wrap section",
+    "errors": []
+  },
+  {
+    "lang": "en",
+    "width": 1440,
+    "overflow": false,
+    "canvas": 1,
+    "horizontal": "work wrap section is-horizontal",
+    "errors": []
+  },
+  {
+    "lang": "ar",
+    "width": 390,
+    "overflow": false,
+    "canvas": 0,
+    "horizontal": "work wrap section",
+    "errors": []
+  },
+  {
+    "lang": "ar",
+    "width": 768,
+    "overflow": false,
+    "canvas": 1,
+    "horizontal": "work wrap section",
+    "errors": []
+  },
+  {
+    "lang": "ar",
+    "width": 1440,
+    "overflow": false,
+    "canvas": 1,
+    "horizontal": "work wrap section is-horizontal",
+    "errors": []
+  }
+]

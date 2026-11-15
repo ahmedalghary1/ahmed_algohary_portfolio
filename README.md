@@ -6,7 +6,7 @@ The portfolio now presents five owner-supplied projects: Ahmed Gamal’s portfol
 
 For repeated Lighthouse measurements, set `RUNS=3` and `REPORT_DIR=reports/refinement/after` when running `scripts/measure.mjs` with the QA environment described below. The new `scripts/refinement-review.mjs` captures the normal-motion matrix and draw-call/frame probes; `PHASE` selects the evidence folder. These are optional QA scripts, not a production build step.
 
-A bilingual English/Arabic developer portfolio using semantic HTML, CSS, native JavaScript modules and GSAP + ScrollTrigger. The hero features the owner's real portrait in a restrained frame that follows the paper, ink and vermilion palette. The previous 3D scene is no longer initialized or downloaded. Projects use the owner’s screenshots and project descriptions; technology stacks and measured client results are not inferred.
+A bilingual English/Arabic developer portfolio using semantic HTML, CSS, native JavaScript modules and GSAP + ScrollTrigger. The hero features the owner's real portrait in a restrained frame that follows the paper, ink and vermilion palette. A new optional cinematic scene and project showcase are described in [MOTION_SYSTEM.md](MOTION_SYSTEM.md). Projects use the owner’s screenshots and project descriptions; technology stacks and measured client results are not inferred.
 
 ## Run locally
 
@@ -25,7 +25,7 @@ npm ci
 npm run vendor
 ```
 
-Only the self-hosted GSAP/ScrollTrigger assets are loaded for animation. The older Three.js source/vendor files are retained as legacy assets and are not loaded by the page. No framework, component library, remote font request or runtime CDN is used.
+Only the self-hosted GSAP/ScrollTrigger assets are loaded for animation. Three.js is loaded lazily for a shared decorative scene and temporary project shader overlays on capable devices. No framework, component library, remote font request or runtime CDN is used.
 
 ## Update your content
 
@@ -109,7 +109,7 @@ Keep the `images`, `srcset` and `preview` paths synchronized with the public ass
 
 Native scrolling is never intercepted. GSAP adds brief whole-line hero movement and restrained section/image reveals; reduced motion disables them. Language changes and native details refresh ScrollTrigger after fonts settle.
 
-The hero uses a semantic, accessible portrait image, a fine frame and a vermilion edge detail. The frame follows the page's text direction. Portraits remain visible without JavaScript and with reduced motion. At 600px and below, the hero image is centered beneath the introduction with a maximum width of 320px; larger screens place it beside the introduction. There is no scene loader, WebGL canvas or sculpture control in the current page.
+The hero uses a semantic, accessible portrait image, a fine frame and a vermilion edge detail. The frame follows the page's text direction. Portraits remain visible without JavaScript and with reduced motion. At 600px and below, the hero image is centered beneath the introduction with a maximum width of 320px; larger screens place it beside the introduction. The optional scene keeps the portrait visible and provides a localized pause control; reduced motion and `?motion=off` restore the static experience.
 
 ## Files
 

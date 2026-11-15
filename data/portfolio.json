@@ -1,7 +1,10 @@
 {
   "profile": {
     "whatsapp": [
-      { "number": "201156972307", "display": "01156972307" }
+      {
+        "number": "201156972307",
+        "display": "01156972307"
+      }
     ],
     "email": null,
     "github": null,
@@ -90,7 +93,7 @@
   "en": {
     "name": "Ahmed",
     "wordmark": "AHMED.",
-    "title": "Independent software developer",
+    "title": "Full-Stack Python Developer",
     "seo": {
       "title": "Ahmed — Software, built with intention",
       "description": "Ahmed’s software development portfolio: personal websites, the ROCKS EV online store, Bonyan’s company website and a private garment factory management system."
@@ -237,30 +240,58 @@
     },
     "expertise": {
       "label": "03 / Expertise",
-      "title": "The right tools.\nA considered foundation.",
-      "intro": "From interfaces to business systems, a practical foundation for building useful software.",
+      "title": "Technical Expertise",
+      "intro": "My technical expertise spans scalable backend systems, modern frontend development, intelligent applications, database architecture, and cloud infrastructure — enabling me to build reliable, production-ready software solutions.",
       "groups": [
         {
-          "title": "Backend development",
-          "items": "Node.js / Python / PHP / Application architecture"
+          "title": "Backend Development",
+          "description": "APIs and application services built around Python."
         },
         {
-          "title": "Frontend development",
-          "items": "Semantic HTML / Modern CSS / JavaScript / Accessibility"
+          "title": "Frontend Development",
+          "description": "Interfaces, interaction and clear data presentation."
         },
         {
-          "title": "APIs & databases",
-          "items": "REST APIs / PostgreSQL / MySQL / Data modelling"
+          "title": "Databases & Storage",
+          "description": "Structured storage, retrieval and query performance."
         },
         {
-          "title": "Software systems",
-          "items": "Inventory / Commerce / Operations / Workflow design"
+          "title": "AI & Intelligent Systems",
+          "description": "Connecting language models, agents and intelligent workflows."
         },
         {
-          "title": "Deployment & infrastructure",
-          "items": "Git / Linux / Docker / CI & CD"
+          "title": "DevOps & Cloud Infrastructure",
+          "description": "Repeatable delivery and cloud infrastructure."
+        },
+        {
+          "title": "Software Architecture",
+          "description": "Application boundaries, scalability and performance."
+        },
+        {
+          "title": "Asynchronous Processing & Caching",
+          "description": "Background work, reliable task queues and caching."
+        },
+        {
+          "title": "Authentication & Integrations",
+          "description": "Secure access and connected business services."
+        },
+        {
+          "title": "Testing & Software Quality",
+          "description": "Verification across application behavior and performance."
+        },
+        {
+          "title": "Version Control & Collaboration",
+          "description": "Traceable changes and coordinated software delivery."
+        },
+        {
+          "title": "Business Application Development",
+          "description": "Practical systems for commerce and daily operations."
         }
-      ]
+      ],
+      "specialization": "Backend Development · Software Architecture · AI Integration · Cloud Deployment",
+      "featuredTitle": "Featured technology stack",
+      "featuredNote": "The tools at the core of my development practice.",
+      "catalogTitle": "Capabilities, across the stack."
     },
     "process": {
       "label": "04 / The process",
@@ -338,7 +369,7 @@
   "ar": {
     "name": "أحمد",
     "wordmark": "أحمد.",
-    "title": "مطوّر برمجيات مستقل",
+    "title": "مطوّر Python متكامل",
     "seo": {
       "title": "أحمد — برمجيات تُبنى بدقة ورؤية",
       "description": "معرض أعمال أحمد في تطوير البرمجيات: مواقع شخصية، ومتجر روكس الإلكتروني، وموقع شركة بنيان، ونظام خاص لإدارة مصنع ملابس."
@@ -485,30 +516,58 @@
     },
     "expertise": {
       "label": "03 / الخبرات",
-      "title": "أدوات مناسبة.\nوأساس مدروس.",
-      "intro": "من الواجهات إلى أنظمة الأعمال، أساس عملي لبناء برمجيات مفيدة وقابلة للتطوير.",
+      "title": "الخبرات التقنية",
+      "intro": "تشمل خبراتي التقنية أنظمة خلفية قابلة للتوسع، وتطوير الواجهات الحديثة، والتطبيقات الذكية، وهندسة قواعد البيانات والبنية السحابية؛ لبناء حلول برمجية موثوقة وجاهزة للاستخدام الفعلي.",
       "groups": [
         {
-          "title": "تطوير الأنظمة الخلفية",
-          "items": "Node.js / Python / PHP / هندسة التطبيقات"
+          "title": "تطوير الواجهات الخلفية",
+          "description": "واجهات برمجية وخدمات تطبيقات تتمحور حول Python."
         },
         {
-          "title": "تطوير الواجهات",
-          "items": "HTML دلالي / CSS حديث / JavaScript / إمكانية الوصول"
+          "title": "تطوير الواجهات الأمامية",
+          "description": "واجهات تفاعلية وعرض واضح للبيانات."
         },
         {
-          "title": "واجهات البرمجة وقواعد البيانات",
-          "items": "REST APIs / PostgreSQL / MySQL / نمذجة البيانات"
+          "title": "قواعد البيانات والتخزين",
+          "description": "تخزين منظّم واسترجاع البيانات وتحسين الاستعلامات."
         },
         {
-          "title": "الأنظمة البرمجية",
-          "items": "المخزون / التجارة / العمليات / تصميم سير العمل"
+          "title": "الذكاء الاصطناعي والأنظمة الذكية",
+          "description": "ربط النماذج اللغوية والوكلاء ومسارات العمل الذكية."
         },
         {
-          "title": "النشر والبنية التحتية",
-          "items": "Git / Linux / Docker / التكامل والنشر المستمر"
+          "title": "DevOps والبنية السحابية",
+          "description": "نشر قابل للتكرار وبنية تحتية سحابية."
+        },
+        {
+          "title": "هندسة البرمجيات",
+          "description": "بنية التطبيقات وقابلية التوسع وتحسين الأداء."
+        },
+        {
+          "title": "المعالجة غير المتزامنة والتخزين المؤقت",
+          "description": "مهام خلفية وطوابير عمل وتخزين مؤقت."
+        },
+        {
+          "title": "المصادقة والتكاملات",
+          "description": "وصول آمن وتكامل مع الخدمات الخارجية."
+        },
+        {
+          "title": "الاختبار وجودة البرمجيات",
+          "description": "التحقق من سلوك التطبيقات وأدائها."
+        },
+        {
+          "title": "إدارة الإصدارات والتعاون",
+          "description": "تغييرات موثّقة وتعاون بين فرق التطوير."
+        },
+        {
+          "title": "تطوير تطبيقات الأعمال",
+          "description": "أنظمة عملية للتجارة والعمليات اليومية."
         }
-      ]
+      ],
+      "specialization": "تطوير الواجهات الخلفية · هندسة البرمجيات · تكامل الذكاء الاصطناعي · النشر السحابي",
+      "featuredTitle": "التقنيات الأساسية",
+      "featuredNote": "أدوات أساسية في عملي على تطوير البرمجيات.",
+      "catalogTitle": "خبرات مترابطة، من الواجهة إلى البنية."
     },
     "process": {
       "label": "04 / منهج العمل",

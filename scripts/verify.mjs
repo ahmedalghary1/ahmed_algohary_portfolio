@@ -158,8 +158,9 @@ try {
  enhanced.page.on('request',request=>{if(/\/(scene\.js|three[^/]*\.js)/.test(request.url()))sceneRequests.push(request.url());});
  await enhanced.page.goto(`${url}/?lang=en`);
  await enhanced.page.waitForSelector('html.js');
- await check('The real portrait replaces the scene and has responsive, prioritized images',async()=>{
-  assert.equal(await enhanced.page.locator('canvas, #sculpture, .scene-toggle').count(),0);
+ await enhanced.page.waitForSelector('canvas');
+ await check('The real portrait remains alongside a single decorative scene',async()=>{
+  assert.equal(await enhanced.page.locator('canvas').count(),1);
   assert.equal(await enhanced.page.locator('.hero-portrait').getAttribute('fetchpriority'),'high');
   assert.equal(await enhanced.page.locator('[data-profile-image]').count(),2);
   assert.equal(await enhanced.page.locator('.hero-portrait').evaluate(async e=>{await e.decode();return e.naturalWidth>0;}),true);
@@ -170,12 +171,13 @@ try {
   const count=await enhanced.page.evaluate(()=>window.ScrollTrigger.getAll().length);
   for(let i=0;i<6;i++)await enhanced.page.locator('.header-controls [data-language]').click();
   await enhanced.page.waitForTimeout(200);
-  assert.equal(await enhanced.page.evaluate(()=>window.ScrollTrigger.getAll().length),count);assert.equal(await enhanced.page.locator('canvas').count(),0);
-  assert.deepEqual(sceneRequests,[]);
+  assert.equal(await enhanced.page.evaluate(()=>window.ScrollTrigger.getAll().length),count);assert.equal(await enhanced.page.locator('canvas').count(),1);
+  assert.ok(sceneRequests.length>0);
  });
  await enhanced.page.screenshot({path:'reports/screenshots/en-desktop-enhanced.png',fullPage:false});
  await check('Live reduced-motion preference preserves the portrait',async()=>{
   await enhanced.page.emulateMedia({reducedMotion:'reduce'});
+  await enhanced.page.waitForFunction(()=>document.querySelectorAll('canvas').length===0);
   assert.equal(await enhanced.page.locator('.hero-portrait').isVisible(),true);
   assert.equal(await enhanced.page.locator('canvas').count(),0);
  });

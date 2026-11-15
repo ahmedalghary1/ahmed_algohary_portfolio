@@ -1,0 +1,116 @@
+{
+  "results": [
+    {
+      "lang": "en",
+      "width": 320,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 1024,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "ar",
+      "width": 320,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "ar",
+      "width": 768,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "ar",
+      "width": 1024,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "categories": 11,
+      "entries": 78,
+      "unique": 77,
+      "featured": 12,
+      "overflow": false,
+      "axeViolations": 0,
+      "errors": []
+    }
+  ],
+  "normalMotion": true,
+  "noJavaScript": true
+}

@@ -1,0 +1,11 @@
+{
+  "results": [
+    "en: reverse/fast scroll, project controls, keyboard focus, details, pause/resume, resize and live reduced motion passed",
+    "ar: reverse/fast scroll, project controls, keyboard focus, details, pause/resume, resize and live reduced motion passed",
+    "WebGL unavailable: portrait and native HTML fallback remain usable",
+    "WebGL rendering stops after the finite idle introduction",
+    "WebGL context loss uses fallback; restoration retains a single renderer",
+    "Lifecycle cleanup removes canvas and ScrollTriggers"
+  ],
+  "errors": []
+}

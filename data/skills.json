@@ -1,0 +1,946 @@
+{
+  "categories": [
+    {
+      "id": "category-01",
+      "title": "Backend Development",
+      "order": 1,
+      "skills": [
+        "python",
+        "django",
+        "django-rest-framework-drf",
+        "django-ninja",
+        "fastapi",
+        "flask",
+        "restful-apis",
+        "graphql",
+        "api-design-development"
+      ]
+    },
+    {
+      "id": "category-02",
+      "title": "Frontend Development",
+      "order": 2,
+      "skills": [
+        "javascript",
+        "typescript",
+        "react-js",
+        "next-js",
+        "html",
+        "css",
+        "scss",
+        "tailwind-css",
+        "bootstrap",
+        "htmx",
+        "responsive-web-design",
+        "data-visualization"
+      ]
+    },
+    {
+      "id": "category-03",
+      "title": "Databases & Storage",
+      "order": 3,
+      "skills": [
+        "sql",
+        "postgresql",
+        "mysql",
+        "redis",
+        "dynamodb",
+        "pinecone",
+        "weaviate",
+        "vector-databases",
+        "relational-database-design",
+        "database-normalization",
+        "query-optimization",
+        "advanced-querying"
+      ]
+    },
+    {
+      "id": "category-04",
+      "title": "AI & Intelligent Systems",
+      "order": 4,
+      "skills": [
+        "generative-ai",
+        "langchain",
+        "autonomous-agents",
+        "vector-search-workflows",
+        "machine-learning-model-integration"
+      ]
+    },
+    {
+      "id": "category-05",
+      "title": "DevOps & Cloud Infrastructure",
+      "order": 5,
+      "skills": [
+        "docker",
+        "docker-compose",
+        "github-actions",
+        "ci-cd-pipelines",
+        "heroku",
+        "vercel",
+        "render",
+        "digitalocean",
+        "cloud-deployment"
+      ]
+    },
+    {
+      "id": "category-06",
+      "title": "Software Architecture",
+      "order": 6,
+      "skills": [
+        "microservices-architecture",
+        "scalable-application-architecture",
+        "saas-development",
+        "database-architecture",
+        "application-performance-optimization",
+        "application-profiling"
+      ]
+    },
+    {
+      "id": "category-07",
+      "title": "Asynchronous Processing & Caching",
+      "order": 7,
+      "skills": [
+        "celery",
+        "redis",
+        "background-jobs",
+        "asynchronous-task-processing",
+        "task-queues",
+        "caching"
+      ]
+    },
+    {
+      "id": "category-08",
+      "title": "Authentication & Integrations",
+      "order": 8,
+      "skills": [
+        "jwt-authentication",
+        "role-based-access-control-rbac",
+        "stripe",
+        "payment-gateway-integration",
+        "third-party-api-integration"
+      ]
+    },
+    {
+      "id": "category-09",
+      "title": "Testing & Software Quality",
+      "order": 9,
+      "skills": [
+        "unit-testing",
+        "integration-testing",
+        "functional-testing",
+        "performance-analysis"
+      ]
+    },
+    {
+      "id": "category-10",
+      "title": "Version Control & Collaboration",
+      "order": 10,
+      "skills": [
+        "git",
+        "github",
+        "frontend-backend-collaboration"
+      ]
+    },
+    {
+      "id": "category-11",
+      "title": "Business Application Development",
+      "order": 11,
+      "skills": [
+        "e-commerce-development",
+        "inventory-management-systems",
+        "product-catalog-management",
+        "order-fulfillment-systems",
+        "discount-engines",
+        "advanced-data-filtering",
+        "structured-data-management"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "python",
+      "name": "Python",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "python",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "django",
+      "name": "Django",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "django",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "django-rest-framework-drf",
+      "name": "Django REST Framework (DRF)",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "django",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "django-ninja",
+      "name": "Django Ninja",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "fastapi",
+      "name": "FastAPI",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "fastapi",
+      "featured": true,
+      "order": 5
+    },
+    {
+      "id": "flask",
+      "name": "Flask",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 6
+    },
+    {
+      "id": "restful-apis",
+      "name": "RESTful APIs",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 7
+    },
+    {
+      "id": "graphql",
+      "name": "GraphQL",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 8
+    },
+    {
+      "id": "api-design-development",
+      "name": "API Design & Development",
+      "categories": [
+        "category-01"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 9
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 10
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 11
+    },
+    {
+      "id": "react-js",
+      "name": "React.js",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "react",
+      "featured": true,
+      "order": 12
+    },
+    {
+      "id": "next-js",
+      "name": "Next.js",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "nextdotjs",
+      "featured": true,
+      "order": 13
+    },
+    {
+      "id": "html",
+      "name": "HTML",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 14
+    },
+    {
+      "id": "css",
+      "name": "CSS",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 15
+    },
+    {
+      "id": "scss",
+      "name": "SCSS",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 16
+    },
+    {
+      "id": "tailwind-css",
+      "name": "Tailwind CSS",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 17
+    },
+    {
+      "id": "bootstrap",
+      "name": "Bootstrap",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 18
+    },
+    {
+      "id": "htmx",
+      "name": "HTMX",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 19
+    },
+    {
+      "id": "responsive-web-design",
+      "name": "Responsive Web Design",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 20
+    },
+    {
+      "id": "data-visualization",
+      "name": "Data Visualization",
+      "categories": [
+        "category-02"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 21
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 22
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "postgresql",
+      "featured": true,
+      "order": 23
+    },
+    {
+      "id": "mysql",
+      "name": "MySQL",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 24
+    },
+    {
+      "id": "redis",
+      "name": "Redis",
+      "categories": [
+        "category-03",
+        "category-07"
+      ],
+      "icon": "redis",
+      "featured": true,
+      "order": 25
+    },
+    {
+      "id": "dynamodb",
+      "name": "DynamoDB",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 26
+    },
+    {
+      "id": "pinecone",
+      "name": "Pinecone",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 27
+    },
+    {
+      "id": "weaviate",
+      "name": "Weaviate",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 28
+    },
+    {
+      "id": "vector-databases",
+      "name": "Vector Databases",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 29
+    },
+    {
+      "id": "relational-database-design",
+      "name": "Relational Database Design",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 30
+    },
+    {
+      "id": "database-normalization",
+      "name": "Database Normalization",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 31
+    },
+    {
+      "id": "query-optimization",
+      "name": "Query Optimization",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 32
+    },
+    {
+      "id": "advanced-querying",
+      "name": "Advanced Querying",
+      "categories": [
+        "category-03"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 33
+    },
+    {
+      "id": "generative-ai",
+      "name": "Generative AI",
+      "categories": [
+        "category-04"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 34
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "categories": [
+        "category-04"
+      ],
+      "icon": "langchain",
+      "featured": true,
+      "order": 35
+    },
+    {
+      "id": "autonomous-agents",
+      "name": "Autonomous Agents",
+      "categories": [
+        "category-04"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 36
+    },
+    {
+      "id": "vector-search-workflows",
+      "name": "Vector Search Workflows",
+      "categories": [
+        "category-04"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 37
+    },
+    {
+      "id": "machine-learning-model-integration",
+      "name": "Machine Learning Model Integration",
+      "categories": [
+        "category-04"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 38
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "docker",
+      "featured": true,
+      "order": 39
+    },
+    {
+      "id": "docker-compose",
+      "name": "Docker Compose",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 40
+    },
+    {
+      "id": "github-actions",
+      "name": "GitHub Actions",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "githubactions",
+      "featured": true,
+      "order": 41
+    },
+    {
+      "id": "ci-cd-pipelines",
+      "name": "CI/CD Pipelines",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 42
+    },
+    {
+      "id": "heroku",
+      "name": "Heroku",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 43
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 44
+    },
+    {
+      "id": "render",
+      "name": "Render",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 45
+    },
+    {
+      "id": "digitalocean",
+      "name": "DigitalOcean",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 46
+    },
+    {
+      "id": "cloud-deployment",
+      "name": "Cloud Deployment",
+      "categories": [
+        "category-05"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 47
+    },
+    {
+      "id": "microservices-architecture",
+      "name": "Microservices Architecture",
+      "categories": [
+        "category-06"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 48
+    },
+    {
+      "id": "scalable-application-architecture",
+      "name": "Scalable Application Architecture",
+      "categories": [
+        "category-06"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 49
+    },
+    {
+      "id": "saas-development",
+      "name": "SaaS Development",
+      "categories": [
+        "category-06"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 50
+    },
+    {
+      "id": "database-architecture",
+      "name": "Database Architecture",
+      "categories": [
+        "category-06"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 51
+    },
+    {
+      "id": "application-performance-optimization",
+      "name": "Application Performance Optimization",
+      "categories": [
+        "category-06"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 52
+    },
+    {
+      "id": "application-profiling",
+      "name": "Application Profiling",
+      "categories": [
+        "category-06"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 53
+    },
+    {
+      "id": "celery",
+      "name": "Celery",
+      "categories": [
+        "category-07"
+      ],
+      "icon": "celery",
+      "featured": true,
+      "order": 54
+    },
+    {
+      "id": "background-jobs",
+      "name": "Background Jobs",
+      "categories": [
+        "category-07"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 55
+    },
+    {
+      "id": "asynchronous-task-processing",
+      "name": "Asynchronous Task Processing",
+      "categories": [
+        "category-07"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 56
+    },
+    {
+      "id": "task-queues",
+      "name": "Task Queues",
+      "categories": [
+        "category-07"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 57
+    },
+    {
+      "id": "caching",
+      "name": "Caching",
+      "categories": [
+        "category-07"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 58
+    },
+    {
+      "id": "jwt-authentication",
+      "name": "JWT Authentication",
+      "categories": [
+        "category-08"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 59
+    },
+    {
+      "id": "role-based-access-control-rbac",
+      "name": "Role-Based Access Control (RBAC)",
+      "categories": [
+        "category-08"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 60
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "categories": [
+        "category-08"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 61
+    },
+    {
+      "id": "payment-gateway-integration",
+      "name": "Payment Gateway Integration",
+      "categories": [
+        "category-08"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 62
+    },
+    {
+      "id": "third-party-api-integration",
+      "name": "Third-Party API Integration",
+      "categories": [
+        "category-08"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 63
+    },
+    {
+      "id": "unit-testing",
+      "name": "Unit Testing",
+      "categories": [
+        "category-09"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 64
+    },
+    {
+      "id": "integration-testing",
+      "name": "Integration Testing",
+      "categories": [
+        "category-09"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 65
+    },
+    {
+      "id": "functional-testing",
+      "name": "Functional Testing",
+      "categories": [
+        "category-09"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 66
+    },
+    {
+      "id": "performance-analysis",
+      "name": "Performance Analysis",
+      "categories": [
+        "category-09"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 67
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "categories": [
+        "category-10"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 68
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "categories": [
+        "category-10"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 69
+    },
+    {
+      "id": "frontend-backend-collaboration",
+      "name": "Frontend–Backend Collaboration",
+      "categories": [
+        "category-10"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 70
+    },
+    {
+      "id": "e-commerce-development",
+      "name": "E-commerce Development",
+      "categories": [
+        "category-11"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 71
+    },
+    {
+      "id": "inventory-management-systems",
+      "name": "Inventory Management Systems",
+      "categories": [
+        "category-11"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 72
+    },
+    {
+      "id": "product-catalog-management",
+      "name": "Product Catalog Management",
+      "categories": [
+        "category-11"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 73
+    },
+    {
+      "id": "order-fulfillment-systems",
+      "name": "Order Fulfillment Systems",
+      "categories": [
+        "category-11"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 74
+    },
+    {
+      "id": "discount-engines",
+      "name": "Discount Engines",
+      "categories": [
+        "category-11"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 75
+    },
+    {
+      "id": "advanced-data-filtering",
+      "name": "Advanced Data Filtering",
+      "categories": [
+        "category-11"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 76
+    },
+    {
+      "id": "structured-data-management",
+      "name": "Structured Data Management",
+      "categories": [
+        "category-11"
+      ],
+      "icon": "competency",
+      "featured": false,
+      "order": 77
+    }
+  ],
+  "featured": [
+    "python",
+    "django",
+    "django-rest-framework-drf",
+    "fastapi",
+    "postgresql",
+    "redis",
+    "celery",
+    "docker",
+    "react-js",
+    "next-js",
+    "github-actions",
+    "langchain"
+  ]
+}
