@@ -1314,5 +1314,52 @@
     "next-js",
     "github-actions",
     "langchain"
+  ],
+  "homepageGroups": [
+    {
+      "title": {
+        "en": "Frontend",
+        "ar": "الواجهات"
+      },
+      "skills": [
+        "html",
+        "css",
+        "javascript",
+        "react-js"
+      ]
+    },
+    {
+      "title": {
+        "en": "Backend",
+        "ar": "الأنظمة الخلفية"
+      },
+      "skills": [
+        "python",
+        "django",
+        "django-rest-framework-drf",
+        "restful-apis"
+      ]
+    },
+    {
+      "title": {
+        "en": "Data",
+        "ar": "البيانات"
+      },
+      "skills": [
+        "postgresql",
+        "redis"
+      ]
+    },
+    {
+      "title": {
+        "en": "Delivery & tools",
+        "ar": "التسليم والأدوات"
+      },
+      "skills": [
+        "docker",
+        "git",
+        "github"
+      ]
+    }
   ]
 }

@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 from render_sections import experience_section, case_study, architecture_section, seo_markup
 LOCALE='ar' if '--arabic' in sys.argv else 'en'
 D=json.loads(Path('data/portfolio.json').read_text(encoding='utf-8'));EN=D[LOCALE];P=D['profile']
-styles='\n'.join(Path(f'css/{name}.css').read_text(encoding='utf-8-sig') for name in ['tokens','base','layout','components','responsive','motion','skills','engineering'])
+styles='\n'.join(Path(f'css/{name}.css').read_text(encoding='utf-8-sig') for name in ['tokens','base','layout','components','responsive','motion','skills','engineering','refactor'])
 styles=re.sub(r'/\*[\s\S]*?\*/','',styles)
 styles=re.sub(r'\s+',' ',styles)
 styles=re.sub(r'\s*([{};])\s*',r'\1',styles).strip()
@@ -28,7 +28,7 @@ def copy(key,tag='span',cls='',attrs=''):
 def attr(key):return escape(value(key,LOCALE),quote=True)
 arrow='<span class="arrow" aria-hidden="true">↗</span>'
 portrait_srcset=(f' srcset="{escape(P["portraitSrcset"],quote=True)}"' if P.get('portraitSrcset') else '')
-nav=''.join(f'<a href="#{k}">{copy("nav."+k)}</a>' for k in ['work','architecture','about','experience','expertise','process','contact'])
+nav=''.join(f'<a href="#{k}">{copy("nav."+k)}</a>' for k in ['top','work','services','about','contact'])
 cv=P.get('cv') if P.get('cv') and Path(P['cv']).is_file() else None
 resume=f'<a class="nav-resume" href="{escape(cv,quote=True)}" download>{copy("nav.resume")}</a>' if cv else ''
 hero_resume=f'<a class="text-link" href="{escape(cv,quote=True)}" download>{copy("hero.resume")}<span aria-hidden="true">↓</span></a>' if cv else ''
@@ -119,8 +119,8 @@ html=f'''<!doctype html>
 </header>
 <main id="main" tabindex="-1">
 <section class="hero wrap" aria-labelledby="hero-title">
-<div class="hero-top"><p class="eyebrow">{copy('title')}</p>{copy('hero.intro','p','meta')}</div>
-<div class="hero-grid"><div class="hero-content"><h1 id="hero-title">{copy('hero.line1','span','hero-line')}{copy('hero.line2','span','hero-line')}{copy('hero.line3','span','hero-line expressive')}</h1>{copy('hero.description','p','hero-description')}<div class="hero-actions"><a class="button" href="#work">{copy('hero.work')}{arrow}</a><a class="text-link" href="#contact">{copy('hero.contact')}{arrow}</a>{hero_resume}</div></div>
+<div class="hero-top"><p class="eyebrow">{copy('title')}</p></div>
+<div class="hero-grid"><div class="hero-content"><h1 id="hero-title">{copy('hero.line1','span','hero-line')}{copy('hero.line2','span','hero-line')}{copy('hero.line3','span','hero-line hero-accent')}</h1>{copy('hero.description','p','hero-description')}<div class="hero-actions"><a class="button" href="#work">{copy('hero.work')}{arrow}</a><a class="text-link" href="#contact">{copy('hero.contact')}{arrow}</a></div></div>
 <figure class="hero-art"><div class="hero-portrait-frame"><img class="hero-portrait" src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) min(100vw - 40px, 320px), (max-width:1100px) 40vw, 420px" data-profile-image width="1122" height="1402" fetchpriority="high" decoding="async" alt="{attr('hero.portraitAlt')}" data-copy-alt="hero.portraitAlt"></div><figcaption><div>{copy('name','span','portrait-name')}{copy('title','p')}</div><span class="portrait-signature" aria-hidden="true">↗</span></figcaption></figure></div>
 <div class="hero-bottom">{copy('hero.index','p','meta')}<a class="scroll-cue" href="#work">{copy('hero.scroll')}<span aria-hidden="true">↓</span></a></div>
 </section>

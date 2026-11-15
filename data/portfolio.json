@@ -26,7 +26,19 @@
         },
         "preview": "assets/images/projects/garment-factory-1920.webp",
         "url": null,
-        "private": true
+        "private": true,
+        "slug": "garment-factory",
+        "featured": true,
+        "technologies": [],
+        "repositoryUrl": null,
+        "status": "private",
+        "screenshots": [
+          {
+            "src": "assets/images/projects/garment-factory-1920.webp",
+            "thumbnail": "assets/images/projects/garment-factory-1600.webp",
+            "altKey": "projects.0.alt"
+          }
+        ]
       },
       {
         "id": "rocks-ev",
@@ -41,7 +53,19 @@
         },
         "preview": "assets/images/projects/rocks-ev-1632.webp",
         "url": "https://rocks-ev.com/",
-        "private": false
+        "private": false,
+        "slug": "rocks-ev",
+        "featured": false,
+        "technologies": [],
+        "repositoryUrl": null,
+        "status": "public",
+        "screenshots": [
+          {
+            "src": "assets/images/projects/rocks-ev-1632.webp",
+            "thumbnail": "assets/images/projects/rocks-ev-1600.webp",
+            "altKey": "projects.1.alt"
+          }
+        ]
       },
       {
         "id": "bonyan",
@@ -56,22 +80,19 @@
         },
         "preview": "assets/images/projects/bonyan-1920.webp",
         "url": "https://bonyan-nine.vercel.app/",
-        "private": false
-      },
-      {
-        "id": "ahmed-gamal",
-        "image": "ahmed-gamal",
-        "images": {
-          "en": "assets/images/projects/ahmed-gamal-1600.webp",
-          "ar": "assets/images/projects/ahmed-gamal-1600.webp"
-        },
-        "srcset": {
-          "en": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w",
-          "ar": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w"
-        },
-        "preview": "assets/images/projects/ahmed-gamal-1920.webp",
-        "url": "https://ahmed-gamal-seven.vercel.app/",
-        "private": false
+        "private": false,
+        "slug": "bonyan",
+        "featured": false,
+        "technologies": [],
+        "repositoryUrl": null,
+        "status": "public",
+        "screenshots": [
+          {
+            "src": "assets/images/projects/bonyan-1920.webp",
+            "thumbnail": "assets/images/projects/bonyan-1600.webp",
+            "altKey": "projects.2.alt"
+          }
+        ]
       },
       {
         "id": "ahmed-nabil",
@@ -86,7 +107,46 @@
         },
         "preview": "assets/images/projects/ahmed-nabil-1920.webp",
         "url": "https://ahmed-nabil-sooty.vercel.app/",
-        "private": false
+        "private": false,
+        "slug": "ahmed-nabil",
+        "featured": false,
+        "technologies": [],
+        "repositoryUrl": null,
+        "status": "public",
+        "screenshots": [
+          {
+            "src": "assets/images/projects/ahmed-nabil-1920.webp",
+            "thumbnail": "assets/images/projects/ahmed-nabil-1600.webp",
+            "altKey": "projects.3.alt"
+          }
+        ]
+      },
+      {
+        "id": "ahmed-gamal",
+        "image": "ahmed-gamal",
+        "images": {
+          "en": "assets/images/projects/ahmed-gamal-1600.webp",
+          "ar": "assets/images/projects/ahmed-gamal-1600.webp"
+        },
+        "srcset": {
+          "en": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w",
+          "ar": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w"
+        },
+        "preview": "assets/images/projects/ahmed-gamal-1920.webp",
+        "url": "https://ahmed-gamal-seven.vercel.app/",
+        "private": false,
+        "slug": "ahmed-gamal",
+        "featured": false,
+        "technologies": [],
+        "repositoryUrl": null,
+        "status": "public",
+        "screenshots": [
+          {
+            "src": "assets/images/projects/ahmed-gamal-1920.webp",
+            "thumbnail": "assets/images/projects/ahmed-gamal-1600.webp",
+            "altKey": "projects.4.alt"
+          }
+        ]
       }
     ],
     "leetcode": "https://leetcode.com/u/ahmedalgohary/",
@@ -194,15 +254,29 @@
           "external"
         ]
       ]
-    }
+    },
+    "services": [
+      {
+        "project": "bonyan"
+      },
+      {
+        "project": "rocks-ev"
+      },
+      {
+        "project": "garment-factory"
+      },
+      {
+        "project": null
+      }
+    ]
   },
   "en": {
     "name": "Ahmed Algohary",
     "wordmark": "Ahmed Algohary",
-    "title": "Full-Stack Python Developer",
+    "title": "Full-Stack Software Developer",
     "seo": {
-      "title": "Ahmed Algohary — Full-Stack Python Developer",
-      "description": "Full-Stack Python Developer building Django APIs, intelligent applications and reliable business systems. Explore selected projects, software architecture and professional experience."
+      "title": "Ahmed Algohary — Full-Stack Software Developer",
+      "description": "Websites, e-commerce and business management systems by Ahmed Algohary. Explore real projects and discuss your next software project."
     },
     "nav": {
       "work": "Work",
@@ -219,30 +293,32 @@
       "footer": "Footer navigation",
       "architecture": "Architecture",
       "experience": "Experience",
-      "resume": "Resume"
+      "resume": "Resume",
+      "top": "Home",
+      "services": "Services"
     },
     "hero": {
       "intro": "Backend / Architecture / Intelligent applications / Cloud",
-      "line1": "Engineering",
-      "line2": "the digital.",
-      "line3": "With intention.",
-      "description": "I engineer software that works beyond the screen. Scalable backends, intelligent applications and reliable business systems.",
+      "line1": "I build websites,",
+      "line2": "applications and",
+      "line3": "business systems.",
+      "description": "From modern websites and e-commerce platforms to custom systems that keep your business running.",
       "work": "Explore my work",
-      "contact": "Get in touch",
+      "contact": "Let’s talk",
       "portraitAlt": "Portrait of Ahmed Algohary, Full-Stack Python Developer.",
       "index": "Ahmed Algohary / Full-Stack Python Developer",
       "scroll": "Scroll to explore",
       "resume": "Download resume"
     },
     "work": {
-      "label": "02 / Selected work",
-      "title": "Complexity,\nmade usable.",
-      "intro": "Business systems, commerce and purposeful interfaces. Five projects, each with a different problem to solve.",
+      "label": "01 / Selected projects",
+      "title": "Built for real work.",
+      "intro": "Business systems, online stores and websites.",
       "sample": "Client project",
-      "details": "Read case study",
+      "details": "View case study",
       "problem": "The problem",
       "solution": "The solution",
-      "role": "My responsibilities",
+      "role": "My role",
       "stack": "Project focus",
       "preview": "Project screenshot",
       "closeDetails": "Close case study",
@@ -251,23 +327,26 @@
       "private": "Private system",
       "privatePreview": "Redacted screenshot",
       "visit": "Visit website",
-      "featured": "Featured / Business systems",
+      "featured": "Featured project",
       "overview": "Project overview",
       "features": "Key features",
       "architecture": "Technical architecture",
       "technology": "Technology stack",
       "challenge": "Engineering challenges",
       "results": "Results & lessons",
-      "gallery": "Project gallery",
+      "gallery": "Interface preview",
       "stackUnknown": "The project-specific framework and infrastructure are not publicly documented.",
       "galleryNote": "Original project imagery. No generated mockups.",
-      "newTab": "opens in a new tab"
+      "newTab": "opens in a new tab",
+      "next": "Next project",
+      "back": "All projects",
+      "links": "Explore the project"
     },
     "projects": [
       {
         "title": "Garment factory system",
-        "category": "Business software / Private company system",
-        "description": "A management system for a garment business, bringing sales, purchasing, inventory and accounts into one workspace.",
+        "category": "Business management system",
+        "description": "Sales, purchasing, inventory and accounts in one Arabic workspace.",
         "problem": "Bring the daily operations of a garment business together in a clear workspace, with quick access to the tasks staff use most.",
         "solution": "An Arabic dashboard with shortcuts for invoices, purchasing, customers, products and treasury, alongside reporting and inventory navigation.",
         "role": "Development of a garment factory management system. The preview has been redacted; company identity, internal data, access credentials and a live link are not shared.",
@@ -283,14 +362,15 @@
           "architecture": "The public view connects sales, purchasing, inventory and accounts through an Arabic operational dashboard. Internal service boundaries and infrastructure remain confidential.",
           "challenge": "Make frequently used operational tasks easy to reach while keeping sensitive business information out of the public preview.",
           "results": "A redacted view of the working system is available here. Client data, performance figures and internal implementation details are not published."
-        }
+        },
+        "overview": "A management system for a garment business, bringing sales, purchasing, inventory and accounts into one workspace."
       },
       {
         "title": "ROCKS EV",
-        "category": "E-commerce / Electrical products",
-        "description": "An online store for EV charging and electrical products, with a bold identity and a clear route into the catalogue.",
+        "category": "E-commerce",
+        "description": "An online store for EV charging products, with clear routes to products and purchasing information.",
         "problem": "Give an electrical products brand a storefront that communicates its identity and helps customers find products and purchasing information.",
-        "solution": "A dark storefront with vivid green accents, product navigation and visible entry points for the buying guide, quotations, order tracking and support.",
+        "solution": "Product navigation connects shoppers with the catalogue, buying guide, quotation requests, order tracking and support.",
         "role": "Development of the ROCKS EV e-commerce website, presenting the brand and its electrical product range through a consistent storefront.",
         "highlights": [
           "E-commerce",
@@ -304,12 +384,13 @@
           "architecture": "The visible experience connects product discovery with buying guidance, quotations, order tracking and support. Backend service boundaries are not disclosed.",
           "challenge": "Organize a specialist electrical product range with clear routes to purchasing information and support.",
           "results": "The public storefront and its original screenshot can be explored here. No sales or performance metrics are claimed."
-        }
+        },
+        "overview": "An online store for EV charging and electrical products, with a bold identity and a clear route into the catalogue."
       },
       {
         "title": "Bonyan",
-        "category": "Marketing / Company website",
-        "description": "A corporate website for Bonyan, presenting its marketing and business development services with a distinct visual identity.",
+        "category": "Corporate website",
+        "description": "A company website presenting marketing services and a direct path to consultation.",
         "problem": "Translate the company’s positioning and range of services into a clear introduction for prospective clients.",
         "solution": "An Arabic-led experience in blue and turquoise, with sections for services, sectors and working methodology, plus clear paths to consultation and contact.",
         "role": "Development of Bonyan’s company website, organizing its identity, services and contact paths into a cohesive digital presence.",
@@ -325,33 +406,13 @@
           "architecture": "The public site organizes company information, services, sectors and consultation paths. Its implementation stack is not documented in the supplied project record.",
           "challenge": "Present a broad service offering with a consistent Arabic-led identity and a clear route to consultation.",
           "results": "The public company website is available. The project demonstrates the value of clear information hierarchy; no conversion metrics are supplied."
-        }
-      },
-      {
-        "title": "Ahmed Gamal",
-        "category": "Personal brand / Portfolio website",
-        "description": "A personal portfolio bringing customer service, sales and creative work together in one clear digital presence.",
-        "problem": "Present a professional whose work spans customer service, sales, design and video editing without losing the connection between those disciplines.",
-        "solution": "A light visual identity, a prominent personal introduction and clearly arranged sections for experience, services, work and skills, with direct access to contact and the CV.",
-        "role": "Development of Ahmed Gamal’s portfolio website, bringing his professional profile and creative services into a cohesive web experience.",
-        "highlights": [
-          "Personal portfolio",
-          "Professional profile",
-          "Creative services"
-        ],
-        "alt": "Ahmed Gamal’s portfolio homepage with a light blue background, professional portrait and introduction to his customer service and creative work.",
-        "previewLabel": "Full size — Ahmed Gamal. Project screenshot (opens in a new tab)",
-        "visitLabel": "Visit website — Ahmed Gamal (opens in a new tab)",
-        "caseStudy": {
-          "architecture": "A presentation website organizes the professional introduction, experience, services, work and contact options. No backend architecture is claimed.",
-          "challenge": "Bring several professional disciplines into one coherent profile without obscuring the main introduction.",
-          "results": "The public portfolio is available alongside its original screenshot. No client performance or audience-growth figures are supplied."
-        }
+        },
+        "overview": "A corporate website for Bonyan, presenting its marketing and business development services with a distinct visual identity."
       },
       {
         "title": "Ahmed Nabil",
-        "category": "Personal brand / IT portfolio",
-        "description": "A technical portfolio for Ahmed Nabil, presenting his system administration and IT support profile with a focused visual language.",
+        "category": "Personal website",
+        "description": "A personal website presenting an IT specialist’s experience and qualifications.",
         "problem": "Give a technical professional a personal website that makes his expertise, qualifications and experience easy to explore.",
         "solution": "A dark, network-inspired interface with dedicated navigation for skills, certifications, experience and education, alongside visible CV and contact options.",
         "role": "Development of Ahmed Nabil’s personal portfolio, bringing his technical profile and professional experience together in a structured website.",
@@ -367,15 +428,38 @@
           "architecture": "The interface organizes a technical profile into skills, certifications, experience, education and contact. No private systems or infrastructure are represented.",
           "challenge": "Keep technical qualifications and career information easy to scan within a network-inspired visual identity.",
           "results": "The public portfolio and original screenshot are available. The documented outcome is a structured professional presence; no audience metrics are claimed."
-        }
+        },
+        "overview": "A technical portfolio for Ahmed Nabil, presenting his system administration and IT support profile with a focused visual language."
+      },
+      {
+        "title": "Ahmed Gamal",
+        "category": "Personal website",
+        "description": "A portfolio connecting customer service, sales and creative work.",
+        "problem": "Present a professional whose work spans customer service, sales, design and video editing without losing the connection between those disciplines.",
+        "solution": "A light visual identity, a prominent personal introduction and clearly arranged sections for experience, services, work and skills, with direct access to contact and the CV.",
+        "role": "Development of Ahmed Gamal’s portfolio website, bringing his professional profile and creative services into a cohesive web experience.",
+        "highlights": [
+          "Personal portfolio",
+          "Professional profile",
+          "Creative services"
+        ],
+        "alt": "Ahmed Gamal’s portfolio homepage with a light blue background, professional portrait and introduction to his customer service and creative work.",
+        "previewLabel": "Full size — Ahmed Gamal. Project screenshot (opens in a new tab)",
+        "visitLabel": "Visit website — Ahmed Gamal (opens in a new tab)",
+        "caseStudy": {
+          "architecture": "A presentation website organizes the professional introduction, experience, services, work and contact options. No backend architecture is claimed.",
+          "challenge": "Bring several professional disciplines into one coherent profile without obscuring the main introduction.",
+          "results": "The public portfolio is available alongside its original screenshot. No client performance or audience-growth figures are supplied."
+        },
+        "overview": "A personal portfolio bringing customer service, sales and creative work together in one clear digital presence."
       }
     ],
     "about": {
-      "label": "04 / About me",
-      "title": "An engineer’s mind.\nA practical purpose.",
+      "label": "04 / About",
+      "title": "Ahmed Algohary",
       "intro": "Good software starts with understanding what people actually need.",
-      "bio": "I’m Ahmed Algohary, a Full-Stack Python Developer based in Egypt. I build Python backends, RESTful APIs and full-stack applications, with experience in business management systems and modern web interfaces.",
-      "philosophy": "I care about the structure behind the experience: useful data models, clear service boundaries, readable code and dependable deployment. My work also includes performance optimization and integrating AI into applications.",
+      "bio": "I’m a software developer based in Egypt. I focus on turning everyday business workflows into software that is clear to use and straightforward to maintain.",
+      "philosophy": "I work across the interface, application logic and data, keeping the people using the system at the centre of each decision.",
       "interests": "Areas of interest",
       "interestText": "Reliable business software, database architecture, intelligent applications and cloud deployment.",
       "caption": "Ahmed Algohary / Full-Stack Python Developer",
@@ -419,41 +503,33 @@
       "explore": "Explore skills"
     },
     "process": {
-      "label": "07 / Engineering process",
-      "title": "Clarity before code.",
-      "intro": "Six connected stages, from understanding the problem to improving the system.",
+      "label": "05 / How we work",
+      "title": "From idea to delivery.",
+      "intro": "",
       "steps": [
         {
-          "title": "Discovery & analysis",
-          "text": "Understand the business, its users, constraints and operational workflows."
+          "title": "Discover",
+          "text": "Understand your goals and how your business works."
         },
         {
-          "title": "System design",
-          "text": "Shape architecture, data models, API contracts, integrations and security."
+          "title": "Design",
+          "text": "Map the experience, data and solution."
         },
         {
-          "title": "Implementation",
-          "text": "Build maintainable services, interfaces and business logic in focused iterations."
+          "title": "Develop",
+          "text": "Build and review working software together."
         },
         {
-          "title": "Quality assurance",
-          "text": "Test behavior, integrations, edge cases, performance and usability."
-        },
-        {
-          "title": "Deployment",
-          "text": "Prepare production infrastructure, environments and repeatable delivery pipelines."
-        },
-        {
-          "title": "Continuous improvement",
-          "text": "Monitor behavior, investigate issues and refine performance as systems evolve."
+          "title": "Deliver",
+          "text": "Test, launch and hand over the project."
         }
       ]
     },
     "contact": {
-      "label": "08 / Contact & resume",
-      "title": "Have a complex problem?\nLet’s engineer a solution.",
-      "invitation": "A conversation is a good place to start.",
-      "description": "Tell me about your requirements, your constraints and what needs to work better. Get in touch directly or prepare a short WhatsApp message.",
+      "label": "06 / Let’s talk",
+      "title": "Have a project in mind?",
+      "invitation": "Let’s build something useful.",
+      "description": "Share your idea. We’ll work out the right next step.",
       "whatsapp": "WhatsApp",
       "startChat": "Start a conversation",
       "directTitle": "Contact me directly",
@@ -495,10 +571,10 @@
       "languageLabel": "العربية — Switch to Arabic"
     },
     "stack": {
-      "label": "01 / Core technologies",
-      "title": "A considered toolkit.",
-      "intro": "From the API to the interface.",
-      "note": "Technologies I work with; individual project stacks vary."
+      "label": "03 / Technology",
+      "title": "Tools behind the work.",
+      "intro": "",
+      "note": "A selection of my toolkit. Each project uses what its requirements call for."
     },
     "experience": {
       "label": "05 / Professional experience",
@@ -593,15 +669,41 @@
       "enable": "Enable motion",
       "previous": "Previous project",
       "next": "Next project"
+    },
+    "services": {
+      "label": "02 / Services",
+      "title": "What I build",
+      "items": [
+        {
+          "title": "Web development",
+          "text": "Clear, responsive websites for companies and independent professionals.",
+          "project": "See Bonyan"
+        },
+        {
+          "title": "E-commerce",
+          "text": "Online stores that connect your products with customers and purchasing information.",
+          "project": "See ROCKS EV"
+        },
+        {
+          "title": "Business management systems",
+          "text": "Connected tools for inventory, sales, purchasing and everyday operations.",
+          "project": "See the factory system"
+        },
+        {
+          "title": "Backend & APIs",
+          "text": "Application logic, secure APIs and database integrations that keep your tools connected.",
+          "project": "Discuss your requirements"
+        }
+      ]
     }
   },
   "ar": {
     "name": "أحمد الجوهري",
     "wordmark": "أحمد الجوهري",
-    "title": "مطوّر Python متكامل",
+    "title": "مطور برمجيات Full-Stack",
     "seo": {
-      "title": "أحمد الجوهري — مطوّر Python متكامل",
-      "description": "أحمد الجوهري، مطوّر Python متكامل يبني واجهات برمجية وتطبيقات ذكية وأنظمة أعمال موثوقة. استكشف المشاريع والبنية البرمجية والخبرات المهنية."
+      "title": "أحمد الجوهري — مطور برمجيات Full-Stack",
+      "description": "مواقع ومتاجر إلكترونية وأنظمة إدارة أعمال من تطوير أحمد الجوهري. تصفح المشاريع وتواصل لمناقشة مشروعك القادم."
     },
     "nav": {
       "work": "الأعمال",
@@ -618,15 +720,17 @@
       "footer": "روابط التذييل",
       "architecture": "البنية",
       "experience": "الخبرة",
-      "resume": "السيرة الذاتية"
+      "resume": "السيرة الذاتية",
+      "top": "الرئيسية",
+      "services": "الخدمات"
     },
     "hero": {
       "intro": "الأنظمة الخلفية / البنية البرمجية / التطبيقات الذكية / السحابة",
-      "line1": "أهندس التجربة",
-      "line2": "الرقمية.",
-      "line3": "برؤية واضحة.",
-      "description": "أبني برمجيات يتجاوز أثرها حدود الشاشة. أنظمة خلفية قابلة للتوسع، وتطبيقات ذكية، وحلول أعمال يمكن الاعتماد عليها.",
-      "work": "استكشف أعمالي",
+      "line1": "أطوّر مواقع وتطبيقات",
+      "line2": "وأنظمة لإدارة",
+      "line3": "الأعمال.",
+      "description": "من المواقع والمتاجر الإلكترونية إلى أنظمة مخصصة لتنظيم أعمال الشركات والمصانع.",
+      "work": "تصفح أعمالي",
       "contact": "تواصل معي",
       "portraitAlt": "الصورة الشخصية لأحمد الجوهري، مطوّر Python متكامل.",
       "index": "أحمد الجوهري / مطوّر Python متكامل",
@@ -634,14 +738,14 @@
       "resume": "تحميل السيرة الذاتية"
     },
     "work": {
-      "label": "02 / أعمال مختارة",
-      "title": "من التعقيد\nإلى الوضوح.",
-      "intro": "أنظمة أعمال، وتجارة إلكترونية، وواجهات تخدم هدفًا واضحًا. خمسة مشاريع، ولكل منها تحدٍ مختلف.",
+      "label": "01 / مشاريع مختارة",
+      "title": "حلول تعمل على أرض الواقع.",
+      "intro": "أنظمة أعمال ومتاجر إلكترونية ومواقع.",
       "sample": "مشروع لعميل",
-      "details": "اقرأ دراسة المشروع",
+      "details": "تفاصيل المشروع",
       "problem": "المشكلة",
       "solution": "الحل",
-      "role": "مسؤولياتي",
+      "role": "دوري في المشروع",
       "stack": "مجالات المشروع",
       "preview": "صورة من المشروع",
       "closeDetails": "إغلاق دراسة المشروع",
@@ -650,23 +754,26 @@
       "private": "نظام خاص",
       "privatePreview": "صورة منقّحة",
       "visit": "زيارة الموقع",
-      "featured": "مشروع رئيسي / أنظمة الأعمال",
+      "featured": "المشروع الرئيسي",
       "overview": "نظرة عامة",
       "features": "الخصائص الأساسية",
       "architecture": "البنية التقنية",
       "technology": "التقنيات المستخدمة",
       "challenge": "التحديات الهندسية",
       "results": "النتائج والدروس",
-      "gallery": "صور المشروع",
+      "gallery": "معاينة الواجهة",
       "stackUnknown": "لم تُوثَّق أطر العمل والبنية التحتية الخاصة بهذا المشروع للنشر العام.",
       "galleryNote": "صور فعلية للمشروع، دون نماذج مولّدة.",
-      "newTab": "يفتح في علامة تبويب جديدة"
+      "newTab": "يفتح في علامة تبويب جديدة",
+      "next": "المشروع التالي",
+      "back": "جميع المشاريع",
+      "links": "استكشف المشروع"
     },
     "projects": [
       {
         "title": "نظام إدارة مصنع ملابس",
-        "category": "أنظمة أعمال / نظام داخلي خاص",
-        "description": "نظام لإدارة أعمال مصنع ملابس، يجمع المبيعات والمشتريات والمخزون والحسابات في مساحة عمل واحدة.",
+        "category": "نظام إدارة أعمال",
+        "description": "المبيعات والمشتريات والمخزون والحسابات في مساحة عمل عربية واحدة.",
         "problem": "تجميع العمليات اليومية لنشاط الملابس في واجهة واضحة، مع وصول سريع للمهام الأكثر استخدامًا.",
         "solution": "لوحة إدارة عربية باختصارات للفواتير والمشتريات والعملاء والمنتجات والخزنة، إلى جانب أقسام التقارير والمخزون.",
         "role": "تطوير نظام لإدارة مصنع ملابس. صورة العرض منقّحة، ولا تُنشر هوية الشركة أو بياناتها الداخلية أو بيانات الدخول أو رابط النظام.",
@@ -682,14 +789,15 @@
           "architecture": "تجمع الواجهة المعروضة المبيعات والمشتريات والمخزون والحسابات في لوحة تشغيل عربية. تبقى حدود الخدمات والبنية الداخلية سرية.",
           "challenge": "تسهيل الوصول إلى المهام التشغيلية المتكررة مع حماية بيانات الشركة في العرض العام.",
           "results": "تتوفر هنا صورة من النظام بعد حجب البيانات الحساسة. لا تُنشر بيانات العميل أو مؤشرات الأداء أو تفاصيل التنفيذ الداخلية."
-        }
+        },
+        "overview": "نظام لإدارة أعمال مصنع ملابس، يجمع المبيعات والمشتريات والمخزون والحسابات في مساحة عمل واحدة."
       },
       {
         "title": "روكس — ROCKS EV",
-        "category": "تجارة إلكترونية / منتجات كهربائية",
-        "description": "متجر إلكتروني لمنتجات شحن السيارات الكهربائية والمنتجات الكهربائية، بهوية قوية ومسار واضح لاستكشاف المنتجات.",
+        "category": "متجر إلكتروني",
+        "description": "متجر لمنتجات شحن السيارات الكهربائية، يسهّل الوصول للمنتجات ومعلومات الشراء.",
         "problem": "بناء واجهة متجر تعبّر عن هوية العلامة وتساعد العملاء على الوصول إلى المنتجات ومعلومات الشراء بسهولة.",
-        "solution": "واجهة داكنة بلمسات خضراء، وتنقّل واضح بين المنتجات، ومداخل لدليل الشراء وطلب عرض سعر وتتبع الطلبات والدعم.",
+        "solution": "تنقل واضح يربط الزائر بدليل المنتجات ومعلومات الشراء وطلب عروض الأسعار وتتبع الطلبات والدعم.",
         "role": "تطوير متجر روكس الإلكتروني، وعرض هوية العلامة ومنتجاتها الكهربائية ضمن تجربة متجر متناسقة.",
         "highlights": [
           "متجر إلكتروني",
@@ -703,12 +811,13 @@
           "architecture": "يربط المتجر المعروض استكشاف المنتجات بدليل الشراء وطلبات عروض الأسعار وتتبع الطلبات والدعم. لا تُعرض بنية الخدمات الخلفية.",
           "challenge": "تنظيم منتجات كهربائية متخصصة مع مسارات واضحة لمعلومات الشراء والدعم.",
           "results": "يمكن استكشاف المتجر العام وصورته الأصلية. لا تُقدَّم ادعاءات عن المبيعات أو مؤشرات الأداء."
-        }
+        },
+        "overview": "متجر إلكتروني لمنتجات شحن السيارات الكهربائية والمنتجات الكهربائية، بهوية قوية ومسار واضح لاستكشاف المنتجات."
       },
       {
         "title": "بنيان",
-        "category": "تسويق / موقع شركة",
-        "description": "موقع تعريفي لشركة بنيان، يعرض خدمات التسويق وتطوير الأعمال بهوية بصرية مميزة وتجربة واضحة.",
+        "category": "موقع شركة",
+        "description": "موقع يعرض خدمات التسويق وتطوير الأعمال، مع وصول مباشر لطلب استشارة.",
         "problem": "تحويل هوية الشركة وتنوّع خدماتها إلى عرض واضح يساعد العملاء المحتملين على التعرّف إليها.",
         "solution": "تجربة بصرية بالأزرق والفيروزي، وأقسام للخدمات والقطاعات ومنهجية العمل، مع مسارات واضحة لطلب الاستشارة والتواصل.",
         "role": "تطوير موقع شركة بنيان، وتنظيم هويتها وخدماتها ووسائل التواصل ضمن حضور رقمي متكامل.",
@@ -724,33 +833,13 @@
           "architecture": "ينظم الموقع معلومات الشركة وخدماتها وقطاعاتها وطرق طلب الاستشارة. لا يتضمن سجل المشروع المتاح توثيقًا لتقنيات التنفيذ.",
           "challenge": "تقديم مجموعة متنوعة من الخدمات بهوية عربية متسقة ومسار واضح لطلب الاستشارة.",
           "results": "الموقع العام للشركة متاح. يوضح المشروع أهمية ترتيب المعلومات؛ لا تتوفر مؤشرات موثقة للتحويل."
-        }
-      },
-      {
-        "title": "أحمد جمال",
-        "category": "هوية شخصية / موقع بورتفوليو",
-        "description": "بورتفوليو شخصي يجمع خبرات خدمة العملاء والمبيعات والأعمال الإبداعية في حضور رقمي واضح ومترابط.",
-        "problem": "تقديم مسيرة مهنية تجمع بين خدمة العملاء والمبيعات والتصميم والمونتاج، مع توضيح العلاقة بين هذه المجالات.",
-        "solution": "هوية بصرية فاتحة، ومقدمة شخصية بارزة، وأقسام منظّمة للخبرات والخدمات والأعمال والمهارات، مع وصول مباشر للتواصل والسيرة الذاتية.",
-        "role": "تطوير موقع البورتفوليو الخاص بأحمد جمال، وتجميع ملفه المهني وخدماته الإبداعية في تجربة ويب متناسقة.",
-        "highlights": [
-          "بورتفوليو شخصي",
-          "ملف مهني",
-          "خدمات إبداعية"
-        ],
-        "alt": "الصفحة الرئيسية لبورتفوليو أحمد جمال بخلفية زرقاء فاتحة وصورته الشخصية ومقدمة عن خبراته المهنية والإبداعية.",
-        "previewLabel": "الحجم الكامل — أحمد جمال. صورة من المشروع (يفتح في علامة تبويب جديدة)",
-        "visitLabel": "زيارة الموقع — أحمد جمال (يفتح في علامة تبويب جديدة)",
-        "caseStudy": {
-          "architecture": "ينظم الموقع التعريف المهني والخبرات والخدمات والأعمال ووسائل التواصل. لا تُنسب إليه بنية خلفية غير موثقة.",
-          "challenge": "جمع تخصصات مهنية متنوعة في ملف متماسك مع إبقاء التعريف الأساسي واضحًا.",
-          "results": "الموقع العام متاح مع صورته الأصلية. لا تتوفر أرقام موثقة عن الأداء أو نمو الجمهور."
-        }
+        },
+        "overview": "موقع تعريفي لشركة بنيان، يعرض خدمات التسويق وتطوير الأعمال بهوية بصرية مميزة وتجربة واضحة."
       },
       {
         "title": "أحمد نبيل",
-        "category": "هوية شخصية / بورتفوليو تقني",
-        "description": "بورتفوليو تقني لأحمد نبيل، يقدّم خبراته في إدارة الأنظمة والدعم الفني بلغة بصرية مستوحاة من عالم الشبكات.",
+        "category": "موقع شخصي",
+        "description": "موقع شخصي يعرض خبرات متخصص في تقنية المعلومات ومؤهلاته.",
         "problem": "تقديم ملف مهني تقني يسهّل استكشاف الخبرات والمؤهلات والمسيرة العملية لصاحب الموقع.",
         "solution": "واجهة داكنة مستوحاة من الشبكات، بأقسام للمهارات والشهادات والخبرات والتعليم، مع خيارات واضحة للسيرة الذاتية والتواصل.",
         "role": "تطوير البورتفوليو الشخصي لأحمد نبيل، وتجميع ملفه التقني وخبراته المهنية في موقع منظّم.",
@@ -766,15 +855,38 @@
           "architecture": "تنظم الواجهة الملف التقني إلى مهارات وشهادات وخبرات وتعليم وتواصل. لا تعرض أنظمة خاصة أو بنية تحتية.",
           "challenge": "تسهيل استعراض المؤهلات والخبرات ضمن هوية بصرية مستوحاة من الشبكات.",
           "results": "الموقع العام وصورته الأصلية متاحان. النتيجة الموثقة حضور مهني منظم؛ لا تُنسب إليه مؤشرات للجمهور."
-        }
+        },
+        "overview": "بورتفوليو تقني لأحمد نبيل، يقدّم خبراته في إدارة الأنظمة والدعم الفني بلغة بصرية مستوحاة من عالم الشبكات."
+      },
+      {
+        "title": "أحمد جمال",
+        "category": "موقع شخصي",
+        "description": "معرض أعمال يجمع خبرات خدمة العملاء والمبيعات والعمل الإبداعي.",
+        "problem": "تقديم مسيرة مهنية تجمع بين خدمة العملاء والمبيعات والتصميم والمونتاج، مع توضيح العلاقة بين هذه المجالات.",
+        "solution": "هوية بصرية فاتحة، ومقدمة شخصية بارزة، وأقسام منظّمة للخبرات والخدمات والأعمال والمهارات، مع وصول مباشر للتواصل والسيرة الذاتية.",
+        "role": "تطوير موقع البورتفوليو الخاص بأحمد جمال، وتجميع ملفه المهني وخدماته الإبداعية في تجربة ويب متناسقة.",
+        "highlights": [
+          "بورتفوليو شخصي",
+          "ملف مهني",
+          "خدمات إبداعية"
+        ],
+        "alt": "الصفحة الرئيسية لبورتفوليو أحمد جمال بخلفية زرقاء فاتحة وصورته الشخصية ومقدمة عن خبراته المهنية والإبداعية.",
+        "previewLabel": "الحجم الكامل — أحمد جمال. صورة من المشروع (يفتح في علامة تبويب جديدة)",
+        "visitLabel": "زيارة الموقع — أحمد جمال (يفتح في علامة تبويب جديدة)",
+        "caseStudy": {
+          "architecture": "ينظم الموقع التعريف المهني والخبرات والخدمات والأعمال ووسائل التواصل. لا تُنسب إليه بنية خلفية غير موثقة.",
+          "challenge": "جمع تخصصات مهنية متنوعة في ملف متماسك مع إبقاء التعريف الأساسي واضحًا.",
+          "results": "الموقع العام متاح مع صورته الأصلية. لا تتوفر أرقام موثقة عن الأداء أو نمو الجمهور."
+        },
+        "overview": "بورتفوليو شخصي يجمع خبرات خدمة العملاء والمبيعات والأعمال الإبداعية في حضور رقمي واضح ومترابط."
       }
     ],
     "about": {
-      "label": "04 / عنّي",
-      "title": "عقلية هندسية.\nوهدف عملي.",
+      "label": "04 / نبذة عني",
+      "title": "أحمد الجوهري",
       "intro": "البرمجيات الجيدة تبدأ بفهم ما يحتاجه الناس فعلًا.",
-      "bio": "أنا أحمد الجوهري، مطوّر Python متكامل من مصر. أبني أنظمة خلفية وواجهات RESTful API وتطبيقات متكاملة، بخبرة في أنظمة إدارة الأعمال وواجهات الويب الحديثة.",
-      "philosophy": "أهتم بما وراء التجربة: نماذج بيانات مفيدة، وحدود واضحة للخدمات، وشيفرة قابلة للصيانة، ونشر موثوق. يشمل عملي أيضًا تحسين الأداء ودمج الذكاء الاصطناعي في التطبيقات.",
+      "bio": "أنا مطور برمجيات مقيم في مصر. أركز على تحويل إجراءات العمل اليومية إلى برامج واضحة الاستخدام وسهلة الصيانة.",
+      "philosophy": "أعمل على الواجهات ومنطق التطبيق والبيانات، وأضع احتياجات مستخدمي النظام في صميم كل قرار.",
       "interests": "اهتماماتي المهنية",
       "interestText": "برمجيات الأعمال الموثوقة، وبنية قواعد البيانات، والتطبيقات الذكية، والنشر السحابي.",
       "caption": "أحمد الجوهري / مطوّر Python متكامل",
@@ -818,41 +930,33 @@
       "explore": "استكشف المهارات"
     },
     "process": {
-      "label": "07 / منهج العمل",
-      "title": "الوضوح قبل الشيفرة.",
-      "intro": "ست مراحل مترابطة، من فهم المشكلة إلى تحسين النظام باستمرار.",
+      "label": "05 / خطوات العمل",
+      "title": "من الفكرة إلى التسليم.",
+      "intro": "",
       "steps": [
         {
-          "title": "الاكتشاف والتحليل",
-          "text": "فهم متطلبات العمل والمستخدمين والقيود وسير العمليات اليومية."
+          "title": "نفهم",
+          "text": "نحدد أهدافك ومتطلبات العمل."
         },
         {
-          "title": "تصميم النظام",
-          "text": "تصميم البنية ونماذج البيانات وعقود الواجهات والتكاملات ومتطلبات الأمان."
+          "title": "نصمم",
+          "text": "نرسم تجربة الاستخدام وننظم البيانات والحل."
         },
         {
-          "title": "التنفيذ",
-          "text": "بناء خدمات وواجهات ومنطق أعمال قابل للصيانة على مراحل مركّزة."
+          "title": "نطوّر",
+          "text": "نبني البرنامج ونراجع التقدم معًا."
         },
         {
-          "title": "ضمان الجودة",
-          "text": "اختبار الوظائف والتكامل والحالات الحدّية والأداء وسهولة الاستخدام."
-        },
-        {
-          "title": "النشر",
-          "text": "تجهيز بيئات الإنتاج والبنية التحتية ومسارات نشر قابلة للتكرار."
-        },
-        {
-          "title": "التحسين المستمر",
-          "text": "متابعة سلوك النظام والتحقيق في المشكلات وتحسين الأداء مع تطوّره."
+          "title": "نسلّم",
+          "text": "نختبر المشروع ونجهزه للإطلاق والتسليم."
         }
       ]
     },
     "contact": {
-      "label": "08 / التواصل والسيرة الذاتية",
-      "title": "لديك تحدٍّ معقّد؟\nلنصمّم له حلًا.",
-      "invitation": "لنبدأ بحوار واضح.",
-      "description": "حدّثني عن متطلباتك والقيود التي تواجهك وما تريد تحسينه. تواصل معي مباشرة أو جهّز رسالة قصيرة على واتساب.",
+      "label": "06 / تواصل معي",
+      "title": "هل لديك مشروع تريد تنفيذه؟",
+      "invitation": "لنبنِ حلًا يناسب احتياجاتك.",
+      "description": "احكِ لي عن فكرتك، ونحدد معًا الخطوة المناسبة.",
       "whatsapp": "واتساب",
       "startChat": "ابدأ محادثة",
       "directTitle": "تواصل معي مباشرة",
@@ -894,10 +998,10 @@
       "languageLabel": "English — التبديل إلى الإنجليزية"
     },
     "stack": {
-      "label": "01 / التقنيات الأساسية",
-      "title": "أدوات أختارها بعناية.",
-      "intro": "من الواجهة البرمجية إلى تجربة المستخدم.",
-      "note": "تقنيات أعمل بها؛ يختلف الاختيار حسب متطلبات كل مشروع."
+      "label": "03 / التقنيات",
+      "title": "أدوات العمل.",
+      "intro": "",
+      "note": "مجموعة من الأدوات التي أستخدمها، وأختار منها ما يناسب متطلبات كل مشروع."
     },
     "experience": {
       "label": "05 / الخبرات المهنية",
@@ -992,6 +1096,32 @@
       "enable": "تفعيل الحركة",
       "previous": "المشروع السابق",
       "next": "المشروع التالي"
+    },
+    "services": {
+      "label": "02 / الخدمات",
+      "title": "الخدمات التي أقدمها",
+      "items": [
+        {
+          "title": "تطوير المواقع",
+          "text": "مواقع واضحة ومتجاوبة للشركات وأصحاب الأعمال والمستقلين.",
+          "project": "شاهد مشروع بنيان"
+        },
+        {
+          "title": "المتاجر الإلكترونية",
+          "text": "متاجر تربط منتجاتك بالعملاء وتسهّل الوصول لمعلومات الشراء.",
+          "project": "شاهد متجر ROCKS EV"
+        },
+        {
+          "title": "أنظمة إدارة الأعمال",
+          "text": "أدوات مترابطة لتنظيم المخزون والمبيعات والمشتريات والعمليات اليومية.",
+          "project": "شاهد نظام المصنع"
+        },
+        {
+          "title": "الأنظمة الخلفية وواجهات API",
+          "text": "منطق أعمال وواجهات آمنة وربط لقواعد البيانات والتطبيقات.",
+          "project": "ناقش متطلبات مشروعك"
+        }
+      ]
     }
   }
 }
