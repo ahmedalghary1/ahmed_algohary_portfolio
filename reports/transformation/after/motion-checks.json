@@ -1,0 +1,26 @@
+{
+  "results": [
+    "en: forward/reverse scroll, native project controls, keyboard links, studies, pause/resume, resize and live reduced motion passed",
+    "ar: forward/reverse scroll, native project controls, keyboard links, studies, pause/resume, resize and live reduced motion passed",
+    "WebGL unavailable: SVG artwork and native content remain usable",
+    "Renderer stops after its three-second introduction",
+    "Context loss restores the SVG; context restoration retains one canvas",
+    "BFCache retention and full-navigation disposal passed"
+  ],
+  "errors": [],
+  "performance": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "buffer": [
+      1440,
+      1000
+    ],
+    "sampleFrames": 96,
+    "medianFrameMs": 16.699999999999818,
+    "p95FrameMs": 16.799999999999272,
+    "maxObservedDrawCalls": 2
+  },
+  "browser": "158.0.8127.36"
+}

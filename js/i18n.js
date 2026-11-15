@@ -2,13 +2,14 @@ import { getCopy } from './content.js';
 const supported = ['en', 'ar'];
 export function initLocalization(content, signal) {
   let language = 'en';
+  const route = location.pathname.startsWith('/ar/') ? 'ar' : null;
   try {
     const query = new URL(location.href).searchParams.get('lang');
     const saved = localStorage.getItem('portfolio-language');
-    language = supported.includes(query) ? query : supported.includes(saved) ? saved : 'en';
+    language = supported.includes(query) ? query : route || (supported.includes(saved) ? saved : 'en');
   } catch {
     const query = new URL(location.href).searchParams.get('lang');
-    language = supported.includes(query) ? query : 'en';
+    language = supported.includes(query) ? query : route || 'en';
   }
   function apply(next, persist = false) {
     language = next;
@@ -17,7 +18,11 @@ export function initLocalization(content, signal) {
     html.dir = next === 'ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('[data-copy]').forEach(node => {
       const value = getCopy(content, next, node.dataset.copy);
-      if (typeof value === 'string') node.textContent = value;
+      // The static variants are already painted. Preserve them at startup;
+      // CSS selects the locale without replacing the hero's visible text.
+      const first = node.firstElementChild;
+      const bilingual = first?.classList.contains('locale-en') && first.nextElementSibling?.classList.contains('locale-ar');
+      if (typeof value === 'string' && !bilingual) node.textContent = value;
     });
     document.querySelectorAll('[data-terms]').forEach(node => {
       const terms = getCopy(content, next, node.dataset.terms).split(' / ');
@@ -28,7 +33,7 @@ export function initLocalization(content, signal) {
         return i ? [document.createTextNode(' / '), isolated] : [isolated];
       }));
     });
-    for (const attribute of ['alt', 'aria-label', 'placeholder']) {
+    for (const attribute of ['alt', 'aria-label', 'placeholder', 'content']) {
       document.querySelectorAll(`[data-copy-${attribute}]`).forEach(node => {
         const value = getCopy(content, next, node.getAttribute(`data-copy-${attribute}`));
         if (typeof value === 'string') node.setAttribute(attribute, value);
@@ -58,12 +63,22 @@ export function initLocalization(content, signal) {
     document.querySelector('meta[property="og:title"]').content = content[next].seo.title;
     document.querySelector('meta[property="og:description"]').content = content[next].seo.description;
     document.querySelector('meta[property="og:locale"]').content = next === 'ar' ? 'ar_EG' : 'en_US';
+    const canonical = content.profile.url + (next === 'ar' ? 'ar/' : '');
+    document.querySelector('link[rel="canonical"]').href = canonical;
+    document.querySelector('meta[property="og:url"]').content = canonical;
     if (persist) {
       try { localStorage.setItem('portfolio-language', next); } catch { /* Private storage is optional. */ }
       const url = new URL(location.href);
       url.searchParams.set('lang', next);
       history.replaceState(history.state, '', url);
     }
+    // The static Arabic document uses a root base for shared assets. Keep native
+    // anchors on the current document, including an explicit language query.
+    if (document.querySelector('base')) document.querySelectorAll('a[href*="#"]').forEach(link => {
+      if (link.origin === location.origin && link.hash && document.getElementById(link.hash.slice(1))) {
+        link.href = `${location.pathname}${location.search}${link.hash}`;
+      }
+    });
     document.dispatchEvent(new CustomEvent('portfolio:language', { detail: { language: next } }));
   }
   document.querySelectorAll('[data-language]').forEach(button => {

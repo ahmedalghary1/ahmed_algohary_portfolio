@@ -2,7 +2,11 @@
   "categories": [
     {
       "id": "category-01",
-      "title": "Backend Development",
+      "title": "Backend Engineering",
+      "description": {
+        "en": "Python services, secure APIs and connected business logic.",
+        "ar": "خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
       "order": 1,
       "skills": [
         "python",
@@ -13,12 +17,21 @@
         "flask",
         "restful-apis",
         "graphql",
-        "api-design-development"
+        "api-design-development",
+        "jwt-authentication",
+        "role-based-access-control-rbac",
+        "stripe",
+        "payment-gateway-integration",
+        "third-party-api-integration"
       ]
     },
     {
       "id": "category-02",
-      "title": "Frontend Development",
+      "title": "Frontend Engineering",
+      "description": {
+        "en": "Responsive interfaces and clear, purposeful interactions.",
+        "ar": "واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
       "order": 2,
       "skills": [
         "javascript",
@@ -37,7 +50,11 @@
     },
     {
       "id": "category-03",
-      "title": "Databases & Storage",
+      "title": "Databases & Data Engineering",
+      "description": {
+        "en": "Data models, storage and efficient retrieval.",
+        "ar": "نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
       "order": 3,
       "skills": [
         "sql",
@@ -51,12 +68,18 @@
         "relational-database-design",
         "database-normalization",
         "query-optimization",
-        "advanced-querying"
+        "advanced-querying",
+        "advanced-data-filtering",
+        "structured-data-management"
       ]
     },
     {
       "id": "category-04",
       "title": "AI & Intelligent Systems",
+      "description": {
+        "en": "Language models, agents and intelligent workflows.",
+        "ar": "نماذج لغوية ووكلاء ومسارات عمل ذكية."
+      },
       "order": 4,
       "skills": [
         "generative-ai",
@@ -68,7 +91,11 @@
     },
     {
       "id": "category-05",
-      "title": "DevOps & Cloud Infrastructure",
+      "title": "Cloud & DevOps",
+      "description": {
+        "en": "Repeatable delivery, infrastructure and background work.",
+        "ar": "نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
       "order": 5,
       "skills": [
         "docker",
@@ -79,29 +106,10 @@
         "vercel",
         "render",
         "digitalocean",
-        "cloud-deployment"
-      ]
-    },
-    {
-      "id": "category-06",
-      "title": "Software Architecture",
-      "order": 6,
-      "skills": [
-        "microservices-architecture",
-        "scalable-application-architecture",
-        "saas-development",
-        "database-architecture",
-        "application-performance-optimization",
-        "application-profiling"
-      ]
-    },
-    {
-      "id": "category-07",
-      "title": "Asynchronous Processing & Caching",
-      "order": 7,
-      "skills": [
+        "cloud-deployment",
+        "git",
+        "github",
         "celery",
-        "redis",
         "background-jobs",
         "asynchronous-task-processing",
         "task-queues",
@@ -109,50 +117,30 @@
       ]
     },
     {
-      "id": "category-08",
-      "title": "Authentication & Integrations",
-      "order": 8,
+      "id": "category-06",
+      "title": "Architecture & Software Engineering",
+      "description": {
+        "en": "Maintainable systems, quality and business applications.",
+        "ar": "أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "order": 6,
       "skills": [
-        "jwt-authentication",
-        "role-based-access-control-rbac",
-        "stripe",
-        "payment-gateway-integration",
-        "third-party-api-integration"
-      ]
-    },
-    {
-      "id": "category-09",
-      "title": "Testing & Software Quality",
-      "order": 9,
-      "skills": [
+        "microservices-architecture",
+        "scalable-application-architecture",
+        "saas-development",
+        "database-architecture",
+        "application-performance-optimization",
+        "application-profiling",
         "unit-testing",
         "integration-testing",
         "functional-testing",
-        "performance-analysis"
-      ]
-    },
-    {
-      "id": "category-10",
-      "title": "Version Control & Collaboration",
-      "order": 10,
-      "skills": [
-        "git",
-        "github",
-        "frontend-backend-collaboration"
-      ]
-    },
-    {
-      "id": "category-11",
-      "title": "Business Application Development",
-      "order": 11,
-      "skills": [
+        "performance-analysis",
+        "frontend-backend-collaboration",
         "e-commerce-development",
         "inventory-management-systems",
         "product-catalog-management",
         "order-fulfillment-systems",
-        "discount-engines",
-        "advanced-data-filtering",
-        "structured-data-management"
+        "discount-engines"
       ]
     }
   ],
@@ -165,7 +153,12 @@
       ],
       "icon": "python",
       "featured": true,
-      "order": 1
+      "order": 1,
+      "description": {
+        "en": "Python: Python services, secure APIs and connected business logic.",
+        "ar": "Python: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "django",
@@ -175,7 +168,12 @@
       ],
       "icon": "django",
       "featured": true,
-      "order": 2
+      "order": 2,
+      "description": {
+        "en": "Django: Python services, secure APIs and connected business logic.",
+        "ar": "Django: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "django-rest-framework-drf",
@@ -185,7 +183,12 @@
       ],
       "icon": "django",
       "featured": true,
-      "order": 3
+      "order": 3,
+      "description": {
+        "en": "Django REST Framework (DRF): Python services, secure APIs and connected business logic.",
+        "ar": "Django REST Framework (DRF): خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "django-ninja",
@@ -195,7 +198,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 4
+      "order": 4,
+      "description": {
+        "en": "Django Ninja: Python services, secure APIs and connected business logic.",
+        "ar": "Django Ninja: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "fastapi",
@@ -205,7 +213,12 @@
       ],
       "icon": "fastapi",
       "featured": true,
-      "order": 5
+      "order": 5,
+      "description": {
+        "en": "FastAPI: Python services, secure APIs and connected business logic.",
+        "ar": "FastAPI: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "flask",
@@ -215,7 +228,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 6
+      "order": 6,
+      "description": {
+        "en": "Flask: Python services, secure APIs and connected business logic.",
+        "ar": "Flask: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "restful-apis",
@@ -225,7 +243,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 7
+      "order": 7,
+      "description": {
+        "en": "RESTful APIs: Python services, secure APIs and connected business logic.",
+        "ar": "RESTful APIs: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "graphql",
@@ -235,7 +258,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 8
+      "order": 8,
+      "description": {
+        "en": "GraphQL: Python services, secure APIs and connected business logic.",
+        "ar": "GraphQL: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "api-design-development",
@@ -245,7 +273,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 9
+      "order": 9,
+      "description": {
+        "en": "API Design & Development: Python services, secure APIs and connected business logic.",
+        "ar": "API Design & Development: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "javascript",
@@ -255,7 +288,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 10
+      "order": 10,
+      "description": {
+        "en": "JavaScript: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "JavaScript: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "typescript",
@@ -265,7 +303,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 11
+      "order": 11,
+      "description": {
+        "en": "TypeScript: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "TypeScript: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "react-js",
@@ -275,7 +318,12 @@
       ],
       "icon": "react",
       "featured": true,
-      "order": 12
+      "order": 12,
+      "description": {
+        "en": "React.js: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "React.js: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "next-js",
@@ -285,7 +333,12 @@
       ],
       "icon": "nextdotjs",
       "featured": true,
-      "order": 13
+      "order": 13,
+      "description": {
+        "en": "Next.js: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "Next.js: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "html",
@@ -295,7 +348,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 14
+      "order": 14,
+      "description": {
+        "en": "HTML: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "HTML: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "css",
@@ -305,7 +363,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 15
+      "order": 15,
+      "description": {
+        "en": "CSS: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "CSS: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "scss",
@@ -315,7 +378,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 16
+      "order": 16,
+      "description": {
+        "en": "SCSS: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "SCSS: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "tailwind-css",
@@ -325,7 +393,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 17
+      "order": 17,
+      "description": {
+        "en": "Tailwind CSS: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "Tailwind CSS: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "bootstrap",
@@ -335,7 +408,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 18
+      "order": 18,
+      "description": {
+        "en": "Bootstrap: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "Bootstrap: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "htmx",
@@ -345,7 +423,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 19
+      "order": 19,
+      "description": {
+        "en": "HTMX: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "HTMX: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "responsive-web-design",
@@ -355,7 +438,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 20
+      "order": 20,
+      "description": {
+        "en": "Responsive Web Design: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "Responsive Web Design: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "data-visualization",
@@ -365,7 +453,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 21
+      "order": 21,
+      "description": {
+        "en": "Data Visualization: Responsive interfaces and clear, purposeful interactions.",
+        "ar": "Data Visualization: واجهات متجاوبة وتفاعلات واضحة تخدم المستخدم."
+      },
+      "relatedProjects": []
     },
     {
       "id": "sql",
@@ -375,7 +468,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 22
+      "order": 22,
+      "description": {
+        "en": "SQL: Data models, storage and efficient retrieval.",
+        "ar": "SQL: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "postgresql",
@@ -385,7 +483,12 @@
       ],
       "icon": "postgresql",
       "featured": true,
-      "order": 23
+      "order": 23,
+      "description": {
+        "en": "PostgreSQL: Data models, storage and efficient retrieval.",
+        "ar": "PostgreSQL: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "mysql",
@@ -395,18 +498,27 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 24
+      "order": 24,
+      "description": {
+        "en": "MySQL: Data models, storage and efficient retrieval.",
+        "ar": "MySQL: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "redis",
       "name": "Redis",
       "categories": [
-        "category-03",
-        "category-07"
+        "category-03"
       ],
       "icon": "redis",
       "featured": true,
-      "order": 25
+      "order": 25,
+      "description": {
+        "en": "Redis: Data models, storage and efficient retrieval.",
+        "ar": "Redis: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "dynamodb",
@@ -416,7 +528,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 26
+      "order": 26,
+      "description": {
+        "en": "DynamoDB: Data models, storage and efficient retrieval.",
+        "ar": "DynamoDB: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "pinecone",
@@ -426,7 +543,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 27
+      "order": 27,
+      "description": {
+        "en": "Pinecone: Data models, storage and efficient retrieval.",
+        "ar": "Pinecone: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "weaviate",
@@ -436,7 +558,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 28
+      "order": 28,
+      "description": {
+        "en": "Weaviate: Data models, storage and efficient retrieval.",
+        "ar": "Weaviate: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "vector-databases",
@@ -446,7 +573,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 29
+      "order": 29,
+      "description": {
+        "en": "Vector Databases: Data models, storage and efficient retrieval.",
+        "ar": "Vector Databases: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "relational-database-design",
@@ -456,7 +588,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 30
+      "order": 30,
+      "description": {
+        "en": "Relational Database Design: Data models, storage and efficient retrieval.",
+        "ar": "Relational Database Design: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "database-normalization",
@@ -466,7 +603,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 31
+      "order": 31,
+      "description": {
+        "en": "Database Normalization: Data models, storage and efficient retrieval.",
+        "ar": "Database Normalization: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "query-optimization",
@@ -476,7 +618,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 32
+      "order": 32,
+      "description": {
+        "en": "Query Optimization: Data models, storage and efficient retrieval.",
+        "ar": "Query Optimization: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "advanced-querying",
@@ -486,7 +633,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 33
+      "order": 33,
+      "description": {
+        "en": "Advanced Querying: Data models, storage and efficient retrieval.",
+        "ar": "Advanced Querying: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "generative-ai",
@@ -496,7 +648,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 34
+      "order": 34,
+      "description": {
+        "en": "Generative AI: Language models, agents and intelligent workflows.",
+        "ar": "Generative AI: نماذج لغوية ووكلاء ومسارات عمل ذكية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "langchain",
@@ -506,7 +663,12 @@
       ],
       "icon": "langchain",
       "featured": true,
-      "order": 35
+      "order": 35,
+      "description": {
+        "en": "LangChain: Language models, agents and intelligent workflows.",
+        "ar": "LangChain: نماذج لغوية ووكلاء ومسارات عمل ذكية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "autonomous-agents",
@@ -516,7 +678,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 36
+      "order": 36,
+      "description": {
+        "en": "Autonomous Agents: Language models, agents and intelligent workflows.",
+        "ar": "Autonomous Agents: نماذج لغوية ووكلاء ومسارات عمل ذكية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "vector-search-workflows",
@@ -526,7 +693,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 37
+      "order": 37,
+      "description": {
+        "en": "Vector Search Workflows: Language models, agents and intelligent workflows.",
+        "ar": "Vector Search Workflows: نماذج لغوية ووكلاء ومسارات عمل ذكية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "machine-learning-model-integration",
@@ -536,7 +708,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 38
+      "order": 38,
+      "description": {
+        "en": "Machine Learning Model Integration: Language models, agents and intelligent workflows.",
+        "ar": "Machine Learning Model Integration: نماذج لغوية ووكلاء ومسارات عمل ذكية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "docker",
@@ -546,7 +723,12 @@
       ],
       "icon": "docker",
       "featured": true,
-      "order": 39
+      "order": 39,
+      "description": {
+        "en": "Docker: Repeatable delivery, infrastructure and background work.",
+        "ar": "Docker: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "docker-compose",
@@ -556,7 +738,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 40
+      "order": 40,
+      "description": {
+        "en": "Docker Compose: Repeatable delivery, infrastructure and background work.",
+        "ar": "Docker Compose: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "github-actions",
@@ -566,7 +753,12 @@
       ],
       "icon": "githubactions",
       "featured": true,
-      "order": 41
+      "order": 41,
+      "description": {
+        "en": "GitHub Actions: Repeatable delivery, infrastructure and background work.",
+        "ar": "GitHub Actions: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "ci-cd-pipelines",
@@ -576,7 +768,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 42
+      "order": 42,
+      "description": {
+        "en": "CI/CD Pipelines: Repeatable delivery, infrastructure and background work.",
+        "ar": "CI/CD Pipelines: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "heroku",
@@ -586,7 +783,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 43
+      "order": 43,
+      "description": {
+        "en": "Heroku: Repeatable delivery, infrastructure and background work.",
+        "ar": "Heroku: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "vercel",
@@ -596,7 +798,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 44
+      "order": 44,
+      "description": {
+        "en": "Vercel: Repeatable delivery, infrastructure and background work.",
+        "ar": "Vercel: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "render",
@@ -606,7 +813,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 45
+      "order": 45,
+      "description": {
+        "en": "Render: Repeatable delivery, infrastructure and background work.",
+        "ar": "Render: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "digitalocean",
@@ -616,7 +828,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 46
+      "order": 46,
+      "description": {
+        "en": "DigitalOcean: Repeatable delivery, infrastructure and background work.",
+        "ar": "DigitalOcean: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "cloud-deployment",
@@ -626,7 +843,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 47
+      "order": 47,
+      "description": {
+        "en": "Cloud Deployment: Repeatable delivery, infrastructure and background work.",
+        "ar": "Cloud Deployment: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "microservices-architecture",
@@ -636,7 +858,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 48
+      "order": 48,
+      "description": {
+        "en": "Microservices Architecture: Maintainable systems, quality and business applications.",
+        "ar": "Microservices Architecture: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "scalable-application-architecture",
@@ -646,7 +873,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 49
+      "order": 49,
+      "description": {
+        "en": "Scalable Application Architecture: Maintainable systems, quality and business applications.",
+        "ar": "Scalable Application Architecture: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "saas-development",
@@ -656,7 +888,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 50
+      "order": 50,
+      "description": {
+        "en": "SaaS Development: Maintainable systems, quality and business applications.",
+        "ar": "SaaS Development: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "database-architecture",
@@ -666,7 +903,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 51
+      "order": 51,
+      "description": {
+        "en": "Database Architecture: Maintainable systems, quality and business applications.",
+        "ar": "Database Architecture: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "application-performance-optimization",
@@ -676,7 +918,12 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 52
+      "order": 52,
+      "description": {
+        "en": "Application Performance Optimization: Maintainable systems, quality and business applications.",
+        "ar": "Application Performance Optimization: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "application-profiling",
@@ -686,247 +933,372 @@
       ],
       "icon": "competency",
       "featured": false,
-      "order": 53
+      "order": 53,
+      "description": {
+        "en": "Application Profiling: Maintainable systems, quality and business applications.",
+        "ar": "Application Profiling: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "celery",
       "name": "Celery",
       "categories": [
-        "category-07"
+        "category-05"
       ],
       "icon": "celery",
       "featured": true,
-      "order": 54
+      "order": 54,
+      "description": {
+        "en": "Celery: Repeatable delivery, infrastructure and background work.",
+        "ar": "Celery: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "background-jobs",
       "name": "Background Jobs",
       "categories": [
-        "category-07"
+        "category-05"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 55
+      "order": 55,
+      "description": {
+        "en": "Background Jobs: Repeatable delivery, infrastructure and background work.",
+        "ar": "Background Jobs: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "asynchronous-task-processing",
       "name": "Asynchronous Task Processing",
       "categories": [
-        "category-07"
+        "category-05"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 56
+      "order": 56,
+      "description": {
+        "en": "Asynchronous Task Processing: Repeatable delivery, infrastructure and background work.",
+        "ar": "Asynchronous Task Processing: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "task-queues",
       "name": "Task Queues",
       "categories": [
-        "category-07"
+        "category-05"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 57
+      "order": 57,
+      "description": {
+        "en": "Task Queues: Repeatable delivery, infrastructure and background work.",
+        "ar": "Task Queues: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "caching",
       "name": "Caching",
       "categories": [
-        "category-07"
+        "category-05"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 58
+      "order": 58,
+      "description": {
+        "en": "Caching: Repeatable delivery, infrastructure and background work.",
+        "ar": "Caching: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "jwt-authentication",
       "name": "JWT Authentication",
       "categories": [
-        "category-08"
+        "category-01"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 59
+      "order": 59,
+      "description": {
+        "en": "JWT Authentication: Python services, secure APIs and connected business logic.",
+        "ar": "JWT Authentication: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "role-based-access-control-rbac",
       "name": "Role-Based Access Control (RBAC)",
       "categories": [
-        "category-08"
+        "category-01"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 60
+      "order": 60,
+      "description": {
+        "en": "Role-Based Access Control (RBAC): Python services, secure APIs and connected business logic.",
+        "ar": "Role-Based Access Control (RBAC): خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "stripe",
       "name": "Stripe",
       "categories": [
-        "category-08"
+        "category-01"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 61
+      "order": 61,
+      "description": {
+        "en": "Stripe: Python services, secure APIs and connected business logic.",
+        "ar": "Stripe: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "payment-gateway-integration",
       "name": "Payment Gateway Integration",
       "categories": [
-        "category-08"
+        "category-01"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 62
+      "order": 62,
+      "description": {
+        "en": "Payment Gateway Integration: Python services, secure APIs and connected business logic.",
+        "ar": "Payment Gateway Integration: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "third-party-api-integration",
       "name": "Third-Party API Integration",
       "categories": [
-        "category-08"
+        "category-01"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 63
+      "order": 63,
+      "description": {
+        "en": "Third-Party API Integration: Python services, secure APIs and connected business logic.",
+        "ar": "Third-Party API Integration: خدمات Python وواجهات آمنة ومنطق أعمال مترابط."
+      },
+      "relatedProjects": []
     },
     {
       "id": "unit-testing",
       "name": "Unit Testing",
       "categories": [
-        "category-09"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 64
+      "order": 64,
+      "description": {
+        "en": "Unit Testing: Maintainable systems, quality and business applications.",
+        "ar": "Unit Testing: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "integration-testing",
       "name": "Integration Testing",
       "categories": [
-        "category-09"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 65
+      "order": 65,
+      "description": {
+        "en": "Integration Testing: Maintainable systems, quality and business applications.",
+        "ar": "Integration Testing: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "functional-testing",
       "name": "Functional Testing",
       "categories": [
-        "category-09"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 66
+      "order": 66,
+      "description": {
+        "en": "Functional Testing: Maintainable systems, quality and business applications.",
+        "ar": "Functional Testing: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "performance-analysis",
       "name": "Performance Analysis",
       "categories": [
-        "category-09"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 67
+      "order": 67,
+      "description": {
+        "en": "Performance Analysis: Maintainable systems, quality and business applications.",
+        "ar": "Performance Analysis: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "git",
       "name": "Git",
       "categories": [
-        "category-10"
+        "category-05"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 68
+      "order": 68,
+      "description": {
+        "en": "Git: Repeatable delivery, infrastructure and background work.",
+        "ar": "Git: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "github",
       "name": "GitHub",
       "categories": [
-        "category-10"
+        "category-05"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 69
+      "order": 69,
+      "description": {
+        "en": "GitHub: Repeatable delivery, infrastructure and background work.",
+        "ar": "GitHub: نشر قابل للتكرار وبنية تحتية ومهام خلفية."
+      },
+      "relatedProjects": []
     },
     {
       "id": "frontend-backend-collaboration",
       "name": "Frontend–Backend Collaboration",
       "categories": [
-        "category-10"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 70
+      "order": 70,
+      "description": {
+        "en": "Frontend–Backend Collaboration: Maintainable systems, quality and business applications.",
+        "ar": "Frontend–Backend Collaboration: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "e-commerce-development",
       "name": "E-commerce Development",
       "categories": [
-        "category-11"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 71
+      "order": 71,
+      "description": {
+        "en": "E-commerce Development: Maintainable systems, quality and business applications.",
+        "ar": "E-commerce Development: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "inventory-management-systems",
       "name": "Inventory Management Systems",
       "categories": [
-        "category-11"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 72
+      "order": 72,
+      "description": {
+        "en": "Inventory Management Systems: Maintainable systems, quality and business applications.",
+        "ar": "Inventory Management Systems: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "product-catalog-management",
       "name": "Product Catalog Management",
       "categories": [
-        "category-11"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 73
+      "order": 73,
+      "description": {
+        "en": "Product Catalog Management: Maintainable systems, quality and business applications.",
+        "ar": "Product Catalog Management: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "order-fulfillment-systems",
       "name": "Order Fulfillment Systems",
       "categories": [
-        "category-11"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 74
+      "order": 74,
+      "description": {
+        "en": "Order Fulfillment Systems: Maintainable systems, quality and business applications.",
+        "ar": "Order Fulfillment Systems: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "discount-engines",
       "name": "Discount Engines",
       "categories": [
-        "category-11"
+        "category-06"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 75
+      "order": 75,
+      "description": {
+        "en": "Discount Engines: Maintainable systems, quality and business applications.",
+        "ar": "Discount Engines: أنظمة قابلة للصيانة وضمان الجودة وتطبيقات الأعمال."
+      },
+      "relatedProjects": []
     },
     {
       "id": "advanced-data-filtering",
       "name": "Advanced Data Filtering",
       "categories": [
-        "category-11"
+        "category-03"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 76
+      "order": 76,
+      "description": {
+        "en": "Advanced Data Filtering: Data models, storage and efficient retrieval.",
+        "ar": "Advanced Data Filtering: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     },
     {
       "id": "structured-data-management",
       "name": "Structured Data Management",
       "categories": [
-        "category-11"
+        "category-03"
       ],
       "icon": "competency",
       "featured": false,
-      "order": 77
+      "order": 77,
+      "description": {
+        "en": "Structured Data Management: Data models, storage and efficient retrieval.",
+        "ar": "Structured Data Management: نماذج بيانات وتخزين واسترجاع بكفاءة."
+      },
+      "relatedProjects": []
     }
   ],
   "featured": [

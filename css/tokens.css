@@ -60,4 +60,27 @@
   --space-section:clamp(64px,8vw,128px);
   --ease:cubic-bezier(.23,1,.32,1);
   --max-width:1440px;
+  --surface:#f4f3ee;
+  --surface-muted:#deddd4;
+  --text-secondary:#bdbeb4;
+  --rule-dark:#50514b;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:16px;
+  --space-4:24px;
+  --space-5:32px;
+  --space-6:48px;
+  --space-7:64px;
+  --radius-small:2px;
+  --radius-image:4px;
+  --shadow-image:0 18px 40px -28px #17171750;
+  --motion-fast:180ms;
+  --motion-reveal:700ms;
+  --motion-mobile:450ms;
+  --motion-scrub:.55;
+  --z-scene:8;
+  --z-controls:20;
+  --z-header:30;
+  --z-skip:50;
+  --header-offset:110px;
 }

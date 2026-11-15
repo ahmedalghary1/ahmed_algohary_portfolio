@@ -2,21 +2,36 @@
 This is an optional content maintenance command, not a frontend build step.
 """
 import json
+import sys
+import subprocess
+import hashlib
+import re
 from pathlib import Path
 from html import escape
 from datetime import date
 from urllib.parse import urlparse
-D=json.loads(Path('data/portfolio.json').read_text(encoding='utf-8'));EN=D['en'];P=D['profile']
+from render_sections import experience_section, case_study, architecture_section, seo_markup
+LOCALE='ar' if '--arabic' in sys.argv else 'en'
+D=json.loads(Path('data/portfolio.json').read_text(encoding='utf-8'));EN=D[LOCALE];P=D['profile']
+styles='\n'.join(Path(f'css/{name}.css').read_text(encoding='utf-8-sig') for name in ['tokens','base','layout','components','responsive','motion','skills','engineering'])
+styles=re.sub(r'/\*[\s\S]*?\*/','',styles)
+styles=re.sub(r'\s+',' ',styles)
+styles=re.sub(r'\s*([{};])\s*',r'\1',styles).strip()
+Path('css/site.css').write_text(styles,encoding='utf-8')
+style_version=hashlib.sha256(styles.encode('utf-8')).hexdigest()[:12]
 def value(key,lang='en'):
  v=D[lang]
  for k in key.split('.'):v=v[int(k)] if isinstance(v,list) else v[k]
  return v
 def copy(key,tag='span',cls='',attrs=''):
  return f'<{tag} data-copy="{key}"'+(f' class="{cls}"' if cls else '')+(f' {attrs}' if attrs else '')+'>'+f'<span class="locale-en">{escape(value(key))}</span><span class="locale-ar">{escape(value(key,"ar"))}</span>'+f'</{tag}>'
-def attr(key):return escape(value(key),quote=True)
+def attr(key):return escape(value(key,LOCALE),quote=True)
 arrow='<span class="arrow" aria-hidden="true">↗</span>'
 portrait_srcset=(f' srcset="{escape(P["portraitSrcset"],quote=True)}"' if P.get('portraitSrcset') else '')
-nav=''.join(f'<a href="#{k}">{copy("nav."+k)}</a>' for k in ['work','about','expertise','process','contact'])
+nav=''.join(f'<a href="#{k}">{copy("nav."+k)}</a>' for k in ['work','architecture','about','experience','expertise','process','contact'])
+cv=P.get('cv') if P.get('cv') and Path(P['cv']).is_file() else None
+resume=f'<a class="nav-resume" href="{escape(cv,quote=True)}" download>{copy("nav.resume")}</a>' if cv else ''
+hero_resume=f'<a class="text-link" href="{escape(cv,quote=True)}" download>{copy("hero.resume")}<span aria-hidden="true">↓</span></a>' if cv else ''
 scene_fallback='<div class="scene-fallback"><span></span><span></span><span></span></div>'
 projects=''
 for i,p in enumerate(P['projects']):
@@ -27,18 +42,19 @@ for i,p in enumerate(P['projects']):
  preview_src=p.get('preview',image_src)
  private=p.get('private',False)
  status='work.private' if private else 'work.sample'
+ featured_label=copy('work.featured','p','featured-project-label') if i==0 else ''
  caption='work.privatePreview' if private else 'work.preview'
  window_label=copy('work.private') if private else '<bdi>'+escape(urlparse(p['url']).netloc)+'</bdi>'
  action=(f'<a class="button project-visit" href="{escape(p["url"],quote=True)}" target="_blank" rel="noopener noreferrer" aria-label="{attr(k+".visitLabel")}" data-copy-aria-label="{k}.visitLabel">{copy("work.visit")}{arrow}</a>' if p.get('url') else copy(k+'.privacyNote','p','project-privacy'))
- projects+=f'''<article class="project" id="project-{p['id']}" aria-labelledby="project-title-{i}">
+ projects+=f'''<article class="project{' project-featured' if i==0 else ''}" id="project-{p['id']}" aria-labelledby="project-title-{i}">
  <figure class="project-visual"><div class="project-window"><div class="project-browser" aria-hidden="true"><span class="browser-dots"><i></i><i></i><i></i></span>{window_label}<span class="browser-mark">↗</span></div><img src="{escape(image_src,quote=True)}"{image_attrs} data-project-image="{p['image']}" width="1600" height="900" loading="lazy" decoding="async" alt="{attr(k+'.alt')}" data-copy-alt="{k}.alt"></div><figcaption>{copy(caption)}<a href="{escape(preview_src,quote=True)}" target="_blank" rel="noopener noreferrer" data-project-preview aria-label="{attr(k+'.previewLabel')}" data-copy-aria-label="{k}.previewLabel">{copy('work.fullSize')}{arrow}</a></figcaption></figure>
- <div class="project-copy"><div class="project-meta"><span class="index">{i+1:02d}</span>{copy(status,cls='project-status'+(' is-private' if private else ''))}</div>{copy(k+'.category','p','meta')}{copy(k+'.title','h3',attrs=f'id="project-title-{i}"')}{copy(k+'.description','p','project-description')}
+ <div class="project-copy">{featured_label}<div class="project-meta"><span class="index">{i+1:02d}</span>{copy(status,cls='project-status'+(' is-private' if private else ''))}</div>{copy(k+'.category','p','meta')}{copy(k+'.title','h3',attrs=f'id="project-title-{i}"')}{copy(k+'.description','p','project-description')}
  <ul class="technologies" aria-label="{attr('work.stack')}" data-copy-aria-label="work.stack">{''.join('<li>'+copy(k+f'.highlights.{j}')+'</li>' for j in range(len(value(k+'.highlights'))))}</ul>
- <div class="project-actions">{action}</div>
- <details id="case-{p['id']}"><summary aria-labelledby="case-action-{p['id']} project-title-{i}">{copy('work.details',attrs=f'id="case-action-{p["id"]}"')}<span class="detail-symbol" aria-hidden="true">+</span></summary><div class="case-study">
- {copy('work.problem','h4')}{copy(k+'.problem','p')}{copy('work.solution','h4')}{copy(k+'.solution','p')}{copy('work.role','h4')}{copy(k+'.role','p')}
+ <div class="project-actions">{action}</div></div>
+ <details class="project-study" id="case-{p['id']}"><summary aria-labelledby="case-action-{p['id']} project-title-{i}">{copy('work.details',attrs=f'id="case-action-{p["id"]}"')}<span class="detail-symbol" aria-hidden="true">+</span></summary><div class="case-study">
+ {case_study(D,i,copy,LOCALE)}
  <a class="case-permalink" href="#case-{p['id']}">{copy('work.permalink')}</a>
- </div></details></div></article>'''
+ </div></details></article>'''
 S=json.loads(Path('data/skills.json').read_text(encoding='utf-8'))
 skills={s['id']:s for s in S['skills']}
 def skill_icon(skill):
@@ -48,21 +64,24 @@ def skill_icon(skill):
 def skill_tag(sid,featured=False):
  s=skills[sid]
  return f'<li class="{"featured-technology" if featured else "skill-token"}" data-skill-id="{s["id"]}">{skill_icon(s)}<bdi translate="no" dir="ltr">{escape(s["name"])}</bdi></li>'
-featured=f'<div class="featured-stack">{copy("expertise.featuredTitle","h3")}{copy("expertise.featuredNote","p","featured-note")}<ul class="featured-technologies">'+''.join(skill_tag(sid,True) for sid in S['featured'])+'</ul></div>'
+featured='<div class="featured-stack"><ul class="featured-technologies">'+''.join(skill_tag(sid,True) for sid in S['featured'])+'</ul></div>'
 groups=''
 for i,c in enumerate(sorted(S['categories'],key=lambda c:c['order'])):
  key=f'expertise.groups.{i}'
- groups+=f'<article class="skill-category" aria-labelledby="skill-category-{i}"><div class="skill-category-heading"><span class="meta" aria-hidden="true">{i+1:02d}</span>{copy(key+".title","h3",attrs=f"id=\"skill-category-{i}\"")}</div>{copy(key+".description","p","skill-category-description")}<ul class="skill-list">'+''.join(skill_tag(sid) for sid in c['skills'])+'</ul></article>'
-steps=''.join(f'<li><span class="process-index" aria-hidden="true">0{i+1}</span>{copy(f"process.steps.{i}.title","h3")}{copy(f"process.steps.{i}.text","p")}</li>' for i in range(4))
+ representatives=''.join(f'<li>{skill_icon(skills[sid])}<bdi dir="ltr" translate="no">{escape(skills[sid]["name"])}</bdi></li>' for sid in c['skills'][:3])
+ groups+=f'<article class="skill-category" aria-labelledby="skill-category-{i}"><div class="skill-category-heading"><span class="meta" aria-hidden="true">{i+1:02d}</span>{copy(key+".title","h3",attrs=f'id="skill-category-{i}"')}</div>{copy(key+".description","p","skill-category-description")}<ul class="representative-skills">{representatives}</ul><details class="skill-disclosure"><summary aria-labelledby="skill-action-{i} skill-category-{i}">{copy("expertise.explore",attrs=f'id="skill-action-{i}"')}<span class="detail-symbol" aria-hidden="true">+</span></summary><ul class="skill-list">'+''.join(skill_tag(sid) for sid in c['skills'])+'</ul></details></article>'
+steps=''.join(f'<li><span class="process-index" aria-hidden="true">0{i+1}</span>{copy(f"process.steps.{i}.title","h3")}{copy(f"process.steps.{i}.text","p")}</li>' for i in range(len(EN['process']['steps'])))
 links=''
-for key in ['github','linkedin','cv']:
- if P.get(key):links+=f'<a href="{escape(P[key],quote=True)}">{copy("contact."+key)}{arrow}</a>'
+for key in ['github','linkedin','leetcode','cv']:
+ if P.get(key) and (key!='cv' or cv):
+  attributes='download' if key=='cv' else 'target="_blank" rel="noopener noreferrer"'
+  links+=f'<a href="{escape(P[key],quote=True)}" {attributes}>{copy("contact."+key)}{arrow}</a>' 
 email=(f'<a class="contact-email" href="mailto:{escape(P["email"],quote=True)}"><bdi>{escape(P["email"])}</bdi>{arrow}</a>' if P.get('email') else '')
 channels=''
 for i,channel in enumerate(P.get('whatsapp',[])):
  number=escape(channel['number'],quote=True)
  display=escape(channel['display'])
- channels+=f'''<a class="contact-channel" href="https://wa.me/{number}" target="_blank" rel="noopener noreferrer" aria-labelledby="whatsapp-label-{i} whatsapp-number-{i}"><span class="contact-channel-heading">{copy('contact.whatsapp',attrs=f'id="whatsapp-label-{i}"')}<span class="meta" aria-hidden="true">0{i+1}</span></span><span class="contact-channel-number"><bdi id="whatsapp-number-{i}" dir="ltr">{display}</bdi>{arrow}</span>{copy('contact.startChat','span','contact-channel-action')}</a>'''
+ channels+=f'''<a class="contact-channel" href="https://wa.me/{number}" target="_blank" rel="noopener noreferrer"><span class="contact-channel-heading">{copy('contact.whatsapp',attrs=f'id="whatsapp-label-{i}"')}<span class="meta" aria-hidden="true">0{i+1}</span></span><span class="contact-channel-number"><bdi id="whatsapp-number-{i}" dir="ltr">{display}</bdi>{arrow}</span>{copy('contact.startChat','span','contact-channel-action')}</a>'''
 fields=''
 for field,tag in [('name','input'),('message','textarea')]:
  attrs=(f'type="{"email" if field=="email" else "text"}" autocomplete="{field}" maxlength="{254 if field=="email" else 100}"' if tag=='input' else 'rows="5" maxlength="1500"')
@@ -78,15 +97,18 @@ form=f'''<form id="contact-form" class="contact-form" aria-labelledby="contact-f
 <div id="contact-prepared" hidden><label for="prepared-message">{copy('contact.prepared')}</label><textarea id="prepared-message" rows="6" readonly dir="auto"></textarea></div>
 </form>'''
 html=f'''<!doctype html>
-<html lang="en" dir="ltr">
+<html lang="{LOCALE}" dir="{'rtl' if LOCALE=='ar' else 'ltr'}">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+{'<base href="/">' if LOCALE=='ar' else ''}
 <title>{escape(EN['seo']['title'])}</title><meta name="description" content="{attr('seo.description')}">
-<meta property="og:title" content="{attr('seo.title')}"><meta property="og:description" content="{attr('seo.description')}"><meta property="og:type" content="website"><meta property="og:locale" content="en_US">
+<meta property="og:title" content="{attr('seo.title')}"><meta property="og:description" content="{attr('seo.description')}"><meta property="og:type" content="website"><meta property="og:locale" content="{'ar_EG' if LOCALE=='ar' else 'en_US'}">
+{seo_markup(D,LOCALE)}
 <script src="js/preference.js"></script>
+<link rel="preload" href="assets/images/system-sculpture.svg" as="image" fetchpriority="high">
 <meta name="theme-color" content="#EAE8E1"><link rel="icon" href="assets/images/ahmed-algohary.ico" sizes="any"><link rel="icon" href="assets/images/ahmed-algohary-icon.png" type="image/png" sizes="64x64"><link rel="apple-touch-icon" href="assets/images/ahmed-algohary-apple.png" sizes="180x180">
 <noscript><link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin></noscript>
-{''.join(f'<link rel="stylesheet" href="css/{x}.css">' for x in ['tokens','base','layout','components','responsive','motion','skills'])}
+<link rel="stylesheet" href="css/site.css?v={style_version}">
 <script type="module" src="js/main.js"></script>
 <script type="application/json" id="portfolio-content">{json.dumps(D,ensure_ascii=False).replace('<',chr(92)+'u003c')}</script>
 </head>
@@ -95,22 +117,35 @@ html=f'''<!doctype html>
 <header class="site-header wrap">
 <a class="wordmark" href="#top" data-copy-aria-label="nav.home" aria-label="{attr('nav.home')}">{copy('wordmark')}<span class="wordmark-square" aria-hidden="true"></span></a>
 <nav id="navigation" class="navigation" aria-label="{attr('nav.label')}" data-copy-aria-label="nav.label">{nav}</nav>
-<div class="header-controls"><button class="language-switch" type="button" data-language data-copy-aria-label="nav.language" aria-label="{attr('nav.language')}" hidden><span data-language-name lang="ar">العربية</span><span aria-hidden="true" class="language-icon">↔</span></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>{copy('nav.menu')}<span aria-hidden="true">+</span></button></div>
+<div class="header-controls">{resume}<button class="language-switch" type="button" data-language data-copy-aria-label="nav.language" aria-label="{attr('nav.language')}" hidden><span data-language-name lang="ar">العربية</span><span aria-hidden="true" class="language-icon">↔</span></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>{copy('nav.menu')}<span aria-hidden="true">+</span></button></div>
 </header>
 <main id="main" tabindex="-1">
 <section class="hero wrap" aria-labelledby="hero-title">
 <div class="hero-top"><p class="eyebrow">{copy('title')}</p>{copy('hero.intro','p','meta')}</div>
-<div class="hero-grid"><div class="hero-content"><h1 id="hero-title">{copy('hero.line1','span','hero-line')}{copy('hero.line2','span','hero-line')}{copy('hero.line3','span','hero-line expressive')}</h1>{copy('hero.description','p','hero-description')}<div class="hero-actions"><a class="button" href="#work">{copy('hero.work')}{arrow}</a><a class="text-link" href="#contact">{copy('hero.contact')}{arrow}</a></div></div>
-<figure class="hero-art"><div class="scene-slot hero-scene" data-scene="hero" aria-hidden="true">{scene_fallback}</div><div class="hero-portrait-frame"><img class="hero-portrait" src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) min(100vw - 40px, 320px), (max-width:1100px) 40vw, 420px" data-profile-image width="1122" height="1402" fetchpriority="high" decoding="async" alt="{attr('hero.portraitAlt')}" data-copy-alt="hero.portraitAlt"></div><figcaption><div>{copy('name','span','portrait-name')}{copy('title','p')}</div><span class="portrait-signature" aria-hidden="true">↗</span></figcaption></figure></div>
+<div class="hero-grid"><div class="hero-content"><h1 id="hero-title">{copy('hero.line1','span','hero-line')}{copy('hero.line2','span','hero-line')}{copy('hero.line3','span','hero-line expressive')}</h1>{copy('hero.description','p','hero-description')}<div class="hero-actions"><a class="button" href="#work">{copy('hero.work')}{arrow}</a><a class="text-link" href="#contact">{copy('hero.contact')}{arrow}</a>{hero_resume}</div></div>
+<figure class="hero-art"><div class="hero-art-stage"><span class="hero-art-coordinate meta" aria-hidden="true">SYS / 001</span><div class="scene-slot hero-scene" data-scene="hero" aria-hidden="true"><div class="scene-fallback"><img src="assets/images/system-sculpture.svg" width="600" height="600" alt="" fetchpriority="high" decoding="async"></div></div><span class="hero-art-axis meta" aria-hidden="true">X — Y — Z</span></div><figcaption><div>{copy('hero.figure','span','sculpture-caption')}{copy('hero.figureNote','p')}</div><span class="portrait-signature" aria-hidden="true">↗</span></figcaption></figure></div>
 <div class="hero-bottom">{copy('hero.index','p','meta')}<a class="scroll-cue" href="#work">{copy('hero.scroll')}<span aria-hidden="true">↓</span></a></div>
 </section>
+<section id="stack" class="stack wrap" aria-labelledby="stack-title"><div class="stack-heading"><div>{copy('stack.label','p','eyebrow')}{copy('stack.title','h2',attrs='id="stack-title"')}</div>{copy('stack.intro','p')}</div>{featured}{copy('stack.note','p','stack-note')}</section>
 <section id="work" class="work wrap section" aria-labelledby="work-title"><div class="work-stage"><div class="section-heading"><div>{copy('work.label','p','eyebrow')}{copy('work.title','h2','multiline',attrs='id="work-title"')}</div>{copy('work.intro','p','section-intro')}</div><div class="showcase-tools" hidden><span class="showcase-count" data-project-counter>01 / 05</span><div class="showcase-progress" aria-hidden="true"></div><div class="showcase-navigation"><button type="button" data-project-previous aria-label="Previous project"><span>&larr;</span></button><button type="button" data-project-next aria-label="Next project"><span>&rarr;</span></button></div></div><div class="project-viewport"><div class="projects">{projects}</div></div></div></section>
+{architecture_section(D,copy)}
 <section id="about" class="about section" aria-labelledby="about-title"><div class="wrap"><div class="section-heading"> <div>{copy('about.label','p','eyebrow')}{copy('about.title','h2','multiline',attrs='id="about-title"')}</div>{copy('about.placeholder','p','meta')}</div><div class="about-grid"><figure class="portrait"><img src="{P['portrait']}"{portrait_srcset} sizes="(max-width:600px) calc(100vw - 40px), (max-width:1100px) 36vw, 430px" data-profile-image width="1122" height="1402" loading="lazy" decoding="async" alt="{attr('about.portraitAlt')}" data-copy-alt="about.portraitAlt"><figcaption>{copy('about.caption')}</figcaption></figure><div class="about-copy">{copy('about.intro','p','about-statement')}{copy('about.bio','p')}{copy('about.philosophy','p')}<div class="interests">{copy('about.interests','h3','meta')}{copy('about.interestText','p')}</div></div></div></div></section>
-<section id="expertise" class="expertise wrap section" aria-labelledby="expertise-title"><div class="section-heading"><div>{copy('expertise.label','p','eyebrow')}{copy('expertise.title','h2','multiline',attrs='id="expertise-title"')}{copy('expertise.specialization','p','expertise-specialization')}</div>{copy('expertise.intro','p','section-intro')}</div>{featured}{copy('expertise.catalogTitle','h3','skills-catalog-title')}<div class="skills-grid">{groups}</div></section>
+{experience_section(D,copy,LOCALE)}
+<section id="expertise" class="expertise wrap section" aria-labelledby="expertise-title"><div class="section-heading"><div>{copy('expertise.label','p','eyebrow')}{copy('expertise.title','h2','multiline',attrs='id="expertise-title"')}{copy('expertise.specialization','p','expertise-specialization')}</div>{copy('expertise.intro','p','section-intro')}</div><div class="skills-grid">{groups}</div></section>
 <section id="process" class="process wrap section" aria-labelledby="process-title"><div class="section-heading"><div>{copy('process.label','p','eyebrow')}{copy('process.title','h2',attrs='id="process-title"')}</div>{copy('process.intro','p','section-intro')}</div><ol class="process-list">{steps}</ol></section>
 <section id="contact" class="contact section" aria-labelledby="contact-title"><div class="wrap"><div class="contact-grid"><div class="contact-lead"><div class="scene-slot contact-scene" data-scene="contact" aria-hidden="true">{scene_fallback}</div>{copy('contact.label','p','eyebrow')}{copy('contact.title','h2','multiline',attrs='id="contact-title"')}{copy('contact.invitation','p','contact-invitation')}<div class="contact-copy">{copy('contact.description','p')}<div id="contact-action" class="contact-channels" role="group" aria-label="{attr('contact.directTitle')}" data-copy-aria-label="contact.directTitle">{channels}</div>{email}<div class="social-links" id="social-links">{links}</div></div></div><div class="contact-compose">{form}</div></div></div></section>
 </main>
 <footer class="site-footer wrap"><p><span>© {date.today().year}</span> {copy('footer.copyright')}</p><nav aria-label="{attr('nav.footer')}" data-copy-aria-label="nav.footer"><a href="#work">{copy('nav.work')}</a><a href="#contact">{copy('nav.contact')}</a><button type="button" class="footer-language" data-language data-copy-aria-label="footer.languageLabel" aria-label="{attr('footer.languageLabel')}" hidden>{copy('footer.language')}</button><a href="#top">{copy('footer.top')}<span aria-hidden="true">↑</span></a></nav></footer>
 <button type="button" class="motion-switch" data-motion-switch aria-pressed="false" hidden>Pause motion</button></body></html>'''
-Path('index.html').write_text(html,encoding='utf-8')
-print('Updated index.html with complete default-language content.')
+fallback_language='<noscript><a class="language-switch" href="'+('/' if LOCALE=='ar' else '/ar/')+'" lang="'+('en' if LOCALE=='ar' else 'ar')+'">'+('English' if LOCALE=='ar' else 'العربية')+'</a></noscript>'
+html=html.replace('<div class="header-controls">','<div class="header-controls">'+fallback_language)
+if LOCALE=='ar':html=html.replace('href="#','href="/ar/#')
+target=Path('ar/index.html') if LOCALE=='ar' else Path('index.html')
+target.parent.mkdir(exist_ok=True)
+target.write_text(html,encoding='utf-8')
+print(f'Updated {target} with complete localized content.')
+if LOCALE=='en':
+ Path('robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: '+P['url']+'sitemap.xml\n',encoding='utf-8')
+ alternates=f'<xhtml:link rel="alternate" hreflang="en" href="{P["url"]}"/><xhtml:link rel="alternate" hreflang="ar" href="{P["url"]}ar/"/>'
+ Path('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+''.join(f'<url><loc>{P["url"]}{suffix}</loc>{alternates}</url>' for suffix in ['', 'ar/'])+'</urlset>\n',encoding='utf-8')
+ subprocess.run([sys.executable,str(Path(__file__).resolve()),'--arabic'],check=True)

@@ -17,7 +17,7 @@ for(const lang of ['ar','en']){
   await page.locator('#contact').evaluate(e=>e.scrollIntoView({behavior:'instant'}));
   await page.screenshot({path:`reports/contact/${lang}-${width}.png`,fullPage:false});
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
-  const axe=await new AxeBuilder({page}).include('#contact').withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
+  const axe=await new AxeBuilder({page}).include('#contact').withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']).analyze();
   assert.equal(overflow,false);assert.deepEqual(axe.violations,[]);
   results.layouts.push({lang,width,overflow,axeViolations:axe.violations.length});
  }

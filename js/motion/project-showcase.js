@@ -1,98 +1,45 @@
-import { MOTION } from './config.js';
+﻿import { MOTION } from './config.js';
+// A vertical editorial sequence. Native scrolling, links and disclosures own navigation.
 export function projectShowcase(gsap, ScrollTrigger, signal) {
   const section = document.querySelector('#work');
-  const stage = section.querySelector('.work-stage');
-  const track = section.querySelector('.projects');
-  const viewport = section.querySelector('.project-viewport');
-  const cards = [...track.querySelectorAll('.project')];
+  const cards = [...section.querySelectorAll('.project')];
   const tools = section.querySelector('.showcase-tools');
-  const progress = tools.querySelector('.showcase-progress');
   const counter = tools.querySelector('[data-project-counter]');
+  const progress = tools.querySelector('.showcase-progress');
   const previous = tools.querySelector('[data-project-previous]');
   const next = tools.querySelector('[data-project-next]');
-  let tween, trigger, active = false, current = 0, abandoned = false;
-  const eligible = matchMedia(`(min-width:${MOTION.horizontalMin}px) and (min-height:${MOTION.horizontalHeight}px)`);
-  function update(p) {
-    current = Math.round(p * (cards.length - 1));
+  const desktop = matchMedia('(min-width:1101px)');
+  const ratios = new Map();
+  let current = 0;
+  const update = () => {
     counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
-    progress.style.setProperty('--progress', p);
-    previous.setAttribute('aria-disabled', String(current === 0));
-    next.setAttribute('aria-disabled', String(current === cards.length - 1));
-    document.dispatchEvent(new CustomEvent('portfolio:motion-frame'));
-  }
-  function disable() {
-    active = false;
-    trigger?.kill(true); tween?.kill(); trigger = tween = null;
-    section.classList.remove('is-horizontal'); tools.hidden = true;
-    gsap.set(track, { clearProps: 'transform' });
-    stage.style.removeProperty('--card-width');
-    viewport.removeAttribute('tabindex'); viewport.removeAttribute('role'); viewport.removeAttribute('aria-label');
-  }
-  function enable() {
-    if (!eligible.matches || abandoned || signal.aborted || /^#(?:case|project)-/.test(location.hash) || cards.some(c => c.querySelector('details').open)) return;
-    section.classList.add('is-horizontal');
-    stage.style.setProperty('--card-width', `${stage.clientWidth}px`);
-    tools.hidden = false;
-    if (stage.getBoundingClientRect().height > innerHeight - 36) { disable(); return; }
-    active = true;
-    viewport.tabIndex = 0;
-    viewport.setAttribute('role', 'region');
-    viewport.setAttribute('aria-label', document.documentElement.lang === 'ar' ? 'معرض المشاريع، استخدم الأسهم للتنقل' : 'Project gallery, use arrow keys to navigate');
-    const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-    const direction = document.documentElement.dir === 'rtl' ? 1 : -1;
-    tween = gsap.to(track, { x: () => direction * distance(), ease: 'none',
-      scrollTrigger: { id: 'project-showcase', trigger: stage, start: 'top 24px', end: () => `+=${distance()}`,
-        pin: true, scrub: MOTION.scrub, invalidateOnRefresh: true,
-        onRefreshInit: () => stage.style.setProperty('--card-width', `${section.clientWidth}px`),
-        onUpdate: self => update(self.progress) } });
-    trigger = tween.scrollTrigger;
-    update(trigger.progress);
-  }
-  let refreshVersion = 0;
-  async function refreshMode() {
-    const version = ++refreshVersion;
-    await document.fonts.ready;
-    if(signal.aborted || version !== refreshVersion)return;
-    disable(); enable(); ScrollTrigger.refresh();
-  }
+    progress.style.setProperty('--progress', (current + 1) / cards.length);
+    previous.disabled = current === 0;
+    next.disabled = current === cards.length - 1;
+  };
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) ratios.set(entry.target, entry.intersectionRatio);
+    const visible = [...ratios].filter(([, ratio]) => ratio > 0).sort((a, b) => b[1] - a[1]);
+    if (visible.length) current = cards.indexOf(visible[0][0]);
+    update();
+  }, { threshold: [0, .2, .5, .8] });
+  cards.forEach(card => {
+    observer.observe(card);
+    const image = card.querySelector('.project-window');
+    gsap.fromTo(image, { y: 24, rotationX: 3, clipPath: 'inset(4% 0 4% 0)' }, {
+      y: 0, rotationX: 0, clipPath: 'inset(0% 0 0% 0)', ease: 'none',
+      scrollTrigger: { trigger: image, start: 'top 94%', end: 'top 50%', scrub: MOTION.scrub }
+    });
+  });
   function go(index) {
-    if (!active || !trigger) return;
-    index = Math.max(0, Math.min(cards.length - 1, index));
-    window.scrollTo({ top: trigger.start + (trigger.end - trigger.start) * index / (cards.length - 1), behavior: 'instant' });
-    // Keyboard positioning should settle immediately so focused controls are never offscreen.
-    viewport.scrollLeft = 0;
-    trigger.update(); trigger.getTween()?.progress(1); tween.progress(index / (cards.length - 1));
+    current = Math.max(0, Math.min(cards.length - 1, index));
+    cards[current].scrollIntoView({ block: 'start', behavior: 'smooth' });
+    update();
   }
   previous.addEventListener('click', () => go(current - 1), { signal });
   next.addEventListener('click', () => go(current + 1), { signal });
-  viewport.addEventListener('keydown', event => {
-    if (event.target !== viewport || !active) return;
-    const forward = document.documentElement.dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
-    if (event.key === forward) { event.preventDefault(); go(current + 1); }
-    else if (['ArrowLeft', 'ArrowRight'].includes(event.key)) { event.preventDefault(); go(current - 1); }
-    else if (event.key === 'Home') { event.preventDefault(); go(0); }
-    else if (event.key === 'End') { event.preventDefault(); go(cards.length - 1); }
-  }, { signal });
-  track.addEventListener('focusin', event => {
-    const card = event.target.closest('.project');
-    if (active && card) { go(cards.indexOf(card)); requestAnimationFrame(() => { if(active) viewport.scrollLeft=0; }); }
-  }, { signal });
-  function nativeStudy(study) {
-    if (!active) return;
-    abandoned = true;
-    const card = study?.closest('.project');
-    disable(); ScrollTrigger.refresh();
-    card?.scrollIntoView({ block: 'start', behavior: 'instant' });
-  }
-  cards.forEach(card => card.querySelector('details').addEventListener('toggle', event => {
-    if (event.target.open) nativeStudy(event.target);
-  }, { signal }));
-  window.addEventListener('hashchange', () => {
-    if (/^#(?:case|project)-/.test(location.hash)) nativeStudy(document.querySelector(location.hash));
-  }, { signal });
-  eligible.addEventListener('change', refreshMode, { signal });
-  document.addEventListener('portfolio:language', refreshMode, { signal });
-  signal.addEventListener('abort', disable, { once: true });
-  enable();
-  return { dispose: disable, get active() { return active; } };
+  const mode = () => { tools.hidden = !desktop.matches; };
+  desktop.addEventListener('change', mode, { signal });
+  signal.addEventListener('abort', () => { observer.disconnect(); tools.hidden = true; }, { once: true });
+  mode(); update();
 }

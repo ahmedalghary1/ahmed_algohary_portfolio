@@ -1,0 +1,97 @@
+{
+  "results": [
+    {
+      "name": "en: menu focus, active sections and native keyboard skills",
+      "passed": true
+    },
+    {
+      "name": "en: all five original case URLs expose ten documented sections",
+      "passed": true
+    },
+    {
+      "name": "en: architecture links, responsibilities and coherent seven-edge flow",
+      "passed": true
+    },
+    {
+      "name": "en: confirmed contacts, exact CV file delivery and locale-preserved draft",
+      "passed": true
+    },
+    {
+      "name": "ar: menu focus, active sections and native keyboard skills",
+      "passed": true
+    },
+    {
+      "name": "ar: all five original case URLs expose ten documented sections",
+      "passed": true
+    },
+    {
+      "name": "ar: architecture links, responsibilities and coherent seven-edge flow",
+      "passed": true
+    },
+    {
+      "name": "ar: confirmed contacts, exact CV file delivery and locale-preserved draft",
+      "passed": true
+    },
+    {
+      "name": "Without JavaScript: all content, project studies, skill lists, contacts and CV remain available",
+      "passed": true
+    },
+    {
+      "name": "en 390px: normal motion, visible content and appropriate scene tier",
+      "passed": true
+    },
+    {
+      "name": "en 768px: normal motion, visible content and appropriate scene tier",
+      "passed": true
+    },
+    {
+      "name": "en 1440px: normal motion, visible content and appropriate scene tier",
+      "passed": true
+    },
+    {
+      "name": "ar 390px: normal motion, visible content and appropriate scene tier",
+      "passed": true
+    },
+    {
+      "name": "ar 768px: normal motion, visible content and appropriate scene tier",
+      "passed": true
+    },
+    {
+      "name": "ar 1440px: normal motion, visible content and appropriate scene tier",
+      "passed": true
+    },
+    {
+      "name": "Reduced-motion startup skips GSAP and Three.js downloads",
+      "passed": true
+    },
+    {
+      "name": "Static Arabic route has native RTL content, metadata, hreflang and working assets without JavaScript",
+      "passed": true
+    },
+    {
+      "name": "Arabic entry preserves in-place English selection, native anchors and CV download",
+      "passed": true
+    },
+    {
+      "name": "Native CV download verification records managed-browser interception explicitly",
+      "passed": true
+    },
+    {
+      "name": "Structured data, canonical, sharing image, robots and sitemap resolve",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    {
+      "check": "Native PDF download",
+      "status": "verification blocked",
+      "reason": "Managed Chrome intercepts PDF requests with HTTP 204 and cancels downloads. Direct HTTP requests return the complete, hash-verified source PDF.",
+      "probe": {
+        "status": 204,
+        "bytes": 0
+      },
+      "downloadFailure": "canceled"
+    }
+  ]
+}

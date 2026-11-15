@@ -1,0 +1,41 @@
+{
+  "phase": "04-projects",
+  "results": [
+    {
+      "lang": "en",
+      "width": 390,
+      "overflow": false,
+      "missingCopy": [],
+      "deadAnchors": [],
+      "errors": [],
+      "menuAndStudyKeyboard": true
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "overflow": false,
+      "missingCopy": [],
+      "deadAnchors": [],
+      "errors": [],
+      "menuAndStudyKeyboard": true
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "overflow": false,
+      "missingCopy": [],
+      "deadAnchors": [],
+      "errors": [],
+      "menuAndStudyKeyboard": true
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "overflow": false,
+      "missingCopy": [],
+      "deadAnchors": [],
+      "errors": [],
+      "menuAndStudyKeyboard": true
+    }
+  ]
+}

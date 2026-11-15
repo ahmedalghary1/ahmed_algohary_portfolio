@@ -40,11 +40,11 @@ try {
   }
  });
  await check('All five project studies expand from keyboard and expose full content', async () => {
-  assert.equal(await page.locator('details').count(), 5);
-  for (const details of await page.locator('details').all()) {
+  assert.equal(await page.locator('details[id^="case-"]').count(), 5);
+  for (const details of await page.locator('details[id^="case-"]').all()) {
    await details.locator('summary').focus(); await page.keyboard.press('Enter');
    assert.equal(await details.getAttribute('open'), '');
-   assert.equal(await details.locator('.case-study h4').count(), 3);
+   assert.equal(await details.locator('.case-study h4').count(), 10);
    assert.ok((await details.locator('.case-study').innerText()).length > 300);
   }
  });
@@ -54,8 +54,8 @@ try {
   assert.equal(await page.locator('html').getAttribute('lang'), 'ar'); assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   assert.equal(new URL(page.url()).searchParams.get('lang'), 'ar');
   assert.match(await page.title(), /أحمد/);
-  assert.match(await page.locator('.project-visual img').first().getAttribute('src'), /ahmed-gamal-1600\.webp/);
-  assert.match(await page.locator('.project-visual img').first().getAttribute('alt'), /أحمد جمال/);
+  assert.match(await page.locator('.project-visual img').first().getAttribute('src'), /garment-factory-1600\.webp/);
+  assert.ok((await page.locator('.project-visual img').first().getAttribute('alt')).length > 30);
   assert.equal(await page.evaluate(() => window.__sameDocument), 'retained');
   assert.equal(await page.locator('.header-controls [data-language]').evaluate(e => e === document.activeElement), true);
  });
@@ -63,14 +63,14 @@ try {
   await page.goto(url); assert.equal(await page.locator('html').getAttribute('lang'), 'ar');
   await page.goto(`${url}/?lang=en`); await page.waitForSelector('html.js'); assert.equal(await page.locator('html').getAttribute('lang'), 'en');
  });
- await check('Reduced motion keeps the real portrait visible without a WebGL canvas', async () => {
+ await check('Reduced motion keeps static hero artwork visible without a WebGL canvas', async () => {
   assert.equal(await page.locator('canvas, #sculpture, .scene-toggle').count(), 0);
-  assert.equal(await page.locator('.hero-portrait').evaluate(e => e.complete && e.naturalWidth > 0), true);
+  assert.equal(await page.locator('.hero-scene img').evaluate(e => e.complete && e.naturalWidth > 0), true);
   assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
  });
  await check('No dead anchors; the supplied WhatsApp contact is visible', async () => {
   assert.deepEqual(await page.locator('a[href^="#"]').evaluateAll(links => links.map(a=>a.getAttribute('href')).filter(h=>h==='#'||!document.querySelector(h))), []);
-  assert.equal(await page.locator('a[href^="mailto:"]').count(), 0); assert.equal(await page.locator('#social-links a').count(), 0);
+  assert.equal(await page.locator('a[href^="mailto:"]').getAttribute('href'), 'mailto:ahmedalgohary1170@gmail.com'); assert.equal(await page.locator('#social-links a').count(), 4);
   assert.deepEqual(await page.locator('.contact-channel').evaluateAll(links=>links.map(a=>a.href)),['https://wa.me/201156972307']);
  });
  await check('200% equivalent zoom reflows in both languages', async () => {
@@ -106,8 +106,8 @@ try {
   });
   await check(`${lang}: four live links and one private project are presented correctly`, async () => {
    assert.deepEqual(await deepLinks.page.locator('.project-visit').evaluateAll(links => links.map(a => a.href)), [
-    'https://ahmed-gamal-seven.vercel.app/', 'https://rocks-ev.com/',
-    'https://bonyan-nine.vercel.app/', 'https://ahmed-nabil-sooty.vercel.app/'
+    'https://rocks-ev.com/', 'https://bonyan-nine.vercel.app/',
+    'https://ahmed-gamal-seven.vercel.app/', 'https://ahmed-nabil-sooty.vercel.app/'
    ]);
    assert.equal(await deepLinks.page.locator('#project-garment-factory .project-visit').count(), 0);
    assert.equal(await deepLinks.page.locator('#project-garment-factory .project-privacy').isVisible(), true);
@@ -123,14 +123,14 @@ try {
  await blockedMain.page.goto(url);
  await check('Failed main module restores native mobile navigation after the pre-paint reservation',async()=>{
   await blockedMain.page.waitForFunction(()=>!document.documentElement.classList.contains('has-js'));
-  assert.equal(await blockedMain.page.locator('#navigation a:visible').count(),5);
+  assert.equal(await blockedMain.page.locator('#navigation a:visible').count(),7);
   assert.equal(await blockedMain.page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
  });
  await blockedMain.context.close();
  const staticSite = await create({ javaScriptEnabled: false, viewport: {width:320,height:740} });
  await staticSite.page.goto(url);
  await check('Without JavaScript all English content, links, details and artwork remain usable', async () => {
-  assert.equal(await staticSite.page.locator('.project').count(),5);assert.equal(await staticSite.page.locator('#navigation a:visible').count(),5);
+  assert.equal(await staticSite.page.locator('.project').count(),5);assert.equal(await staticSite.page.locator('#navigation a:visible').count(),7);
   await staticSite.page.locator('summary').first().click();assert.equal(await staticSite.page.locator('details').first().getAttribute('open'),'');
   assert.match(await staticSite.page.locator('h1').innerText(),/Engineering/);
   assert.equal(await staticSite.page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
@@ -149,7 +149,7 @@ try {
  await check('Blocked enhancement libraries preserve visible content and functional localization',async()=>{
   await failedLibraries.page.waitForTimeout(400);
   assert.equal(await failedLibraries.page.locator('.hero-line').first().evaluate(e=>getComputedStyle(e).opacity),'1');
-  assert.equal(await failedLibraries.page.locator('.hero-portrait').evaluate(e=>e.complete && e.naturalWidth > 0),true);
+  assert.equal(await failedLibraries.page.locator('.hero-scene img').evaluate(e=>e.complete && e.naturalWidth > 0),true);
   await failedLibraries.page.locator('.header-controls [data-language]').click();assert.equal(await failedLibraries.page.locator('html').getAttribute('lang'),'ar');
  });
  await failedLibraries.context.close();
@@ -161,10 +161,10 @@ try {
  await enhanced.page.waitForSelector('canvas');
  await check('The real portrait remains alongside a single decorative scene',async()=>{
   assert.equal(await enhanced.page.locator('canvas').count(),1);
-  assert.equal(await enhanced.page.locator('.hero-portrait').getAttribute('fetchpriority'),'high');
-  assert.equal(await enhanced.page.locator('[data-profile-image]').count(),2);
-  assert.equal(await enhanced.page.locator('.hero-portrait').evaluate(async e=>{await e.decode();return e.naturalWidth>0;}),true);
-  assert.match(await enhanced.page.locator('.hero-portrait').getAttribute('srcset'),/480w.+896w.+1122w/);
+  assert.equal(await enhanced.page.locator('.portrait img').getAttribute('loading'),'lazy');
+  assert.equal(await enhanced.page.locator('[data-profile-image]').count(),1);
+  assert.equal(await enhanced.page.locator('.portrait img').evaluate(async e=>{e.loading='eager';await e.decode();return e.naturalWidth>0;}),true);
+  assert.match(await enhanced.page.locator('.portrait img').getAttribute('srcset'),/480w.+896w.+1122w/);
  });
  await check('Repeated language switches preserve the portrait and ScrollTrigger count',async()=>{
   await enhanced.page.waitForFunction(()=>!!window.ScrollTrigger);
@@ -178,12 +178,12 @@ try {
  await check('Live reduced-motion preference preserves the portrait',async()=>{
   await enhanced.page.emulateMedia({reducedMotion:'reduce'});
   await enhanced.page.waitForFunction(()=>document.querySelectorAll('canvas').length===0);
-  assert.equal(await enhanced.page.locator('.hero-portrait').isVisible(),true);
+  assert.equal(await enhanced.page.locator('.portrait img').isVisible(),true);
   assert.equal(await enhanced.page.locator('canvas').count(),0);
  });
  await check('Page lifecycle disposal clears ScrollTriggers and retains the portrait',async()=>{
   await enhanced.page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true})));
-  assert.equal(await enhanced.page.locator('.hero-portrait').isVisible(),true);
+  assert.equal(await enhanced.page.locator('.portrait img').isVisible(),true);
   await enhanced.page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:false})));
   assert.equal(await enhanced.page.locator('canvas').count(),0);
   assert.equal(await enhanced.page.evaluate(()=>window.ScrollTrigger.getAll().length),0);

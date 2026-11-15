@@ -10,7 +10,8 @@
   let saved;
   try { saved = localStorage.getItem('portfolio-language'); } catch { /* Storage is optional. */ }
   const query = new URL(location.href).searchParams.get('lang');
-  const language = ['en', 'ar'].includes(query) ? query : saved === 'ar' ? 'ar' : 'en';
+  const route = location.pathname.startsWith('/ar/') ? 'ar' : null;
+  const language = ['en', 'ar'].includes(query) ? query : route || (saved === 'ar' ? 'ar' : 'en');
   document.documentElement.lang = language;
   document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
   const files = language === 'ar' ? ['arabic-arabic-400', 'arabic-arabic-600'] : ['space-grotesk'];

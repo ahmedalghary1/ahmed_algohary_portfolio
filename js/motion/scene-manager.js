@@ -1,6 +1,7 @@
 import { MOTION, qualityTier } from './config.js';
 import { frameScheduler, pixelRatio } from './performance-manager.js';
 import { vertexShader, fragmentShader } from './shaders.js';
+import { createSculpture } from './hero-scene.js';
 export async function sceneManager(gsap, ScrollTrigger, parentSignal) {
   if (qualityTier() === 'light' || parentSignal.aborted) return;
   const T = await import('../../assets/vendor/three.module.min.js');
@@ -22,27 +23,11 @@ export async function sceneManager(gsap, ScrollTrigger, parentSignal) {
   }
   canvas.className='cinematic-canvas'; canvas.setAttribute('aria-hidden','true');
   document.body.append(canvas);
-  const scene=new T.Scene(), camera=new T.PerspectiveCamera(35,1,.1,60), group=new T.Group();
-  const geometry=new T.BoxGeometry(1,.065,.065);
-  const metal=new T.MeshStandardMaterial({color:MOTION.metal,metalness:.72,roughness:.32});
-  const accent=new T.MeshStandardMaterial({color:MOTION.accent,metalness:.45,roughness:.4});
-  for(let i=0;i<6;i++) {
-    const frame=new T.Group();
-    for(let j=0;j<4;j++) {
-      const mesh=new T.Mesh(geometry,j===i%4?accent:metal);
-      const a=j*Math.PI/2;mesh.position.set(Math.sin(a)*.5,Math.cos(a)*.5,0);mesh.rotation.z=a;
-      frame.add(mesh);
-    }
-    frame.position.z=(i-2.5)*.2;frame.rotation.z=i*.13;group.add(frame);
-  }
-  // Batch the 24 structural beams into two draw calls, one per material.
-  group.updateMatrixWorld(true);
-  const metalBatch=new T.InstancedMesh(geometry,metal,18),accentBatch=new T.InstancedMesh(geometry,accent,6);
-  let mi=0,ai=0;
-  group.traverse(node=>{if(node.isMesh){if(node.material===accent)accentBatch.setMatrixAt(ai++,node.matrixWorld);else metalBatch.setMatrixAt(mi++,node.matrixWorld);}});
-  group.clear();group.add(metalBatch,accentBatch);
-  scene.add(group,new T.HemisphereLight(0xffffff,0x57574f,2));
-  const light=new T.DirectionalLight(0xfff5e6, MOTION.light);light.position.set(3,4,5);scene.add(light);
+  const scene=new T.Scene(), camera=new T.PerspectiveCamera(35,1,.1,60);
+  const sculpture=createSculpture(T), group=sculpture.group;
+  scene.add(group,new T.HemisphereLight(0xffffff,0x57574f,2.4));
+  const light=new T.DirectionalLight(0xfff5e6,MOTION.light);light.position.set(3,4,5);scene.add(light);
+  const rim=new T.DirectionalLight(0xe5e8df,1.5);rim.position.set(-3,2,-2);scene.add(rim);
   const slots=[...document.querySelectorAll('.scene-slot')];
   const visibleSlots=new Set();
   let painted=false;
@@ -67,9 +52,9 @@ export async function sceneManager(gsap, ScrollTrigger, parentSignal) {
       images.push({element:entry.target,mesh,texture,start:performance.now()});scheduler.invalidate();
     },undefined,()=>{});
   }),{threshold:.3});
-  const state={rotation:0,z:4.2,scale:1,x:0,cameraX:.3,closingRotation:1.5};
+  const state={rotation:.65,z:5.8,scale:1,x:0,cameraX:.3,closingRotation:1.5};
   const timeline=gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:MOTION.scrub}})
-    .to(state,{rotation:1.5,z:5.8,scale:.8,x:.15,cameraX:1,ease:'none'});
+    .to(state,{rotation:1.7,z:7,scale:.86,x:.1,cameraX:1,ease:'none'});
   const closingTimeline=gsap.to(state,{closingRotation:.6,ease:'none',scrollTrigger:{trigger:'#contact',start:'top bottom',end:'top 25%',scrub:MOTION.scrub}});
   let frames=0;
   const scheduler=frameScheduler(time=>{
@@ -89,7 +74,7 @@ export async function sceneManager(gsap, ScrollTrigger, parentSignal) {
       camera.aspect=r.width/r.height;camera.position.set(closing?.6:state.cameraX,.6,closing?4.5:state.z);camera.lookAt(0,0,0);camera.updateProjectionMatrix();
       group.scale.setScalar(closing?1:state.scale);group.position.x=closing?0:state.x;
       const idle=Math.min(1,(time-intro)/(MOTION.idleSeconds*1000));
-      group.rotation.set(.3,closing?state.closingRotation:state.rotation+idle*.35+pointer*.08,closing?-.2:.15);
+      group.rotation.set(.38,closing?state.closingRotation:state.rotation+idle*.12+pointer*.08,closing?-.2:-.16);
       renderer.render(scene,camera);slot.dataset.webgl='true';
     }
     let revealing=false;
@@ -122,6 +107,6 @@ export async function sceneManager(gsap, ScrollTrigger, parentSignal) {
   window.addEventListener('pointermove',e=>{if(visibleSlots.size && finePointer.matches){pointer=e.clientX/innerWidth-.5;scheduler.invalidate();}},{passive:true,signal});
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;slots.forEach(s=>delete s.dataset.webgl);},{signal});
   canvas.addEventListener('webglcontextrestored',()=>{lost=false;resize();},{signal});
-  signal.addEventListener('abort',()=>{visibility.disconnect();observer.disconnect();images.forEach(i=>{i.texture.dispose();i.mesh.material.dispose();});plane.dispose();closingTimeline.scrollTrigger?.kill();closingTimeline.kill();timeline.scrollTrigger?.kill();timeline.kill();geometry.dispose();metal.dispose();accent.dispose();renderer.dispose();renderer.forceContextLoss();canvas.remove();slots.forEach(s=>delete s.dataset.webgl);},{once:true});
+  signal.addEventListener('abort',()=>{visibility.disconnect();observer.disconnect();images.forEach(i=>{i.texture.dispose();i.mesh.material.dispose();});plane.dispose();closingTimeline.scrollTrigger?.kill();closingTimeline.kill();timeline.scrollTrigger?.kill();timeline.kill();sculpture.dispose();renderer.dispose();renderer.forceContextLoss();canvas.remove();slots.forEach(s=>delete s.dataset.webgl);},{once:true});
   resize();
 }

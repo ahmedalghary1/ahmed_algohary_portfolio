@@ -3,7 +3,7 @@
 }
 html {
   scroll-behavior:smooth;
-  scroll-padding-block-start:24px;
+  scroll-padding-block-start:calc(var(--header-offset) + 16px);
 }
 body {
   margin:0;
@@ -89,7 +89,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
 }
 .skip-link {
   position:fixed;
-  z-index:50;
+  z-index:var(--z-skip);
   inset-block-start:12px;
   inset-inline-start:var(--gutter);
   padding:12px 20px;
@@ -149,7 +149,7 @@ html[dir=rtl] .arrow {
   font-variant-numeric:tabular-nums;
 }
 section[id] {
-  scroll-margin-block-start:24px;
+  scroll-margin-block-start:0;
 }
 h1,h2,h3 {
   overflow-wrap:break-word;

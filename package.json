@@ -4,9 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "python -m http.server 8000 --bind 127.0.0.1",
-    "content": "python3 scripts/render.py",
-    "vendor": "node scripts/vendor.mjs"
+    "start": "python -m http.server 8017 --bind 127.0.0.1",
+    "content": "python scripts/render.py",
+    "vendor": "node scripts/vendor.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "python scripts/package.py",
+    "test": "node scripts/verify.mjs && node scripts/transformation-check.mjs",
+    "test:layouts": "node scripts/audit.mjs",
+    "test:contact": "node scripts/contact-check.mjs",
+    "test:motion": "node scripts/motion-check.mjs",
+    "measure": "node scripts/measure.mjs"
   },
   "dependencies": {
     "gsap": "3.14.2",
