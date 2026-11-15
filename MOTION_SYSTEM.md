@@ -1,11 +1,14 @@
-﻿# Interaction policy — project-first refactor
+﻿# Interaction policy — dark portfolio
 
-The current site uses native page/anchor scrolling and lightweight CSS feedback. Content appears immediately with or without JavaScript. No intro, pinned sequence, carousel, canvas, parallax or scroll-driven transforms gate viewing.
+Native anchor scrolling, disclosure navigation, active section observation, project
+category buttons and case image dialog. Content remains available without JavaScript.
+Buttons/cards use 180–300ms feedback. Cards have a subtle CSS view-timeline reveal
+where supported (opacity never below .7); no effect gates viewing. Reduced motion
+disables animation, transforms from reveal, transitions and smooth scrolling.
 
-- Image hover: a small scale change on fine-pointer devices only.
-- Buttons and links: color/pressed feedback and visible keyboard focus.
-- Navigation: disclosure menu, Escape/selection close, destination focus and IntersectionObserver active sections; no section geometry reads on scroll.
-- Language: native module, static alternate routes and optional local persistence.
-- Reduced motion: animation, transitions, hover transforms and smooth scrolling disabled.
+The contact composer validates four fields, copies a draft or hands it to WhatsApp.
+The status never claims delivery. Clipboard denial exposes a selectable draft.
+No animation runtime, canvas, autoplay, parallax or pinned sequences are loaded.
 
-GSAP, ScrollTrigger, Three.js, their vendor files and obsolete scene/architecture modules were removed. No production npm dependencies remain. npm run test:motion now checks current keyboard, reduced-motion, fallback and legacy navigation behavior. Historical reports/transformation measurements apply only to the old design.
+Current verification: npm run test:layouts, test:motion, test:contact and test:v3.
+Historical reports describe previous iterations; current evidence is in reports/redesign.

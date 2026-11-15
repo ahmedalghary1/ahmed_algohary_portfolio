@@ -2,8 +2,14 @@
   "checks": [
     "en/reduce: keyboard skip/menu/gallery, five legacy case hashes and detail navigation",
     "en/no-preference: keyboard skip/menu/gallery, five legacy case hashes and detail navigation",
-    "ar/reduce: keyboard skip/menu/gallery, five legacy case hashes and detail navigation"
+    "ar/reduce: keyboard skip/menu/gallery, five legacy case hashes and detail navigation",
+    "ar/no-preference: keyboard skip/menu/gallery, five legacy case hashes and detail navigation",
+    "Embedded content works with JSON endpoint unavailable",
+    "CV HTTP 200, 78847 bytes, exact original SHA256 ee4909932cd5709ea0f092132867853bbf77302a26a1dd0c25d61f539fb80856",
+    "Failed application module recovers visible native navigation/content/contact"
   ],
   "errors": [],
-  "limits": []
+  "limits": [
+    "Managed browser download failed: canceled"
+  ]
 }

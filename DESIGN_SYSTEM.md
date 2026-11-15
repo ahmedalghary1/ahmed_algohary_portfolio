@@ -1,80 +1,60 @@
-﻿# Current project-first composition
+﻿# Dark tech portfolio design system
 
-The November 2026 refactor keeps the paper/ink/vermilion identity. Current layout rules are in css/refactor.css, built after shared components. Display text uses --type-display; project titles use --type-project; section spacing is 56–96px. A compact portrait hero has two actions. Work follows immediately: featured factory system, then a two-column grid that becomes one column on mobile. Services use ruled rows, tools use four compact groups, About is two short paragraphs, and process has four steps.
+Active as of 15 November 2026. The supplied navy/cyan reference supersedes the
+previous paper/vermilion identity. Previous design reports are historical.
 
-Standalone case pages use a large real preview, concise paired content, native accessible image links and next-project/contact actions. No sculpture, conceptual architecture diagram, timeline or expanded skill catalogue is rendered. Earlier section-specific specifications below are historical where they differ.
-# Design system
+## Sources
 
-This is the current implementation guide. The original `DESIGN.md` records the established editorial direction; the owner’s transformation brief and verified personal/project content supersede its early illustrative content examples.
-
-## Identity
-
-An engineering journal expressed through warm paper, dark ink, vermilion annotations and precise architectural alignment. The original headline, typography, portrait and project imagery remain. At the owner's explicit request, the hero uses only the original personal photograph, also retained in About. The sculpture and its fallback/model code were removed. The garment management system is the first, most prominent project.
+`css/tokens.css` owns colors, type, spacing, radii and motion durations.
+`css/base.css` owns resets, accessibility and bilingual text visibility.
+`css/projects.css` preserves the existing case media/lightbox components.
+`css/neon.css` owns responsive page and component layouts. The Python renderer
+combines only those files into `css/site.css`; generated CSS is not hand-edited.
+Other old CSS sources are retained for history and excluded from deployment.
 
 ## Tokens
 
-Source: `css/tokens.css`. Runtime WebGL parameters live in `js/motion/config.js`.
-
-| Token | Value / purpose |
+| Purpose | Value |
 | --- | --- |
-| `--paper` | `#eae8e1`, primary page surface |
-| `--ink` | `#171717`, text and dark About section |
-| `--vermilion` | `#c43c28`, restrained decorative accents |
-| `--accent` | `#a62d20`, readable small accent text and links |
-| `--muted` | `#57574f`, secondary text |
-| `--stone` | `#9c9d95`, decorative geometry only |
-| `--rule` / `--rule-dark` | `#b9b9b0` / `#50514b` |
-| `--surface` / `--surface-muted` | `#f4f3ee` / `#deddd4` |
-| `--text-secondary` | `#bdbeb4`, text on ink |
-| `--gutter` | fluid 20–72px; 20px on mobile |
-| `--space-1` through `--space-7` | 4, 8, 16, 24, 32, 48, 64px |
-| `--space-section` | fluid 64–128px |
-| `--max-width` | 1440px |
-| `--radius-small` / `--radius-image` | 2px / 4px |
-| `--shadow-image` | restrained image elevation |
-| `--motion-fast` / `--motion-reveal` / `--motion-mobile` | 180ms / 700ms / 450ms |
-| `--ease` | `cubic-bezier(.23,1,.32,1)` |
-| `--z-scene`, `--z-controls`, `--z-header`, `--z-skip` | 8, 20, 30, 50 |
-| `--header-offset` | 110px desktop, 90px tablet, 82px mobile |
+| Background | #080F18 |
+| Secondary background | #0D1724 |
+| Card | #121E2C |
+| Primary accent | #00D9F5 |
+| Secondary accent | #168BFF |
+| Primary text | #F5F7FA |
+| Secondary text | #9DAFC2 |
+| Borders | #243649 |
+| Success | #22C55E |
+| Content width | 1360px |
+| Cards | 16px radius |
+| Controls | 8–12px radius; generally 44–48px touch target |
+| Spacing | 8px grid, 16/24/32/40/48/56/80px |
+| Transitions | 180–300ms |
 
-## Typography
+Inter variable Latin (48KB) and IBM Plex Sans Arabic are self-hosted with swap.
+IBM Plex Mono is used sparingly for metadata. Arabic has its own line heights
+and no Latin letter-spacing. Direction is controlled with logical CSS properties,
+`dir`, and isolated English technology names.
 
-- Space Grotesk: English headings and body.
-- Instrument Serif Italic: the single expressive hero phrase and selected editorial accents.
-- IBM Plex Mono: section indices, technology names and technical annotations.
-- IBM Plex Sans Arabic: Arabic headings and body, without Latin tracking or synthetic italics.
+## Composition
 
-Fonts and licenses are self-hosted in `assets/fonts/`. Arabic subsets and relevant English fonts preload through the small preference script. Latin technology names use `bdi`, explicit LTR where needed and `translate="no"`. Arabic letters are never split for animation.
+Sticky glass header: identity, six unique destinations, project CTA, language.
+Hero: concise three-line heading, two main actions, decorative workspace photo.
+Work appears immediately below, with a featured real case and four project cards.
+Desktop skills sit alongside work; on tablet/mobile they follow it. Category
+filters only expose populated categories and enhance static content progressively.
+Services use four evidenced offerings. About keeps the actual portrait and CV.
+Documented employment replaces unsupported achievement/testimonial claims.
+Contact preserves direct channels and an honest WhatsApp draft composer.
 
-Hero type follows the existing fluid display scale. Section titles use approximately 36–72px; body uses 15–17px; technical labels generally use 11–13px. Mobile wordmark sizing is constrained to keep language/menu controls on one row at 320px. Arabic uses larger line height and natural shaping.
+All ten localized project pages retain overview, problem, solution, features,
+approved image gallery, navigation and contact actions. Undocumented project
+technology stacks are omitted instead of inferred.
 
-## Layout and sections
+## Accessibility and motion
 
-The `.wrap` primitive caps width and supplies shared alignment; `.section` supplies fluid vertical spacing. Desktop uses asymmetric 7/5 and 8/4 proportions, followed by single-column mobile compositions. Fine rules establish hierarchy without enclosing every item in a card.
-
-The sequence is Hero, Core Technology Stack, Selected Work, Software Architecture, About, Professional Experience, Technical Expertise, Engineering Process, Contact/Resume and Footer. Existing `#work`, `#about`, `#expertise`, `#process`, `#contact`, `#project-*` and `#case-*` destinations remain intact.
-
-Projects use original responsive screenshots and full-width native case-study disclosures. Each expanded study has ten numbered parts; galleries span the editorial grid. No generated replacement project images or invented stack claims are used.
-
-The architecture demonstration uses HTML links, SVG connections and native explanatory disclosures. Access control branches from the application; Redis connects the API to background workers; delivery tools sit outside request processing. Mobile uses a vertical list with explicit relationship labels.
-
-Experience uses ruled timeline rows and separate employment/training labels. Skills use six categories with initially visible summaries, representative technologies and native expandable complete lists. All 77 unique skills remain in static HTML.
-
-## Shared controls
-
-Buttons use ink/paper and an accessible accent hover. Links retain visible underlines where useful. Focus outlines are 2px with a 6px offset. Touch controls generally have at least 44px height. The sticky header has scroll-aware styling and active section indicators; its mobile disclosure moves focus to the first link and returns focus on Escape.
-
-The desktop work toolbar uses a small CSS sticky region with native previous/next scrolling. It does not pin the document or create horizontal scrolling. Case studies, skills and architecture explanations use native `details`/`summary`; no modal focus trap is needed.
-
-## Responsive and localization rules
-
-At 1100px the navigation becomes a disclosure. At 900px project rows stack; at 800px the architecture diagram becomes vertical and skills become one column. At 600px the portrait has a compact responsive frame, the experience timeline stacks and the process becomes vertical. Mobile skips all animation vendor downloads; project shaders initialize only on capable desktops.
-
-Use logical CSS properties for spacing and alignment. Keep the architecture’s technical topology stable in both languages; localize its text direction independently. Directional arrows mirror; technology logos and the personal photograph do not.
-
-Both `/` and `/ar/` have real static HTML, localized titles/descriptions, canonical URLs and reciprocal hreflang. In-place language switching and existing `?lang=en|ar` URLs remain supported. The Arabic entry uses a root base for shared assets; localization keeps its native anchors on the current document and query.
-
-## Verification
-
-Use `npm run check`, `npm run test:layouts` and the functional scripts described in `FINAL_QA_REPORT.md`. Inspect actual screenshots in both languages. Axe results are automated evidence, not a certification of full WCAG conformance. Never make essential text depend on a canvas or animation.
-
+Visible focus, semantic regions and headings, labeled form errors, menu Escape,
+keyboard lightbox, no-JS content, and live filter/contact status. CSS reveal uses
+view timelines when supported and never hides content. Reduced motion disables
+animation, transitions and smooth scrolling. Images reserve their dimensions.
+Automated audits supplement visual inspection; they do not prove full WCAG compliance.
