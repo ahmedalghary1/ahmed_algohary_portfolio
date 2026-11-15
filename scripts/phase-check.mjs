@@ -56,11 +56,13 @@ try {
     page.on('pageerror', e => errors.push(e.message));
     page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
     await page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:8017'}/?lang=en`);
-    await page.waitForSelector('.hero-scene[data-webgl="true"]');
-    assert.equal(await page.locator('canvas').count(), 1);
-    await page.screenshot({ path: `${dir}/en-1440-webgl.png` });
+    await page.waitForSelector('.hero-portrait');
+    await page.locator('.hero-portrait').evaluate(e=>e.decode());
+    assert.equal(await page.locator('.scene-slot,.hero-scene').count(),0);
+    assert.equal(await page.locator('canvas').count(), 0);
+    await page.screenshot({ path: `${dir}/en-1440-portrait.png` });
     assert.deepEqual(errors, []);
-    results.push({ normalMotion: true, sharedCanvas: 1, errors });
+    results.push({ normalMotion: true, heroCanvas: 0, errors });
     await page.close();
   }
   await fs.writeFile(`${dir}/checks.json`, JSON.stringify({ phase, results }, null, 2));

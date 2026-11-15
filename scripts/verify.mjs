@@ -65,7 +65,7 @@ try {
  });
  await check('Reduced motion keeps static hero artwork visible without a WebGL canvas', async () => {
   assert.equal(await page.locator('canvas, #sculpture, .scene-toggle').count(), 0);
-  assert.equal(await page.locator('.hero-scene img').evaluate(e => e.complete && e.naturalWidth > 0), true);
+  assert.equal(await page.locator('.hero-portrait').evaluate(e => e.complete && e.naturalWidth > 0), true);
   assert.equal(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior), 'auto');
  });
  await check('No dead anchors; the supplied WhatsApp contact is visible', async () => {
@@ -149,7 +149,7 @@ try {
  await check('Blocked enhancement libraries preserve visible content and functional localization',async()=>{
   await failedLibraries.page.waitForTimeout(400);
   assert.equal(await failedLibraries.page.locator('.hero-line').first().evaluate(e=>getComputedStyle(e).opacity),'1');
-  assert.equal(await failedLibraries.page.locator('.hero-scene img').evaluate(e=>e.complete && e.naturalWidth > 0),true);
+  assert.equal(await failedLibraries.page.locator('.hero-portrait').evaluate(e=>e.complete && e.naturalWidth > 0),true);
   await failedLibraries.page.locator('.header-controls [data-language]').click();assert.equal(await failedLibraries.page.locator('html').getAttribute('lang'),'ar');
  });
  await failedLibraries.context.close();
@@ -158,11 +158,12 @@ try {
  enhanced.page.on('request',request=>{if(/\/(scene\.js|three[^/]*\.js)/.test(request.url()))sceneRequests.push(request.url());});
  await enhanced.page.goto(`${url}/?lang=en`);
  await enhanced.page.waitForSelector('html.js');
+ await enhanced.page.locator('#work').evaluate(e=>e.scrollIntoView({block:'start',behavior:'instant'}));
  await enhanced.page.waitForSelector('canvas');
  await check('The real portrait remains alongside a single decorative scene',async()=>{
   assert.equal(await enhanced.page.locator('canvas').count(),1);
   assert.equal(await enhanced.page.locator('.portrait img').getAttribute('loading'),'lazy');
-  assert.equal(await enhanced.page.locator('[data-profile-image]').count(),1);
+  assert.equal(await enhanced.page.locator('[data-profile-image]').count(),2);
   assert.equal(await enhanced.page.locator('.portrait img').evaluate(async e=>{e.loading='eager';await e.decode();return e.naturalWidth>0;}),true);
   assert.match(await enhanced.page.locator('.portrait img').getAttribute('srcset'),/480w.+896w.+1122w/);
  });

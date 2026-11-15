@@ -39,7 +39,7 @@
     },
     {
       "normalMotion": true,
-      "sharedCanvas": 1,
+      "heroCanvas": 0,
       "errors": []
     }
   ]

@@ -229,13 +229,10 @@
       "description": "I engineer software that works beyond the screen. Scalable backends, intelligent applications and reliable business systems.",
       "work": "Explore my work",
       "contact": "Get in touch",
-      "figure": "Structure. Connection. Intent.",
-      "figureNote": "A study in modular systems",
-      "portraitAlt": "Portrait of Ahmed Algohary, independent software developer.",
+      "portraitAlt": "Portrait of Ahmed Algohary, Full-Stack Python Developer.",
       "index": "Ahmed Algohary / Full-Stack Python Developer",
       "scroll": "Scroll to explore",
-      "resume": "Download resume",
-      "figureLabel": "Conceptual structure / 001"
+      "resume": "Download resume"
     },
     "work": {
       "label": "02 / Selected work",
@@ -497,11 +494,6 @@
       "language": "العربية",
       "languageLabel": "العربية — Switch to Arabic"
     },
-    "scene": {
-      "pause": "Pause sculpture interaction",
-      "resume": "Enable sculpture interaction",
-      "caption": "Structure study / 001"
-    },
     "stack": {
       "label": "01 / Core technologies",
       "title": "A considered toolkit.",
@@ -636,13 +628,10 @@
       "description": "أبني برمجيات يتجاوز أثرها حدود الشاشة. أنظمة خلفية قابلة للتوسع، وتطبيقات ذكية، وحلول أعمال يمكن الاعتماد عليها.",
       "work": "استكشف أعمالي",
       "contact": "تواصل معي",
-      "figure": "بنية. ترابط. رؤية.",
-      "figureNote": "دراسة في الأنظمة المعيارية",
-      "portraitAlt": "الصورة الشخصية لأحمد الجوهري، مطوّر برمجيات مستقل.",
+      "portraitAlt": "الصورة الشخصية لأحمد الجوهري، مطوّر Python متكامل.",
       "index": "أحمد الجوهري / مطوّر Python متكامل",
       "scroll": "مرّر لاستكشاف المزيد",
-      "resume": "تحميل السيرة الذاتية",
-      "figureLabel": "تصوّر بنيوي / 001"
+      "resume": "تحميل السيرة الذاتية"
     },
     "work": {
       "label": "02 / أعمال مختارة",
@@ -903,11 +892,6 @@
       "top": "العودة إلى البداية",
       "language": "English",
       "languageLabel": "English — التبديل إلى الإنجليزية"
-    },
-    "scene": {
-      "pause": "إيقاف تفاعل المجسّم",
-      "resume": "تفعيل تفاعل المجسّم",
-      "caption": "دراسة بنيوية / 001"
     },
     "stack": {
       "label": "01 / التقنيات الأساسية",

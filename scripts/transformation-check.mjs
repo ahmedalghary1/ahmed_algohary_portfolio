@@ -114,12 +114,13 @@ try {
     } finally { await p.close(); }
   });
   for (const lang of ['en','ar']) for (const width of [390,768,1440]) {
-    await test(`${lang} ${width}px: normal motion, visible content and appropriate scene tier`, async () => {
+    await test(`${lang} ${width}px: portrait-only hero, normal motion and visible content`, async () => {
       const p = await page({ viewport: { width, height: 1000 }, reducedMotion: 'no-preference' });
       try {
         await go(p,lang); await p.waitForSelector('html[data-motion="on"]');
-        if (width > 600) await p.waitForSelector('.hero-scene[data-webgl="true"]');
-        assert.equal(await p.locator('canvas').count(), width > 600 ? 1 : 0);
+        await p.locator('.hero-portrait').evaluate(e=>e.decode());
+        assert.equal(await p.locator('.scene-slot,.hero-scene').count(),0);
+        assert.equal(await p.locator('canvas').count(),0);
         await p.screenshot({ path: `${dir}/${lang}-${width}-normal-hero.png` });
         for (const id of ['work','architecture','about','experience','expertise','process','contact']) {
           await p.locator(`#${id}`).evaluate(e => e.scrollIntoView({ block:'start',behavior:'instant' }));
@@ -146,7 +147,7 @@ try {
       assert.match(await p.locator('h1').innerText(), /أهندس/);
       assert.equal(await p.locator('link[rel=canonical]').getAttribute('href'),'https://www.ahmedalgohary.com/ar/');
       assert.equal(await p.locator('link[hreflang=ar]').count(),1);
-      assert.equal(await p.locator('.hero-scene img').evaluate(async e=>{await e.decode();return e.naturalWidth>0;}),true);
+      assert.equal(await p.locator('.hero-portrait').evaluate(async e=>{await e.decode();return e.naturalWidth>0;}),true);
       await p.locator('#navigation a[href="/ar/#work"]').click();
       assert.equal(new URL(p.url()).pathname,'/ar/');
       assert.equal(await p.locator('html').getAttribute('lang'),'ar');
