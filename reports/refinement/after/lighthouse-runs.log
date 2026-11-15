@@ -1,0 +1,265 @@
+{
+  "language": "en",
+  "scores": {
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.6 s",
+    "largest-contentful-paint": "2.0 s",
+    "total-blocking-time": "80 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "1.6 s",
+    "total-byte-weight": "Total size was 286 KiB"
+  },
+  "failed": [
+    {
+      "id": "mainthread-work-breakdown",
+      "title": "Minimize main-thread work",
+      "display": "2.7 s"
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "title": "Elements with visible text labels do not have matching accessible names."
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "display": "Est savings of 227 KiB"
+    },
+    {
+      "id": "document-latency-insight",
+      "title": "Document request latency",
+      "display": "Est savings of 25 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests",
+      "display": "Est savings of 560 ms"
+    }
+  ]
+}
+{
+  "language": "ar",
+  "scores": {
+    "performance": 97,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.6 s",
+    "largest-contentful-paint": "2.5 s",
+    "total-blocking-time": "50 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "1.6 s",
+    "total-byte-weight": "Total size was 379 KiB"
+  },
+  "failed": [
+    {
+      "id": "mainthread-work-breakdown",
+      "title": "Minimize main-thread work",
+      "display": "2.7 s"
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "display": "Est savings of 320 KiB"
+    },
+    {
+      "id": "document-latency-insight",
+      "title": "Document request latency",
+      "display": "Est savings of 25 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests",
+      "display": "Est savings of 550 ms"
+    }
+  ]
+}
+{
+  "language": "en",
+  "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.6 s",
+    "largest-contentful-paint": "2.0 s",
+    "total-blocking-time": "60 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "1.6 s",
+    "total-byte-weight": "Total size was 286 KiB"
+  },
+  "failed": [
+    {
+      "id": "mainthread-work-breakdown",
+      "title": "Minimize main-thread work",
+      "display": "2.2 s"
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "title": "Elements with visible text labels do not have matching accessible names."
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "display": "Est savings of 227 KiB"
+    },
+    {
+      "id": "document-latency-insight",
+      "title": "Document request latency",
+      "display": "Est savings of 25 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests",
+      "display": "Est savings of 550 ms"
+    }
+  ]
+}
+{
+  "language": "ar",
+  "scores": {
+    "performance": 96,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.6 s",
+    "largest-contentful-paint": "2.5 s",
+    "total-blocking-time": "120 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "1.6 s",
+    "total-byte-weight": "Total size was 379 KiB"
+  },
+  "failed": [
+    {
+      "id": "mainthread-work-breakdown",
+      "title": "Minimize main-thread work",
+      "display": "3.4 s"
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "display": "Est savings of 320 KiB"
+    },
+    {
+      "id": "document-latency-insight",
+      "title": "Document request latency",
+      "display": "Est savings of 25 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests",
+      "display": "Est savings of 510 ms"
+    }
+  ]
+}
+{
+  "language": "en",
+  "scores": {
+    "performance": 99,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.6 s",
+    "largest-contentful-paint": "2.0 s",
+    "total-blocking-time": "60 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "1.6 s",
+    "total-byte-weight": "Total size was 286 KiB"
+  },
+  "failed": [
+    {
+      "id": "label-content-name-mismatch",
+      "title": "Elements with visible text labels do not have matching accessible names."
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "display": "Est savings of 227 KiB"
+    },
+    {
+      "id": "document-latency-insight",
+      "title": "Document request latency",
+      "display": "Est savings of 25 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests",
+      "display": "Est savings of 560 ms"
+    }
+  ]
+}
+{
+  "language": "ar",
+  "scores": {
+    "performance": 97,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "first-contentful-paint": "1.6 s",
+    "largest-contentful-paint": "2.5 s",
+    "total-blocking-time": "70 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "1.6 s",
+    "total-byte-weight": "Total size was 379 KiB"
+  },
+  "failed": [
+    {
+      "id": "mainthread-work-breakdown",
+      "title": "Minimize main-thread work",
+      "display": "3.3 s"
+    },
+    {
+      "id": "cache-insight",
+      "title": "Use efficient cache lifetimes",
+      "display": "Est savings of 320 KiB"
+    },
+    {
+      "id": "document-latency-insight",
+      "title": "Document request latency",
+      "display": "Est savings of 25 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree"
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests",
+      "display": "Est savings of 510 ms"
+    }
+  ]
+}

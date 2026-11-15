@@ -1,0 +1,282 @@
+[
+  {
+    "language": "en",
+    "width": 390,
+    "region": "hero",
+    "pixelsChangedOver10": 0,
+    "pctChanged": 0.0
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "region": "about",
+    "pixelsChangedOver10": 117,
+    "pctChanged": 0.036
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "region": "expertise",
+    "pixelsChangedOver10": 1511,
+    "pctChanged": 0.459
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "region": "process",
+    "pixelsChangedOver10": 0,
+    "pctChanged": 0.0
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "region": "contact",
+    "pixelsChangedOver10": 3241,
+    "pctChanged": 0.985
+  },
+  {
+    "language": "en",
+    "width": 768,
+    "region": "hero",
+    "pixelsChangedOver10": 87294,
+    "pctChanged": 11.1
+  },
+  {
+    "language": "en",
+    "width": 768,
+    "region": "about",
+    "pixelsChangedOver10": 20457,
+    "pctChanged": 2.601
+  },
+  {
+    "language": "en",
+    "width": 768,
+    "region": "expertise",
+    "pixelsChangedOver10": 18464,
+    "pctChanged": 2.348
+  },
+  {
+    "language": "en",
+    "width": 768,
+    "region": "process",
+    "pixelsChangedOver10": 18297,
+    "pctChanged": 2.327
+  },
+  {
+    "language": "en",
+    "width": 768,
+    "region": "contact",
+    "pixelsChangedOver10": 18001,
+    "pctChanged": 2.289
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "region": "hero",
+    "pixelsChangedOver10": 11,
+    "pctChanged": 0.001
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "region": "about",
+    "pixelsChangedOver10": 6743,
+    "pctChanged": 0.468
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "region": "expertise",
+    "pixelsChangedOver10": 43133,
+    "pctChanged": 2.995
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "region": "process",
+    "pixelsChangedOver10": 13043,
+    "pctChanged": 0.906
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "region": "contact",
+    "pixelsChangedOver10": 10607,
+    "pctChanged": 0.737
+  },
+  {
+    "language": "en",
+    "width": 2560,
+    "region": "hero",
+    "pixelsChangedOver10": 572,
+    "pctChanged": 0.016
+  },
+  {
+    "language": "en",
+    "width": 2560,
+    "region": "about",
+    "pixelsChangedOver10": 42246,
+    "pctChanged": 1.146
+  },
+  {
+    "language": "en",
+    "width": 2560,
+    "region": "expertise",
+    "pixelsChangedOver10": 12610,
+    "pctChanged": 0.342
+  },
+  {
+    "language": "en",
+    "width": 2560,
+    "region": "process",
+    "pixelsChangedOver10": 47858,
+    "pctChanged": 1.298
+  },
+  {
+    "language": "en",
+    "width": 2560,
+    "region": "contact",
+    "pixelsChangedOver10": 47858,
+    "pctChanged": 1.298
+  },
+  {
+    "language": "ar",
+    "width": 390,
+    "region": "hero",
+    "pixelsChangedOver10": 0,
+    "pctChanged": 0.0
+  },
+  {
+    "language": "ar",
+    "width": 390,
+    "region": "about",
+    "pixelsChangedOver10": 5199,
+    "pctChanged": 1.579
+  },
+  {
+    "language": "ar",
+    "width": 390,
+    "region": "expertise",
+    "pixelsChangedOver10": 5084,
+    "pctChanged": 1.545
+  },
+  {
+    "language": "ar",
+    "width": 390,
+    "region": "process",
+    "pixelsChangedOver10": 20868,
+    "pctChanged": 6.34
+  },
+  {
+    "language": "ar",
+    "width": 390,
+    "region": "contact",
+    "pixelsChangedOver10": 2746,
+    "pctChanged": 0.834
+  },
+  {
+    "language": "ar",
+    "width": 768,
+    "region": "hero",
+    "pixelsChangedOver10": 74456,
+    "pctChanged": 9.468
+  },
+  {
+    "language": "ar",
+    "width": 768,
+    "region": "about",
+    "pixelsChangedOver10": 11088,
+    "pctChanged": 1.41
+  },
+  {
+    "language": "ar",
+    "width": 768,
+    "region": "expertise",
+    "pixelsChangedOver10": 20517,
+    "pctChanged": 2.609
+  },
+  {
+    "language": "ar",
+    "width": 768,
+    "region": "process",
+    "pixelsChangedOver10": 6343,
+    "pctChanged": 0.807
+  },
+  {
+    "language": "ar",
+    "width": 768,
+    "region": "contact",
+    "pixelsChangedOver10": 7291,
+    "pctChanged": 0.927
+  },
+  {
+    "language": "ar",
+    "width": 1440,
+    "region": "hero",
+    "pixelsChangedOver10": 11,
+    "pctChanged": 0.001
+  },
+  {
+    "language": "ar",
+    "width": 1440,
+    "region": "about",
+    "pixelsChangedOver10": 8770,
+    "pctChanged": 0.609
+  },
+  {
+    "language": "ar",
+    "width": 1440,
+    "region": "expertise",
+    "pixelsChangedOver10": 7462,
+    "pctChanged": 0.518
+  },
+  {
+    "language": "ar",
+    "width": 1440,
+    "region": "process",
+    "pixelsChangedOver10": 4841,
+    "pctChanged": 0.336
+  },
+  {
+    "language": "ar",
+    "width": 1440,
+    "region": "contact",
+    "pixelsChangedOver10": 28968,
+    "pctChanged": 2.012
+  },
+  {
+    "language": "ar",
+    "width": 2560,
+    "region": "hero",
+    "pixelsChangedOver10": 5,
+    "pctChanged": 0.0
+  },
+  {
+    "language": "ar",
+    "width": 2560,
+    "region": "about",
+    "pixelsChangedOver10": 10507,
+    "pctChanged": 0.285
+  },
+  {
+    "language": "ar",
+    "width": 2560,
+    "region": "expertise",
+    "pixelsChangedOver10": 7369,
+    "pctChanged": 0.2
+  },
+  {
+    "language": "ar",
+    "width": 2560,
+    "region": "process",
+    "pixelsChangedOver10": 3865,
+    "pctChanged": 0.105
+  },
+  {
+    "language": "ar",
+    "width": 2560,
+    "region": "contact",
+    "pixelsChangedOver10": 3865,
+    "pctChanged": 0.105
+  }
+]

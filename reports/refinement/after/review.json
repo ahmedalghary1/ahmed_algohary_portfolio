@@ -1,0 +1,149 @@
+{
+  "browser": "149.0.7827.55",
+  "date": "2026-11-14T21:15:52.159Z",
+  "phase": "after",
+  "layouts": [
+    {
+      "lang": "en",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "bodyHeight": 7967,
+      "projectImageWidth": 350,
+      "headerHeight": 82
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "bodyHeight": 7541,
+      "projectImageWidth": 700.40625,
+      "headerHeight": 82
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "bodyHeight": 6925,
+      "projectImageWidth": 724.0625,
+      "headerHeight": 110
+    },
+    {
+      "lang": "en",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "bodyHeight": 7355,
+      "projectImageWidth": 793.328125,
+      "headerHeight": 110
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "bodyHeight": 7582,
+      "projectImageWidth": 350,
+      "headerHeight": 82
+    },
+    {
+      "lang": "ar",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "bodyHeight": 7331,
+      "projectImageWidth": 700.40625,
+      "headerHeight": 82
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "bodyHeight": 6935,
+      "projectImageWidth": 724.0625,
+      "headerHeight": 110
+    },
+    {
+      "lang": "ar",
+      "width": 2560,
+      "height": 1440,
+      "scrollWidth": 2560,
+      "bodyHeight": 7355,
+      "projectImageWidth": 793.328125,
+      "headerHeight": 110
+    }
+  ],
+  "interaction": [
+    {
+      "lang": "en",
+      "probe": "menu destination focus",
+      "focused": "work"
+    },
+    {
+      "lang": "en",
+      "probe": "case deep link",
+      "open": true
+    },
+    {
+      "lang": "en",
+      "probe": "language switch keeps trigger visible",
+      "top": 18.5,
+      "focused": true
+    },
+    {
+      "lang": "ar",
+      "probe": "menu destination focus",
+      "focused": "work"
+    },
+    {
+      "lang": "ar",
+      "probe": "case deep link",
+      "open": true
+    },
+    {
+      "lang": "ar",
+      "probe": "language switch keeps trigger visible",
+      "top": 18.5,
+      "focused": true
+    }
+  ],
+  "rendering": [
+    {
+      "lang": "en",
+      "idleDrawCalls": 0,
+      "pointerDrawCalls": 31,
+      "offscreenDrawCalls": 0,
+      "scroll4xCPU": {
+        "frames": 142,
+        "p95FrameMs": 16.799999999999272,
+        "over50ms": 0
+      },
+      "canvas": [
+        {
+          "width": 540,
+          "height": 510
+        }
+      ]
+    },
+    {
+      "lang": "ar",
+      "idleDrawCalls": 0,
+      "pointerDrawCalls": 33,
+      "offscreenDrawCalls": 0,
+      "scroll4xCPU": {
+        "frames": 144,
+        "p95FrameMs": 16.700000000000728,
+        "over50ms": 0
+      },
+      "canvas": [
+        {
+          "width": 540,
+          "height": 510
+        }
+      ]
+    }
+  ]
+}

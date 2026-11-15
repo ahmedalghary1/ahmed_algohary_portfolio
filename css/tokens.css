@@ -1,0 +1,63 @@
+@font-face {
+  font-family:Space Grotesk;
+  src:url('../assets/fonts/space-grotesk.woff2') format('woff2');
+  font-weight:300 700;
+  font-display:swap;
+}
+@font-face {
+  font-family:Instrument Serif;
+  src:url('../assets/fonts/instrument-serif-italic.woff2') format('woff2');
+  font-style:italic;
+  font-weight:400;
+  font-display:swap;
+}
+@font-face {
+  font-family:IBM Plex Mono;
+  src:url('../assets/fonts/ibm-plex-mono.woff2') format('woff2');
+  font-weight:400;
+  font-display:swap;
+}
+@font-face {
+  font-family:IBM Plex Sans Arabic;
+  src:url('../assets/fonts/arabic-arabic-400.woff2') format('woff2');
+  font-weight:400;
+  font-display:swap;
+  unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;
+}
+@font-face {
+  font-family:IBM Plex Sans Arabic;
+  src:url('../assets/fonts/arabic-arabic-600.woff2') format('woff2');
+  font-weight:500 700;
+  font-display:swap;
+  unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFF;
+}
+@font-face {
+  font-family:IBM Plex Sans Arabic;
+  src:url('../assets/fonts/arabic-latin-400.woff2') format('woff2');
+  font-weight:400;
+  font-display:swap;
+  unicode-range:U+0000-00FF,U+2000-206F;
+}
+@font-face {
+  font-family:IBM Plex Sans Arabic;
+  src:url('../assets/fonts/arabic-latin-600.woff2') format('woff2');
+  font-weight:500 700;
+  font-display:swap;
+  unicode-range:U+0000-00FF,U+2000-206F;
+}
+:root {
+  --paper:#eae8e1;
+  --ink:#171717;
+  --vermilion:#c43c28;
+  --stone:#9c9d95;
+  --muted:#57574f;
+  --accent:#a62d20;
+  --rule:#b9b9b0;
+  --sans:'Space Grotesk',Arial,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --mono:'IBM Plex Mono',monospace;
+  --gutter:clamp(20px,4.4vw,72px);
+  --space-section:clamp(64px,8vw,128px);
+  --ease:cubic-bezier(.23,1,.32,1);
+  --max-width:1440px;
+}

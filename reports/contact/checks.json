@@ -1,0 +1,62 @@
+{
+  "layouts": [
+    {
+      "lang": "ar",
+      "width": 320,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "ar",
+      "width": 390,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "ar",
+      "width": 768,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "ar",
+      "width": 1440,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 320,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 390,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 768,
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "lang": "en",
+      "width": 1440,
+      "overflow": false,
+      "axeViolations": 0
+    }
+  ],
+  "checks": [
+    "ar: empty fields, invalid email, first-error focus and real clipboard copy passed",
+    "ar: locale switch preserves visitor draft",
+    "ar: denied clipboard exposes selected manual-copy fallback",
+    "en: empty fields, invalid email, first-error focus and real clipboard copy passed",
+    "en: locale switch preserves visitor draft",
+    "en: denied clipboard exposes selected manual-copy fallback",
+    "No-JavaScript contact state remains honest and visible"
+  ],
+  "errors": []
+}

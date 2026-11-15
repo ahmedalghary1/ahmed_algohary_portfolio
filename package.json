@@ -1,0 +1,15 @@
+{
+  "name": "engineered-editorial-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8000 --bind 127.0.0.1",
+    "content": "python3 scripts/render.py",
+    "vendor": "node scripts/vendor.mjs"
+  },
+  "dependencies": {
+    "gsap": "3.14.2",
+    "three": "0.181.2"
+  }
+}

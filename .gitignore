@@ -1,0 +1,6 @@
+node_modules/
+.qa-tools/
+__pycache__/
+*.pyc
+.DS_Store
+portfolio-static.zip

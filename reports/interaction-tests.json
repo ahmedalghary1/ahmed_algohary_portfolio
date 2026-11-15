@@ -1,0 +1,97 @@
+{
+  "results": [
+    {
+      "name": "Skip link is first keyboard target and moves focus to main",
+      "passed": true
+    },
+    {
+      "name": "Mobile disclosure supports keyboard opening, Escape, and focus return",
+      "passed": true
+    },
+    {
+      "name": "All five navigation links reach real sections and mobile menu closes",
+      "passed": true
+    },
+    {
+      "name": "All four case studies expand from keyboard and expose full content",
+      "passed": true
+    },
+    {
+      "name": "Language switching updates RTL, metadata, art and accessible labels without reloading",
+      "passed": true
+    },
+    {
+      "name": "Saved language persists and URL preference wins",
+      "passed": true
+    },
+    {
+      "name": "Reduced motion keeps the fallback and has no WebGL canvas",
+      "passed": true
+    },
+    {
+      "name": "No dead anchor links or unconfigured contact actions",
+      "passed": true
+    },
+    {
+      "name": "200% equivalent zoom reflows in both languages",
+      "passed": true
+    },
+    {
+      "name": "en: direct case links open, label, persist on reload and close correctly",
+      "passed": true
+    },
+    {
+      "name": "en: full-size preview links match the localized artwork and have 44px targets",
+      "passed": true
+    },
+    {
+      "name": "ar: direct case links open, label, persist on reload and close correctly",
+      "passed": true
+    },
+    {
+      "name": "ar: full-size preview links match the localized artwork and have 44px targets",
+      "passed": true
+    },
+    {
+      "name": "Failed main module restores native mobile navigation after the pre-paint reservation",
+      "passed": true
+    },
+    {
+      "name": "Without JavaScript all English content, links, details and artwork remain usable",
+      "passed": true
+    },
+    {
+      "name": "Unavailable localStorage still permits query language and switching",
+      "passed": true
+    },
+    {
+      "name": "Blocked enhancement libraries preserve visible content and functional localization",
+      "passed": true
+    },
+    {
+      "name": "Unavailable WebGL preserves the static sculpture",
+      "passed": true
+    },
+    {
+      "name": "WebGL renders once, respects pause, and recovers after context loss",
+      "passed": true
+    },
+    {
+      "name": "Repeated language switches keep a stable ScrollTrigger count and one canvas",
+      "passed": true
+    },
+    {
+      "name": "Live reduced-motion preference hides the canvas and restores its SVG",
+      "passed": true
+    },
+    {
+      "name": "Page lifecycle disposal clears the canvas and ScrollTriggers",
+      "passed": true
+    },
+    {
+      "name": "No uncaught JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,14 @@
+{
+  "css/base.css": "ffd72ec4910f6b69703cae7fb65876ccff8c5fa37791d40d0274838bf7756e56",
+  "css/components.css": "8124f2ca45cd3ed530fcc2e91f74c662f70cbc18f7547bfe22670c4e58a4e7c3",
+  "css/responsive.css": "da4ce4743cdc722880f68511c888d399ab4cfe4f55725106f688f71dcc646600",
+  "js/preference.js": "f7d5f0a6a5525f1f39381e2bd99a2f55e5e98c7cea791f3869585be01fd564b8",
+  "js/navigation.js": "d6f696463884de5fed69c79331593a118110fa1480f219f6b26a90ee33ebca1a",
+  "js/main.js": "3e1778c5ce6865cf04f4286605c7fe96bac2ff952f1107d7097aa68e3f998bd6",
+  "js/i18n.js": "72a734ee1085b6c91572da484b5c6a3772b5a2bf2ca975309aa16d9dc97c7a7a",
+  "js/scene.js": "5a0af4a4d6fff7731e419a85c1180f055380cfa8d869d376e1670b1e0ea07cbd",
+  "js/case-studies.js": "ccee29d1781c72b32b227a64d0db24a738d6744065e3d6b922fc2aaf282a2668",
+  "data/portfolio.json": "0b5f71cfc440741380128644dea1e1ecf7a6e6b4c42ef3179c67a259d31b0e93",
+  "scripts/render.py": "867c6b23e259db17212f6be9212272fbd9327c3b368d22045004752d37698a5f",
+  "index.html": "5fa9e26140523235fcbed15b9da4ba9d8ebffb7aa917fbbd0ed5193a4f037fa5"
+}
