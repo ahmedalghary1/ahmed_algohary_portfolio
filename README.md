@@ -12,7 +12,11 @@ npm run check
 npm run build
 ```
 
-Python 3 and Node are required. Use `npm.cmd` in PowerShell if npm.ps1 is blocked. `content` generates English/Arabic homepages, ten case pages, combined CSS, sitemap and robots. `build` creates portfolio-static.zip; nothing is deployed. Extract the ZIP contents into a static host document root.
+Python 3 and Node are required; the build uses only Python's standard library. Use `npm.cmd` in PowerShell if npm.ps1 is blocked. `content` generates English/Arabic homepages, ten case pages, combined CSS, sitemap and robots. `build` regenerates content, replaces `dist/` with a clean static document root, and creates `portfolio-static.zip` from exactly those files. Extract the ZIP contents into a static host document root, or serve `dist/` directly.
+
+Vercel reads `vercel.json`: framework Other (`null`), build command `npm run build`, output directory `dist`, and directory routes with trailing slashes. Use the repository root as the Vercel project root. No SPA fallback or Python serverless functions are needed. Only `dist/` is deployed; source scripts, reports, raw screenshots, development configuration and the ZIP are excluded. The runtime JSON fallback contains the same public content as the generated HTML, excluding owner-only history.
+
+After building, run `npm run test:deployment` to check every output file over a temporary local HTTP server, local HTML links/fragments/assets, CSS URLs, JS imports, sitemap routes, and ZIP parity. Run `npm run preview` for manual review at http://127.0.0.1:8017. Removed routes and stale files are excluded on every build; neither `dist/` nor the ZIP should be committed.
 
 Routes: `/`, `/ar/`, `/projects/<slug>/`, `/ar/projects/<slug>/`. Static directory indexes need no SPA router. `?lang=en|ar` and localStorage retain language selection. Every route works without JavaScript. Old project/case hashes remain real homepage anchors.
 

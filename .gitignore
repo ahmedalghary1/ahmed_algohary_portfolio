@@ -4,6 +4,8 @@ __pycache__/
 *.pyc
 .DS_Store
 portfolio-static.zip
+dist/
+.vercel/
 # Owner-supplied source screenshots; deploy optimized, redacted assets instead.
 /projects/*
 !/projects/*/
