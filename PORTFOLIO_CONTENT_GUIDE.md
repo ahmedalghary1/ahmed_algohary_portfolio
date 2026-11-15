@@ -71,6 +71,6 @@ The current file is 78,847 bytes and is verified against the owner’s source. N
 
 ## Share image and publishing
 
-Update `profile.url` only when changing the actual production domain. Re-render HTML, canonical/hreflang, structured data, sitemap and robots together. To refresh the 1200×630 share image, run `node scripts/render-social.mjs` with the local server running and Playwright QA dependencies available. The sculpture fallback can be regenerated with `python scripts/render-sculpture.py`.
+Update `profile.url` only when changing the actual production domain. Re-render HTML, canonical/hreflang, structured data, sitemap and robots together. To refresh the 1200×630 share image, run `node scripts/render-social.mjs` with the local server running and Playwright QA dependencies available. The hero and sharing image use the original portrait; no sculpture asset is used.
 
 `npm run build` creates `portfolio-static.zip` from the generated documents and deployed asset directories. Upload its contents to the current static host’s document root. Include `ar/index.html`; preserve directory-index handling, HTTPS, correct MIME types and caching/compression. Original source screenshots, source CV, node_modules, QA tooling and reports are excluded. The build does not publish or change production hosting.

@@ -171,7 +171,8 @@ try {
   await enhanced.page.waitForFunction(()=>!!window.ScrollTrigger);
   const count=await enhanced.page.evaluate(()=>window.ScrollTrigger.getAll().length);
   for(let i=0;i<6;i++)await enhanced.page.locator('.header-controls [data-language]').click();
-  await enhanced.page.waitForTimeout(200);
+  await enhanced.page.locator('#work').evaluate(e=>e.scrollIntoView({block:'start',behavior:'instant'}));
+  await enhanced.page.waitForSelector('canvas[data-renderer="project-images"]');
   assert.equal(await enhanced.page.evaluate(()=>window.ScrollTrigger.getAll().length),count);assert.equal(await enhanced.page.locator('canvas').count(),1);
   assert.ok(sceneRequests.length>0);
  });

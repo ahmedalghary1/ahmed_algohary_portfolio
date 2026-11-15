@@ -1,8 +1,8 @@
-﻿# Ahmed Algohary — Cinematic Engineering Portfolio
+# Ahmed Algohary — Cinematic Engineering Portfolio
 
 A bilingual, progressively enhanced portfolio built on the existing semantic HTML, CSS and native JavaScript modules. Paper, ink, vermilion, the original editorial headline, the owner's portrait and all five real project screenshots are preserved. No framework migration or new production dependency was introduced.
 
-The site now includes an architectural Three.js hero, compact technology overview, featured business system and ten-part case studies, an accessible SVG architecture demonstration, employment/training timeline, six expandable skill categories with all 77 unique skills, six-stage process, verified contact links and the owner's CV.
+The site now includes a portrait-only editorial hero, compact technology overview, featured business system and ten-part case studies, an accessible SVG architecture demonstration, employment/training timeline, six expandable skill categories with all 77 unique skills, six-stage process, verified contact links and the owner's CV.
 
 ## Run and build
 
@@ -17,7 +17,7 @@ npm run build
 
 Use `npm.cmd` in Windows PowerShell if `npm.ps1` is blocked. Python 3 and Node are sufficient; production assets are already self-hosted. `npm run content` generates both `index.html` and `ar/index.html`, a cache-versioned CSS bundle, sitemap and robots. Run it after changing content or modular CSS. `npm run build` refreshes generated files and creates `portfolio-static.zip`; it does not publish.
 
-English is served at `/`; Arabic has real static HTML at `/ar/`. Existing `?lang=en|ar`, project IDs and case-study hashes remain supported. Native links/details and both document routes work without JavaScript. Animation and WebGL are always optional. Mobile, Save Data and constrained hardware skip animation vendor downloads; desktop/tablet use a single demand-driven canvas when capable.
+English is served at `/`; Arabic has real static HTML at `/ar/`. Existing `?lang=en|ar`, project IDs and case-study hashes remain supported. Native links/details and both document routes work without JavaScript. Animation and WebGL are always optional. Mobile, Save Data and constrained hardware skip animation vendor downloads; desktop project images can use one lazy, demand-driven shader overlay. The hero and contact have no sculpture or canvas scene.
 
 ## Content and documentation
 

@@ -1,0 +1,15 @@
+{
+  "files": 91,
+  "zipBytes": 2098456,
+  "zipSha256": "23f4b136b6dac0e64fb0e44b9b7e5464bccb73ef56a61888c62979459090f714",
+  "cvBytes": 78847,
+  "sculptureFiles": [],
+  "zipIntegrity": "pass",
+  "originalCvMatch": true,
+  "deterministicGeneratedFiles": {
+    "index.html": "bb58c26e4591a4d0caa42b8cce54753cae8314e783de21939836f0438918adae",
+    "ar/index.html": "f6815135cbefc39a08323204ae6ecd286200689ff34e80b4500f0009b75a04fa",
+    "css/site.css": "44416049ed3d8dfe6696df7f6b2589b089ad229c001a87560c228f306364a3f1"
+  },
+  "documentationLinks": "pass"
+}

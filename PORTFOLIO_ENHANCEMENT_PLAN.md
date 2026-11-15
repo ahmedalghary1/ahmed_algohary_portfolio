@@ -17,7 +17,7 @@ Fresh baseline evidence: `reports/transformation/before/`. Four full-page screen
 
 ## Weaknesses and design decisions
 
-1. Hero prioritizes a large portrait over systems engineering. Retain the established editorial statement, give the architectural sculpture a purposeful large stage, and keep the original portrait in About.
+1. Retain the established editorial statement and original portrait in Hero and About. The owner subsequently instructed: «ازل المجسم نهائي وضيف صورتي فقط». That explicit revision supersedes the initial sculpture requirement; all hero/contact sculpture markup, models and decorative sculpture assets are removed. Optional WebGL is limited to project image transitions.
 2. Selected work starts with a personal portfolio and gives all projects equal weight. Feature garment factory first, followed by ROCKS EV, Bonyan, Ahmed Gamal and Ahmed Nabil.
 3. Three-paragraph project details lack case-study structure. Expand native, shareable disclosures to ten stages. Separate documented project behavior from unverified stacks, infrastructure and metrics; do not infer implementations from skills or employers.
 4. Eleven skill categories and repeated Redis make the page long. Preserve all 77 unique skills in six native expandable categories; move the compact 12-technology overview below the hero.
@@ -35,18 +35,18 @@ Fresh baseline evidence: `reports/transformation/before/`. Four full-page screen
 | 2 | Design system | Complete: tokens and sticky shared header; `phases/02-design/checks.json` passes desktop/mobile EN/AR and production JS syntax |
 | 3 | Content architecture | Complete: `phases/03-content/checks.json` passes desktop/mobile EN/AR; static package succeeds. Verified CV and all six contact channels configured. |
 | 4 | Projects | Complete: `phases/04-projects/checks.json` passes; all five original project IDs/assets retained. Ten-stage native studies and featured garment layout; vertical showcase replaces long pinning. |
-| 5 | Cinematic hero | Complete: `phases/05-hero/checks.json` passes EN/AR desktop/mobile and real WebGL smoke; screenshots visually reviewed. Original portrait retained in About; generated SVG matches modular geometry. Package succeeds. |
-| 6 | Architecture | Implemented: `phases/06-architecture/checks.json` smoke passes; detailed node/connection QA continues in global regression checks. |
-| 7 | Global motion | Planned: reversible reveals, demand rendering, clean disposal; motion/lifecycle checks |
-| 8 | Responsive/localization | Planned: 320/375/390/430/768/1024/1440/1920 in both languages, screenshots/overflow/axe |
-| 9 | Performance/SEO | Planned: matching fresh before/after Lighthouse, metadata and local asset validation |
-| 10 | Final QA | Planned: regression suite, deterministic generation, deployment archive, final documentation |
+| 5 | Cinematic hero | Revised and verified: portrait only, per owner instruction. `phases/10-final/checks.json` verifies desktop/mobile EN/AR, real photo and zero hero canvases. Original portrait also remains in About. |
+| 6 | Architecture | Complete: native SVG/HTML responsibilities, seven coherent directed connections and separate delivery infrastructure. Bilingual keyboard/deep-link checks pass in the functional suite. |
+| 7 | Global motion | Complete: reversible reveals, native lightweight mobile effects, lazy project-only renderer, idle stopping, context loss/restoration and cleanup pass. Latest probe: 16.7ms median, 16.8ms p95, at most one observed draw call. |
+| 8 | Responsive/localization | Complete: 22 EN/AR layouts, all requested widths plus landscape/ultrawide; four full-page axe audits have zero violations. Real `/ar/` HTML also works without JavaScript. |
+| 9 | Performance/SEO | Measured: final portrait version EN 91 / AR 86, all other Lighthouse categories 100. LCP 3.3s / 3.2s; CLS 0 / 0.013; transfer 465 / 573KiB. Arabic performance and LCP targets remain unmet; no field INP claim. Full results and limits in FINAL_QA_REPORT.md. |
+| 10 | Final QA | Verified locally: 24 original interaction checks, 21 functional groups, 22 responsive layouts, four full-page axe audits, contact/skills/motion/stability suites and static packaging pass. Native PDF click verification remains explicitly externally blocked; direct HTTP file/hash checks pass. Final documentation delivered. |
 
 Every phase uses the running local application, console capture, desktop/mobile EN/AR checks, syntax checks and relevant functional checks. Packaging is checked after structural work and at final delivery. A failed required check leaves its phase pending until fixed or explicitly documented as externally blocked.
 
 ## Expected files and dependencies
 
-Modify `data/portfolio.json`, `data/skills.json`, `scripts/render.py`, `scripts/package.py`, `package.json`, `index.html`, CSS tokens/layout/motion/skills, navigation/localization/motion modules and regression scripts. Add a small render helper, architecture enhancement, static sculpture SVG, social image, sitemap/robots, phase QA script and the five requested documentation files. No new production dependencies. Lighthouse/chrome-launcher are optional, ignored QA dependencies only.
+Modify `data/portfolio.json`, `data/skills.json`, `scripts/render.py`, `scripts/package.py`, `package.json`, `index.html`, CSS tokens/layout/motion/skills, navigation/localization/motion modules and regression scripts. Add a render helper, architecture enhancement, static Arabic document, portrait-based social image, sitemap/robots, phase QA script and the five requested documentation files. Sculpture assets/modules introduced during the initial direction were removed following the owner's revision. No new production dependencies. Lighthouse/Playwright/axe are optional, ignored QA dependencies only.
 
 ## Risks and safeguards
 

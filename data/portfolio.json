@@ -11,7 +11,7 @@
     "linkedin": "https://www.linkedin.com/in/ahmed-algohary-124396396/",
     "cv": "assets/documents/ahmed-algohary-cv.pdf",
     "portrait": "assets/images/ahmed-portrait-896.webp",
-    "portraitSrcset": "assets/images/ahmed-portrait-480.webp 480w, assets/images/ahmed-portrait-896.webp 896w, assets/images/ahmed-portrait-1122.webp 1122w",
+    "portraitSrcset": "assets/images/ahmed-portrait-480.webp 480w, assets/images/ahmed-portrait-640.webp 640w, assets/images/ahmed-portrait-896.webp 896w, assets/images/ahmed-portrait-1122.webp 1122w",
     "projects": [
       {
         "id": "garment-factory",

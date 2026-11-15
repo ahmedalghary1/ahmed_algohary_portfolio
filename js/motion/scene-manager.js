@@ -31,6 +31,7 @@ export async function sceneManager(parentSignal) {
   catch { context.getExtension('WEBGL_lose_context')?.loseContext(); lifetime.abort(); return; }
   canvas.className = 'cinematic-canvas'; canvas.setAttribute('aria-hidden', 'true');
   canvas.dataset.renderer = 'project-images'; canvas.dataset.frames = '0';
+  canvas.dataset.context = 'ready';
   document.body.append(canvas);
   const scene = new T.Scene(), camera = new T.OrthographicCamera(-1, 1, 1, -1, 0, 2);
   camera.position.z = 1;
@@ -76,8 +77,8 @@ export async function sceneManager(parentSignal) {
   targets.forEach(target => observer.observe(target));
   window.addEventListener('resize',resize,{signal});
   window.addEventListener('scroll',scheduler.invalidate,{passive:true,signal});
-  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;},{signal});
-  canvas.addEventListener('webglcontextrestored',()=>{lost=false;resize();},{signal});
+  canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;canvas.dataset.context='lost';},{signal});
+  canvas.addEventListener('webglcontextrestored',()=>{lost=false;canvas.dataset.context='ready';resize();},{signal});
   signal.addEventListener('abort',()=>{observer.disconnect();images.forEach(image=>{image.texture.dispose();image.mesh.material.dispose();});plane.dispose();renderer.dispose();renderer.forceContextLoss();canvas.remove();},{once:true});
   resize();
 }

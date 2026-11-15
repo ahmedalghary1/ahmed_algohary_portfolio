@@ -37,27 +37,27 @@
       "passed": true
     },
     {
-      "name": "en 390px: normal motion, visible content and appropriate scene tier",
+      "name": "en 390px: portrait-only hero, normal motion and visible content",
       "passed": true
     },
     {
-      "name": "en 768px: normal motion, visible content and appropriate scene tier",
+      "name": "en 768px: portrait-only hero, normal motion and visible content",
       "passed": true
     },
     {
-      "name": "en 1440px: normal motion, visible content and appropriate scene tier",
+      "name": "en 1440px: portrait-only hero, normal motion and visible content",
       "passed": true
     },
     {
-      "name": "ar 390px: normal motion, visible content and appropriate scene tier",
+      "name": "ar 390px: portrait-only hero, normal motion and visible content",
       "passed": true
     },
     {
-      "name": "ar 768px: normal motion, visible content and appropriate scene tier",
+      "name": "ar 768px: portrait-only hero, normal motion and visible content",
       "passed": true
     },
     {
-      "name": "ar 1440px: normal motion, visible content and appropriate scene tier",
+      "name": "ar 1440px: portrait-only hero, normal motion and visible content",
       "passed": true
     },
     {

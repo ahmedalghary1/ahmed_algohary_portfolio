@@ -1,59 +1,36 @@
 ﻿# Motion system
 
-The portfolio retains the existing semantic HTML/CSS/ES-module architecture and self-hosted GSAP 3.14.2, ScrollTrigger and Three.js 0.181.2. The architectural scene is decorative; all content, links, case studies and architecture explanations are real HTML. Native vertical scrolling is never intercepted.
+The portfolio preserves semantic HTML, CSS, native JavaScript modules and the existing pinned GSAP 3.14.2 / ScrollTrigger / Three.js 0.181.2 assets. Native vertical scrolling stays in control. At the owner's latest explicit request, the hero contains only the original personal photograph. The hero/contact sculpture, generated fallback, model factory and sculpture generator were removed.
 
-## Modules
+## Modules and tiers
 
-| Module | Responsibility |
-| --- | --- |
-| `js/main.js` | Initialize content, localization, navigation, cases, contact and architecture first; schedule optional motion after load/idle |
-| `js/motion.js` | Coordinate capability tiers, labels, GSAP context, reversible reveals, native mobile motion and cleanup |
-| `js/motion/config.js` | Breakpoints, scrub/reveal timing, tilt, shader intensity, light/material values and pixel budgets |
-| `js/motion/hero-scene.js` | Six related structural frames, one accent module, two instanced material batches and disposal |
-| `js/motion/scene-manager.js` | One shared WebGL2 renderer, hero/contact views, scroll camera state and temporary image shader overlays |
-| `js/motion/performance-manager.js` | One demand-driven RAF, DPR/pixel limits, visibility suspension and error teardown |
-| `js/motion/project-showcase.js` | Vertical project sequence, restrained image depth/masks, sticky desktop progress and native previous/next scrolling |
-| `js/motion/shaders.js` | Small temporary UV distortion/reveal on genuine project screenshots; intensity derives from MotionConfig |
-| `js/architecture.js` | Accessible SVG connections, real node links, native disclosures, language/resize updates and observer cleanup |
-| `css/motion.css`, `css/engineering.css` | Progressive states, static fallback, lightweight native reveals and finite architecture data flow |
-| `scripts/render-sculpture.py` | Generate the matching geometry-based SVG fallback |
+- `js/main.js` initializes essential content and controls first, then schedules optional motion after load/idle.
+- `js/motion.js` owns one GSAP context, reversible text/block reveals, subtle hero text movement, project perspective, timeline progress, pause/reduced-motion behavior and cleanup.
+- `js/motion/config.js` centralizes timing, tilt, shader intensity, capability breakpoints and pixel limits.
+- `js/motion/project-showcase.js` keeps the five projects in native vertical flow with short image reveals, a small sticky desktop progress toolbar and native previous/next scrolling. There is no horizontal track, long pin or scroll interception.
+- `js/motion/scene-manager.js` supports optional project image shader overlays only. It waits until a project image approaches the viewport before importing Three.js. The hero does not initialize a canvas. One shared renderer clips temporary overlays to actual project screenshots; original HTML images always remain underneath.
+- `js/motion/shaders.js` implements a short, restrained UV reveal/distortion. Its intensity derives from MotionConfig.
+- `js/motion/performance-manager.js` owns the demand-driven RAF, hidden-tab suspension, DPR and pixel budget. No ambient rendering loop remains.
+- `js/architecture.js` connects real HTML nodes through accessible SVG linework and native explanatory disclosures. It does not use WebGL. On mobile it skips SVG measurement and uses a vertical diagram with explicit relationship labels.
 
-The unused legacy `js/scene.js` was removed; it no longer creates a competing renderer.
+Mobile widths up to 600px, Save Data and constrained hardware use IntersectionObserver plus 8px CSS block movement. They download neither GSAP nor Three.js. Tablet retains restrained GSAP motion but does not initialize project WebGL. Capable desktops can load the shared project renderer, capped at DPR 1.5 and 2.2 million drawing-buffer pixels. Reduced-motion startup skips animation vendors and hides the optional motion control.
 
-## Experience tiers
+## Typography, portrait and architecture
 
-Desktop/tablet use GSAP and the lazily imported renderer when capabilities allow. Desktop DPR is capped at 1.5; tablet at 1.1; the drawing buffer stays within a 2.2 million-pixel budget. The sculpture uses 24 beams in two instanced batches, with matte/metallic materials and hemisphere/key/rim lighting. No external models, HDR maps, real-time shadows or postprocessing are needed.
+The original portrait is a normal responsive HTML image in Hero and About, with explicit dimensions and meaningful bilingual alt text. It remains available with JavaScript, animations or WebGL disabled. The hero image has high fetch priority; About is lazy-loaded. No generated replacement or 3D object is used in the hero or contact.
 
-At widths up to 600px, Save Data, or constrained hardware, `qualityTier()` selects the lightweight path. It downloads neither GSAP nor Three.js. IntersectionObserver and CSS move visible blocks by only 8px; the static sculpture remains. The same pause control can stop this motion. Reduced-motion startup downloads neither animation vendor and keeps all essential content visible; the optional motion control is hidden while the OS preference is active.
+Visible text is painted before enhancement. Localization preserves the already-rendered bilingual spans instead of replacing the hero at startup. Arabic moves as intact blocks; only Latin section headings receive a small mask reveal. All control copy lives in `data/portfolio.json`.
 
-## Hero, projects and closing composition
+SVG connection reveals and experience-line progress use CSS custom properties driven by ScrollTrigger. Finite data pulses run only while the map is visible and motion is enabled. Mobile uses lightweight CSS and `content-visibility:auto` for below-fold sections, while preserving their HTML and native navigation. The architecture is explicitly conceptual; Docker/CI/CD/cloud delivery sit outside request processing.
 
-The hero has a dedicated architectural art stage. ScrollTrigger interpolates camera distance/position, sculpture rotation/scale and a restrained text translation/opacity change. Pointer response runs only for fine pointers while a scene slot is visible. A finite three-second introduction supplies ambient movement; drawing then stops until input changes the scene.
+## Cleanup and failure behavior
 
-Projects remain a natural vertical document. There is no horizontal track, long pin, wheel handler or scroll-smoothing library. A small CSS sticky toolbar supplies progress/previous/next on capable desktops. Images use one coordinated GSAP depth/mask timeline plus a short, subtle shader overlay. Keyboard links and full-width native case studies stay in document flow. The underlying original screenshot is always available.
+Pause, live reduced motion, relevant breakpoints and full page navigation abort the enhancement controller. Contexts revert; triggers, observers, listeners and RAFs are cleaned up. Project textures/materials/geometry and the renderer are disposed. Pending texture callbacks check the lifetime before allocating further work. After the 0.85-second image reveal, demand rendering stops.
 
-The contact slot reuses the same renderer/sculpture with a scroll-driven final pose. Its stable composition echoes the hero without creating another canvas. Mobile/reduced-motion contact uses static architectural linework.
+When WebGL is unavailable, loses context or a draw fails, the real project image remains visible. A restored context reuses one renderer. Offscreen pointer movement causes no WebGL frames. BFCache-style retained pagehide preserves the session; full pagehide disposes it. This is lifecycle behavior, not a guarantee that every browser/host will choose BFCache restoration.
 
-## Architecture and timeline
+## Extending and verification
 
-The diagram is SVG plus semantic HTML, not another canvas. Nodes expose technical responsibilities through native disclosures. A CSS custom property drives connection reveal with scroll, so regenerated SVG paths inherit the correct state after resize or locale changes. Finite CSS data pulses run only when the map is visible and motion is enabled. The experience line uses a similar progress property. Both reverse with native scrolling.
+Use the existing context or lightweight observer list. Keep movements small, reversible and nonessential. Add settings to MotionConfig/CSS tokens. Preserve Arabic shaping and verified project images. Do not reintroduce a hero sculpture or another canvas without the owner's instruction.
 
-The topology deliberately separates the frontend/API request, access checks, PostgreSQL persistence, Redis caching/broker and Celery consumers. Docker, CI/CD and cloud delivery are described outside the request graph. The entire diagram is labelled as conceptual, not a claim that every project uses every tool.
-
-## Typography and localization
-
-Hero text is painted before motion initializes. Existing static English/Arabic spans are preserved instead of rewriting the painted heading during startup. Arabic is animated as intact blocks; only Latin editorial section headings receive a small mask reveal. Labels live in `data/portfolio.json`, including pause/enable and project navigation names.
-
-Language changes abort/recreate the applicable motion context after fonts settle. This preserves one renderer and removes stale triggers/listeners. Query preferences and real `/ar/` HTML both work. The OS preference always takes priority over the manual control and `?motion=off`.
-
-## Lifecycle and failures
-
-Pausing, reducing motion, resizing across the mobile breakpoint or full navigation aborts the enhancement controller. It disconnects observers, cancels RAFs, removes pointer listeners, kills/reverts GSAP timelines and disposes scene geometries, instance buffers, materials, temporary textures and the renderer. Context loss shows the SVG fallback; restoration uses the same renderer. A GPU draw exception tears the scene down without hiding text or links.
-
-Hidden tabs suspend scheduling. Offscreen scene slots do not react to pointer movement. `pagehide` with `persisted: true` retains the BFCache session; full pagehide disposes resources. The actual browser/host may still choose not to restore BFCache, so lifecycle tests are not a claim of universal BFCache eligibility.
-
-## Extending
-
-Use the existing GSAP context or lightweight observer list for new reveals. Keep transform/opacity movement small, reversible and nonessential. Add settings to MotionConfig/CSS tokens, not scattered constants. Keep Arabic shaping intact. Add a shared renderer slot only for justified decoration; avoid another canvas. New image effects must use verified project assets and release their temporary textures.
-
-Run `npm run content` after CSS changes: the existing Python generator emits the cache-versioned `css/site.css` from the modular sources. Run `npm run check`, motion/functional checks and visual audits before delivery. Detailed measured results and limits are in `FINAL_QA_REPORT.md` and `reports/transformation/after/`.
+Run `npm run content` after changing modular CSS; the existing Python renderer emits cache-versioned `css/site.css`. Run syntax/content checks, functional tests, motion/lifecycle tests and visual audits. Actual results, before/after measurements and verification limits are recorded in `FINAL_QA_REPORT.md` and `reports/transformation/after/`.

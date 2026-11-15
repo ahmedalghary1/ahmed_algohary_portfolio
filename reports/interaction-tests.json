@@ -25,7 +25,7 @@
       "passed": true
     },
     {
-      "name": "Reduced motion keeps the real portrait visible without a WebGL canvas",
+      "name": "Reduced motion keeps static hero artwork visible without a WebGL canvas",
       "passed": true
     },
     {

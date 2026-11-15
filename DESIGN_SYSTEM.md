@@ -4,7 +4,7 @@ This is the current implementation guide. The original `DESIGN.md` records the e
 
 ## Identity
 
-An engineering journal expressed through warm paper, dark ink, vermilion annotations and precise architectural alignment. The original headline, typography, portrait and project imagery remain. The hero gives a modular architectural sculpture a dedicated stage; the portrait appears in About. The garment management system is the first, most prominent project.
+An engineering journal expressed through warm paper, dark ink, vermilion annotations and precise architectural alignment. The original headline, typography, portrait and project imagery remain. At the owner's explicit request, the hero uses only the original personal photograph, also retained in About. The sculpture and its fallback/model code were removed. The garment management system is the first, most prominent project.
 
 ## Tokens
 
@@ -14,7 +14,7 @@ Source: `css/tokens.css`. Runtime WebGL parameters live in `js/motion/config.js`
 | --- | --- |
 | `--paper` | `#eae8e1`, primary page surface |
 | `--ink` | `#171717`, text and dark About section |
-| `--vermilion` | `#c43c28`, sculpture and decorative accents |
+| `--vermilion` | `#c43c28`, restrained decorative accents |
 | `--accent` | `#a62d20`, readable small accent text and links |
 | `--muted` | `#57574f`, secondary text |
 | `--stone` | `#9c9d95`, decorative geometry only |
@@ -27,7 +27,7 @@ Source: `css/tokens.css`. Runtime WebGL parameters live in `js/motion/config.js`
 | `--max-width` | 1440px |
 | `--radius-small` / `--radius-image` | 2px / 4px |
 | `--shadow-image` | restrained image elevation |
-| `--motion-fast` / `--motion-reveal` | 180ms / 700ms |
+| `--motion-fast` / `--motion-reveal` / `--motion-mobile` | 180ms / 700ms / 450ms |
 | `--ease` | `cubic-bezier(.23,1,.32,1)` |
 | `--z-scene`, `--z-controls`, `--z-header`, `--z-skip` | 8, 20, 30, 50 |
 | `--header-offset` | 110px desktop, 90px tablet, 82px mobile |
@@ -63,9 +63,9 @@ The desktop work toolbar uses a small CSS sticky region with native previous/nex
 
 ## Responsive and localization rules
 
-At 1100px the navigation becomes a disclosure. At 900px project rows stack; at 800px the architecture diagram becomes vertical and skills become one column. At 600px the sculpture uses its SVG fallback, the experience timeline stacks and the process becomes a vertical sequence. Tablet WebGL uses a lower pixel ratio.
+At 1100px the navigation becomes a disclosure. At 900px project rows stack; at 800px the architecture diagram becomes vertical and skills become one column. At 600px the portrait has a compact responsive frame, the experience timeline stacks and the process becomes vertical. Mobile skips all animation vendor downloads; project shaders initialize only on capable desktops.
 
-Use logical CSS properties for spacing and alignment. Keep the architecture’s technical topology stable in both languages; localize its text direction independently. Directional arrows mirror; technology logos and the sculpture do not.
+Use logical CSS properties for spacing and alignment. Keep the architecture’s technical topology stable in both languages; localize its text direction independently. Directional arrows mirror; technology logos and the personal photograph do not.
 
 Both `/` and `/ar/` have real static HTML, localized titles/descriptions, canonical URLs and reciprocal hreflang. In-place language switching and existing `?lang=en|ar` URLs remain supported. The Arabic entry uses a root base for shared assets; localization keeps its native anchors on the current document and query.
 
