@@ -2,6 +2,7 @@
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 import runpy
+import json
 root=Path(__file__).resolve().parent.parent
 if Path.cwd()!=root:
  raise SystemExit('Run this command from the portfolio project directory.')
@@ -9,7 +10,13 @@ runpy.run_path(str(root/'scripts/render.py'),run_name='__main__')
 with ZipFile(root/'portfolio-static.zip','w',compression=ZIP_DEFLATED,compresslevel=9) as archive:
  for filename in ['index.html','robots.txt','sitemap.xml']:
   archive.write(root/filename,filename)
- for directory in ['ar','projects','css','js','data','assets']:
+ # Original unredacted screenshots also live under projects/. Publish only
+ # the exact generated HTML routes from the central project records.
+ projects=json.loads((root/'data/portfolio.json').read_text(encoding='utf-8'))['profile']['projects']
+ for project in projects:
+  filename=Path('projects')/project['slug']/'index.html'
+  archive.write(root/filename,filename)
+ for directory in ['ar','css','js','data','assets']:
   for path in sorted((root/directory).rglob('*')):
    if path.is_file():archive.write(path,path.relative_to(root))
 print('Created portfolio-static.zip — extract its contents into the static host document root.')

@@ -1,3 +1,8 @@
+﻿# Current project-first composition
+
+The November 2026 refactor keeps the paper/ink/vermilion identity. Current layout rules are in css/refactor.css, built after shared components. Display text uses --type-display; project titles use --type-project; section spacing is 56–96px. A compact portrait hero has two actions. Work follows immediately: featured factory system, then a two-column grid that becomes one column on mobile. Services use ruled rows, tools use four compact groups, About is two short paragraphs, and process has four steps.
+
+Standalone case pages use a large real preview, concise paired content, native accessible image links and next-project/contact actions. No sculpture, conceptual architecture diagram, timeline or expanded skill catalogue is rendered. Earlier section-specific specifications below are historical where they differ.
 # Design system
 
 This is the current implementation guide. The original `DESIGN.md` records the established editorial direction; the owner’s transformation brief and verified personal/project content supersede its early illustrative content examples.
@@ -72,3 +77,4 @@ Both `/` and `/ar/` have real static HTML, localized titles/descriptions, canoni
 ## Verification
 
 Use `npm run check`, `npm run test:layouts` and the functional scripts described in `FINAL_QA_REPORT.md`. Inspect actual screenshots in both languages. Axe results are automated evidence, not a certification of full WCAG conformance. Never make essential text depend on a canvas or animation.
+

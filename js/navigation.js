@@ -45,24 +45,27 @@ export function initNavigation(signal) {
     if (open) setOpen(false);
   }, { signal });
   const links = [...menu.querySelectorAll('a')].filter(link => link.pathname === location.pathname && link.hash);
-  const sections = links.map(link => document.querySelector(link.hash)).filter(Boolean);
-  let frame = 0;
-  function update() {
-    frame = 0;
-    header.classList.toggle('is-scrolled', scrollY > 24);
-    const threshold = header.offsetHeight + 100;
-    const current = sections.filter(section => section.getBoundingClientRect().top <= threshold).at(-1);
-    links.forEach(link => {
-      if (current && link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
+  const targets = new Map(links.map(link => [link.hash === '#top' ? document.querySelector('.hero') : document.querySelector(link.hash), link]).filter(([target]) => target));
+  function activate(link) {
+    links.forEach(item => {
+      if (item === link) item.setAttribute('aria-current', 'location');
+      else item.removeAttribute('aria-current');
     });
   }
-  const queueUpdate = () => { if (!frame) frame = requestAnimationFrame(update); };
-  window.addEventListener('scroll', queueUpdate, { passive: true, signal });
-  window.addEventListener('resize', queueUpdate, { signal });
-  document.addEventListener('portfolio:language', queueUpdate, { signal });
-  signal.addEventListener('abort', () => cancelAnimationFrame(frame), { once: true });
-  update();
+  // Observe the reading region instead of forcing layout for every section on scroll.
+  const observer = new IntersectionObserver(entries => {
+    entries.filter(entry => entry.isIntersecting).forEach(entry => activate(targets.get(entry.target)));
+  }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
+  targets.forEach((link, target) => observer.observe(target));
+  let scrolled = false;
+  const updateHeader = () => {
+    const next = scrollY > 24;
+    if (next !== scrolled) { scrolled = next; header.classList.toggle('is-scrolled', next); }
+    if (!next) activate(links.find(link => link.hash === '#top'));
+  };
+  window.addEventListener('scroll', updateHeader, { passive: true, signal });
+  signal.addEventListener('abort', () => observer.disconnect(), { once: true });
+  updateHeader();
   // A disclosure menu stays in document flow: no overlay, focus trap or scroll lock.
   document.documentElement.classList.add('js');
 }

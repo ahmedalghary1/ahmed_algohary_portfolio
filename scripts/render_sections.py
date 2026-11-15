@@ -17,7 +17,7 @@ def seo_markup(data,locale='en'):
     return f'''<link rel="canonical" href="{canonical}">
 <link rel="alternate" hreflang="en" href="{base}"><link rel="alternate" hreflang="ar" href="{base}ar/"><link rel="alternate" hreflang="x-default" href="{base}">
 <meta property="og:url" content="{canonical}"><meta property="og:site_name" content="Ahmed Algohary">
-<meta property="og:image" content="{base}assets/images/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ahmed Algohary — Full-Stack Python Developer">
+<meta property="og:image" content="{base}assets/images/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ahmed Algohary — Full-Stack Software Developer">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}" data-copy-content="seo.title"><meta name="twitter:description" content="{description}" data-copy-content="seo.description"><meta name="twitter:image" content="{base}assets/images/social-card.png">
 <script type="application/ld+json">{structured}</script>'''
 
