@@ -84,7 +84,7 @@ html=f'''<!doctype html>
 <title>{escape(EN['seo']['title'])}</title><meta name="description" content="{attr('seo.description')}">
 <meta property="og:title" content="{attr('seo.title')}"><meta property="og:description" content="{attr('seo.description')}"><meta property="og:type" content="website"><meta property="og:locale" content="en_US">
 <script src="js/preference.js"></script>
-<meta name="theme-color" content="#EAE8E1"><link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#EAE8E1"><link rel="icon" href="assets/images/ahmed-algohary.ico" sizes="any"><link rel="icon" href="assets/images/ahmed-algohary-icon.png" type="image/png" sizes="64x64"><link rel="apple-touch-icon" href="assets/images/ahmed-algohary-apple.png" sizes="180x180">
 <noscript><link rel="preload" href="assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin></noscript>
 {''.join(f'<link rel="stylesheet" href="css/{x}.css">' for x in ['tokens','base','layout','components','responsive','motion','skills'])}
 <script type="module" src="js/main.js"></script>

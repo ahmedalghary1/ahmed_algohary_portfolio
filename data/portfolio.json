@@ -91,12 +91,12 @@
     ]
   },
   "en": {
-    "name": "Ahmed",
-    "wordmark": "AHMED.",
+    "name": "Ahmed Algohary",
+    "wordmark": "Ahmed Algohary",
     "title": "Full-Stack Python Developer",
     "seo": {
-      "title": "Ahmed — Software, built with intention",
-      "description": "Ahmed’s software development portfolio: personal websites, the ROCKS EV online store, Bonyan’s company website and a private garment factory management system."
+      "title": "Ahmed Algohary — Software, built with intention",
+      "description": "Ahmed Algohary’s software development portfolio: personal websites, the ROCKS EV online store, Bonyan’s company website and a private garment factory management system."
     },
     "nav": {
       "work": "Work",
@@ -107,7 +107,7 @@
       "menu": "Menu",
       "close": "Close menu",
       "label": "Main navigation",
-      "home": "Ahmed — back to top",
+      "home": "Ahmed Algohary — back to top",
       "skip": "Skip to content",
       "language": "Switch to Arabic",
       "footer": "Footer navigation"
@@ -117,12 +117,12 @@
       "line1": "Engineering",
       "line2": "the digital.",
       "line3": "With intention.",
-      "description": "I’m Ahmed, a software developer turning complex requirements into clear interfaces and dependable systems.",
+      "description": "I’m Ahmed Algohary, a software developer turning complex requirements into clear interfaces and dependable systems.",
       "work": "Explore selected work",
       "contact": "Let’s talk",
       "figure": "Interconnected by design",
       "figureNote": "An exploration in structure & systems",
-      "portraitAlt": "Portrait of Ahmed, independent software developer.",
+      "portraitAlt": "Portrait of Ahmed Algohary, independent software developer.",
       "index": "Independent thinking. Considered engineering.",
       "scroll": "Scroll to explore"
     },
@@ -230,12 +230,12 @@
       "label": "02 / A little context",
       "title": "An engineer’s mind.\nA maker’s instinct.",
       "intro": "Good software starts with understanding what people actually need.",
-      "bio": "I’m Ahmed, an independent software developer building personal websites, online stores and business systems. I focus on turning varied requirements into clear, useful digital experiences.",
+      "bio": "I’m Ahmed Algohary, an independent software developer building personal websites, online stores and business systems. I focus on turning varied requirements into clear, useful digital experiences.",
       "philosophy": "My approach is to ask better questions, make the structure clear, and give the details the attention they deserve. I value readable code, useful interfaces and systems that can evolve.",
       "interests": "Areas of interest",
       "interestText": "Business software, thoughtful interfaces, data modelling and the craft of building for the web.",
-      "caption": "Ahmed / Independent software developer",
-      "portraitAlt": "Portrait of Ahmed, independent software developer.",
+      "caption": "Ahmed Algohary / Independent software developer",
+      "portraitAlt": "Portrait of Ahmed Algohary, independent software developer.",
       "placeholder": "Websites / Commerce / Business systems"
     },
     "expertise": {
@@ -355,7 +355,7 @@
       "subject": "Project enquiry"
     },
     "footer": {
-      "copyright": "Ahmed. Software, built with intention.",
+      "copyright": "Ahmed Algohary. Software, built with intention.",
       "top": "Back to top",
       "language": "العربية",
       "languageLabel": "Switch to Arabic"
@@ -367,12 +367,12 @@
     }
   },
   "ar": {
-    "name": "أحمد",
-    "wordmark": "أحمد.",
+    "name": "أحمد الجوهري",
+    "wordmark": "أحمد الجوهري",
     "title": "مطوّر Python متكامل",
     "seo": {
-      "title": "أحمد — برمجيات تُبنى بدقة ورؤية",
-      "description": "معرض أعمال أحمد في تطوير البرمجيات: مواقع شخصية، ومتجر روكس الإلكتروني، وموقع شركة بنيان، ونظام خاص لإدارة مصنع ملابس."
+      "title": "أحمد الجوهري — برمجيات تُبنى بدقة ورؤية",
+      "description": "معرض أعمال أحمد الجوهري في تطوير البرمجيات: مواقع شخصية، ومتجر روكس الإلكتروني، وموقع شركة بنيان، ونظام خاص لإدارة مصنع ملابس."
     },
     "nav": {
       "work": "الأعمال",
@@ -383,7 +383,7 @@
       "menu": "القائمة",
       "close": "إغلاق القائمة",
       "label": "التنقل الرئيسي",
-      "home": "أحمد — العودة إلى البداية",
+      "home": "أحمد الجوهري — العودة إلى البداية",
       "skip": "انتقل إلى المحتوى",
       "language": "Switch to English",
       "footer": "روابط التذييل"
@@ -393,12 +393,12 @@
       "line1": "أبني تجارب",
       "line2": "رقمية بدقة",
       "line3": "ورؤية.",
-      "description": "أنا أحمد، مطوّر برمجيات أحوّل المتطلبات المعقّدة إلى واجهات واضحة وأنظمة يمكن الاعتماد عليها.",
+      "description": "أنا أحمد الجوهري، مطوّر برمجيات أحوّل المتطلبات المعقّدة إلى واجهات واضحة وأنظمة يمكن الاعتماد عليها.",
       "work": "استكشف الأعمال",
       "contact": "لنتحدّث",
       "figure": "الترابط أساس التصميم",
       "figureNote": "دراسة في البنية وترابط الأنظمة",
-      "portraitAlt": "الصورة الشخصية لأحمد، مطوّر برمجيات مستقل.",
+      "portraitAlt": "الصورة الشخصية لأحمد الجوهري، مطوّر برمجيات مستقل.",
       "index": "تفكير مستقل. وهندسة مدروسة.",
       "scroll": "مرّر لاستكشاف المزيد"
     },
@@ -506,12 +506,12 @@
       "label": "02 / نبذة عنّي",
       "title": "عقلية مهندس.\nوشغف صانع.",
       "intro": "البرمجيات الجيدة تبدأ بفهم ما يحتاجه الناس فعلًا.",
-      "bio": "أنا أحمد، مطوّر برمجيات مستقل، أبني المواقع الشخصية والمتاجر الإلكترونية وأنظمة الأعمال. أركّز على تحويل المتطلبات المتنوعة إلى تجارب رقمية واضحة ومفيدة.",
+      "bio": "أنا أحمد الجوهري، مطوّر برمجيات مستقل، أبني المواقع الشخصية والمتاجر الإلكترونية وأنظمة الأعمال. أركّز على تحويل المتطلبات المتنوعة إلى تجارب رقمية واضحة ومفيدة.",
       "philosophy": "أبدأ بطرح أسئلة أفضل، ثم أبني هيكلًا واضحًا وأمنح التفاصيل حقّها من العناية. أقدّر الشيفرة المقروءة والواجهات المفيدة والأنظمة القابلة للتطوّر.",
       "interests": "اهتماماتي المهنية",
       "interestText": "برمجيات الأعمال، وواجهات الاستخدام المدروسة، ونمذجة البيانات، وحرفة البناء للويب.",
-      "caption": "أحمد / مطوّر برمجيات مستقل",
-      "portraitAlt": "الصورة الشخصية لأحمد، مطوّر برمجيات مستقل.",
+      "caption": "أحمد الجوهري / مطوّر برمجيات مستقل",
+      "portraitAlt": "الصورة الشخصية لأحمد الجوهري، مطوّر برمجيات مستقل.",
       "placeholder": "مواقع ويب / تجارة إلكترونية / أنظمة أعمال"
     },
     "expertise": {
@@ -631,7 +631,7 @@
       "subject": "استفسار عن مشروع"
     },
     "footer": {
-      "copyright": "أحمد. برمجيات تُبنى بدقة ورؤية.",
+      "copyright": "أحمد الجوهري. برمجيات تُبنى بدقة ورؤية.",
       "top": "العودة إلى البداية",
       "language": "English",
       "languageLabel": "Switch to English"
