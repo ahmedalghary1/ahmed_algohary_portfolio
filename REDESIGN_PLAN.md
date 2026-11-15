@@ -18,17 +18,17 @@ does not collect project type or email. Existing deep links and media work must 
 ## Implementation and acceptance
 
 1. [x] Audit source, content, media, generators, localization, contact and packaging.
-2. [ ] Replace active styling with centralized navy/cyan tokens and one coherent
+2. [x] Replace active styling with centralized navy/cyan tokens and one coherent
    responsive component stylesheet. Retain case study and media functionality.
-3. [ ] Build sticky six-link navigation, project CTA, split hero with decorative
+3. [x] Build sticky six-link navigation, project CTA, split hero with decorative
    workspace photo, real identity and two main actions.
-4. [ ] Present real work immediately after the hero, with featured case, responsive
+4. [x] Present real work immediately after the hero, with featured case, responsive
    cards and category filters; keep all ten case study routes and legacy anchors.
-5. [ ] Compact technical skill tiles, four evidenced services, concise About,
+5. [x] Compact technical skill tiles, four evidenced services, concise About,
    actual portrait, CV and documented employment; no invented trust metrics.
-6. [ ] Extend the existing WhatsApp composer with email and project type, accessible
+6. [x] Extend the existing WhatsApp composer with email and project type, accessible
    validation, busy/error feedback, honest draft handoff and clipboard fallback.
-7. [ ] Verify both languages at 360/390/480/768/1024/1280/1440/1920px, keyboard,
+7. [x] Verify both languages at 360/390/480/768/1024/1280/1440/1920px, keyboard,
    mobile menu, filters, media, no-JS content, internal links and accessibility.
 8. [ ] Build the production artifact, measure Lighthouse where available, inspect
    screenshots and write REDESIGN_REPORT.md with actual results and limitations.
