@@ -38,15 +38,18 @@ export function initLocalization(content, signal) {
       const record = content.profile.projects.find(project => project.image === image.dataset.projectImage);
       if (record) {
         image.src = record.images?.[next] ?? `assets/images/${record.image}-${next}.svg`;
-        image.closest('figure').querySelector('[data-project-preview]').href = image.src;
+        image.closest('figure').querySelector('[data-project-preview]').href = record.preview ?? image.src;
         if (record.srcset?.[next]) {
           image.srcset = record.srcset[next];
           image.sizes = '(max-width:600px) calc(100vw - 40px), (max-width:1600px) 54vw, 800px';
         } else image.removeAttribute('srcset');
       }
     });
-    const portrait = document.querySelector('[data-profile-image]');
-    if (portrait && content.profile.portrait) portrait.src = content.profile.portrait;
+    document.querySelectorAll('[data-profile-image]').forEach(portrait => {
+      if (content.profile.portrait) portrait.src = content.profile.portrait;
+      if (content.profile.portraitSrcset) portrait.srcset = content.profile.portraitSrcset;
+      else portrait.removeAttribute('srcset');
+    });
     const switchName = document.querySelector('[data-language-name]');
     switchName.textContent = next === 'en' ? 'العربية' : 'English';
     switchName.lang = next === 'en' ? 'ar' : 'en';

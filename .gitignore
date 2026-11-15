@@ -4,3 +4,6 @@ __pycache__/
 *.pyc
 .DS_Store
 portfolio-static.zip
+# Owner-supplied source screenshots; deploy optimized, redacted assets instead.
+/projects/
+/image.png

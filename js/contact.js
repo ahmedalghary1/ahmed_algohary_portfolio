@@ -1,9 +1,15 @@
-// A local message composer, with optional handoff to the owner's email app.
+// A local message composer with an explicit handoff to WhatsApp.
 // This static site never claims to deliver a message or stores a visitor's draft.
+export function buildWhatsAppUrl(number, message = '') {
+  if (!/^\d{10,15}$/.test(number)) throw new Error('Use an international WhatsApp number, digits only.');
+  const url = new URL(`https://wa.me/${number}`);
+  if (message) url.searchParams.set('text', message);
+  return url.href;
+}
 export function initContact(content, signal) {
   const form = document.querySelector('#contact-form');
   if (!form) return;
-  const fields = [...form.querySelectorAll('[name]:not(button)')];
+  const fields = [...form.querySelectorAll('[data-message-field]')];
   const feedback = document.querySelector('#contact-feedback');
   const prepared = document.querySelector('#contact-prepared');
   const draft = document.querySelector('#prepared-message');
@@ -36,10 +42,12 @@ export function initContact(content, signal) {
     const invalid = fields.filter(field => !validate(field));
     if (invalid.length) { announce(''); invalid[0].focus(); return; }
     const body = message();
-    if (event.submitter?.value === 'email' && content.profile.email) {
-      const subject = `${copy().subject} — ${form.elements.name.value.trim()}`;
-      location.href = `mailto:${encodeURIComponent(content.profile.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      announce('mailOpened');
+    if (event.submitter?.value !== 'copy') {
+      const numbers = content.profile.whatsapp || [];
+      const recipient = numbers[0];
+      if (!recipient) return;
+      announce('whatsappOpened');
+      location.assign(buildWhatsAppUrl(recipient.number, body));
       return;
     }
     busy = true;

@@ -2,11 +2,11 @@
 
 Latest independent audit and refinement: [scores, prioritized plan, measured results, limits and changed files](reports/refinement/AUDIT.md). [Compare rendered screenshots](reports/refinement/compare.html) in both languages at mobile, tablet, desktop and ultrawide widths. Earlier reports below remain the initial implementation record.
 
-The refined portfolio supports shareable expanded case studies (`?lang=ar#case-inventory`, for example) and localized links to original-size concept artwork. Changing locale keeps preview links and case action labels synchronized. Tablet projects stack at 601–900px to give their interface previews enough room.
+The portfolio now presents five owner-supplied projects: Ahmed Gamal’s portfolio, ROCKS EV, a private garment factory management system, Bonyan and Ahmed Nabil’s portfolio. It supports shareable project details (`?lang=ar#case-ahmed-gamal`, for example), original-resolution screenshot previews and four external website links. The private factory project has no live link, and its public screenshot has account, financial and product data redacted. Changing locale keeps preview links and project labels synchronized. Tablet projects stack at 601–900px.
 
 For repeated Lighthouse measurements, set `RUNS=3` and `REPORT_DIR=reports/refinement/after` when running `scripts/measure.mjs` with the QA environment described below. The new `scripts/refinement-review.mjs` captures the normal-motion matrix and draw-call/frame probes; `PHASE` selects the evidence folder. These are optional QA scripts, not a production build step.
 
-A complete bilingual English/Arabic developer portfolio using semantic HTML, CSS, native JavaScript modules, GSAP + ScrollTrigger and Three.js. The approved visual source is [DESIGN.md](DESIGN.md). All names, biographies, skills and case studies are illustrative and editable. No client results or testimonials are claimed.
+A bilingual English/Arabic developer portfolio using semantic HTML, CSS, native JavaScript modules and GSAP + ScrollTrigger. The hero features the owner's real portrait in a restrained frame that follows the paper, ink and vermilion palette. The previous 3D scene is no longer initialized or downloaded. Projects use the owner’s screenshots and project descriptions; technology stacks and measured client results are not inferred.
 
 ## Run locally
 
@@ -25,7 +25,7 @@ npm ci
 npm run vendor
 ```
 
-Only `gsap@3.14.2` and `three@0.181.2` are runtime dependencies. No framework, component library, remote font request or runtime CDN is used.
+Only the self-hosted GSAP/ScrollTrigger assets are loaded for animation. The older Three.js source/vendor files are retained as legacy assets and are not loaded by the page. No framework, component library, remote font request or runtime CDN is used.
 
 ## Update your content
 
@@ -46,50 +46,55 @@ This maintenance command refreshes the static HTML from the same data used by li
 | `en.about`, `ar.about` | Biography, philosophy, interests and portrait alt text |
 | `en.expertise.groups`, `ar.expertise.groups` | Skill category titles and items; separate items with ` / ` |
 | `en.process.steps`, `ar.process.steps` | Four process stages |
-| `en.projects`, `ar.projects` | Project title, category, description, problem, solution, role and alt text |
-| `profile.projects` | Stable project IDs, images and technology lists |
-| `profile.portrait` | Local portrait path |
+| `en.projects`, `ar.projects` | Project title, category, description, problem, solution, role, highlights, alt text and accessible link labels |
+| `profile.projects` | Stable project IDs, responsive images, full-size preview paths, public URLs and privacy status |
+| `profile.portrait`, `profile.portraitSrcset` | Real portrait path and responsive image variants for hero and about |
 | `profile.email` | Real email address, without `mailto:`; `null` hides the email action |
+| `profile.whatsapp` | Contact numbers: digits-only international `number` for links and local `display` for visible text |
 | `profile.github`, `profile.linkedin`, `profile.cv` | Genuine HTTPS profile URLs or a local CV path; `null` hides each link |
-| `en.contact`, `ar.contact` | Contact copy, including the provisional status note |
+| `en.contact`, `ar.contact` | Contact copy, form labels, validation messages and WhatsApp handoff text |
 | `en.footer.copyright`, `ar.footer.copyright` | Footer owner text; the renderer supplies the year |
 | `en.seo`, `ar.seo` | Localized page title and description |
-| `en.nav`, `ar.nav`, `en.scene`, `ar.scene` | Navigation and accessible control labels |
+| `en.nav`, `ar.nav` | Navigation and accessible control labels |
 
-Keep both locale objects structurally aligned. For added or removed projects, change `profile.projects`, `en.projects` and `ar.projects` in the same order. Preserve unique stable `id` values for existing project links, such as `#project-inventory`. The generated page contains full default English HTML; native navigation and case-study details work without JavaScript.
+Keep both locale objects structurally aligned. For added or removed projects, change `profile.projects`, `en.projects` and `ar.projects` in the same order. Preserve unique stable `id` values for existing project links, such as `#project-ahmed-gamal`. A public project needs a valid `url` and localized `visitLabel`; a private project uses `private: true`, `url: null` and a localized `privacyNote`. The generated page contains full default English HTML; native navigation and project details work without JavaScript.
 
 ### Contact and downloads
 
-Set a real email and only the URLs you own. Then regenerate the HTML. An email produces a real `mailto:` action. Social/CV links are absent while their values are `null`. Replace `contact.note` in both languages if partially configuring contact information. There is no contact form, pretend delivery state or backend service to configure.
+The contact section shows only WhatsApp number 01156972307 as a direct chat link, using international form 201156972307. The form asks for a name and project message and opens WhatsApp with an encoded draft addressed to that number, without a recipient selector. The visitor reviews and sends it in WhatsApp; no message is sent automatically. Copying remains available with a manual fallback if clipboard permission is denied. The direct chat link works without JavaScript. Links follow [WhatsApp's documented click-to-chat format](https://faq.whatsapp.com/5913398998672934).
+
+To update numbers, edit `profile.whatsapp` and regenerate the HTML. Optional email/social/CV links remain absent while their values are `null`; only configure genuine contact details. No backend service is required.
 
 ### Replace the images
 
-The supplied project artwork, silhouette portrait, sculpture fallback and favicon are original local SVG files. They need no raster `srcset` because they scale without loss. They represent concept interfaces, not screenshots of shipped work. `scripts/artwork.py` can recreate them, but running it will overwrite those original illustration files.
+Current project screenshots are optimized WebP files in `assets/images/projects/`, with 800px and 1600px responsive variants and original-resolution previews. The source images in `projects/` are local-only and ignored by Git; the deployment archive includes only the public assets. To regenerate them, install Pillow and run `python scripts/prepare-project-images.py`. This script applies fixed redactions to the current factory screenshot before resizing; if replacing that screenshot, update the redaction coordinates and inspect the public result before deployment. The real portrait uses 480px, 896px and 1122px WebP variants. Its original `image.png` is local-only; run `python scripts/prepare-portrait.py` to regenerate the variants without retouching. The SVG favicon remains in use; legacy concept artwork is retained but is no longer displayed.
 
 1. Put your images in `assets/images/`. Prefer WebP or AVIF for photographs/screenshots.
-2. Set `profile.portrait` and update `about.portraitAlt` in both languages. The portrait frame deliberately crops to fit.
-3. For each project, add `images` and optionally `srcset` beside `id`, `image` and `technologies`:
+2. Set `profile.portrait` and `profile.portraitSrcset`, and update `hero.portraitAlt`, `about.portraitAlt` and `about.caption` in both languages. The hero portrait is prioritized for loading; the about portrait loads lazily.
+3. For each project, configure `images`, `srcset`, `preview` and `url`:
 
 ```json
 {
-  "id": "inventory",
-  "image": "inventory",
+  "id": "ahmed-gamal",
+  "image": "ahmed-gamal",
   "images": {
-    "en": "assets/images/inventory-en-1200.webp",
-    "ar": "assets/images/inventory-ar-1200.webp"
+    "en": "assets/images/projects/ahmed-gamal-1600.webp",
+    "ar": "assets/images/projects/ahmed-gamal-1600.webp"
   },
   "srcset": {
-    "en": "assets/images/inventory-en-600.webp 600w, assets/images/inventory-en-1200.webp 1200w",
-    "ar": "assets/images/inventory-ar-600.webp 600w, assets/images/inventory-ar-1200.webp 1200w"
+    "en": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w",
+    "ar": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w"
   },
-  "technologies": ["Your actual technologies"]
+  "preview": "assets/images/projects/ahmed-gamal-1920.webp",
+  "url": "https://ahmed-gamal-seven.vercel.app/",
+  "private": false
 }
 ```
 
-4. Update each locale's project `alt`, descriptions and sample labels accurately. Use 3:2 artwork to match the existing project frames. Keep meaningful information available as text in the case study, rather than only inside screenshots.
+4. Update each locale's project `alt`, descriptions, `highlights` and link labels accurately. Screenshots use uncropped 16:9 frames. Keep meaningful information available in the project text, rather than only inside screenshots.
 5. Run `python3 scripts/render.py`. Verify both `?lang=en` and `?lang=ar`.
 
-Without custom `images`, the portfolio uses `assets/images/<image>-en.svg` and `assets/images/<image>-ar.svg`. SVG originals intentionally replace the requested raster preview formats: they are smaller, resolution independent and locally authored. Replace `assets/images/favicon.svg` when adding your own identity.
+Keep the `images`, `srcset` and `preview` paths synchronized with the public assets. Both languages share each project's original screenshot while the surrounding text and accessible labels are translated. Replace `assets/images/favicon.svg` when adding your own identity.
 
 ## Localization and progressive enhancement
 
@@ -100,13 +105,11 @@ Without custom `images`, the portfolio uses `assets/images/<image>-en.svg` and `
 - If JavaScript is disabled, the default English page remains usable. If only the JSON request fails, the already rendered locale text remains visible and native navigation/details still work.
 - This is one HTML entry point. Metadata changes at runtime; separate Arabic search indexing and locale-specific social previews are **not guaranteed**. Add genuinely localized static routes and real canonical/hreflang URLs if separate indexing becomes a requirement. No fictional domain is supplied.
 
-## Motion and 3D
+## Motion and portrait
 
 Native scrolling is never intercepted. GSAP adds brief whole-line hero movement and restrained section/image reveals; reduced motion disables them. Language changes and native details refresh ScrollTrigger after fonts settle.
 
-The single hero canvas draws 23 procedural square frames. It renders on demand after pointer/scroll/resize input, then stops when interpolation settles. Rendering suspends offscreen and in hidden tabs. DPR and drawing-buffer dimensions are capped; geometry/materials, observers and listeners are disposed on full navigation. Context loss exposes the original SVG and context restoration redraws the scene. The interaction can be paused.
-
-Small phones (600 CSS pixels or less), reduced-motion users, Save Data users and low-capability devices get the static SVG to avoid the WebGL download/cost. WebGL failure also preserves the fallback. Desktop/tablet scenes initialize lazily after essential content. A mobile-first visit resized to desktop retains its static fallback until refresh.
+The hero uses a semantic, accessible portrait image, a fine frame and a vermilion edge detail. The frame follows the page's text direction. Portraits remain visible without JavaScript and with reduced motion. At 600px and below, the hero image is centered beneath the introduction with a maximum width of 320px; larger screens place it beside the introduction. There is no scene loader, WebGL canvas or sculpture control in the current page.
 
 ## Files
 
@@ -126,7 +129,6 @@ js/content.js             Content loading and lookup
 js/i18n.js                In-place localization and persistence
 js/navigation.js          Accessible mobile disclosure navigation
 js/motion.js              GSAP and ScrollTrigger lifecycle
-js/scene.js               Deferred demand-rendered Three.js sculpture
 assets/                   Local fonts, artwork and vendor modules
 scripts/render.py         Refresh static HTML after content edits
 scripts/vendor.mjs        Restore local pinned runtime assets

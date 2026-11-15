@@ -52,7 +52,9 @@
 }
 .hero-art {
   min-inline-size:0;
-  align-self:stretch;
+  inline-size:min(100%,440px);
+  justify-self:end;
+  align-self:center;
   display:flex;
   flex-direction:column;
   justify-content:center;

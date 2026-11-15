@@ -95,71 +95,40 @@
 .text-link {
   font-size:13px;
 }
-.sculpture {
+.hero-portrait-frame {
   position:relative;
-  inline-size:100%;
-  aspect-ratio:1;
-  max-block-size:510px;
-  min-block-size:230px;
+  padding:10px;
+  border:1px solid var(--rule);
+  background:var(--paper);
 }
-.sculpture-fallback {
+.hero-portrait-frame::after {
+  content:'';
   position:absolute;
-  inset:0;
+  inset-inline-end:-3px;
+  inset-block-end:32px;
+  inline-size:5px;
+  block-size:64px;
+  background:var(--vermilion);
+}
+.hero-portrait {
   inline-size:100%;
-  block-size:100%;
-  object-fit:contain;
-  transition:opacity 200ms;
-}
-.sculpture canvas {
-  position:absolute;
-  inset:0;
-  inline-size:100%;
-  block-size:100%;
-  pointer-events:none;
-}
-.sculpture[data-rendered=true] .sculpture-fallback {
-  opacity:0;
-}
-.crosshair {
-  position:absolute;
-  color:var(--stone);
-  font-size:22px;
-  font-family:var(--mono);
-  line-height:1;
-}
-.crosshair-a {
-  inset-inline-start:8%;
-  inset-block-start:12%;
-}
-.crosshair-b {
-  inset-inline-end:3%;
-  inset-block-end:9%;
+  aspect-ratio:4 / 5;
+  object-fit:cover;
+  object-position:center;
 }
 .hero-art figcaption {
   display:flex;
-  align-items:start;
+  align-items:center;
   justify-content:space-between;
-  gap:24px;
-  padding-inline-start:12%;
+  gap:16px;
+  padding-block:16px 0;
 }
+.portrait-name { font-size:20px; font-weight:500; }
+.portrait-signature { font-size:30px; line-height:1; color:var(--accent); }
 .hero-art figcaption p {
   font-size:12px;
   color:var(--muted);
-  margin-block-start:4px;
-}
-.hero-art .meta {
-  font-size:12px;
-}
-.scene-toggle {
-  font-size:12px;
-  text-decoration:underline;
-  text-underline-offset:3px;
-  max-inline-size:120px;
-  min-block-size:44px;
-  line-height:1.6;
-  text-align:start;
-  color:var(--muted);
-  padding:0;
+  margin-block-start:2px;
 }
 .scroll-cue {
   display:flex;
@@ -173,12 +142,57 @@
 }
 .project-visual {
   min-inline-size:0;
+}
+.project-window {
   overflow:hidden;
+  border:1px solid var(--rule);
+  border-radius:8px;
+  background:#f4f3ee;
+  box-shadow:0 12px 28px -20px #17171750;
+}
+.project-browser {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border-block-end:1px solid var(--rule);
+  font-family:var(--mono);
+  font-size:clamp(9px,.8vw,11px);
+  color:var(--muted);
+  direction:ltr;
+}
+.project-browser>bdi {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.browser-dots {
+  display:flex;
+  gap:5px;
+  flex-shrink:0;
+}
+.browser-dots i {
+  inline-size:6px;
+  block-size:6px;
+  border-radius:50%;
+  background:var(--rule);
+}
+.browser-mark { color:var(--accent); }
+html[lang=ar] .project-browser [data-copy] { font-family:var(--sans); }
+.project-actions { margin-block-end:24px; }
+.project-visit { min-block-size:48px; padding:12px 20px; font-size:13px; }
+.project-privacy {
+  border-inline-start:2px solid var(--rule);
+  padding-inline-start:14px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
 }
 .project-visual img {
   inline-size:100%;
-  aspect-ratio:1.5;
-  object-fit:cover;
+  aspect-ratio:16 / 9;
+  object-fit:contain;
   transition:transform 600ms var(--ease);
 }
 .project-visual figcaption {
@@ -211,10 +225,21 @@
 .index {
   font-size:15px;
 }
-.sample {
+.project-status {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   font-size:12px;
   color:var(--accent);
 }
+.project-status::before {
+  content:'';
+  inline-size:5px;
+  block-size:5px;
+  border-radius:50%;
+  background:currentColor;
+}
+.project-status.is-private { color:var(--muted); }
 .project-copy>.meta {
   font-size:12px;
   color:var(--muted);
@@ -363,7 +388,7 @@ details[open] .detail-symbol {
   border-block-start:1px solid var(--rule);
 }
 .contact h2 {
-  font-size:clamp(3rem,6.5vw,6.5rem);
+  font-size:clamp(2.75rem,4.8vw,4.75rem);
   line-height:1.03;
 }
 .contact-invitation {
@@ -380,23 +405,35 @@ details[open] .detail-symbol {
 .contact-lead,.contact-compose { min-inline-size:0; }
 .contact .contact-grid { grid-template-columns:1fr 1fr; align-items:start; }
 .contact-lead .contact-copy { margin-block-start:32px; max-inline-size:46ch; }
-.contact-form { border-block-start:1px solid var(--ink); padding-block-start:24px; }
-.contact-form h3 { font-size:clamp(24px,2.2vw,32px); line-height:1.45; }
+.contact-channels { display:grid; gap:12px; }
+.contact-channel {
+  display:block;
+  padding:16px 20px;
+  border:1px solid var(--rule);
+  transition:background-color 180ms,border-color 180ms;
+}
+.contact-channel:hover { background:var(--paper); border-color:var(--muted); }
+.contact-channel-heading { display:flex; justify-content:space-between; align-items:center; gap:16px; font-size:12px; color:var(--muted); }
+.contact-channel-number { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-block:4px; }
+.contact-channel-number bdi { font-family:var(--mono); font-size:clamp(22px,2.3vw,30px); letter-spacing:-.04em; }
+.contact-channel-number .arrow { color:var(--accent); font-size:24px; }
+.contact-channel-action { color:var(--accent); font-size:12px; }
+.contact-form { border:1px solid var(--rule); padding:clamp(20px,2.5vw,36px); background:var(--paper); }
+.contact-form h3 { font-size:clamp(23px,2vw,28px); line-height:1.45; letter-spacing:-.025em; }
 .form-hint { font-size:13px; color:var(--muted); margin-block:12px 28px; }
-.contact-fields { display:grid; grid-template-columns:1fr 1fr; gap:20px 24px; }
+.contact-fields { display:grid; grid-template-columns:1fr; gap:20px; }
 .contact-field { min-inline-size:0; }
 .contact-field-message { grid-column:1/-1; }
 .contact-form label { display:block; font-size:14px; margin-block-end:8px; }
-.contact-form input,.contact-form textarea {
+.contact-form input:not([type=radio]),.contact-form textarea {
   display:block;
   inline-size:100%;
   min-inline-size:0;
-  border:0;
-  border-block-end:1px solid var(--muted);
-  border-radius:0;
-  background:transparent;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  background:#f4f3ee;
   color:var(--ink);
-  padding:12px 0;
+  padding:12px 14px;
   min-block-size:48px;
   font-size:16px;
   line-height:1.7;
@@ -408,6 +445,15 @@ html[lang=ar] .contact-field :is(input,textarea):not([type=email]):placeholder-s
 .field-error { font-size:13px; color:var(--accent); margin-block-start:6px; }
 .field-error:empty { display:none; }
 .contact-form-actions { display:flex; flex-wrap:wrap; gap:16px 24px; margin-block-start:24px; }
+.contact-form-actions .text-link { min-block-size:44px; padding:0; text-decoration:underline; text-underline-offset:5px; }
+.contact-recipients { min-inline-size:0; border:0; padding:0; margin:24px 0 0; }
+.contact-recipients legend { font-size:14px; padding:0; margin-block-end:10px; }
+.recipient-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.contact-form .recipient-option { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 8px; margin:0; border:1px solid var(--rule); cursor:pointer; min-block-size:48px; }
+.recipient-option:has(input:checked) { border-color:var(--ink); background:#deddd4; }
+.recipient-option input { inline-size:16px; block-size:16px; flex-shrink:0; margin:0; accent-color:var(--accent); }
+.recipient-option bdi { font-family:var(--mono); font-size:13px; }
+.contact-form .whatsapp-hint { margin-block:16px 0; line-height:1.8; }
 .contact-feedback { font-size:14px; margin-block-start:16px; }
 .contact-feedback:empty { display:none; }
 #contact-prepared { margin-block-start:20px; }
@@ -419,6 +465,9 @@ html[lang=ar] .contact-field :is(input,textarea):not([type=email]):placeholder-s
 @media(max-width:480px) {
   .contact-fields { grid-template-columns:1fr; gap:20px; }
   .contact-field-message { grid-column:auto; }
+  .recipient-options { grid-template-columns:1fr; }
+  .contact-form .recipient-option { justify-content:flex-start; padding-inline:14px; }
+  .contact-form-actions .button { inline-size:100%; }
 }
 .contact-status {
   font-size:20px;
@@ -489,9 +538,6 @@ html[lang=ar] .hero h1 {
 }
 html[lang=ar] .hero-description {
   max-inline-size:38ch;
-}
-html[lang=ar] .hero-art figcaption .meta {
-  font-size:12px;
 }
 html[lang=ar] .project h3 {
   max-inline-size:none;

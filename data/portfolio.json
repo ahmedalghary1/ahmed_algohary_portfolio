@@ -1,50 +1,89 @@
 {
   "profile": {
+    "whatsapp": [
+      { "number": "201156972307", "display": "01156972307" }
+    ],
     "email": null,
     "github": null,
     "linkedin": null,
     "cv": null,
-    "portrait": "assets/images/portrait.svg",
+    "portrait": "assets/images/ahmed-portrait-896.webp",
+    "portraitSrcset": "assets/images/ahmed-portrait-480.webp 480w, assets/images/ahmed-portrait-896.webp 896w, assets/images/ahmed-portrait-1122.webp 1122w",
     "projects": [
       {
-        "id": "inventory",
-        "image": "inventory",
-        "technologies": [
-          "Node.js",
-          "PostgreSQL",
-          "JavaScript",
-          "REST API"
-        ]
+        "id": "ahmed-gamal",
+        "image": "ahmed-gamal",
+        "images": {
+          "en": "assets/images/projects/ahmed-gamal-1600.webp",
+          "ar": "assets/images/projects/ahmed-gamal-1600.webp"
+        },
+        "srcset": {
+          "en": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w",
+          "ar": "assets/images/projects/ahmed-gamal-800.webp 800w, assets/images/projects/ahmed-gamal-1600.webp 1600w"
+        },
+        "preview": "assets/images/projects/ahmed-gamal-1920.webp",
+        "url": "https://ahmed-gamal-seven.vercel.app/",
+        "private": false
       },
       {
-        "id": "commerce",
-        "image": "commerce",
-        "technologies": [
-          "PHP",
-          "Laravel",
-          "MySQL",
-          "JavaScript"
-        ]
+        "id": "rocks-ev",
+        "image": "rocks-ev",
+        "images": {
+          "en": "assets/images/projects/rocks-ev-1600.webp",
+          "ar": "assets/images/projects/rocks-ev-1600.webp"
+        },
+        "srcset": {
+          "en": "assets/images/projects/rocks-ev-800.webp 800w, assets/images/projects/rocks-ev-1600.webp 1600w",
+          "ar": "assets/images/projects/rocks-ev-800.webp 800w, assets/images/projects/rocks-ev-1600.webp 1600w"
+        },
+        "preview": "assets/images/projects/rocks-ev-1632.webp",
+        "url": "https://rocks-ev.com/",
+        "private": false
       },
       {
-        "id": "maintenance",
-        "image": "maintenance",
-        "technologies": [
-          "Python",
-          "FastAPI",
-          "PostgreSQL",
-          "Docker"
-        ]
+        "id": "garment-factory",
+        "image": "garment-factory",
+        "images": {
+          "en": "assets/images/projects/garment-factory-1600.webp",
+          "ar": "assets/images/projects/garment-factory-1600.webp"
+        },
+        "srcset": {
+          "en": "assets/images/projects/garment-factory-800.webp 800w, assets/images/projects/garment-factory-1600.webp 1600w",
+          "ar": "assets/images/projects/garment-factory-800.webp 800w, assets/images/projects/garment-factory-1600.webp 1600w"
+        },
+        "preview": "assets/images/projects/garment-factory-1920.webp",
+        "url": null,
+        "private": true
       },
       {
-        "id": "hospitality",
-        "image": "hospitality",
-        "technologies": [
-          "Node.js",
-          "TypeScript",
-          "PostgreSQL",
-          "Redis"
-        ]
+        "id": "bonyan",
+        "image": "bonyan",
+        "images": {
+          "en": "assets/images/projects/bonyan-1600.webp",
+          "ar": "assets/images/projects/bonyan-1600.webp"
+        },
+        "srcset": {
+          "en": "assets/images/projects/bonyan-800.webp 800w, assets/images/projects/bonyan-1600.webp 1600w",
+          "ar": "assets/images/projects/bonyan-800.webp 800w, assets/images/projects/bonyan-1600.webp 1600w"
+        },
+        "preview": "assets/images/projects/bonyan-1920.webp",
+        "url": "https://bonyan-nine.vercel.app/",
+        "private": false
+      },
+      {
+        "id": "ahmed-nabil",
+        "image": "ahmed-nabil",
+        "images": {
+          "en": "assets/images/projects/ahmed-nabil-1600.webp",
+          "ar": "assets/images/projects/ahmed-nabil-1600.webp"
+        },
+        "srcset": {
+          "en": "assets/images/projects/ahmed-nabil-800.webp 800w, assets/images/projects/ahmed-nabil-1600.webp 1600w",
+          "ar": "assets/images/projects/ahmed-nabil-800.webp 800w, assets/images/projects/ahmed-nabil-1600.webp 1600w"
+        },
+        "preview": "assets/images/projects/ahmed-nabil-1920.webp",
+        "url": "https://ahmed-nabil-sooty.vercel.app/",
+        "private": false
       }
     ]
   },
@@ -54,7 +93,7 @@
     "title": "Independent software developer",
     "seo": {
       "title": "Ahmed — Software, built with intention",
-      "description": "An illustrative bilingual developer portfolio exploring web applications, thoughtful interfaces and dependable software systems."
+      "description": "Ahmed’s software development portfolio: personal websites, the ROCKS EV online store, Bonyan’s company website and a private garment factory management system."
     },
     "nav": {
       "work": "Work",
@@ -80,82 +119,126 @@
       "contact": "Let’s talk",
       "figure": "Interconnected by design",
       "figureNote": "An exploration in structure & systems",
+      "portraitAlt": "Portrait of Ahmed, independent software developer.",
       "index": "Independent thinking. Considered engineering.",
       "scroll": "Scroll to explore"
     },
     "work": {
       "label": "01 / Selected work",
       "title": "Complexity,\nmade usable.",
-      "intro": "Four explorations in the systems that keep businesses moving. Illustrative projects, built to show an approach.",
-      "sample": "Sample project",
-      "details": "Explore case study",
-      "problem": "The challenge",
-      "solution": "The approach",
-      "role": "Responsibilities",
-      "stack": "Technology stack",
-      "preview": "Original concept interface",
-      "closeDetails": "Close case study",
-      "permalink": "Link to this study",
-      "fullSize": "Full size"
+      "intro": "Five projects I’ve built: personal portfolios, an online store, a company website and a private garment factory system.",
+      "sample": "Client project",
+      "details": "Explore project details",
+      "problem": "The brief",
+      "solution": "The experience",
+      "role": "My contribution",
+      "stack": "Project focus",
+      "preview": "Project screenshot",
+      "closeDetails": "Close project details",
+      "permalink": "Link to this project",
+      "fullSize": "Full size",
+      "private": "Private system",
+      "privatePreview": "Redacted screenshot",
+      "visit": "Visit website"
     },
     "projects": [
       {
-        "title": "Inventory management",
-        "category": "Operations / Web application",
-        "description": "A clearer view of stock, from the warehouse floor to the purchasing desk.",
-        "problem": "Stock records scattered across spreadsheets make it difficult to trace movements, reconcile quantities and identify what needs reordering.",
-        "solution": "A proposed central inventory workspace with a movement ledger, warehouse filters, clear reorder states and role-based access. Every adjustment retains its context.",
-        "role": "Illustrative scope: requirements mapping, data modelling, API design, interface development and verification of stock movement rules.",
-        "alt": "Original sample inventory interface with a stock table, warehouse filters and movement overview.",
-        "previewLabel": "View full-size concept interface: Inventory management"
+        "title": "Ahmed Gamal",
+        "category": "Personal brand / Portfolio website",
+        "description": "A personal portfolio bringing customer service, sales and creative work together in one clear digital presence.",
+        "problem": "Present a professional whose work spans customer service, sales, design and video editing without losing the connection between those disciplines.",
+        "solution": "A light visual identity, a prominent personal introduction and clearly arranged sections for experience, services, work and skills, with direct access to contact and the CV.",
+        "role": "Development of Ahmed Gamal’s portfolio website, bringing his professional profile and creative services into a cohesive web experience.",
+        "highlights": [
+          "Personal portfolio",
+          "Professional profile",
+          "Creative services"
+        ],
+        "alt": "Ahmed Gamal’s portfolio homepage with a light blue background, professional portrait and introduction to his customer service and creative work.",
+        "previewLabel": "View the full screenshot of Ahmed Gamal’s portfolio",
+        "visitLabel": "Visit Ahmed Gamal’s website (opens in a new tab)"
       },
       {
-        "title": "Industrial commerce",
-        "category": "Commerce / Product systems",
-        "description": "Technical products, clear specifications, and a more considered path to purchase.",
-        "problem": "Industrial buyers need to compare precise specifications and request quantities that ordinary retail catalogues do not always accommodate.",
-        "solution": "A proposed specification-first catalogue with category filters, product comparisons, quantity-aware requests and a structured quotation workflow.",
-        "role": "Illustrative scope: catalogue architecture, product data modelling, responsive storefront and quotation workflow design.",
-        "alt": "Original sample industrial catalogue showing precision components and specification filters.",
-        "previewLabel": "View full-size concept interface: Industrial commerce"
+        "title": "ROCKS EV",
+        "category": "E-commerce / Electrical products",
+        "description": "An online store for EV charging and electrical products, with a bold identity and a clear route into the catalogue.",
+        "problem": "Give an electrical products brand a storefront that communicates its identity and helps customers find products and purchasing information.",
+        "solution": "A dark storefront with vivid green accents, product navigation and visible entry points for the buying guide, quotations, order tracking and support.",
+        "role": "Development of the ROCKS EV e-commerce website, presenting the brand and its electrical product range through a consistent storefront.",
+        "highlights": [
+          "E-commerce",
+          "Product catalogue",
+          "EV charging"
+        ],
+        "alt": "ROCKS EV storefront with a dark and green identity, an electric car charging image and navigation to products, the buying guide and order tracking.",
+        "previewLabel": "View the full screenshot of the ROCKS EV store",
+        "visitLabel": "Visit the ROCKS EV store (opens in a new tab)"
       },
       {
-        "title": "Factory maintenance",
-        "category": "Industry / Workflow application",
-        "description": "Connecting equipment, people and the next action in one maintenance workspace.",
-        "problem": "Unstructured maintenance requests can lose equipment history and leave teams uncertain about ownership and the next task.",
-        "solution": "A proposed equipment register linked to preventive schedules and a work-order board. Each task includes priority, responsibility and a visible activity trail.",
-        "role": "Illustrative scope: workflow research, relational schema, scheduling API, work-order interface and permission checks.",
-        "alt": "Original sample maintenance board with planned, in-progress and review work orders.",
-        "previewLabel": "View full-size concept interface: Factory maintenance"
+        "title": "Garment factory system",
+        "category": "Business software / Private company system",
+        "description": "A management system for a garment business, bringing sales, purchasing, inventory and accounts into one workspace.",
+        "problem": "Bring the daily operations of a garment business together in a clear workspace, with quick access to the tasks staff use most.",
+        "solution": "An Arabic dashboard with shortcuts for invoices, purchasing, customers, products and treasury, alongside reporting and inventory navigation.",
+        "role": "Development of a garment factory management system. The preview has been redacted; company identity, internal data, access credentials and a live link are not shared.",
+        "highlights": [
+          "Sales & purchasing",
+          "Inventory",
+          "Accounts & reports"
+        ],
+        "alt": "Redacted Arabic dashboard of a garment management system showing operational shortcuts; account details and business figures are hidden.",
+        "previewLabel": "View the redacted screenshot of the garment factory system",
+        "privacyNote": "Private company system. Sensitive data is hidden in the preview; public access is unavailable."
       },
       {
-        "title": "Hospitality platform",
-        "category": "Hospitality / Management system",
-        "description": "A shared operational picture for reservations, rooms and the people behind a stay.",
-        "problem": "Disconnected room and reservation records make arrivals, housekeeping handovers and booking changes difficult to coordinate.",
-        "solution": "A proposed reservation timeline with explicit room states, arrival information and coordinated housekeeping tasks. Booking changes are checked for conflicts.",
-        "role": "Illustrative scope: domain modelling, booking logic, accessible planning interface and concurrent reservation verification.",
-        "alt": "Original sample hospitality reservation planner with room rows and a weekly booking timeline.",
-        "previewLabel": "View full-size concept interface: Hospitality platform"
+        "title": "Bonyan",
+        "category": "Marketing / Company website",
+        "description": "A corporate website for Bonyan, presenting its marketing and business development services with a distinct visual identity.",
+        "problem": "Translate the company’s positioning and range of services into a clear introduction for prospective clients.",
+        "solution": "An Arabic-led experience in blue and turquoise, with sections for services, sectors and working methodology, plus clear paths to consultation and contact.",
+        "role": "Development of Bonyan’s company website, organizing its identity, services and contact paths into a cohesive digital presence.",
+        "highlights": [
+          "Company website",
+          "Marketing services",
+          "Arabic & English"
+        ],
+        "alt": "Bonyan company homepage in Arabic with a blue and turquoise identity, the company mark, service navigation and a consultation call to action.",
+        "previewLabel": "View the full screenshot of Bonyan’s website",
+        "visitLabel": "Visit Bonyan’s website (opens in a new tab)"
+      },
+      {
+        "title": "Ahmed Nabil",
+        "category": "Personal brand / IT portfolio",
+        "description": "A technical portfolio for Ahmed Nabil, presenting his system administration and IT support profile with a focused visual language.",
+        "problem": "Give a technical professional a personal website that makes his expertise, qualifications and experience easy to explore.",
+        "solution": "A dark, network-inspired interface with dedicated navigation for skills, certifications, experience and education, alongside visible CV and contact options.",
+        "role": "Development of Ahmed Nabil’s personal portfolio, bringing his technical profile and professional experience together in a structured website.",
+        "highlights": [
+          "Personal portfolio",
+          "IT & networks",
+          "Professional experience"
+        ],
+        "alt": "Ahmed Nabil’s dark technical portfolio with his portrait, system administration introduction, network motifs and experience and CV actions.",
+        "previewLabel": "View the full screenshot of Ahmed Nabil’s portfolio",
+        "visitLabel": "Visit Ahmed Nabil’s website (opens in a new tab)"
       }
     ],
     "about": {
       "label": "02 / A little context",
       "title": "An engineer’s mind.\nA maker’s instinct.",
       "intro": "Good software starts with understanding what people actually need.",
-      "bio": "I’m Ahmed, an independent software developer interested in the space between a complex problem and a simple experience. This editable biography is a starting point for your own story.",
+      "bio": "I’m Ahmed, an independent software developer building personal websites, online stores and business systems. I focus on turning varied requirements into clear, useful digital experiences.",
       "philosophy": "My approach is to ask better questions, make the structure clear, and give the details the attention they deserve. I value readable code, useful interfaces and systems that can evolve.",
       "interests": "Areas of interest",
       "interestText": "Business software, thoughtful interfaces, data modelling and the craft of building for the web.",
-      "caption": "A portrait, to be continued.",
-      "portraitAlt": "Original abstract silhouette used as a placeholder for the developer’s portrait.",
-      "placeholder": "Illustrative profile / Replace with your story"
+      "caption": "Ahmed / Independent software developer",
+      "portraitAlt": "Portrait of Ahmed, independent software developer.",
+      "placeholder": "Websites / Commerce / Business systems"
     },
     "expertise": {
       "label": "03 / Expertise",
       "title": "The right tools.\nA considered foundation.",
-      "intro": "An editable overview of technologies and disciplines. No scores, just areas to explore.",
+      "intro": "From interfaces to business systems, a practical foundation for building useful software.",
       "groups": [
         {
           "title": "Backend development",
@@ -205,16 +288,23 @@
     "contact": {
       "label": "05 / Start a conversation",
       "title": "Have something\nin mind?",
-      "invitation": "Let’s give it structure.",
-      "description": "A useful product, a complex system, or an idea that needs a clearer shape. This is where the conversation starts.",
+      "invitation": "Let’s talk on WhatsApp.",
+      "description": "A personal website, an online store or a system for your business. Tell me what you have in mind — reach me directly on WhatsApp below.",
+      "whatsapp": "WhatsApp",
+      "startChat": "Start a conversation",
+      "directTitle": "Contact me directly",
+      "recipientLabel": "Choose a WhatsApp number",
+      "openWhatsApp": "Continue on WhatsApp",
+      "whatsappHint": "WhatsApp opens with your message ready. Review it and press send there.",
+      "whatsappOpened": "Opening your WhatsApp draft. Review and send it in WhatsApp.",
       "unconfigured": "Direct contact is not enabled yet.",
       "note": "You can prepare and copy your message below. Message delivery is not enabled yet.",
       "email": "Send an email",
       "github": "GitHub",
       "linkedin": "LinkedIn",
       "cv": "Download CV",
-      "formTitle": "Tell me what you’re building.",
-      "formHint": "All fields are required. Your message stays in this page until you choose an action.",
+      "formTitle": "A few words to get started.",
+      "formHint": "Just your name and a brief description of your project.",
       "nameLabel": "Your name",
       "emailLabel": "Your email",
       "messageLabel": "Your idea or project",
@@ -234,7 +324,7 @@
       "subject": "Project enquiry"
     },
     "footer": {
-      "copyright": "Ahmed. An illustrative portfolio.",
+      "copyright": "Ahmed. Software, built with intention.",
       "top": "Back to top",
       "language": "العربية",
       "languageLabel": "Switch to Arabic"
@@ -251,7 +341,7 @@
     "title": "مطوّر برمجيات مستقل",
     "seo": {
       "title": "أحمد — برمجيات تُبنى بدقة ورؤية",
-      "description": "معرض أعمال توضيحي لمطوّر برمجيات، يستعرض تطبيقات الويب وتجارب الاستخدام المدروسة والأنظمة المترابطة، بالعربية والإنجليزية."
+      "description": "معرض أعمال أحمد في تطوير البرمجيات: مواقع شخصية، ومتجر روكس الإلكتروني، وموقع شركة بنيان، ونظام خاص لإدارة مصنع ملابس."
     },
     "nav": {
       "work": "الأعمال",
@@ -277,82 +367,126 @@
       "contact": "لنتحدّث",
       "figure": "الترابط أساس التصميم",
       "figureNote": "دراسة في البنية وترابط الأنظمة",
+      "portraitAlt": "الصورة الشخصية لأحمد، مطوّر برمجيات مستقل.",
       "index": "تفكير مستقل. وهندسة مدروسة.",
       "scroll": "مرّر لاستكشاف المزيد"
     },
     "work": {
       "label": "01 / أعمال مختارة",
       "title": "من التعقيد\nإلى الوضوح.",
-      "intro": "أربع دراسات في الأنظمة التي تدعم الأعمال اليومية. مشاريع توضيحية تستعرض طريقة التفكير والبناء.",
-      "sample": "مشروع توضيحي",
-      "details": "استكشف دراسة المشروع",
-      "problem": "التحدّي",
-      "solution": "الحل المقترح",
-      "role": "المسؤوليات",
-      "stack": "التقنيات المستخدمة",
-      "preview": "تصوّر أصلي للواجهة",
-      "closeDetails": "أغلق دراسة المشروع",
-      "permalink": "رابط هذه الدراسة",
-      "fullSize": "الحجم الكامل"
+      "intro": "خمسة مشاريع طوّرتها: بورتفوليوهات شخصية، ومتجر إلكتروني، وموقع شركة، ونظام خاص لإدارة مصنع ملابس.",
+      "sample": "مشروع لعميل",
+      "details": "استكشف تفاصيل المشروع",
+      "problem": "هدف المشروع",
+      "solution": "تجربة الاستخدام",
+      "role": "مساهمتي",
+      "stack": "مجالات المشروع",
+      "preview": "صورة من المشروع",
+      "closeDetails": "أغلق تفاصيل المشروع",
+      "permalink": "رابط هذا المشروع",
+      "fullSize": "الحجم الكامل",
+      "private": "نظام خاص",
+      "privatePreview": "صورة منقّحة",
+      "visit": "زيارة الموقع"
     },
     "projects": [
       {
-        "title": "إدارة المخزون",
-        "category": "العمليات / تطبيق ويب",
-        "description": "رؤية أوضح للمخزون، من أرض المستودع إلى قرارات الشراء.",
-        "problem": "تشتّت سجلات المخزون بين الجداول يصعّب تتبّع الحركات ومطابقة الكميات وتحديد احتياجات إعادة الطلب.",
-        "solution": "مساحة عمل مقترحة توحّد المخزون، مع سجل للحركات وتصنيف حسب المستودع وحالات واضحة لإعادة الطلب وصلاحيات حسب الدور. يحتفظ كل تعديل بسياقه.",
-        "role": "نطاق توضيحي: تحليل المتطلبات، ونمذجة البيانات، وتصميم واجهات البرمجة، وتطوير الواجهة، والتحقق من قواعد حركة المخزون.",
-        "alt": "تصوّر أصلي لواجهة إدارة المخزون يعرض جدول الأصناف وتصنيف المستودعات وملخص الحركات.",
-        "previewLabel": "اعرض تصوّر الواجهة بالحجم الكامل: إدارة المخزون"
+        "title": "أحمد جمال",
+        "category": "هوية شخصية / موقع بورتفوليو",
+        "description": "بورتفوليو شخصي يجمع خبرات خدمة العملاء والمبيعات والأعمال الإبداعية في حضور رقمي واضح ومترابط.",
+        "problem": "تقديم مسيرة مهنية تجمع بين خدمة العملاء والمبيعات والتصميم والمونتاج، مع توضيح العلاقة بين هذه المجالات.",
+        "solution": "هوية بصرية فاتحة، ومقدمة شخصية بارزة، وأقسام منظّمة للخبرات والخدمات والأعمال والمهارات، مع وصول مباشر للتواصل والسيرة الذاتية.",
+        "role": "تطوير موقع البورتفوليو الخاص بأحمد جمال، وتجميع ملفه المهني وخدماته الإبداعية في تجربة ويب متناسقة.",
+        "highlights": [
+          "بورتفوليو شخصي",
+          "ملف مهني",
+          "خدمات إبداعية"
+        ],
+        "alt": "الصفحة الرئيسية لبورتفوليو أحمد جمال بخلفية زرقاء فاتحة وصورته الشخصية ومقدمة عن خبراته المهنية والإبداعية.",
+        "previewLabel": "اعرض الصورة الكاملة لموقع أحمد جمال",
+        "visitLabel": "زيارة موقع أحمد جمال — يفتح في تبويب جديد"
       },
       {
-        "title": "التجارة الصناعية",
-        "category": "التجارة / أنظمة المنتجات",
-        "description": "منتجات تقنية ومواصفات واضحة، وخطوات شراء تراعي احتياجات العمل.",
-        "problem": "يحتاج مشترو المنتجات الصناعية إلى مقارنة مواصفات دقيقة وطلب كميات لا تستوعبها دائمًا متاجر التجزئة المعتادة.",
-        "solution": "كتالوج مقترح يقدّم المواصفات أولًا، مع تصفية حسب الفئة ومقارنة المنتجات وطلبات تراعي الكميات ومسار منظّم لعروض الأسعار.",
-        "role": "نطاق توضيحي: هيكلة الكتالوج، ونمذجة بيانات المنتجات، وتطوير متجر متجاوب، وتصميم مسار طلب عرض السعر.",
-        "alt": "تصوّر أصلي لكتالوج صناعي يعرض مكوّنات دقيقة وخيارات تصفية حسب المواصفات.",
-        "previewLabel": "اعرض تصوّر الواجهة بالحجم الكامل: التجارة الصناعية"
+        "title": "روكس — ROCKS EV",
+        "category": "تجارة إلكترونية / منتجات كهربائية",
+        "description": "متجر إلكتروني لمنتجات شحن السيارات الكهربائية والمنتجات الكهربائية، بهوية قوية ومسار واضح لاستكشاف المنتجات.",
+        "problem": "بناء واجهة متجر تعبّر عن هوية العلامة وتساعد العملاء على الوصول إلى المنتجات ومعلومات الشراء بسهولة.",
+        "solution": "واجهة داكنة بلمسات خضراء، وتنقّل واضح بين المنتجات، ومداخل لدليل الشراء وطلب عرض سعر وتتبع الطلبات والدعم.",
+        "role": "تطوير متجر روكس الإلكتروني، وعرض هوية العلامة ومنتجاتها الكهربائية ضمن تجربة متجر متناسقة.",
+        "highlights": [
+          "متجر إلكتروني",
+          "كتالوج منتجات",
+          "شحن السيارات الكهربائية"
+        ],
+        "alt": "واجهة متجر روكس بألوان داكنة وخضراء وصورة سيارة كهربائية أثناء الشحن وروابط المنتجات ودليل الشراء وتتبع الطلبات.",
+        "previewLabel": "اعرض الصورة الكاملة لمتجر روكس",
+        "visitLabel": "زيارة متجر روكس — يفتح في تبويب جديد"
       },
       {
-        "title": "صيانة المصانع",
-        "category": "الصناعة / إدارة سير العمل",
-        "description": "مساحة واحدة تربط المعدّات والفِرق وخطوة الصيانة التالية.",
-        "problem": "قد تؤدي طلبات الصيانة غير المنظّمة إلى فقدان تاريخ المعدّات وغموض المسؤوليات والخطوة التالية لكل مهمة.",
-        "solution": "سجل مقترح للمعدّات يرتبط بجداول الصيانة الوقائية ولوحة أوامر العمل. تتضمّن كل مهمة الأولوية والمسؤول وسجلًا واضحًا للنشاط.",
-        "role": "نطاق توضيحي: دراسة سير العمل، وتصميم قاعدة البيانات، وواجهات الجدولة، وتطوير لوحة أوامر العمل، والتحقق من الصلاحيات.",
-        "alt": "تصوّر أصلي للوحة صيانة تتوزّع فيها أوامر العمل بين التخطيط والتنفيذ والمراجعة.",
-        "previewLabel": "اعرض تصوّر الواجهة بالحجم الكامل: صيانة المصانع"
+        "title": "نظام إدارة مصنع ملابس",
+        "category": "أنظمة أعمال / نظام داخلي خاص",
+        "description": "نظام لإدارة أعمال مصنع ملابس، يجمع المبيعات والمشتريات والمخزون والحسابات في مساحة عمل واحدة.",
+        "problem": "تجميع العمليات اليومية لنشاط الملابس في واجهة واضحة، مع وصول سريع للمهام الأكثر استخدامًا.",
+        "solution": "لوحة إدارة عربية باختصارات للفواتير والمشتريات والعملاء والمنتجات والخزنة، إلى جانب أقسام التقارير والمخزون.",
+        "role": "تطوير نظام لإدارة مصنع ملابس. صورة العرض منقّحة، ولا تُنشر هوية الشركة أو بياناتها الداخلية أو بيانات الدخول أو رابط النظام.",
+        "highlights": [
+          "مبيعات ومشتريات",
+          "إدارة المخزون",
+          "حسابات وتقارير"
+        ],
+        "alt": "لوحة عربية لإدارة نشاط ملابس تعرض اختصارات العمليات، مع إخفاء بيانات الحساب والأرقام المالية وبيانات المنتجات.",
+        "previewLabel": "اعرض الصورة المنقّحة لنظام إدارة مصنع الملابس",
+        "privacyNote": "نظام خاص بشركة. أُخفيت البيانات الحساسة من الصورة، ولا تتوفر معاينة عامة للنظام."
       },
       {
-        "title": "إدارة الضيافة",
-        "category": "الضيافة / نظام إدارة",
-        "description": "صورة تشغيلية مشتركة للحجوزات والغرف والفِرق التي تصنع تجربة الإقامة.",
-        "problem": "انفصال بيانات الغرف عن الحجوزات يصعّب تنسيق الوصول وتسليم مهام التدبير الفندقي وتعديل مواعيد الإقامة.",
-        "solution": "مخطّط حجوزات مقترح يوضّح حالة الغرف وبيانات الوصول ومهام التدبير الفندقي، مع التحقق من تعارض المواعيد عند تعديل الحجز.",
-        "role": "نطاق توضيحي: نمذجة المجال، ومنطق الحجز، وواجهة تخطيط ميسّرة، والتحقق من الحجوزات المتزامنة.",
-        "alt": "تصوّر أصلي لمخطّط حجوزات فندقي يعرض الغرف والحجوزات على امتداد أسبوع.",
-        "previewLabel": "اعرض تصوّر الواجهة بالحجم الكامل: إدارة الضيافة"
+        "title": "بنيان",
+        "category": "تسويق / موقع شركة",
+        "description": "موقع تعريفي لشركة بنيان، يعرض خدمات التسويق وتطوير الأعمال بهوية بصرية مميزة وتجربة واضحة.",
+        "problem": "تحويل هوية الشركة وتنوّع خدماتها إلى عرض واضح يساعد العملاء المحتملين على التعرّف إليها.",
+        "solution": "تجربة بصرية بالأزرق والفيروزي، وأقسام للخدمات والقطاعات ومنهجية العمل، مع مسارات واضحة لطلب الاستشارة والتواصل.",
+        "role": "تطوير موقع شركة بنيان، وتنظيم هويتها وخدماتها ووسائل التواصل ضمن حضور رقمي متكامل.",
+        "highlights": [
+          "موقع شركة",
+          "خدمات تسويقية",
+          "عربي وإنجليزي"
+        ],
+        "alt": "الصفحة الرئيسية العربية لموقع بنيان بهوية زرقاء وفيروزية وشعار الشركة وروابط الخدمات وزر طلب الاستشارة.",
+        "previewLabel": "اعرض الصورة الكاملة لموقع بنيان",
+        "visitLabel": "زيارة موقع بنيان — يفتح في تبويب جديد"
+      },
+      {
+        "title": "أحمد نبيل",
+        "category": "هوية شخصية / بورتفوليو تقني",
+        "description": "بورتفوليو تقني لأحمد نبيل، يقدّم خبراته في إدارة الأنظمة والدعم الفني بلغة بصرية مستوحاة من عالم الشبكات.",
+        "problem": "تقديم ملف مهني تقني يسهّل استكشاف الخبرات والمؤهلات والمسيرة العملية لصاحب الموقع.",
+        "solution": "واجهة داكنة مستوحاة من الشبكات، بأقسام للمهارات والشهادات والخبرات والتعليم، مع خيارات واضحة للسيرة الذاتية والتواصل.",
+        "role": "تطوير البورتفوليو الشخصي لأحمد نبيل، وتجميع ملفه التقني وخبراته المهنية في موقع منظّم.",
+        "highlights": [
+          "بورتفوليو شخصي",
+          "تقنية وشبكات",
+          "خبرات مهنية"
+        ],
+        "alt": "بورتفوليو أحمد نبيل بواجهة تقنية داكنة وصورته الشخصية ومقدمة عن إدارة الأنظمة وروابط الخبرات والسيرة الذاتية.",
+        "previewLabel": "اعرض الصورة الكاملة لموقع أحمد نبيل",
+        "visitLabel": "زيارة موقع أحمد نبيل — يفتح في تبويب جديد"
       }
     ],
     "about": {
       "label": "02 / نبذة عنّي",
       "title": "عقلية مهندس.\nوشغف صانع.",
       "intro": "البرمجيات الجيدة تبدأ بفهم ما يحتاجه الناس فعلًا.",
-      "bio": "أنا أحمد، مطوّر برمجيات مستقل، أهتم بالمسافة بين المشكلة المعقّدة والتجربة البسيطة. هذه النبذة نص قابل للتعديل، لتكتب مكانه قصتك الخاصة.",
+      "bio": "أنا أحمد، مطوّر برمجيات مستقل، أبني المواقع الشخصية والمتاجر الإلكترونية وأنظمة الأعمال. أركّز على تحويل المتطلبات المتنوعة إلى تجارب رقمية واضحة ومفيدة.",
       "philosophy": "أبدأ بطرح أسئلة أفضل، ثم أبني هيكلًا واضحًا وأمنح التفاصيل حقّها من العناية. أقدّر الشيفرة المقروءة والواجهات المفيدة والأنظمة القابلة للتطوّر.",
       "interests": "اهتماماتي المهنية",
       "interestText": "برمجيات الأعمال، وواجهات الاستخدام المدروسة، ونمذجة البيانات، وحرفة البناء للويب.",
-      "caption": "مساحة لصورتك وقصتك.",
-      "portraitAlt": "رسم أصلي لهيئة تجريدية يُستخدم مؤقتًا مكان الصورة الشخصية للمطوّر.",
-      "placeholder": "ملف توضيحي / أضف قصتك هنا"
+      "caption": "أحمد / مطوّر برمجيات مستقل",
+      "portraitAlt": "الصورة الشخصية لأحمد، مطوّر برمجيات مستقل.",
+      "placeholder": "مواقع ويب / تجارة إلكترونية / أنظمة أعمال"
     },
     "expertise": {
       "label": "03 / الخبرات",
       "title": "أدوات مناسبة.\nوأساس مدروس.",
-      "intro": "نظرة قابلة للتعديل إلى التقنيات ومجالات العمل. مجالات للاستكشاف، دون نسب إتقان وهمية.",
+      "intro": "من الواجهات إلى أنظمة الأعمال، أساس عملي لبناء برمجيات مفيدة وقابلة للتطوير.",
       "groups": [
         {
           "title": "تطوير الأنظمة الخلفية",
@@ -402,16 +536,23 @@
     "contact": {
       "label": "05 / لنبدأ حوارًا",
       "title": "لديك فكرة\nتريد بناءها؟",
-      "invitation": "لنمنحها شكلًا واضحًا.",
-      "description": "منتج مفيد، أو نظام معقّد، أو فكرة تبحث عن ملامح أوضح. من هنا يبدأ الحوار.",
+      "invitation": "خلّينا نتكلم على واتساب.",
+      "description": "موقع شخصي، متجر إلكتروني، أو نظام لإدارة شغلك. احكي لي عن فكرتك، وتواصل معي مباشرة على رقم الواتساب الموجود هنا.",
+      "whatsapp": "واتساب",
+      "startChat": "ابدأ محادثة",
+      "directTitle": "تواصل معي مباشرة",
+      "recipientLabel": "اختر رقم الواتساب",
+      "openWhatsApp": "متابعة على واتساب",
+      "whatsappHint": "سيفتح واتساب برسالتك جاهزة. راجعها واضغط إرسال من هناك.",
+      "whatsappOpened": "جارٍ فتح مسودة رسالتك في واتساب. راجعها وأرسلها من هناك.",
       "unconfigured": "التواصل المباشر غير مُفعّل بعد.",
       "note": "يمكنك تجهيز رسالتك ونسخها أدناه. استقبال الرسائل غير مُفعّل بعد.",
       "email": "أرسل رسالة بريدية",
       "github": "GitHub",
       "linkedin": "LinkedIn",
       "cv": "نزّل السيرة الذاتية",
-      "formTitle": "حدّثني عن فكرتك.",
-      "formHint": "جميع الحقول مطلوبة. تبقى رسالتك في هذه الصفحة حتى تختار إجراءً.",
+      "formTitle": "خطوة بسيطة ونبدأ الكلام.",
+      "formHint": "اسمك ووصف مختصر لمشروعك كفاية لنبدأ.",
       "nameLabel": "اسمك",
       "emailLabel": "بريدك الإلكتروني",
       "messageLabel": "فكرتك أو مشروعك",
@@ -431,7 +572,7 @@
       "subject": "استفسار عن مشروع"
     },
     "footer": {
-      "copyright": "أحمد. معرض أعمال توضيحي.",
+      "copyright": "أحمد. برمجيات تُبنى بدقة ورؤية.",
       "top": "العودة إلى البداية",
       "language": "English",
       "languageLabel": "Switch to English"

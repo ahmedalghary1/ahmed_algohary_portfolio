@@ -34,7 +34,7 @@ for(const lang of ['en','ar']){
   if(width===390){
    await page.locator('.menu-toggle').click();await page.locator('#navigation a[href="#work"]').focus();await page.keyboard.press('Enter');
    result.interaction.push({lang,probe:'menu destination focus',focused:await page.evaluate(()=>document.activeElement.id||document.activeElement.outerHTML.slice(0,100))});
-   await page.goto(`${url}/?lang=${lang}#case-inventory`);await page.waitForSelector('html.js');
+   await page.goto(`${url}/?lang=${lang}#case-ahmed-gamal`);await page.waitForSelector('html.js');
    result.interaction.push({lang,probe:'case deep link',open:await page.locator('details').first().evaluate(e=>e.open)});
    await page.locator('summary').first().click();await page.locator('.header-controls [data-language]').click();
    result.interaction.push({lang,probe:'language switch keeps trigger visible',...await page.locator('.header-controls [data-language]').evaluate(e=>({top:e.getBoundingClientRect().top,focused:e===document.activeElement}))});
